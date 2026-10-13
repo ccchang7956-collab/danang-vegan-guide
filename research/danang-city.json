@@ -1,0 +1,296 @@
+[
+  {
+    "id": "om-vegan",
+    "name": "Om Vegan – Về đây ăn chay",
+    "address": "338/42 Hoàng Diệu, Đà Nẵng",
+    "area": "海洲市中心／韓江西岸",
+    "lat": 16.0571694,
+    "lng": 108.2152454,
+    "coordinateStatus": "verified-local-guide-map-marker",
+    "diet": "vegan",
+    "veganNotes": "全素自助餐與火鍋；HappyCow 列全素。",
+    "hours": "10:30–14:00、16:30–20:30",
+    "hoursStatus": "2026-09-25 mirrored business post; profile says 21:00, older guide 20:00; confirm closing",
+    "phone": "+84 783 229 133",
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/om-vegan-da-nang-436922",
+      "https://khamphadanang.vn/dia-diem/om-vegan/",
+      "https://www.facebook.com/giontamesay",
+      "https://www.findglocal.com/VN/Da-Nang/1139577916230406/Om-Vegan---V%E1%BB%81-%C4%91%C3%A2y-%C4%83n-chay"
+    ],
+    "checkedDate": "2026-10-12",
+    "operatingEvidence": "2026-08-06 dining review",
+    "coordinateSourceUrl": "https://khamphadanang.vn/dia-diem/om-vegan/"
+  },
+  {
+    "id": "ngoc-chi-city",
+    "name": "Ngọc Chi（市中心店）",
+    "address": "202 Hoàng Diệu, Hòa Cường, Đà Nẵng",
+    "area": "海洲市中心／韓江西岸",
+    "lat": 16.0620931,
+    "lng": 108.2174064,
+    "coordinateStatus": "verified-official-Michelin-schema",
+    "diet": "vegetarian",
+    "veganNotes": "奶素；飲品可能含牛奶，餐點需確認蛋、奶、蜂蜜與調味料。此店與巴拿山店不同，勿沿用山上店資料。",
+    "hours": "每日 09:00–21:00",
+    "hoursStatus": "Michelin listing; HappyCow says 07:00–21:00; opening conflict",
+    "phone": "+84 935 085 088",
+    "sourceUrls": [
+      "https://guide.michelin.com/vn/en/da-nang-region/da-nang_2984390/restaurant/ngoc-chi",
+      "https://www.happycow.net/reviews/ngoc-chi-da-nang-25980",
+      "https://www.facebook.com/chayngocchi202hoangdieu"
+    ],
+    "checkedDate": "2026-10-12",
+    "operatingEvidence": "current Michelin listing and 2025-08 review",
+    "coordinateSourceUrl": "https://guide.michelin.com/vn/en/da-nang-region/da-nang_2984390/restaurant/ngoc-chi"
+  },
+  {
+    "id": "tiem-chay-xua",
+    "name": "Tiệm Chay Xưa",
+    "address": "373a Phan Châu Trinh, Đà Nẵng",
+    "area": "海洲市中心／韓江西岸",
+    "lat": 16.0564624,
+    "lng": 108.2189279,
+    "coordinateStatus": "verified-directory-Google-linked-schema",
+    "diet": "vegetarian",
+    "veganNotes": "2026 年 8 月客人向店員確認美乃滋含蛋；另有優格甜點，避開並逐項確認。已從 4 Nguyễn Thị Minh Khai 搬遷。",
+    "hours": "每日 06:00–14:00、16:00–21:00",
+    "hoursStatus": "directory only; visitor-center listing gives conflicting times",
+    "phone": null,
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/tiem-chay-xua-da-nang-148882",
+      "https://danangvisitorcenter.com/en/nha-hang/tiem-chay-xua-da-nang",
+      "https://monandanang.vn/restaurant/15512287-tiem-chay-xua"
+    ],
+    "checkedDate": "2026-10-12",
+    "operatingEvidence": "2026-08-08 dining review",
+    "coordinateSourceUrl": "https://monandanang.vn/restaurant/15512287-tiem-chay-xua"
+  },
+  {
+    "id": "ans-vegetarian",
+    "name": "ANs Vegetarian Cuisine",
+    "address": "169F Trưng Nữ Vương, Đà Nẵng",
+    "area": "海洲市中心／韓江西岸",
+    "lat": null,
+    "lng": null,
+    "coordinateStatus": "unverified-no-coordinate-published-in-accessible-source",
+    "diet": "vegetarian",
+    "veganNotes": "奶素餐廳；餐點、飲品逐項確認無奶蛋蜂蜜，勿將 chay 視為全素。",
+    "hours": "每日 07:00–21:00",
+    "hoursStatus": "directory only; business-info last updated 2020",
+    "phone": null,
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/ans-vegetarian-cuisine-da-nang-89317",
+      "https://nhahangchayans.com/"
+    ],
+    "checkedDate": "2026-10-12",
+    "operatingEvidence": "2025-01-10 dining review; no 2026 operation confirmation; official website search indexed in 2026 confirms 169F address"
+  },
+  {
+    "id": "an-lac-tam-2",
+    "name": "An Lạc Tâm 2",
+    "address": "41 Lê Quý Đôn, Đà Nẵng",
+    "area": "海洲市中心／韓江西岸",
+    "lat": 16.0554412,
+    "lng": 108.2207129,
+    "coordinateStatus": "verified-local-guide-map-marker-Le-Quy-Don-branch",
+    "diet": "vegetarian",
+    "veganNotes": "菜單未標全素；2026 客人向店員詢問後找到全素菜。確認美乃滋、醬料與飲品。",
+    "hours": "每日 07:00–14:00、16:30–21:00；據目錄農曆滿月日休息",
+    "hoursStatus": "directory only; lunar closure requires confirmation",
+    "phone": null,
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/an-lac-tam-2-da-nang-183160",
+      "https://khamphadanang.vn/dia-diem/danh-gia-quan-chay-an-lac-tam/"
+    ],
+    "checkedDate": "2026-10-12",
+    "operatingEvidence": "2026-05-19 dining review",
+    "coordinateSourceUrl": "https://khamphadanang.vn/dia-diem/danh-gia-quan-chay-an-lac-tam/"
+  },
+  {
+    "id": "khai-tam-city",
+    "name": "Khai Tâm – Phan Châu Trinh",
+    "address": "352 Phan Châu Trinh（Tuệ Tĩnh 路口）, Đà Nẵng",
+    "area": "海洲市中心／韓江西岸",
+    "lat": null,
+    "lng": null,
+    "coordinateStatus": "unverified-no-coordinate-published-in-accessible-source",
+    "diet": "vegetarian",
+    "veganNotes": "目錄稱食物無蛋奶但售乳製飲品；來源較舊，現場重新確認。",
+    "hours": "每日 06:00–14:00、16:00–20:00",
+    "hoursStatus": "old-directory-only; not confirmed for 2026",
+    "phone": null,
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/khai-tam-da-nang-76023"
+    ],
+    "checkedDate": "2026-10-12",
+    "operatingEvidence": "latest accessible dining review 2023; current operation unverified"
+  },
+  {
+    "id": "shala-vegan-house",
+    "name": "Shala Vegan House",
+    "address": "87/16 Nguyễn Du, Đà Nẵng",
+    "area": "海洲北側／韓江西岸",
+    "lat": 16.0780661,
+    "lng": 108.2191089,
+    "coordinateStatus": "verified-local-guide-map-marker",
+    "diet": "vegan",
+    "veganNotes": "HappyCow 列全素；在巷內，提供春捲、壽司、炒飯、火鍋。",
+    "hours": "每日 10:30–20:30",
+    "hoursStatus": "directory only",
+    "phone": "+84 905 008 184",
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/shala-vegan-house-da-nang-326976",
+      "https://khamphadanang.vn/dia-diem/shala-vegan-house/"
+    ],
+    "checkedDate": "2026-10-12",
+    "operatingEvidence": "2026-08-13 dining review",
+    "coordinateSourceUrl": "https://khamphadanang.vn/dia-diem/shala-vegan-house/"
+  },
+  {
+    "id": "au-lac",
+    "name": "Âu Lạc",
+    "address": "113/14 Nguyễn Du, Đà Nẵng",
+    "area": "海洲北側／韓江西岸",
+    "lat": null,
+    "lng": null,
+    "coordinateStatus": "unverified-no-coordinate-published-in-accessible-source",
+    "diet": "vegetarian",
+    "veganNotes": "據目錄餐點全素但有牛奶飲品；避免含奶飲品並確認所有醬料。",
+    "hours": "每日 06:30–15:00、16:00–20:00",
+    "hoursStatus": "directory only; business-info last updated 2019",
+    "phone": null,
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/au-lac-da-nang-25831"
+    ],
+    "checkedDate": "2026-10-12",
+    "operatingEvidence": "2026-05-15 dining review"
+  },
+  {
+    "id": "dieu-hoa-city",
+    "name": "Quán Chay Diệu Hoa（峴港店）",
+    "address": "87/4 Nguyễn Du, Đà Nẵng",
+    "area": "海洲北側／韓江西岸",
+    "lat": null,
+    "lng": null,
+    "coordinateStatus": "unverified-no-coordinate-published-in-accessible-source",
+    "diet": "vegan",
+    "veganNotes": "HappyCow 2026 新增全素餐廳；與會安同名店不同，位在通往 Shala 的巷內。",
+    "hours": "每日 07:00–20:30",
+    "hoursStatus": "HappyCow listing added 2026-05-26",
+    "phone": null,
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/quan-chay-dieu-hoa-vegan-restaurant-in-danang-da-nang-508273",
+      "https://wanderlog.com/place/details/4391707/quan-chay-dieu-hoa-vegetarian-restaurant"
+    ],
+    "checkedDate": "2026-10-12",
+    "operatingEvidence": "2026-05-26 new listing; independently mentioned in Shala 2026-05 review"
+  },
+  {
+    "id": "phuc-an-city",
+    "name": "Phúc An Vegetarian & Café",
+    "address": "547 Nguyễn Tất Thành, Thanh Khê, Đà Nẵng",
+    "area": "清溪／峴港灣西側",
+    "lat": 16.0737281,
+    "lng": 108.2032435,
+    "coordinateStatus": "verified-directory-Google-linked-schema",
+    "diet": "vegetarian",
+    "veganNotes": "素食餐廳，來源含起司醬菜品報告；全素需確認並去掉蛋奶蜂蜜，非全部全素。",
+    "hours": "10:00–22:00（有來源顯示 21:30 結束）",
+    "hoursStatus": "conflicting directories; confirm closing time",
+    "phone": "+84 905 949 291",
+    "sourceUrls": [
+      "https://www.foody.vn/da-nang/phuc-an-vegetarian-nha-hang-chay",
+      "https://monandanang.vn/en/restaurant/nha-hang-chay-phuc-an",
+      "https://www.tripadvisor.com/Restaurant_Review-g298085-d15292617-Reviews-Phuc_An_Vegetarian_Cafe-Da_Nang.html"
+    ],
+    "checkedDate": "2026-10-12",
+    "operatingEvidence": "2026-09-21 aggregated Google dining review; Apr 2026 Tripadvisor review",
+    "coordinateSourceUrl": "https://monandanang.vn/en/restaurant/nha-hang-chay-phuc-an"
+  },
+  {
+    "id": "bao-an",
+    "name": "Thực Dưỡng Bảo An",
+    "address": "56 Hoàng Bích Sơn, An Hải, Đà Nẵng",
+    "area": "山茶／安海北",
+    "lat": 16.0753234,
+    "lng": 108.2408798,
+    "coordinateStatus": "verified-directory-Google-linked-schema",
+    "diet": "vegan",
+    "veganNotes": "全素實養餐廳，米飯、麵、春捲與食品小店；HappyCow 列全素。",
+    "hours": "週一至六 06:30–20:30；週日 06:30–15:30；農曆初一、十五 06:30–20:30",
+    "hoursStatus": "2026-08 social post mirrored; corroborated Wanderlog; supersedes old HappyCow Sunday closed",
+    "phone": "+84 902 957 256",
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/thuc-duong-bao-an-da-nang-84953",
+      "https://www.findglocal.com/VN/Da-Nang/100474724864598/Bao-An--Restaurant-%26-Homestay",
+      "https://wanderlog.com/place/details/1279395/bao-an-macrobiotic",
+      "https://monandanang.vn/en/restaurant/12596881-thuc-duong-bao-an"
+    ],
+    "checkedDate": "2026-10-12",
+    "operatingEvidence": "2026-09-23 dining review; mirrored Aug 2026 business post",
+    "coordinateSourceUrl": "https://monandanang.vn/en/restaurant/12596881-thuc-duong-bao-an"
+  },
+  {
+    "id": "tinh-quan",
+    "name": "Quán Chay Tỉnh Quán",
+    "address": "11 Trần Nhật Duật, Thọ Quang, Sơn Trà, Đà Nẵng",
+    "area": "山茶半島入口／壽光",
+    "lat": null,
+    "lng": null,
+    "coordinateStatus": "unverified-no-coordinate-published-in-accessible-source",
+    "diet": "vegetarian",
+    "veganNotes": "多數餐點可全素，但優格與蜂蜜有使用紀錄；披薩義大利麵特別確認起司奶蛋。",
+    "hours": "每日 06:30–21:00",
+    "hoursStatus": "directory only; last business-info update 2024",
+    "phone": null,
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/quan-chay-tinh-quan-da-nang-330620"
+    ],
+    "checkedDate": "2026-10-12",
+    "operatingEvidence": "2026-03-08 dining review"
+  },
+  {
+    "id": "son-tra-retreat",
+    "name": "Son Tra Retreat – Garden Lounge & Eatery",
+    "address": "11 Lê Văn Lương, Thọ Quang, Sơn Trà, Đà Nẵng",
+    "area": "山茶半島入口／壽光",
+    "lat": 16.10394116469826,
+    "lng": 108.2640959,
+    "coordinateStatus": "verified-official-restaurant-schema",
+    "diet": "vegan-options",
+    "veganNotes": "葷食餐廳有少量全素選項；目錄稱可提前聯絡安排全素品嚐菜單。須預約並完整说明禁蛋奶蜂蜜魚露蠔油。",
+    "hours": "週一至四、六日 10:00–22:00；週五 10:00–22:30",
+    "hoursStatus": "official website; supersedes HappyCow 08:00 opening",
+    "phone": "+84 236 391 9188",
+    "sourceUrls": [
+      "https://sontraretreat.vn/about/",
+      "https://www.happycow.net/reviews/son-tra-retreat-garden-lounge-eatery-da-nang-438564"
+    ],
+    "checkedDate": "2026-10-12",
+    "operatingEvidence": "current official site; last vegan dining review March 2025",
+    "coordinateSourceUrl": "https://sontraretreat.vn/about/"
+  },
+  {
+    "id": "moms-kitchen",
+    "name": "Mom’s Kitchen @ Chickpea Eatery",
+    "address": "73/12 Trương Định, Sơn Trà, Đà Nẵng",
+    "area": "山茶北側／安海",
+    "lat": 16.0894345,
+    "lng": 108.2487052,
+    "coordinateStatus": "verified-official-website-Google-Maps-place-marker",
+    "diet": "vegan",
+    "veganNotes": "官方 Chickpea 網站確認此店；全素家常料理。巷內庭院，不要與 69 Nguyễn Duy Hiệu 的 Chickpea 分店重複。",
+    "hours": "每日 09:00–19:00",
+    "hoursStatus": "HappyCow listing updated 2026-09-12",
+    "phone": "+84 766 731 285",
+    "sourceUrls": [
+      "https://chickpeaeatery.com/",
+      "https://www.happycow.net/reviews/moms-kitchen-at-chickpea-eatery-da-nang-217435",
+      "https://maps.app.goo.gl/dTepKdiNTmLw8nmY6"
+    ],
+    "checkedDate": "2026-10-12",
+    "operatingEvidence": "official current location and 2026-09 listing update",
+    "coordinateSourceUrl": "https://maps.app.goo.gl/dTepKdiNTmLw8nmY6"
+  }
+]

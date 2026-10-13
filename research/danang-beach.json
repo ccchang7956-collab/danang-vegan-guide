@@ -1,0 +1,273 @@
+[
+  {
+    "id": "dn-roots",
+    "name": "Roots Plant-Based Cafe",
+    "address": "266 Trần Bạch Đằng, Bắc Mỹ Phú, Ngũ Hành Sơn, Đà Nẵng",
+    "area": "My An / An Thuong",
+    "lat": 16.0486741,
+    "lng": 108.2477863,
+    "coordinateStatus": "official-google-maps-place-marker",
+    "diet": "vegan",
+    "veganNotes": "官方純素咖啡館；官方地址為 266，HappyCow 舊頁仍顯示 27，勿使用舊地址。",
+    "hours": "每日 07:30–22:30",
+    "hoursStatus": "third-party-listed; reconfirm",
+    "phone": "+84 90 556 58 26",
+    "sourceUrls": [
+      "https://rootsplantbasedcafe.com/",
+      "https://maps.app.goo.gl/oudj6sSRMAWxPwET8",
+      "https://restaurantguru.com/Roots-Plant-based-cafe-Da-Nang"
+    ],
+    "checkedDate": "2026-10-12"
+  },
+  {
+    "id": "dn-chickpea",
+    "name": "Chickpea Eatery Da Nang",
+    "address": "69 Nguyễn Duy Hiệu, An Hải, Đà Nẵng",
+    "area": "An Hai / east Da Nang",
+    "lat": 16.0562165,
+    "lng": 108.2401475,
+    "coordinateStatus": "source-map-navigation-destination",
+    "diet": "vegan",
+    "veganNotes": "官方稱食物 100% 植物製；HappyCow 2026 年 9 月更新地址，185 Đặng Vũ Hỷ 為舊址。",
+    "hours": null,
+    "hoursStatus": "conflicting: HappyCow 12:00–21:00; Corner 10:30–21:00",
+    "phone": "+84 766 731 285",
+    "sourceUrls": [
+      "https://chickpeaeatery.com/",
+      "https://www.happycow.net/reviews/chickpea-eatery-da-nang-446411",
+      "https://spinach.guide/venues/chickpea-eatery-vegan-restaurant-cooking-class-da-nang-191933/"
+    ],
+    "checkedDate": "2026-10-12"
+  },
+  {
+    "id": "dn-alt",
+    "name": "ALT Plant-Based Café by Chickpea Eatery",
+    "address": "90 Bà Huyện Thanh Quan, Đà Nẵng",
+    "area": "Bac My An",
+    "lat": 16.0440585,
+    "lng": 108.2457956,
+    "coordinateStatus": "official-google-maps-place-marker",
+    "diet": "vegan",
+    "veganNotes": "Chickpea 官方列出的植物製咖啡館；無獨立營業時間來源。",
+    "hours": null,
+    "hoursStatus": "unverified",
+    "phone": "+84 766 731 285",
+    "sourceUrls": [
+      "https://chickpeaeatery.com/",
+      "https://maps.app.goo.gl/GFCoGfNWXTiikfSJ7"
+    ],
+    "checkedDate": "2026-10-12"
+  },
+  {
+    "id": "dn-kurumi",
+    "name": "KURUMI - Healthy Vegan Food & Desserts",
+    "address": "17/22 Mỹ Đa Đông 12, Bắc Mỹ An, Ngũ Hành Sơn, Đà Nẵng",
+    "area": "Bac My An",
+    "lat": 16.0456987,
+    "lng": 108.2478571,
+    "coordinateStatus": "official-google-maps-place-marker",
+    "diet": "vegan",
+    "veganNotes": "官方與 HappyCow 均為全純素；175 Bà Huyện Thanh Quan 為舊址。",
+    "hours": "每日 08:00–21:30",
+    "hoursStatus": "official-listed; reconfirm",
+    "phone": "+84 56 9844 088",
+    "sourceUrls": [
+      "https://kurumi.vn/en",
+      "https://www.happycow.net/reviews/kurumi-da-nang-209603",
+      "https://maps.app.goo.gl/zqVD5nF3mWvDJbvo6"
+    ],
+    "checkedDate": "2026-10-12"
+  },
+  {
+    "id": "dn-ivegan",
+    "name": "iVegan Supershop Da Nang",
+    "address": "Lô 31 An Thượng 4, Mỹ An, Ngũ Hành Sơn, Đà Nẵng",
+    "area": "My An / An Thuong",
+    "lat": 16.048773,
+    "lng": 108.24644,
+    "coordinateStatus": "source-map-navigation-destination",
+    "diet": "vegan",
+    "veganNotes": "官方 100% plant-based；HappyCow 列全純素。",
+    "hours": "每日 08:00–21:00",
+    "hoursStatus": "crosschecked-HappyCow-and-business-claimed-Tripadvisor; reconfirm",
+    "phone": "+84 236 6522 331",
+    "sourceUrls": [
+      "https://ivegansupershop.com/",
+      "https://www.happycow.net/reviews/ivegan-da-nang-232730",
+      "https://spinach.guide/venues/ivegan-supershop-190716/"
+    ],
+    "checkedDate": "2026-10-12"
+  },
+  {
+    "id": "dn-loving",
+    "name": "Loving Vegan",
+    "address": "61 Lê Quang Đạo, Ngũ Hành Sơn, Đà Nẵng",
+    "area": "My An / An Thuong",
+    "lat": 16.053792,
+    "lng": 108.244527,
+    "coordinateStatus": "source-map-navigation-destination",
+    "diet": "vegan",
+    "veganNotes": "HappyCow 全純素分類；越式與西式餐點，202 Đỗ Bá 為舊址。",
+    "hours": "每日 09:00–21:00",
+    "hoursStatus": "crosschecked-HappyCow-Wanderlog; reconfirm",
+    "phone": null,
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/loving-vegan-da-nang-161935",
+      "https://wanderlog.com/place/details/3633570",
+      "https://spinach.guide/venues/loving-vegan-190366/"
+    ],
+    "checkedDate": "2026-10-12"
+  },
+  {
+    "id": "dn-khong",
+    "name": "Khong Vegan Restaurant / KHONG Vegan Kitchen",
+    "address": "81 Phan Tôn, Mỹ An, Ngũ Hành Sơn, Đà Nẵng",
+    "area": "My An / An Thuong",
+    "lat": 16.051926,
+    "lng": 108.243892,
+    "coordinateStatus": "source-map-navigation-destination",
+    "diet": "vegan",
+    "veganNotes": "HappyCow 全純素分類；Lô 29 An Thượng 29 為舊址。",
+    "hours": "每日 10:00–22:30",
+    "hoursStatus": "HappyCow-listed; reconfirm",
+    "phone": "+84 917 941 556",
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/khong-vegan-restaurant-da-nang-182942",
+      "https://spinach.guide/venues/khong-vegan-kitchen-190489/"
+    ],
+    "checkedDate": "2026-10-12"
+  },
+  {
+    "id": "dn-lehoi",
+    "name": "Bánh Mì Chay Lê Hội",
+    "address": "89 Phạm Tu, An Hải, Đà Nẵng",
+    "area": "An Hai / east Da Nang",
+    "lat": 16.065871,
+    "lng": 108.240496,
+    "coordinateStatus": "source-map-navigation-destination",
+    "diet": "vegan",
+    "veganNotes": "HappyCow 全純素法國麵包攤；時間來源落差大，優先早餐且現場確認。",
+    "hours": null,
+    "hoursStatus": "conflicting: HappyCow daily 06:15–18:30; Spinach 06:30–22:00 closed Wed",
+    "phone": null,
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/banh-mi-chay-le-hoi-da-nang-454240",
+      "https://spinach.guide/venues/banh-mi-chay-le-hoi-vegan-bread-192117/"
+    ],
+    "checkedDate": "2026-10-12"
+  },
+  {
+    "id": "dn-anmocnhien",
+    "name": "An Mộc Nhiên Vegan",
+    "address": "18 Trần Bạch Đằng, An Hải, Đà Nẵng",
+    "area": "My Khe / east Da Nang",
+    "lat": 16.058876,
+    "lng": 108.244594,
+    "coordinateStatus": "source-map-navigation-destination",
+    "diet": "vegan",
+    "veganNotes": "HappyCow 全純素分類；有植物製魚露料理與純素烘焙。",
+    "hours": null,
+    "hoursStatus": "conflicting: HappyCow Mon–Sat 07:00–22:00; owner promotional post and RestaurantGuru daily 07:00–22:00",
+    "phone": "+84 963 764 283",
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/an-moc-nhien-da-nang-483077",
+      "https://www.reddit.com/r/DaNang/comments/1on1d2i/",
+      "https://spinach.guide/venues/an-moc-nhien-vegan-nha-hang-thuan-chay-244951/"
+    ],
+    "checkedDate": "2026-10-12"
+  },
+  {
+    "id": "dn-hanhphuc",
+    "name": "Chay Hạnh Phúc - Happy Vegan Food",
+    "address": "178 Hoài Thanh, Đà Nẵng",
+    "area": "My An / inland beach area",
+    "lat": null,
+    "lng": null,
+    "coordinateStatus": "unverified",
+    "diet": "vegan",
+    "veganNotes": "2026 年 10 月店主確認自 04 An Thượng 11 搬遷；HappyCow 全純素分類。",
+    "hours": null,
+    "hoursStatus": "unreliable: new HappyCow hours internally contradictory",
+    "phone": null,
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/chay-hanh-phuc-happy-vegan-food-da-nang-529548/2279202",
+      "https://www.happycow.net/reviews/chay-hanh-phuc-vegan-food-da-nang-501955"
+    ],
+    "checkedDate": "2026-10-12"
+  },
+  {
+    "id": "dn-everyday",
+    "name": "Everyday Vegan",
+    "address": "45 Hoàng Kế Viêm, Bắc Mỹ Phú, Ngũ Hành Sơn, Đà Nẵng",
+    "area": "My An / An Thuong",
+    "lat": null,
+    "lng": null,
+    "coordinateStatus": "unverified",
+    "diet": "vegan",
+    "veganNotes": "HappyCow 全純素越式店；頁面明載 2025 年 7 月確認仍營業。",
+    "hours": "每日 10:00–17:00",
+    "hoursStatus": "HappyCow-listed; older verification reconfirm",
+    "phone": null,
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/everyday-vegan-da-nang-427141"
+    ],
+    "checkedDate": "2026-10-12"
+  },
+  {
+    "id": "dn-xinh",
+    "name": "Quán Chay Xinh",
+    "address": "對面 30 An Thượng 8, Ngũ Hành Sơn, Đà Nẵng",
+    "area": "My An / An Thuong",
+    "lat": 16.048028,
+    "lng": 108.24484,
+    "coordinateStatus": "source-map-navigation-destination",
+    "diet": "vegetarian-vegan-options",
+    "veganNotes": "HappyCow 列素食，可能全純素但未確認；逐項確認蛋奶蜂蜜及醬汁。HappyCow 簡寫 30，導航來源為對面 30。",
+    "hours": "每日 08:00–21:00",
+    "hoursStatus": "HappyCow-listed; reconfirm",
+    "phone": null,
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/quan-chay-xinh-da-nang-465680",
+      "https://spinach.guide/venues/quan-chay-xinh-233147/"
+    ],
+    "checkedDate": "2026-10-12"
+  },
+  {
+    "id": "dn-daibinh",
+    "name": "Ẩm Thực Chay Đại Bình",
+    "address": "23 Hoàng Kế Viêm, Đà Nẵng",
+    "area": "My An / An Thuong",
+    "lat": null,
+    "lng": null,
+    "coordinateStatus": "unverified",
+    "diet": "vegetarian-vegan-options",
+    "veganNotes": "HappyCow 說餐點純素，但 Saigon Milk Coffee 含奶；有美乃滋成分溝通爭議，需確認蛋、奶與醬汁。",
+    "hours": null,
+    "hoursStatus": "unverified",
+    "phone": null,
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/am-thuc-chay-dai-binh-da-nang-349638"
+    ],
+    "checkedDate": "2026-10-12"
+  },
+  {
+    "id": "dn-duyen",
+    "name": "Duyên Vegan & Coffee",
+    "address": "63 Đặng Vũ Hỷ, An Hải, Sơn Trà, Đà Nẵng",
+    "area": "An Hai / east Da Nang",
+    "lat": 16.059456,
+    "lng": 108.240111,
+    "coordinateStatus": "source-map-navigation-destination",
+    "diet": "vegetarian-vegan-options",
+    "veganNotes": "HappyCow 分類為素食但文字稱全純素，VietSpots 稱 100% plant-based；先確認飲料蛋奶蜂蜜再點餐。",
+    "hours": null,
+    "hoursStatus": "conflicting: HappyCow 07:00–22:00; VietSpots/Wanderlog 08:30–22:00",
+    "phone": "+84 978 095 048",
+    "sourceUrls": [
+      "https://www.happycow.net/reviews/duyen-vegan-coffee-da-nang-472374",
+      "https://vietspots.com/en/m/583",
+      "https://spinach.guide/venues/duyen-vegan-coffee-192258/"
+    ],
+    "checkedDate": "2026-10-12"
+  }
+]

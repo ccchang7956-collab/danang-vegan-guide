@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3e9">
+  <meta name="description" content="2026 年 10 月峴港與會安全素旅行隨行指南：每日行程、附近餐廳、合法換匯點與越南文點餐卡。">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <title>峴港・全素隨行</title>
+  <link rel="stylesheet" href="assets/vendor/leaflet.css">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/vendor/leaflet.js"></script>
+  <script defer src="assets/core.js"></script>
+  <script defer src="assets/data.js"></script>
+  <script defer src="assets/app.js"></script>
+</head>
+<body data-current-view="daily">
+  <a class="skip-link" href="#main">跳至主要內容</a>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="峴港全素隨行首頁"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M25 5C12 4 5 10 7 20c10 3 17-3 18-15Z"/><path d="m6 26 13-14"/></svg><span>峴港・全素隨行</span></a>
+    <span id="network-status" class="network-status" role="status">隨行指南</span>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy"><p class="eyebrow">DA NANG / HOI AN <span>• OCT 2026</span></p><h1 id="hero-title">海風與好食，<br>一路全素。</h1><p class="hero-description">把行程放在口袋裡，找到身邊的植物好滋味。</p></div>
+      <svg class="coast-art" viewBox="0 0 230 220" fill="none" aria-hidden="true"><path d="M180-10c-85 55-16 85-74 126-38 27-10 73-54 120" stroke="currentColor" stroke-width="2"/><path d="M205-10c-85 55-16 85-74 126-38 27-10 73-54 120M230-10c-85 55-16 85-74 126-38 27-10 73-54 120" stroke="currentColor" stroke-opacity=".35"/><circle cx="150" cy="50" r="28" fill="#e2b68b" fill-opacity=".55"/><path d="M90 155c-3-26-23-42-55-42 0 32 22 51 48 46m-43-39 58 54" stroke="currentColor" stroke-width="2"/><path d="m141 139 8-20 9 20m-13-8h9" stroke="currentColor" stroke-width="2"/></svg>
+    </section>
+    <div class="trip-strip"><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="15" rx="3"/><path d="M8 3v6m8-6v6M4 12h16"/></svg>10.21 — 10.25</span><span>5 天 · <span id="trip-count">全素餐廳查核中</span></span></div>
+
+    <section id="view-daily" class="view" aria-label="每日行程">
+      <div class="view-intro"><p class="eyebrow">YOUR LITTLE TRAVEL PLAN</p><h2>今天，往哪裡走？</h2><p>沿著行程找風景，也把每一餐照顧好。</p></div>
+      <div id="day-tabs" class="day-tabs" role="group" aria-label="選擇旅行日期"></div>
+      <div class="day-summary"><div><h3 id="day-heading">每日行程</h3><p id="day-subtitle">選一天，展開你的旅行。</p></div><label class="anchor-label" for="day-anchor">餐廳參考位置<select id="day-anchor" aria-label="每日餐廳參考位置"></select></label></div>
+      <div id="day-notes" class="day-notes"></div>
+      <section id="meal-plan" class="meal-plan" aria-label="每日用餐備案"></section><div class="quick-actions"><button type="button" class="secondary-button" data-jump="day-restaurant-list">查看餐廳列表 ↓</button><button type="button" class="secondary-button" data-jump="map-panel">查看地圖 ↓</button></div>
+      <div class="daily-layout">
+        <div id="daily-map-slot" class="map-slot">
+          <section id="map-panel" class="map-panel" aria-labelledby="map-heading">
+            <div class="map-toolbar"><div><p class="eyebrow">A LITTLE ORIENTATION</p><h3 id="map-heading">把旅程攤開來</h3></div><button id="map-reset" class="icon-button" type="button" aria-label="重設地圖範圍"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10a8 8 0 1 1 2 8M4 4v6h6"/></svg></button></div>
+            <div id="map" aria-label="景點、飯店與餐廳地圖"></div>
+            <p id="map-message" class="map-message" role="status" hidden></p>
+            <div class="map-footer"><ul class="map-legend" aria-label="地圖圖例"><li id="legend-attraction"><i class="legend-dot attraction"></i>景點</li><li id="legend-hotel"><i class="legend-dot hotel"></i>飯店</li><li id="legend-vegan"><i class="legend-dot vegan"></i>全素</li><li id="legend-conditional"><i class="legend-dot conditional"></i>需確認</li><li id="legend-exchange" hidden><i class="legend-dot exchange"></i>銀行／授權點</li><li id="legend-exchange-unknown" hidden><i class="legend-dot conditional"></i>幣別待確認</li></ul><a id="map-external" class="text-link" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">開啟外部地圖 ↗</a></div>
+          </section>
+        </div>
+        <div class="content-column"><section aria-labelledby="itinerary-heading"><div class="section-heading"><h3 id="itinerary-heading">一路的風景</h3><span class="section-kicker">今日路線</span></div><div id="itinerary-list" class="itinerary-list"></div></section><section class="food-section" aria-labelledby="daily-food-heading"><div class="section-heading"><div><p class="eyebrow">PLANT-BASED STOPS</p><h3 id="daily-food-heading">這一天的好食提案</h3></div><span id="day-food-count" class="count-badge">0</span></div><div id="day-restaurant-list" class="restaurant-list"></div></section></div>
+      </div>
+    </section>
+
+    <section id="view-nearby" class="view" aria-labelledby="nearby-heading" hidden>
+      <div class="view-intro"><p class="eyebrow">GOOD FOOD, CLOSE BY</p><h2 id="nearby-heading">下一餐，就在附近。</h2><p>使用現在的位置，或選一個旅行地標開始找。</p></div>
+      <div class="quick-actions"><button id="quick-vegan" class="primary-button" type="button">只找全素店</button><button type="button" class="secondary-button" data-jump="restaurant-list">查看餐廳列表 ↓</button><button type="button" class="secondary-button" data-jump="map-panel">查看地圖 ↓</button></div><div class="location-box"><button id="locate-btn" class="primary-button" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></svg>使用我的位置</button><p id="location-status" role="status" aria-live="polite">尚未取得定位，可使用下方地標。</p></div>
+      <div class="filter-grid"><label for="reference-select">參考地標<select id="reference-select"></select></label><label for="search-input">搜尋店家<input id="search-input" type="search" placeholder="店名、地址或料理" autocomplete="off"></label><label for="area-filter">區域<select id="area-filter"><option value="all">所有區域</option><option value="danang-city">峴港市區</option><option value="danang-beach">峴港海灘區</option><option value="sontra">山茶半島</option><option value="hoian">會安</option><option value="banahills">巴拿山</option></select></label><label for="diet-filter">飲食分類<select id="diet-filter"><option value="all">所有分類</option><option value="vegan">全素</option><option value="vegetarian">素食・需確認蛋奶</option><option value="mixed">葷素混合・有全素選項</option><option value="uncertain">資訊待確認</option></select></label><label for="operating-filter">營業查核<select id="operating-filter"><option value="available">可選店家（含待確認）</option><option value="recent">Google 未標歇業</option><option value="unverified">營業待確認</option><option value="closed">歇業／暫停營業記錄</option><option value="all">全部查核記錄</option></select></label></div>
+      <p id="audit-summary" class="audit-summary" role="status"></p><p class="small-note">Google 未標歇業者排前，待確認店家排後；距離均為直線。評分為查核快照，轉載資料另有標示。出發前按「Google 商家／評價」查看最新評論與營業標示。</p><div class="nearby-layout"><div id="nearby-map-slot" class="map-slot"></div><div class="content-column"><div class="section-heading"><h3>附近的植物餐桌</h3><span id="result-count" class="count-badge" role="status">0 間</span></div><div id="restaurant-list" class="restaurant-list"></div></div></div>
+    </section>
+
+    <section id="view-exchange" class="view" aria-labelledby="exchange-heading" hidden>
+      <div class="view-intro"><p class="eyebrow">EXCHANGE FOREIGN CASH TO VND</p><h2 id="exchange-heading">找合法換匯據點。</h2><p>先選今天的行程或使用定位，再依距離查看銀行與已公告授權櫃檯。</p></div>
+      <div class="exchange-controls">
+        <button id="exchange-locate-btn" class="primary-button" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></svg>使用我的位置</button>
+        <p id="exchange-location-status" role="status" aria-live="polite">依行程路線估算距離；定位後可依你所在位置排序。</p>
+        <div class="exchange-selects"><label for="exchange-day">行程日期<select id="exchange-day"></select></label><label for="exchange-anchor">距離參考位置<select id="exchange-anchor"></select></label></div>
+        <label class="currency-filter" for="exchange-currency">幣別資料<select id="exchange-currency"><option value="all">全部已查證合法據點</option><option value="TWD">有官方 TWD 現鈔收兌資料</option><option value="USD">有官方 USD 現鈔買入資料</option><option value="unknown">幣別未公開，需先確認</option></select></label>
+      </div>
+      <div class="exchange-layout"><div id="exchange-map-slot" class="map-slot"></div><div class="content-column"><div class="section-heading"><div><p class="eyebrow">BANKS & AUTHORIZED COUNTERS</p><h3>合法換匯點</h3></div><span id="exchange-result-count" class="count-badge" role="status">0 個</span></div><p class="small-note">距離為 GPS 或當日行程地標的直線距離，不代表車程。沒有可靠座標的銀行仍提供地址導航，但不做最近排序。</p><div id="exchange-list" class="exchange-list"></div></div></div>
+      <aside class="exchange-legal-note"><h3>到櫃檯前先確認</h3><p>銀行官方資料可查到 BIDV 收兌 TWD、USD 現鈔；Vietcombank 公布 USD 現鈔買入。分行當日是否收鈔、可換面額、匯率與營業時間仍請先打電話確認。AEON 的 VietinBank 授權櫃檯目前沒有公開 14 種幣別名單。</p><p>越南一般外幣兌換代理只能以越南盾買入個人外幣現鈔。認明銀行或授權銀行招牌、當日公開匯率，並索取收據；本頁不列無法確認個別授權的機場櫃檯或金店。</p><p class="exchange-vietnamese-label">越南文確認句 · 可直接給櫃檯看</p><p lang="vi" class="exchange-vietnamese">Hôm nay ngân hàng có mua tiền mặt TWD hoặc USD để đổi sang VND không? Tỷ giá và phí thế nào?</p><div id="exchange-legal-sources" class="source-links"></div></aside>
+    </section>
+
+    <section id="view-phrase" class="view phrase-view" aria-labelledby="phrase-heading" hidden>
+      <div class="view-intro"><p class="eyebrow">A KIND WAY TO ORDER</p><h2 id="phrase-heading">把這張卡，給店家看。</h2><p>全素不含蛋、奶、蜂蜜、魚露與蠔油；蔥蒜可以。</p></div>
+      <article class="phrase-card"><div class="phrase-card-heading"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M25 5C12 4 5 10 7 20c10 3 17-3 18-15Z"/><path d="m6 26 13-14"/></svg><span>THUẦN CHAY · VEGAN</span></div><p class="phrase-language">越南文 · TIẾNG VIỆT</p><p id="phrase-vi" lang="vi" class="phrase-vietnamese"></p><hr><p class="phrase-language">ENGLISH</p><p id="phrase-en" lang="en"></p><p class="phrase-language">繁體中文</p><p id="phrase-zh"></p></article>
+      <div class="phrase-actions"><button id="enlarge-phrase" class="primary-button" type="button">放大給店家看</button><button id="copy-phrase" class="secondary-button" type="button">複製點餐文字</button></div><p class="note">點餐時也請確認湯底、沾醬與飲料成分。</p>
+    </section>
+    <footer class="site-footer"><p>一份讓旅行更自在的植物飲食指南。</p><p>餐廳 Google／營業查核：2026.10.13 · 換匯資料：2026.10.12 · 出發前請開 Google 確認最新資訊。</p><p>離線可閱讀已儲存的行程與店家；地圖、導航與外部來源需要連線；定位需允許瀏覽器取得位置。</p></footer>
+    <noscript><p class="warning">請啟用 JavaScript，以載入行程、店家與定位功能。</p></noscript>
+  </main>
+  <nav class="bottom-nav" aria-label="主要功能"><button class="nav-item active" data-view="daily" aria-current="page" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="3"/><path d="M8 2v6m8-6v6M4 11h16m-12 4h3m2 0h3"/></svg><span>每日行程</span></button><button class="nav-item" data-view="nearby" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 0 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>附近素食</span></button><button class="nav-item" data-view="exchange" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h15m0 0-3-3m3 3-3 3M20 17H5m0 0 3 3m-3-3 3-3"/><circle cx="12" cy="12" r="9"/></svg><span>換匯所</span></button><button class="nav-item" data-view="phrase" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8l-6 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="M7 9h10M7 13h7"/></svg><span>全素點餐卡</span></button></nav>
+  <dialog id="phrase-dialog" aria-label="放大的越南文全素點餐卡"><button id="close-phrase" class="secondary-button dialog-close" type="button">關閉點餐卡</button><p class="phrase-language">THUẦN CHAY · VEGAN</p><p class="large-phrase" lang="vi"></p></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

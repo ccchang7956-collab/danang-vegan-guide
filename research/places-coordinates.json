@@ -1,0 +1,152 @@
+[
+  {
+    "name": "Le Sands Oceanfront Danang Hotel",
+    "lat": 16.0861635,
+    "lng": 108.2483752,
+    "sourceUrl": "https://maps.app.goo.gl/mAbU3B1zRf325nxL6",
+    "status": "verified-google-place-marker-corroborated-official-map-place-id",
+    "notes": "Google destination !3d/!4d marker; same place id 0x314217fda3c50b9b:0xabf18be437bfc1b4 in official https://lesandshotel.com/contact/ map embed. Official address 28 Võ Nguyên Giáp. Do not use embedded viewport longitude 108.2460406 as marker.",
+    "checkedDate": "2026-10-12",
+    "id": "lesands"
+  },
+  {
+    "name": "Son Hoi An Boutique Hotel & Spa",
+    "lat": 15.877549,
+    "lng": 108.319038,
+    "sourceUrl": "https://www.hotelprio.com/en/hotel/vietnam-vn/33088396-son-hoi-an-boutique-hotel-spa/",
+    "status": "sourced-third-party-hotel-marker",
+    "notes": "Official https://sonhoianhotel.com/contact/ confirms 114/4 Đào Duy Từ and embeds that address. Official about page contradictory 26 address; prefer contact/footer. Lakpura corroborates nearby 15.87762,108.31899 (within about 10 m).",
+    "checkedDate": "2026-10-12",
+    "id": "sonhotel"
+  },
+  {
+    "name": "Mandila Beach Hotel",
+    "lat": 16.0674704,
+    "lng": 108.2449031,
+    "sourceUrl": "https://www.openstreetmap.org/node/12860787931",
+    "status": "verified-OSM-named-hotel-node",
+    "notes": "Raw https://www.openstreetmap.org/api/0.6/node/12860787931 names Mandila Beach tourism=hotel, checked 2025-05-24. Official https://mandilabeachhotel.com/contact/ confirms 218 Võ Nguyên Giáp; official map coordinates unavailable.",
+    "checkedDate": "2026-10-12",
+    "id": "mandila"
+  },
+  {
+    "name": "Da Nang Cathedral",
+    "lat": 16.06668,
+    "lng": 108.22306,
+    "sourceUrl": "https://mapcarta.com/W404714309",
+    "status": "sourced-OSM-building-marker",
+    "notes": "OSM way 404714309, address 156 Trần Phú; building marker, not gate. Visitor-center source nearby 16.0666454,108.2232636 corroborates.",
+    "checkedDate": "2026-10-12",
+    "id": "cathedral"
+  },
+  {
+    "name": "Linh Ung Bai But — Son Tra representative stop",
+    "lat": 16.099,
+    "lng": 108.277,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Linh_Ung_Pagoda",
+    "status": "sourced-Wikimedia-site-marker",
+    "notes": "Commons 16°05′56.4″N 108°16′37.2″E converted to decimals. This represents Linh Ứng Bãi Bụt on Sơn Trà, not Marble Mountains or Ba Na pagodas. Japanese Wikivoyage explicitly corroborates. Visitor-center map is displaced and was not used.",
+    "checkedDate": "2026-10-12",
+    "id": "sontra"
+  },
+  {
+    "name": "Son Tra Night Market",
+    "lat": 16.0608125,
+    "lng": 108.2316875,
+    "sourceUrl": "https://en.danang.plus/da-nang-night-market/",
+    "status": "approximate-area-marker-derived-published-plus-code",
+    "notes": "Published current-location plus code 366J+8M recovered as 7P8C366J+8M for Da Nang, decoded to cell center. Current area Vo Van Kiet east foot Dragon Bridge, moved 2025-08-01. Entrance and map pins may differ; confirm on arrival. Older Ly Nam De/Mai Hac De address should not be asserted current.",
+    "checkedDate": "2026-10-12",
+    "id": "nightmarket"
+  },
+  {
+    "name": "Han Market",
+    "lat": 16.06836,
+    "lng": 108.22443,
+    "sourceUrl": "https://vn.geoview.info/cho_han%2C20204885903w",
+    "status": "sourced-OSM-market-building-marker",
+    "notes": "OSM way 204885903; map building center rather than individual entrance.",
+    "checkedDate": "2026-10-12",
+    "id": "hanmarket"
+  },
+  {
+    "name": "Ba Na Hills — Golden Bridge",
+    "lat": 15.99486,
+    "lng": 107.99625,
+    "sourceUrl": "https://en.wikipedia.org/wiki/Golden_Bridge_(Vietnam)",
+    "status": "sourced-Wikimedia-Golden-Bridge-marker",
+    "notes": "Mountain bridge location; not the lower cable-car entrance. No nearby-city restaurant proximity should imply walkability from mountain site.",
+    "checkedDate": "2026-10-12",
+    "id": "bana"
+  },
+  {
+    "name": "My Son sanctuary",
+    "lat": 15.773843055555556,
+    "lng": 108.10916888888889,
+    "sourceUrl": "https://whc.unesco.org/en/list/949/maps/",
+    "status": "verified-UNESCO-site-marker",
+    "notes": "UNESCO N15 46 25.835 E108 6 33.008 converted to decimals. Represents World Heritage site, not a guaranteed visitor gate.",
+    "checkedDate": "2026-10-12",
+    "id": "myson"
+  },
+  {
+    "name": "Hoi An ancient town — Japanese Bridge",
+    "lat": 15.87707,
+    "lng": 108.32601,
+    "sourceUrl": "https://en.wikipedia.org/wiki/Japanese_Covered_Bridge",
+    "status": "sourced-Wikimedia-Japanese-Bridge-marker",
+    "notes": "Represents Japanese Bridge as requested, not centroid of entire ancient town.",
+    "checkedDate": "2026-10-12",
+    "id": "oldtown"
+  },
+  {
+    "name": "Hoi An Memories show park",
+    "lat": 15.874666666666666,
+    "lng": 108.33994444444444,
+    "sourceUrl": "https://thesmartlocal.com/vietnam/theme-park-attraction-discounts/",
+    "status": "approximate-park-area-marker-from-published-GPS",
+    "notes": "2020 article GPS 15°52′28.8″N 108°20′23.8″E locates park island and corroborates resort island coordinates. Do not treat as exact show gate or pickup; confirm ticket meeting point. Official park https://hoianmemoriesland.com/en/hoi-an-memories-land-en reviewed but map coordinates inaccessible. Another generic tour article gave old-town coordinates and was rejected.",
+    "checkedDate": "2026-10-12",
+    "id": "memories"
+  },
+  {
+    "name": "Cam Thanh Bay Mau coconut forest — representative area",
+    "lat": 15.87614,
+    "lng": 108.37379,
+    "sourceUrl": "https://vn.geoview.info/coconut_basket_boat_tour_rung_dua_bay_mau%2C12295680120n",
+    "status": "approximate-representative-activity-area-marker",
+    "notes": "Source is named coconut-basket-boat OSM node 12295680120 in Cam Thanh. Represents boat-activity area only; no vendor chosen and no specific booking pier guaranteed. GeoNames grove pin north at 15.88942 was not used.",
+    "checkedDate": "2026-10-12",
+    "id": "coconut"
+  },
+  {
+    "name": "Marble Mountains — Thuy Son",
+    "lat": 16.0043044,
+    "lng": 108.263527,
+    "sourceUrl": "https://fr.wikipedia.org/wiki/Montagnes_de_Marbre",
+    "status": "approximate-mountain-area-marker",
+    "notes": "Published Marble Mountains geographic point with Thủy Sơn named highest point. Area marker; not exact ticket gate/elevator entrance. Local-guide marker southwest at 15.9988912,108.255546 rejected as displaced.",
+    "checkedDate": "2026-10-12",
+    "id": "marble"
+  },
+  {
+    "name": "Dragon Bridge",
+    "lat": 16.06111,
+    "lng": 108.22667,
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dragon_Bridge_(Da_Nang)",
+    "status": "sourced-Wikimedia-bridge-marker",
+    "notes": "Bridge span marker, not a selected viewing spot or road-access point.",
+    "checkedDate": "2026-10-12",
+    "id": "dragon"
+  },
+  {
+    "name": "Da Nang airport",
+    "lat": 16.0429,
+    "lng": 108.19839,
+    "sourceUrl": "https://mapcarta.com/24948016",
+    "status": "approximate-airport-area-marker",
+    "notes": "Aerodrome center from mapping source; not T1/T2 terminal doors. Flight terminal/pickup must use booking and airport signs.",
+    "checkedDate": "2026-10-12",
+    "id": "airport"
+  }
+]

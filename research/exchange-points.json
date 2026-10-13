@@ -1,0 +1,171 @@
+{
+  "checkedDate": "2026-10-12",
+  "legalNotes": [
+    {
+      "text": "本頁只列銀行分行，或商場明確公告的銀行授權兌換櫃檯。越南一般外幣兌換代理須有授權與登記；店家類型或位在機場本身不等於已確認合法。",
+      "sourceUrls": [
+        "https://congbao.chinhphu.vn/van-ban/van-ban-hop-nhat-so-79-vbhn-nhnn-469935/66805.htm",
+        "https://datafiles.chinhphu.vn/cpp/files/vbpq/2023/6/15-vbhn-nhnn.pdf"
+      ]
+    },
+    {
+      "text": "官方銀行外匯服務或牌價只能證明銀行層級的幣別資訊，無法保證特定分行當日有收該幣別現鈔；先電話確認收鈔幣別、面額、匯率、手續費與護照要求。",
+      "sourceUrls": [
+        "https://bidv.com.vn/vn/ca-nhan/san-pham-dich-vu/ngoai-hoi-va-thi-truong-von/mua-ban-ngoai-te/",
+        "https://www.vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/Ty-gia-ngoai-te"
+      ]
+    },
+    {
+      "text": "峴港機場官方有列 T2 外幣兌換設施與 USD 等幣別，但公開頁未揭露營運商及其現行授權資料，因此未列為本頁已確認授權點；官方幣別清單沒有 TWD。",
+      "sourceUrls": [
+        "https://danangairport.vn/facility-detail-page/brand-detail?bid=137",
+        "https://danangairport.vn/airport-guide-arrival-guide?t=2"
+      ]
+    }
+  ],
+  "points": [
+    {
+      "id": "bidv-danang",
+      "name": "BIDV 峴港分行",
+      "institution": "BIDV",
+      "kind": "bank",
+      "statusLabel": "銀行分行",
+      "address": "90 Nguyễn Chí Thanh, Hải Châu, Đà Nẵng",
+      "lat": 16.07029,
+      "lng": 108.22112,
+      "coordinateStatus": "第三方地圖上的分行點位；官方年報核對地址",
+      "coordinateSourceUrl": "https://mapcarta.com/W316234674",
+      "currencies": ["USD", "TWD"],
+      "currencyStatus": "BIDV 官方外匯服務列出台幣與美元現鈔；此分行庫存與服務時間請先確認",
+      "currencySourceUrls": [
+        "https://bidv.com.vn/vn/ca-nhan/san-pham-dich-vu/ngoai-hoi-va-thi-truong-von/mua-ban-ngoai-te/",
+        "https://bidv.com.vn/vn/premier/ty-gia-ngoai-te/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zivS3NTAw9DQz9DZycXA3M3A0NLF0DLdyDjMz0C7IdFQGb6nsL/"
+      ],
+      "phone": "02363825668",
+      "phoneLabel": "分行電話（官方舊網路資料，請以銀行回覆為準）",
+      "sourceUrls": [
+        "https://bidv.com.vn/wps/wcm/connect/a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e/BIDV_BCTN_2025_%282.1%29_VIE_interactive_15mb.pdf?CACHEID=ROOTWORKSPACE-a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e-pS-Z7xM&MOD=AJPERES",
+        "https://bidv.com.vn/bidv/tin-tuc/bidvstories/cam-nhan-bidv-tu-mien-trung"
+      ],
+      "mapQuery": "BIDV Da Nang Branch 90 Nguyen Chi Thanh Da Nang"
+    },
+    {
+      "id": "bidv-song-han",
+      "name": "BIDV Sông Hàn（市中心）",
+      "institution": "BIDV",
+      "kind": "bank",
+      "statusLabel": "銀行分行",
+      "address": "129 Lê Lợi, Hải Châu, Đà Nẵng",
+      "lat": null,
+      "lng": null,
+      "coordinateStatus": "地址有 BIDV 官方 2025 年資料；未找到可靠可核對的地圖座標",
+      "currencies": ["USD", "TWD"],
+      "currencyStatus": "BIDV 官方外匯服務列出台幣與美元現鈔；此分行庫存與服務時間請先確認",
+      "currencySourceUrls": [
+        "https://bidv.com.vn/vn/ca-nhan/san-pham-dich-vu/ngoai-hoi-va-thi-truong-von/mua-ban-ngoai-te/",
+        "https://bidv.com.vn/vn/premier/ty-gia-ngoai-te/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zivS3NTAw9DQz9DZycXA3M3A0NLF0DLdyDjMz0C7IdFQGb6nsL/"
+      ],
+      "phone": "02363840733",
+      "phoneLabel": "BIDV 官方公告分行電話；先確認外幣現鈔服務",
+      "sourceUrls": [
+        "https://bidv.com.vn/wps/wcm/connect/a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e/BIDV_BCTN_2025_%282.1%29_VIE_interactive_15mb.pdf?CACHEID=ROOTWORKSPACE-a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e-pS-Z7xM&MOD=AJPERES",
+        "https://bidv.com.vn/wps/wcm/connect/a414bdef-0c77-4324-8895-864e8ae35769/SHA_TB%2BDAU%2BGIA%2BTS%2BNCT_VN%2B2025.06.20%2B%28892%29.pdf?CACHEID=ROOTWORKSPACE-a414bdef-0c77-4324-8895-864e8ae35769-pus7deP&MOD=AJPERES"
+      ],
+      "mapQuery": "BIDV Song Han 129 Le Loi Da Nang"
+    },
+    {
+      "id": "bidv-hoian",
+      "name": "BIDV Hội An 分行",
+      "institution": "BIDV",
+      "kind": "bank",
+      "statusLabel": "銀行分行",
+      "address": "86 Trần Hưng Đạo, Hội An Ward, Đà Nẵng",
+      "lat": null,
+      "lng": null,
+      "coordinateStatus": "BIDV 2025 年報地址；未找到可靠可核對的地圖座標",
+      "currencies": ["USD", "TWD"],
+      "currencyStatus": "BIDV 官方外匯服務列出台幣與美元現鈔；此分行庫存與服務時間請先確認",
+      "currencySourceUrls": [
+        "https://bidv.com.vn/vn/ca-nhan/san-pham-dich-vu/ngoai-hoi-va-thi-truong-von/mua-ban-ngoai-te/",
+        "https://bidv.com.vn/vn/premier/ty-gia-ngoai-te/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zivS3NTAw9DQz9DZycXA3M3A0NLF0DLdyDjMz0C7IdFQGb6nsL/"
+      ],
+      "phone": null,
+      "phoneLabel": "分行電話未找到現行官方資料；請透過 BIDV 客服確認",
+      "sourceUrls": [
+        "https://bidv.com.vn/wps/wcm/connect/a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e/BIDV_BCTN_2025_%282.1%29_VIE_interactive_15mb.pdf?CACHEID=ROOTWORKSPACE-a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e-pS-Z7xM&MOD=AJPERES"
+      ],
+      "mapQuery": "BIDV Hoi An Branch 86 Tran Hung Dao"
+    },
+    {
+      "id": "vcb-danang",
+      "name": "Vietcombank 峴港分行",
+      "institution": "Vietcombank",
+      "kind": "bank",
+      "statusLabel": "銀行分行",
+      "address": "140–142 Lê Lợi, Hải Châu, Đà Nẵng",
+      "lat": null,
+      "lng": null,
+      "coordinateStatus": "官方分行地址已查證；未找到可靠可核對的地圖座標",
+      "currencies": ["USD"],
+      "currencyStatus": "Vietcombank 官方牌價可查 USD 現鈔買入；未在該牌價找到 TWD，分行現鈔服務請先確認",
+      "currencySourceUrls": [
+        "https://www.vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/Ty-gia-ngoai-te"
+      ],
+      "phone": null,
+      "phoneLabel": "建議先透過 Vietcombank 客服確認 USD 現鈔",
+      "sourceUrls": [
+        "https://www.vietcombank.com.vn/Trang-thong-tin-dien-tu/Articles/2025/02/19/VCB-Da-Nang-to-chuc-Hien-mau",
+        "https://www.vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/Ty-gia-ngoai-te"
+      ],
+      "mapQuery": "Vietcombank Da Nang 140 142 Le Loi"
+    },
+    {
+      "id": "vcb-hoian",
+      "name": "Vietcombank Hội An 分行",
+      "institution": "Vietcombank",
+      "kind": "bank",
+      "statusLabel": "銀行分行",
+      "address": "02 Trần Cao Vân, Hội An Ward, Đà Nẵng",
+      "lat": null,
+      "lng": null,
+      "coordinateStatus": "官方分行地址已查證；未找到可靠可核對的地圖座標",
+      "currencies": ["USD"],
+      "currencyStatus": "Vietcombank 官方牌價可查 USD 現鈔買入；未在該牌價找到 TWD，分行現鈔服務請先確認",
+      "currencySourceUrls": [
+        "https://www.vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/Ty-gia-ngoai-te"
+      ],
+      "phone": null,
+      "phoneLabel": "建議先透過 Vietcombank 客服確認 USD 現鈔",
+      "sourceUrls": [
+        "https://www.vietcombank.com.vn/vi-VN/Trang-thong-tin-dien-tu/Phat-mai-tai-san/20250604_Vcb-Hoi-An_Bat-dong-san",
+        "https://www.vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/Ty-gia-ngoai-te"
+      ],
+      "mapQuery": "Vietcombank Hoi An 02 Tran Cao Van"
+    },
+    {
+      "id": "aeon-vietinbank",
+      "name": "AEON MALL Thanh Khê・VietinBank 授權櫃檯",
+      "institution": "VietinBank 授權兌換代理",
+      "kind": "authorized-agent",
+      "statusLabel": "商場公告的銀行授權櫃檯",
+      "address": "AEON MALL Da Nang Thanh Khe, 46 Điện Biên Phủ, Thanh Khê, Đà Nẵng（1 樓 ATM 旁）",
+      "lat": 16.06654,
+      "lng": 108.20428,
+      "coordinateStatus": "商場地圖代表點；櫃檯在館內 1 樓 ATM 旁",
+      "coordinateSourceUrl": "https://mapcarta.com/W1369663882",
+      "currencies": [],
+      "currencyStatus": "商場公告稱可換 14 種外幣，但未公開幣別清單；TWD 與 USD 均先向櫃檯確認",
+      "currencySourceUrls": [
+        "https://danangthanhkhe.aeonmall-vietnam.com/en/news/dich-vu-doi-ngoai-te-uy-nhiem-vietinbank-da-co-mat-tai-aeon-mall-da-nang-thanh-khe.html",
+        "https://danangthanhkhe.aeonmall-vietnam.com/en/facilities"
+      ],
+      "phone": "02363639888",
+      "phoneLabel": "AEON MALL 官方電話；可先詢問櫃檯是否收 TWD/USD 現鈔",
+      "sourceUrls": [
+        "https://danangthanhkhe.aeonmall-vietnam.com/en/news/dich-vu-doi-ngoai-te-uy-nhiem-vietinbank-da-co-mat-tai-aeon-mall-da-nang-thanh-khe.html",
+        "https://danangthanhkhe.aeonmall-vietnam.com/en/facilities"
+      ],
+      "mapQuery": "AEON MALL Da Nang Thanh Khe VietinBank exchange counter"
+    }
+  ]
+}

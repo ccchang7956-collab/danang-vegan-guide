@@ -1,0 +1,90 @@
+[
+  {
+    "id": "dn-khong",
+    "hours": "每日 11:00–22:30",
+    "hoursStatus": "google-weekly-schedule-reviewed",
+    "hoursSourceUrl": "https://www.google.com/maps/search/?api=1&query=Khong%20Vegan%20Restaurant%20/%20KHONG%20Vegan%20Kitchen&query_place_id=ChIJ-8AB3oAXQjERptcQoIvuNCE",
+    "hoursCheckedDate": "2026-10-13",
+    "closedWeekdays": [],
+    "phone": "+84 353 854 949",
+    "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=Khong%20Vegan%20Restaurant%20/%20KHONG%20Vegan%20Kitchen&query_place_id=ChIJ-8AB3oAXQjERptcQoIvuNCE",
+    "phoneCheckedDate": "2026-10-13",
+    "hoursReviewNote": "直接開啟 Google 商家完整每週時段核對；仍須留意當日臨時調整。"
+  },
+  {
+    "id": "moms-kitchen",
+    "hours": "每日 08:30–18:30",
+    "hoursStatus": "google-weekly-schedule-reviewed",
+    "hoursSourceUrl": "https://maps.app.goo.gl/dTepKdiNTmLw8nmY6",
+    "hoursCheckedDate": "2026-10-13",
+    "closedWeekdays": [],
+    "phone": "+84 372 149 095",
+    "phoneSourceUrl": "https://maps.app.goo.gl/dTepKdiNTmLw8nmY6",
+    "phoneCheckedDate": "2026-10-13",
+    "hoursReviewNote": "直接開啟 Google 商家完整每週時段核對；仍須留意當日臨時調整。"
+  },
+  {
+    "id": "hoian-seeds",
+    "hours": "週一至三、週日 11:00–21:00；週六 12:00–21:00；週四、五休息",
+    "hoursStatus": "google-weekly-schedule-reviewed",
+    "hoursSourceUrl": "https://www.google.com/maps?cid=16430417177815741153",
+    "hoursCheckedDate": "2026-10-13",
+    "closedWeekdays": [
+      4,
+      5
+    ],
+    "phone": "+84 347 759 983",
+    "phoneSourceUrl": "https://www.google.com/maps?cid=16430417177815741153",
+    "phoneCheckedDate": "2026-10-13",
+    "hoursReviewNote": "直接開啟 Google 商家完整每週時段核對；仍須留意當日臨時調整。"
+  },
+  {
+    "id": "hoian-rau-oi",
+    "hours": "每日 10:45–21:00",
+    "hoursStatus": "google-weekly-schedule-reviewed",
+    "hoursSourceUrl": "https://www.google.com/maps?cid=11967632547470233861",
+    "hoursCheckedDate": "2026-10-13",
+    "closedWeekdays": [],
+    "phone": "+84 934 792 629",
+    "phoneSourceUrl": "https://www.google.com/maps?cid=11967632547470233861",
+    "phoneCheckedDate": "2026-10-13",
+    "hoursReviewNote": "直接開啟 Google 商家完整每週時段核對；仍須留意當日臨時調整。"
+  },
+  {
+    "id": "hoian-ivegan",
+    "hours": "每日 08:30–18:30",
+    "hoursStatus": "google-weekly-schedule-reviewed",
+    "hoursSourceUrl": "https://www.google.com/maps?cid=2300263470873601541",
+    "hoursCheckedDate": "2026-10-13",
+    "closedWeekdays": [],
+    "phone": "+84 868 173 168",
+    "phoneSourceUrl": "https://www.google.com/maps?cid=2300263470873601541",
+    "phoneCheckedDate": "2026-10-13",
+    "hoursReviewNote": "直接開啟 Google 商家完整每週時段核對；仍須留意當日臨時調整。"
+  },
+  {
+    "id": "dn-lehoi",
+    "hours": "週一至六 06:30–22:00；週日 14:30–22:00",
+    "hoursStatus": "google-weekly-schedule-reviewed",
+    "hoursSourceUrl": "https://www.google.com/maps?cid=9239877999059860739",
+    "hoursCheckedDate": "2026-10-13",
+    "closedWeekdays": [],
+    "phone": "+84 782 682 972",
+    "phoneSourceUrl": "https://www.google.com/maps?cid=9239877999059860739",
+    "phoneCheckedDate": "2026-10-13",
+    "hoursReviewNote": "直接開啟 Google 商家完整每週時段核對；仍須留意當日臨時調整。"
+  },
+  {
+    "id": "hoian-an-hy",
+    "hours": "每日 11:00–21:00",
+    "hoursStatus": "google-weekly-schedule-reviewed",
+    "hoursSourceUrl": "https://www.google.com/maps/search/?api=1&query=An+Hy+Hoi+An&query_place_id=ChIJ7dbsMGQPQjERMJSsFsR6T6A",
+    "hoursCheckedDate": "2026-10-13",
+    "closedWeekdays": [],
+    "phone": "+84 905 916 551",
+    "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=An+Hy+Hoi+An&query_place_id=ChIJ7dbsMGQPQjERMJSsFsR6T6A",
+    "phoneCheckedDate": "2026-10-13",
+    "hoursReviewNote": "直接開啟 Google 商家完整每週時段核對為每日 11:00–21:00；舊目錄稱農曆初二、十六休息，此例外未獲店家確認，出發前先詢問。",
+    "hoursExceptionNote": "舊目錄記載農曆初二、十六休息；Google 每週時段無此例外，農曆公休仍未確認。"
+  }
+]
