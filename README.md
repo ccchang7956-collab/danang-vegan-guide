@@ -24,7 +24,7 @@
 
 ## 放到 GitHub Pages
 
-沒有建置步驟、API 金鑰或 npm 相依套件。
+發布網站沒有建置步驟、API 金鑰或 npm 執行時相依套件。專案的 npm 套件只供開發時格式化與瀏覽器測試使用，不必上傳 `node_modules/`。
 
 1. 解壓縮 `danang-vegan-github-pages.zip`，將檔案放到你的 GitHub repository 根目錄；讓 `index.html` 在根目錄，不要再包一層資料夾。
 2. 保留 `assets/` 完整資料夾、`sw.js`、`manifest.webmanifest`、`.nojekyll`。
@@ -40,7 +40,7 @@
 
 服務工作執行緒只快取本站文字資料、樣式、程式與圖示；**不下載離線地圖圖磚**。因此行程、餐廳地址和點餐卡可離線，底圖、Google Maps 導航、電話／來源等需適當連線或服務。GPS 不保存在網站資料庫或本機儲存，只在瀏覽器記憶體計算距離；重整後需再次定位。瀏覽器可能清理快取，出發前與飛航模式下都建議實際確認。
 
-離線採分版本的快取優先，避免弱網時文字頁面一直等待。**每次修改任何網站檔案，均須更新 `sw.js` 的 VERSION**（本包為 v11），與其餘檔案一起上傳。首次開啟舊站時會在背景下載新版；看到新版提示後重新整理，或關閉頁面後重開，再檢查內容。頁首「離線功能已啟用」表示已有 active worker，不能代替飛航模式實測或保證瀏覽器不會清理快取。
+離線採分版本的快取優先，避免弱網時文字頁面一直等待。**每次修改任何網站檔案，均須更新 `sw.js` 的 VERSION**（本包為 v12），與其餘檔案一起上傳。首次開啟舊站時會在背景下載新版；看到新版提示後重新整理，或關閉頁面後重開，再檢查內容。頁首「離線功能已啟用」表示已有 active worker，不能代替飛航模式實測或保證瀏覽器不會清理快取。
 
 ## 旅行資料注意
 
@@ -70,9 +70,28 @@ python3 scripts/build-data.py
 node --test tests/*.test.cjs
 ```
 
+## 開發驗證與格式化
+
+Node.js 20 以上可執行測試。Playwright 和 Prettier 是固定版本的開發工具，網站本身仍可直接以靜態檔案發布。
+
+```sh
+npm ci
+npm test
+npm run test:browser
+npm run format:check
+```
+
+瀏覽器測試使用獨立的無頭 Google Chrome，啟動與關閉自己的本機測試伺服器，不共用平常使用的 Chrome 設定或分頁。電腦需已安裝 Chrome；其他安裝位置可用 `PLAYWRIGHT_CHROME_EXECUTABLE` 指定執行檔。Chrome 設定依 [Playwright 官方瀏覽器文件](https://playwright.dev/docs/browsers)。測試的 GPS 回覆由測試控制，圖磚以本機測試圖片代替，離線與 service worker 則使用真正的瀏覽器機制。
+
+`npm run format` 可格式化自有 JavaScript、CSS 與測試；不改寫生成的 `assets/data.js`、第三方 Leaflet、研究資料或文件。`node_modules/`、`test-results/`、`playwright-report/` 不放進部署 ZIP。
+
 地圖採用 [Leaflet](https://github.com/Leaflet/Leaflet) 1.9.4（研究時約 45.7k stars），保留 BSD-2-Clause 授權 `assets/vendor/LICENSE`。亦參考 [MapLibre GL JS](https://github.com/maplibre/maplibre-gl-js)；本案採適合少量手機點位的 Leaflet。底圖為 OpenStreetMap，保留其 attribution，遵循 [圖磚使用政策](https://operations.osmfoundation.org/policies/tiles/)。
 
 ## 驗證紀錄
+
+2026-10-14 最後一輪修正由 Luna max 子代理實作、主代理獨立驗證：**84 項 Node 測試與 12 項真實 Chrome 測試全部通過**，格式、14 個檔案的 JavaScript 語法與 `git diff --check` 通過。修正定位跨頁、日期鍵盤焦點、搜尋排程／中文組字與快取寫入失敗；新增真實離線安裝、子目錄重載、新版快取及 scope 隔離測試。393 × 852 手機尺寸四入口、餐廳地圖操作與放大點餐卡已實測並檢查畫面。詳見 [最後修正與優化報告](docs/review-fixes-2026-10-14.md)。
+
+以下保留早前的研究與驗證紀錄：
 
 - 61 項 Node 測試：距離、排序、搜尋、分類、資料一致性、日期切換、GPS 成功／拒絕、地圖未載入備援、跨分頁卡片選取、巴拿山無座標備案、休息日與服務工作執行緒的子目錄／跨來源行為；新增 Google 覆蓋、歇業封存、地址衝突、狀態排序與歇業彈窗禁止導航。
 - Chrome 本機成功載入互動地圖、每日行程、餐廳與點餐卡；2026-10-14 再以 Chrome 393 × 852 手機模擬畫面確認新版頁首、全素篩選、快速跳轉與餐廳卡片，並實測 DevTools 離線模式下重新載入行程與用餐備援。此輪新增每日半徑邊界、多關鍵字搜尋、全清單跳轉及 Loving Hut 資料測試；現在預設可選 44 家、全素篩選 24 家，完整查核記錄 46 家。

@@ -1,0 +1,9 @@
+assets/data.js
+assets/vendor/**
+node_modules/
+test-results/
+playwright-report/
+README.md
+docs/**
+research/**
+danang-vegan-github-pages.zip
