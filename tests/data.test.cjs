@@ -18,8 +18,8 @@ test('reviewed weekly schedules retain source dates and superseded reports', () 
   ]) {
     const r = D.restaurants.find((r) => r.id === id);
     assert.equal(r.hoursStatus, 'google-weekly-schedule-reviewed', id);
-    assert.equal(r.hoursCheckedDate, '2026-10-13');
-    assert.equal(r.phoneCheckedDate, '2026-10-13');
+    assert.equal(r.hoursCheckedDate, '2026-10-14');
+    assert.equal(r.phoneCheckedDate, '2026-10-14');
     assert.equal(new URL(r.hoursSourceUrl).protocol, 'https:');
     assert.equal(new URL(r.phoneSourceUrl).protocol, 'https:');
     assert.ok(r.reportedHoursHistory.length, id);
@@ -38,13 +38,13 @@ test('Le Hoi opens Wednesday and starts Sunday in the afternoon', () => {
   assert.match(r.hours, /週一至六 06:30–22:00/);
   assert.match(r.hours, /週日 14:30–22:00/);
 });
-test('unresolved opening conflicts are withheld and lunar exceptions remain qualified', () => {
-  assert.equal(D.restaurants.find((r) => r.id === 'ngoc-chi-city').hours, null);
+test('rechecked weekly hours replace old conflicts and lunar exceptions remain qualified', () => {
+  assert.equal(D.restaurants.find((r) => r.id === 'ngoc-chi-city').hours, '每日 09:00–21:00');
   const r = D.restaurants.find((r) => r.id === 'hoian-an-hy');
   assert.equal(r.hours, '每日 11:00–21:00');
   assert.match(r.hoursExceptionNote, /農曆初二、十六/);
   assert.match(r.hoursExceptionNote, /未確認/);
-  assert.match(r.reportedHoursHistory[0].hours, /lunar/);
+  assert.ok(r.reportedHoursHistory.some((h) => /lunar/.test(h.hours)));
 });
 test('five daily itineraries preserve travel dates and hotels', () => {
   assert.ok(D, 'curated travel data is present');
@@ -91,11 +91,11 @@ test('recent moves and Ba Na dietary risk are visible', () => {
   assert.notEqual(mountain.diet, 'vegan');
   assert.ok(mountain.veganNotes.length > 20);
 });
-test('direct Google audit retains all original 45 venues and archives confirmed closures', () => {
-  assert.equal(D.restaurantAuditSummary.googleDirectRatings, 45);
-  for (const r of D.restaurants.filter((r) => r.id !== 'loving-hut-danang')) {
+test('direct Google recheck covers all 46 venues and archives confirmed closures', () => {
+  assert.equal(D.restaurantAuditSummary.googleDirectRatings, 46);
+  for (const r of D.restaurants) {
     assert.equal(r.ratingSourceType, 'google-direct', r.id);
-    assert.equal(r.ratingAsOfDate, '2026-10-13');
+    assert.equal(r.ratingAsOfDate, '2026-10-14');
     assert.equal(r.googleLinkType, 'place');
     assert.ok(r.googleReviewCount >= 0);
     assert.equal(new URL(r.googleMapsUrl).protocol, 'https:');
@@ -109,25 +109,46 @@ test('direct Google audit retains all original 45 venues and archives confirmed 
   assert.match(D.restaurants.find((r) => r.id === 'hoian-ivegan').address, /672/);
 });
 
-test('obsolete and contradictory schedules cannot appear as current weekly hours', () => {
-  for (const id of ['ans-vegetarian', 'au-lac', 'dn-xinh', 'an-lac-tam-2', 'tinh-quan'])
-    assert.equal(D.restaurants.find((r) => r.id === id).hours, null, id);
-  for (const id of ['dn-xinh', 'an-lac-tam-2', 'tinh-quan'])
-    assert.ok(D.restaurants.find((r) => r.id === id).hoursConflictSourceUrl);
+test('current weekly schedules retain prior reports and qualified conflicts', () => {
+  const research = JSON.parse(
+    fs.readFileSync('research/restaurant-full-recheck-2026-10-14.json', 'utf8'),
+  );
+  assert.equal(research.restaurants.length, 46);
+  for (const source of research.restaurants) {
+    const r = D.restaurants.find((r) => r.id === source.id);
+    assert.equal(r.name, source.name);
+    assert.equal(r.googlePlaceName, source.name);
+    assert.equal(r.address, source.address);
+    assert.equal(r.phone, source.phone);
+    assert.equal(r.hours, source.hours);
+    assert.equal(r.googleRating, source.googleRating);
+    assert.equal(r.googleReviewCount, source.googleReviewCount);
+    assert.deepEqual([...r.closedWeekdays], source.closedWeekdays);
+    assert.ok(r.priorFullReview);
+    assert.equal(r.nameCheckedDate, '2026-10-14');
+    assert.equal(r.dietCheckedDate, '2026-10-14');
+    if (source.lat !== undefined) {
+      assert.equal(r.lat, source.lat);
+      assert.equal(r.lng, source.lng);
+    }
+  }
+  assert.match(D.restaurants.find((r) => r.id === 'hoian-rau-oi').hoursReviewNote, /官網/);
+  assert.match(D.restaurants.find((r) => r.id === 'hoian-peanuts').hoursReviewNote, /週二休息/);
+  assert.deepEqual([...D.restaurants.find((r) => r.id === 'phuc-an-city').closedWeekdays], [0, 1]);
 });
 
-test('Loving Hut addition preserves its Google share link and uncertainty without altering Loving Vegan', () => {
+test('Loving Hut recheck preserves the original share link and dietary uncertainty', () => {
   const r = D.restaurants.find((r) => r.id === 'loving-hut-danang');
-  assert.ok(r, 'new restaurant missing');
-  assert.match(r.address, /380/);
-  assert.equal(r.googleMapsUrl, 'https://share.google/4D2GrpTKifnpG4sc6');
-  assert.equal(r.ratingSourceType, 'google-mirror');
-  assert.equal(r.operatingStatus, 'unverified');
+  assert.ok(r);
+  assert.equal(r.originalGoogleShareUrl, 'https://share.google/4D2GrpTKifnpG4sc6');
+  assert.equal(r.googleMapsUrl, 'https://www.google.com/maps?cid=160676046296591163');
+  assert.equal(r.ratingSourceType, 'google-direct');
+  assert.equal(r.operatingStatus, 'operating-evidence');
   assert.match(r.veganNotes, /奶|酪蛋白/);
   assert.equal(r.diet, 'uncertain');
-  assert.equal(r.lat, 16.025067);
-  assert.equal(r.lng, 108.249514);
-  assert.equal(r.googleReviewCount, null);
+  assert.equal(r.lat, 16.0250415);
+  assert.equal(r.lng, 108.2494506);
+  assert.equal(r.googleReviewCount, 178);
   assert.match(D.restaurants.find((r) => r.id === 'dn-loving').address, /61/);
 });
 

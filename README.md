@@ -12,9 +12,9 @@
 - 餐廳卡片可直接 Google Maps 導航、查看地圖、打電話及展開來源。
 - **Google 我的地圖匯出**：在「附近素食」按「匯出 Google 我的地圖」，下載含全部店家的單一 CSV；不受搜尋與篩選影響，包含待確認與歇業記錄。更新網站資料並重新載入後，匯出內容會同步更新。匯入時定位只勾選 **Location**，地標標題選 **Name**，Google 依店名與地址定位，請核對圖釘；Latitude／Longitude 保留既有座標供參考。離線時匯出目前載入的資料。之後更新同一張地圖，可在原圖層使用「重新匯入並合併 → 更新相符的項目」，兩邊以 **ID** 比對；Google 會移除不再出現在新檔案中的舊項目。操作參考 [Google 官方說明](https://support.google.com/mymaps/answer/3024836?hl=zh-Hant)。
 
-目前保留 **46 家餐廳查核記錄**。原 45 家於 2026-10-13 逐一開啟對應 Google Maps 商家頁核對評分、評論數與地址；新收錄 **Loving Hut Da Nang（380 Lê Văn Hiến）** 於 2026-10-14 以關聯組織餐廳目錄、HappyCow 與公開評價轉載比對，保留使用者提供的 Google 分享連結。新店未直接確認 Google 營業狀態，評分 4.3 明確標為轉載，Google 原始評論數未核實，時段與全素條件待確認，請先打電話。
+目前保留 **46 家餐廳查核記錄**，全部於 **2026-10-14** 逐一開啟對應 Google Maps 商家頁，重新核對完整名稱、地址、電話、評分、評論數、歇業標記與完整每週時段；飲食條件另以官網與 HappyCow 覆核。網站及 CSV 採 Google 商家全名，舊簡稱保留供搜尋。巴拿山店已改為 **NGOC CHI VEGAN RESTAURANTS - BÀ NÀ HILLS**，店家電話為 **+84 337 085 088**，不再把園區熱線當成店家電話。完整逐店結果與落差見 [餐廳全面覆核報告](docs/restaurant-full-recheck-2026-10-14.md)，可重建的逐店資料在 `research/restaurant-full-recheck-2026-10-14.json`。
 
-**42 家 Google 未標歇業、2 家營業待確認、2 家永久歇業**；預設可選列表 44 家，24 家分類為全素。歇業店只留在查核記錄，不進每日推薦，也不提供舊址導航。44 筆記錄有來源圖釘，其中 2 筆屬歇業舊址；沒有可靠座標的店保留地址，不虛構距離。Loving Hut 的座標取自 HappyCow 公開地圖標記，入口仍請確認；與 61 Lê Quang Đạo 的 Loving Vegan 分開記錄。
+**43 家 Google 未標歇業、1 家營運待確認、2 家永久歇業**；預設可選列表 44 家，24 家分類為全素。全部 46 家均為直接 Google 評分快照；Loving Hut 已核對為 4.3／178 則、每日 06:00–19:30，但奶精與零售品的全素條件仍待確認。44 筆有來源圖釘，其中 2 筆屬歇業舊址；新覆核替換 7 筆店家的 Google 圖釘資料，巴拿山與 Seeds 圖釘亦再次確認；其餘沿用前次來源座標，未重新擷取。歇業店不進每日推薦，也不提供舊址導航。Loving Hut 與 61 Lê Quang Đạo 的 Loving Vegan 分開記錄。
 
 本次確認 [Everyday Vegan（45 Hoàng Kế Viêm）](https://www.google.com/maps?cid=15189593579518914999) 與 [Emma’s Vegan Garden（36 Lê Quý Đôn）](https://www.google.com/maps?cid=12600194686517776988) 在 Google 標為永久歇業。Đại Bình 改用 126 Châu Thị Vĩnh Tế、An Hy 改用 59 Phan Châu Trinh、KURUMI 會安改用 187 Lý Thường Kiệt、iVegan 會安核對為 672 Hai Bà Trưng。ANs 的 169F Trưng Nữ Vương 商家仍列有營業時段，沒有誤套另一地址分店的歇業訊息。Khai Tâm 雖有 Google 商家頁，但牌告 24 小時及近期實際用餐資料不足，仍列待確認。
 
@@ -42,7 +42,7 @@
 
 服務工作執行緒只快取本站文字資料、樣式、程式與圖示；**不下載離線地圖圖磚**。因此行程、餐廳地址和點餐卡可離線，底圖、Google Maps 導航、電話／來源等需適當連線或服務。GPS 不保存在網站資料庫或本機儲存，只在瀏覽器記憶體計算距離；重整後需再次定位。瀏覽器可能清理快取，出發前與飛航模式下都建議實際確認。
 
-離線採分版本的快取優先，避免弱網時文字頁面一直等待。**每次修改任何網站檔案，均須更新 `sw.js` 的 VERSION**（本包為 v17），與其餘檔案一起上傳。首次開啟舊站時會在背景下載新版；看到新版提示後重新整理，或關閉頁面後重開，再檢查內容。頁首「離線功能已啟用」表示已有 active worker，不能代替飛航模式實測或保證瀏覽器不會清理快取。
+離線採分版本的快取優先，避免弱網時文字頁面一直等待。**每次修改任何網站檔案，均須更新 `sw.js` 的 VERSION**（本包為 v18），與其餘檔案一起上傳。首次開啟舊站時會在背景下載新版；看到新版提示後重新整理，或關閉頁面後重開，再檢查內容。頁首「離線功能已啟用」表示已有 active worker，不能代替飛航模式實測或保證瀏覽器不會清理快取。
 
 ## 旅行資料注意
 
@@ -53,13 +53,13 @@
 - 美山與五行山附近尚未找到足夠可靠的專門全素點位，可安排會安或美溪用餐。
 - Roots、Kurumi、Chickpea、Chay Hạnh Phúc 等有近期搬遷／地址變更，使用研究時較新的來源。
 - The Seeds 來源列週四、週五休，10/22、10/23 每日列表加註並降低排序優先度。
-- 7 家已展開 Google 每週時段核對（KHONG、Mom’s、Seeds、Rau Ơi、iVegan、Lê Hội、An Hy）。iVegan／Mom’s 18:30 關門，Lê Hội 週日 14:30 才開，An Hy 農曆休息例外仍待確認。
-- 來源時間有衝突／不完整，或僅有 2019／2020 年舊資料，則不顯示精確時段；不把 Google 單日片段推成每週時刻表，也不提供「目前營業中」假即時狀態。
+- 44 家未標歇業的店均已展開完整每週時段。Phúc An 週日、週一休，Hạnh Phúc 週一休，Seeds 週四、週五休；Lê Hội 峴港週日 14:30 才開。Rau Ơi 官網與 Google 時段衝突、Peanuts 週二與 An Mộc Nhiên 週日的休息日落差，以及農曆例外均保留逐店註記。Khai Tâm 的 Google 24 小時不視為全天有餐。
+- 本次參考時段取自直接展開的 Google 每週表；舊時段保留於歷史欄位，來源落差另附註。不把單日片段推成每週表，也不提供「目前營業中」假即時狀態。
 - 所有餐點包括全素店仍可出示點餐卡：排除蛋奶蜂蜜、魚露蠔油與動物高湯。
 
 ## 來源與更新
 
-餐廳卡片附逐店來源。新店 Loving Hut 研究在 `research/loving-hut-danang-addition.json`。完整研究原稿在 `research/danang-city.json`、`research/danang-beach.json`、`research/hoian-outskirts.json`，Google 交叉研究在 `research/google-audit-*.json`、直接商家頁觀察在 `research/google-direct-observations.json`，座標來源在 `research/places-coordinates.json`，每週時段／電話覆核在 `research/restaurant-review-corrections.json`，時段衝突在 `research/restaurant-hours-conflicts.json`，每日用餐備援在 `research/review-meal-coverage.json`，行程在 `research/itinerary.json`；換匯據點與法律／幣別證據在 `research/exchange-points.json`，2026-10-14 再查證紀錄在 `research/exchange-recheck-2026-10-14.md`。店家官網優先，另交叉參考 HappyCow、Google Maps 連結、具名導航目錄等；舊來源與爭議保留註記。
+餐廳卡片附逐店來源。最新全面覆核在 `research/restaurant-full-recheck-2026-10-14.json`，生成時覆蓋舊查核資料但保留歷史。新店 Loving Hut 原研究在 `research/loving-hut-danang-addition.json`。完整研究原稿在 `research/danang-city.json`、`research/danang-beach.json`、`research/hoian-outskirts.json`，Google 交叉研究在 `research/google-audit-*.json`、直接商家頁觀察在 `research/google-direct-observations.json`，座標來源在 `research/places-coordinates.json`，每週時段／電話覆核在 `research/restaurant-review-corrections.json`，時段衝突在 `research/restaurant-hours-conflicts.json`，每日用餐備援在 `research/review-meal-coverage.json`，行程在 `research/itinerary.json`；換匯據點與法律／幣別證據在 `research/exchange-points.json`，2026-10-14 再查證紀錄在 `research/exchange-recheck-2026-10-14.md`。店家官網優先，另交叉參考 HappyCow、Google Maps 連結、具名導航目錄等；舊來源與爭議保留註記。
 
 換匯主要來源：[越南國家銀行 2026 年外幣兌換代理規則](https://congbao.chinhphu.vn/van-ban/van-ban-hop-nhat-so-79-vbhn-nhnn-469935/66805.htm)、[BIDV 外幣現鈔服務](https://bidv.com.vn/vn/ca-nhan/san-pham-dich-vu/ngoai-hoi-va-thi-truong-von/mua-ban-ngoai-te/)、[BIDV 2025 年分行地址](https://bidv.com.vn/wps/wcm/connect/a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e/BIDV_BCTN_2025_%282.1%29_VIE_interactive_15mb.pdf?CACHEID=ROOTWORKSPACE-a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e-pS-Z7xM&MOD=AJPERES)、[Vietcombank 匯率牌價](https://www.vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/Ty-gia-ngoai-te)、[AEON MALL VietinBank 授權櫃檯公告](https://danangthanhkhe.aeonmall-vietnam.com/en/news/dich-vu-doi-ngoai-te-uy-nhiem-vietinbank-da-co-mat-tai-aeon-mall-da-nang-thanh-khe.html)、[峴港機場外幣服務說明](https://danangairport.vn/facility-detail-page/brand-detail?bid=137)。
 
@@ -90,6 +90,8 @@ npm run format:check
 地圖採用 [Leaflet](https://github.com/Leaflet/Leaflet) 1.9.4（研究時約 45.7k stars），保留 BSD-2-Clause 授權 `assets/vendor/LICENSE`。亦參考 [MapLibre GL JS](https://github.com/maplibre/maplibre-gl-js)；本案採適合少量手機點位的 Leaflet。底圖為 OpenStreetMap，保留其 attribution，遵循 [圖磚使用政策](https://operations.osmfoundation.org/policies/tiles/)。
 
 ## 驗證紀錄
+
+2026-10-14 餐廳全面覆核後，87 項 Node 資料與既有功能測試通過；46 家名稱、電話、地址、評分、時段與新覆核檔一致，CSV 已重新生成。這一輪沒有執行真實瀏覽器功能測試；Google 商家核對使用實際 Chrome 頁面。詳見 [餐廳全面覆核報告](docs/restaurant-full-recheck-2026-10-14.md)。
 
 2026-10-14 最後一輪修正由 Luna max 子代理實作、主代理獨立驗證：**84 項 Node 測試與 12 項真實 Chrome 測試全部通過**，格式、14 個檔案的 JavaScript 語法與 `git diff --check` 通過。修正定位跨頁、日期鍵盤焦點、搜尋排程／中文組字與快取寫入失敗；新增真實離線安裝、子目錄重載、新版快取及 scope 隔離測試。393 × 852 手機尺寸四入口、餐廳地圖操作與放大點餐卡已實測並檢查畫面。詳見 [最後修正與優化報告](docs/review-fixes-2026-10-14.md)。
 

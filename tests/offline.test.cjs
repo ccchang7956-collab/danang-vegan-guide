@@ -6,7 +6,7 @@ const vm = require('node:vm');
 
 const PROJECT_ROOT = path.resolve(__dirname, '..');
 const SCOPE = 'https://example.github.io/vegan-trip/';
-const CURRENT_CACHE = 'danang-vegan:/vegan-trip/:v17';
+const CURRENT_CACHE = 'danang-vegan:/vegan-trip/:v18';
 const INDEX_URL = new URL('./index.html', SCOPE).href;
 
 function deferred() {

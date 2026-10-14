@@ -286,7 +286,7 @@ test('Ba Na backup remains visible without pretending it has a precise nearby pi
   h.elements.get('day-anchor').value = 'bana';
   h.elements.get('day-anchor').listeners.change();
   const list = h.elements.get('day-restaurant-list').innerHTML;
-  assert.match(list, /Ngọc Chi/);
+  assert.match(list, /NGOC CHI VEGAN RESTAURANTS/);
   assert.match(list, /尚無查證座標/);
 });
 
@@ -409,7 +409,7 @@ test('known Thursday and Friday closure is prominent in daily recommendations', 
     .listeners.click({ target: { closest: () => ({ dataset: { day: '1' } }) } });
   const list = h.elements.get('day-restaurant-list').innerHTML;
   assert.match(list, /此日來源列為休息日/);
-  assert.ok(list.indexOf('KURUMI Hoi An') < list.indexOf('The Seeds Plant-Based'));
+  assert.ok(list.indexOf('>KURUMI</h3>') < list.indexOf('The Seeds Plant-Based'));
 });
 test('late GPS success cannot give hidden nearby cards daily IDs', () => {
   let resolve;

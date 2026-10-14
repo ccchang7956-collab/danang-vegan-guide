@@ -157,7 +157,52 @@ assert r['googleReviewCount'] is None and r['hours'] is None, 'unverified count/
 assert r['coordinateSourceUrl'] in r['sourceUrls'] and -90<=r['lat']<=90 and -180<=r['lng']<=180
 assert urlparse(r['googleMapsUrl']).hostname=='share.google', 'invalid shared link'
 restaurants.append(r)
+full_recheck=json.loads((root/'research/restaurant-full-recheck-2026-10-14.json').read_text())
+recheck_date=full_recheck['checkedDate']
+rechecks={r['id']:r for r in full_recheck['restaurants']}
+assert len(rechecks)==len(restaurants) and set(rechecks)=={r['id'] for r in restaurants}, 'full recheck coverage incomplete'
+for r in restaurants:
+    review=rechecks[r['id']]
+    assert review['checkedDate']==recheck_date and review['phone']
+    assert review['hours'] or review['operatingStatus']=='permanently-closed'
+    assert review['googleReviewCount']>=0 and 1<=review['googleRating']<=5
+    r['priorFullReview']={k:r.get(k) for k in ['name','address','phone','hours','hoursStatus','closedWeekdays','checkedDate','operatingStatus','googleMapsUrl','googleRating','googleReviewCount','ratingSourceType','hoursReviewNote','addressIssue','lat','lng','coordinateSourceUrl']}
+    r['searchAliases']=list(dict.fromkeys([r['name'],r.get('googlePlaceName') or '',*r.get('searchAliases',[])]))
+    r['reportedHoursHistory']=r.get('reportedHoursHistory',[])+[{'hours':r.get('hours'),'status':r.get('hoursStatus'),'checkedDate':r.get('hoursCheckedDate',r['checkedDate']),'sourceUrls':[r.get('hoursSourceUrl',r['googleMapsUrl'])]}]
+    r['reportedPhoneHistory']=r.get('reportedPhoneHistory',[])+[{'phone':r.get('phone'),'checkedDate':r.get('phoneCheckedDate',r['checkedDate']),'sourceUrls':[r.get('phoneSourceUrl',r['googleMapsUrl'])]}]
+    r.update({k:v for k,v in review.items() if k not in ['id','method','lat','lng']})
+    r.update(googlePlaceName=review['name'],googlePlaceAddress=review['address'],googleLinkType='place',matchConfidence='verified',ratingSourceType='google-direct',ratingSourceUrl=review['googleMapsUrl'],ratingAsOfDate=recheck_date,googleObservationDate=recheck_date,operatingEvidenceDate=recheck_date,hoursCheckedDate=recheck_date,phoneCheckedDate=recheck_date,dietCheckedDate=recheck_date,nameCheckedDate=recheck_date,addressCheckedDate=recheck_date,hoursSourceUrl=review['googleMapsUrl'],phoneSourceUrl=review['googleMapsUrl'],hoursStatus='google-weekly-schedule-reviewed',navigationHold=False)
+    r['ratingNote']='2026-10-14 直接開啟對應 Google 商家頁核對；評分與評論數是查核快照，非即時更新。'
+    r['operatingSourceUrls']=list(dict.fromkeys([review['googleMapsUrl']]+r.get('operatingSourceUrls',[])))
+    r['sourceUrls']=list(dict.fromkeys(r['sourceUrls']+[review['googleMapsUrl']]+review['dietSourceUrls']))
+    r['operatingEvidenceText']='2026-10-14 直接開啟對應 Google 商家頁，未標示歇業並列有完整每週時段；未電話聯絡，不保證旅行當日開門。'
+    if r['operatingStatus']=='permanently-closed':
+        r['operatingEvidenceText']='2026-10-14 Google 商家頁仍直接標示永久歇業；只保留查核記錄，不提供導航或每日推薦。'
+        r['veganNotes']='歇業前的全素店家記錄；本次 Google 仍標永久歇業，請另選餐廳。'
+        r['hoursStatus']='google-permanently-closed'
+    if r['id']=='khai-tam-city':
+        r['operatingEvidenceText']='Google 商家頁存在且每週均列 24 小時；與舊供餐時段不符，近期實際用餐證據不足，營運仍待電話確認。'
+        r['hoursStatus']='google-weekly-schedule-reviewed; unverified-service-hours'
+    if 'lat' in review:
+        r.update(lat=review['lat'],lng=review['lng'],coordinateStatus='source-google-business-marker',coordinateSourceUrl=review['googleMapsUrl'],coordinateCheckedDate=recheck_date)
+    elif r.get('coordinateSourceUrl'):
+        r['coordinateCheckedDate']=r.get('googleObservationDate') if r['id']=='bana-ngoc-chi' else audit_date
+    # The street/branch was rechecked; a spelling or ward change is not evidence of relocation.
+    r['addressIssue']=review.get('addressReviewNote','')
+    for key in ['googleObservedHoursSnippet','hoursConflictSourceUrl','hoursConflictCheckedDate','hoursExceptionNote']:
+        r.pop(key,None)
+    if r['id'] in ['an-lac-tam-2','hoian-an-hy','hoian-quan-chay-cua-dai','loving-hut-danang']:
+        r['hoursExceptionNote']=review['hoursReviewNote']
+    if r['id']=='dn-alt':r['veganNotes']='Chickpea 官方列出的全素植物製咖啡館；本次已直接核對此分店每週時段與電話。'
+    if r['id']=='hoian-hoi-banh-mi':r['veganNotes']='HappyCow 全素麵包攤；本次對應 Google 商家為 Lê Hội Bánh MÌ Chay，位於 3 Nguyễn Huệ；勿套用 136 Trần Phú 分店。'
+    if r['id']=='loving-hut-danang':r['risk']='Google 商家頁與每週時段已直接確認；奶精、零售包裝食品及醬料的全素條件仍需逐項詢問。'
+    if r['id']=='hoian-plantlab':r['veganNotes']+=' Google 電話 +84 383 541 871；官網 Zalo／WhatsApp +84 799 409 293。'
+    if r['id'] in ['dn-chickpea','dn-alt','hoian-chickpea','moms-kitchen']:
+        r['brandPhone']='+84 766 731 285';r['brandPhoneSourceUrl']='https://chickpeaeatery.com/'
+        r['veganNotes']+=' 卡片電話採 Google 分店號碼；Chickpea 官網品牌聯絡電話為 +84 766 731 285。'
+raw['restaurantFullRecheckDate']=recheck_date
 raw['restaurants']=restaurants;raw['checkedDate']=addition['checkedDate'];raw['restaurantGoogleCheckedDate']=audit_date
+raw['checkedDate']=max(raw['checkedDate'],recheck_date);raw['restaurantGoogleCheckedDate']=recheck_date
 raw['restaurantAdditionCheckedDate']=addition['checkedDate']
 meal_days=json.loads((root/'research/review-meal-coverage.json').read_text())['days']
 assert [d['date'] for d in meal_days]==[d['date'] for d in raw['days']], 'meal dates mismatch'

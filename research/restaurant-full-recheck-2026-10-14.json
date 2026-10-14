@@ -1,0 +1,961 @@
+{
+  "checkedDate": "2026-10-14",
+  "addressNormalization": "地址移除 Google 國家／郵遞區號後綴與重複片段；原研究地址另保留。",
+  "restaurants": [
+    {
+      "id": "bana-ngoc-chi",
+      "name": "NGOC CHI VEGAN RESTAURANTS - BÀ NÀ HILLS",
+      "address": "Bà Nà Hills, Ba Na, Da Nang",
+      "phone": "+84 337 085 088",
+      "googleRating": 4.8,
+      "googleReviewCount": 680,
+      "googleMapsUrl": "https://www.google.com/maps?cid=10906564159448198055",
+      "hours": "每日 08:00–17:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "Google 每週每日 08:00–17:00；HappyCow 列 08:30–17:00，最早供餐時間請先確認。店家電話已取代原園區熱線。",
+      "diet": "uncertain",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/ngoc-chi-vegan-da-nang-468520"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。",
+      "lat": 15.996315,
+      "lng": 107.9948094
+    },
+    {
+      "id": "om-vegan",
+      "name": "Om Vegan - Về đây ăn chay",
+      "address": "338/42 Hoàng Diệu, Hải Châu, Đà Nẵng",
+      "phone": "+84 783 229 133",
+      "googleRating": 4.4,
+      "googleReviewCount": 132,
+      "googleMapsUrl": "https://www.google.com/maps?cid=2479299816126277206",
+      "hours": "週一至六 10:30–14:00、16:30–21:00；週日 10:30–14:30、16:30–21:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/om-vegan-da-nang-436922"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "ngoc-chi-city",
+      "name": "Nhà Hàng Chay Ngọc Chi - Vegetarian Restaurant Michelin guide 2025",
+      "address": "202 Hoàng Diệu, Hải Châu, Đà Nẵng",
+      "phone": "+84 935 085 088",
+      "googleRating": 4.6,
+      "googleReviewCount": 1499,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Nh%C3%A0%20H%C3%A0ng%20Chay%20Ng%E1%BB%8Dc%20Chi%20-%20Vegetarian%20Restaurant%20Michelin%20guide%202025&query_place_id=ChIJPwlvPjMYQjERE56T1OCbYpM",
+      "hours": "每日 09:00–21:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegetarian",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/ngoc-chi-da-nang-25980"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "tiem-chay-xua",
+      "name": "Tiệm Chay Xưa",
+      "address": "373 Phan Châu Trinh, Hòa Cường, Đà Nẵng",
+      "phone": "+84 913 490 919",
+      "googleRating": 4.3,
+      "googleReviewCount": 303,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ti%E1%BB%87m%20Chay%20X%C6%B0a&query_place_id=ChIJT0sifzoZQjERSWvLiKArplY",
+      "hours": "每日 07:00–14:00、16:00–21:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegetarian",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/tiem-chay-xua-da-nang-148882"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。",
+      "addressReviewNote": "Google 門牌列 373，HappyCow 列 373a，同街同店的門牌寫法有落差；已核對對應 Google 商家，不當作搬遷證據。"
+    },
+    {
+      "id": "ans-vegetarian",
+      "name": "ANs - Vegetarian Cuisine",
+      "address": "169F Trưng Nữ Vương, Hòa Cường, Đà Nẵng",
+      "phone": "+84 935 385 186",
+      "googleRating": 4.4,
+      "googleReviewCount": 653,
+      "googleMapsUrl": "https://www.google.com/maps?cid=2222385936785292906",
+      "hours": "每日 07:00–21:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegetarian",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/ans-vegetarian-cuisine-da-nang-89317"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "an-lac-tam-2",
+      "name": "Quán Chay An Lạc Tâm Đà Nẵng - Vegetarian Restaurant",
+      "address": "41 Lê Quý Đôn, Hòa Cường, Đà Nẵng",
+      "phone": "+84 236 3555 299",
+      "googleRating": 4.4,
+      "googleReviewCount": 355,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20Chay%20An%20L%E1%BA%A1c%20T%C3%A2m%20%C4%90%C3%A0%20N%E1%BA%B5ng%20-%20Vegetarian%20Restaurant&query_place_id=ChIJv2NYMzcZQjERAJy_d1NFoeg",
+      "hours": "每日 06:30–14:00、17:00–21:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "Google 已展開核對午休與晚餐時段；HappyCow 舊頁另列滿月日休息，農曆例外未確認。",
+      "diet": "vegetarian",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/an-lac-tam-2-da-nang-183160"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "khai-tam-city",
+      "name": "Quán Chay Khai Tâm",
+      "address": "352 Phan Châu Trinh, Hòa Cường, Đà Nẵng",
+      "phone": "+84 905 677 011",
+      "googleRating": 3.9,
+      "googleReviewCount": 66,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20Chay%20Khai%20T%C3%A2m&query_place_id=ChIJB44Sw8gZQjERlR6MkjlQ6sI",
+      "hours": "Google 列每日 24 小時，實際供餐時段待電話確認",
+      "closedWeekdays": [],
+      "operatingStatus": "unverified",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "Google 每週均列 24 小時，但 HappyCow 舊頁列分段供餐；不能視為全天都有餐，先致電確認。",
+      "diet": "uncertain",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/khai-tam-da-nang-76023"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "shala-vegan-house",
+      "name": "Shala Vegan House",
+      "address": "87/16 Nguyễn Du, Hải Châu, Đà Nẵng",
+      "phone": "+84 905 008 184",
+      "googleRating": 4.8,
+      "googleReviewCount": 277,
+      "googleMapsUrl": "https://www.google.com/maps?cid=17069506861586918572",
+      "hours": "週一至五 10:30–20:00；週六、日 10:00–20:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/shala-vegan-house-da-nang-326976"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "au-lac",
+      "name": "Cơm Chay Âu Lạc",
+      "address": "113/14 Nguyễn Du, Hải Châu, Đà Nẵng",
+      "phone": "+84 236 3887 929",
+      "googleRating": 3.6,
+      "googleReviewCount": 39,
+      "googleMapsUrl": "https://www.google.com/maps?cid=8489020020553107995",
+      "hours": "每日 06:30–20:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegetarian",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/au-lac-da-nang-25831"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "dieu-hoa-city",
+      "name": "Quan Chay Dieu Hoa - Vegan restaurant in Danang",
+      "address": "87/4, Nguyen Du Street, Hai Chau, Hải Châu, Đà Nẵng",
+      "phone": "+84 905 504 037",
+      "googleRating": 4.5,
+      "googleReviewCount": 203,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Quan%20Chay%20Dieu%20Hoa%20-%20Vegan%20restaurant%20in%20Danang&query_place_id=ChIJLRVpnTkYQjER4bAlCno0JNQ",
+      "hours": "每日 07:00–20:30",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/quan-chay-dieu-hoa-vegan-restaurant-in-danang-da-nang-508273"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "phuc-an-city",
+      "name": "Nhà hàng chay Phúc An - PhucAn Vegetarian",
+      "address": "547 Nguyễn Tất Thành, Thanh Khê, Đà Nẵng",
+      "phone": "+84 905 949 291",
+      "googleRating": 4.7,
+      "googleReviewCount": 425,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Nh%C3%A0%20H%C3%A0ng%20Chay%20Ph%C3%BAc%20An&query_place_id=ChIJ3xT1QS4ZQjER8qV4HPop8io",
+      "hours": "週二至六 10:00–21:30；週日、一休息",
+      "closedWeekdays": [
+        0,
+        1
+      ],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegetarian",
+      "dietSourceUrls": [
+        "https://monandanang.vn/en/restaurant/nha-hang-chay-phuc-an"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。",
+      "veganNotes": "公開目錄列素食餐廳；未取得全店無蛋奶蜂蜜的保證，點餐逐項確認，不能僅凭店名視為全素。"
+    },
+    {
+      "id": "tinh-quan",
+      "name": "Quán Chay Tỉnh Quán - Ẩm Thực Chay Đà Nẵng (Vegan restaurant in Da Nang)",
+      "address": "11 Trần Nhật Duật, Sơn Trà, Đà Nẵng",
+      "phone": "+84 948 645 513",
+      "googleRating": 4.8,
+      "googleReviewCount": 418,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20Chay%20T%E1%BB%89nh%20Qu%C3%A1n%20-%20%E1%BA%A8m%20Th%E1%BB%B1c%20Chay%20%C4%90%C3%A0%20N%E1%BA%B5ng&query_place_id=ChIJ6TXY2-sXQjERQm2Oxj4bvMQ",
+      "hours": "週二至日 10:30–20:00；週一 10:30–19:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegetarian",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/quan-chay-tinh-quan-da-nang-330620"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "son-tra-retreat",
+      "name": "Son Tra Retreat",
+      "address": "11 Lê Văn Lương, Sơn Trà, Đà Nẵng",
+      "phone": "+84 236 3919 188",
+      "googleRating": 4.9,
+      "googleReviewCount": 1206,
+      "googleMapsUrl": "https://www.google.com/maps?cid=18224764546628337695",
+      "hours": "每日 09:30–22:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "mixed",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/son-tra-retreat-garden-lounge-eatery-da-nang-438564"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "moms-kitchen",
+      "name": "Mom Kitchen by Chickpea Eatery Da Nang",
+      "address": "73-12 Trương Định, Sơn Trà, Đà Nẵng",
+      "phone": "+84 372 149 095",
+      "googleRating": 5.0,
+      "googleReviewCount": 13,
+      "googleMapsUrl": "https://www.google.com/maps?cid=14623554922100876407",
+      "hours": "每日 08:30–18:30",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "Google 店名為 Mom Kitchen by Chickpea Eatery Da Nang；官網稱 Mom’s Kitchen。Google 門牌 73-12，官網 73/12，均指巷內同一店。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://chickpeaeatery.com/"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。",
+      "addressReviewNote": "Google 列 73-12 Trương Định，官網列 73/12；兩者指向同一巷內店家。"
+    },
+    {
+      "id": "bao-an",
+      "name": "Thực Dưỡng Bảo An",
+      "address": "56 Hoàng Bích Sơn, An Hải, Đà Nẵng",
+      "phone": "+84 902 957 256",
+      "googleRating": 4.7,
+      "googleReviewCount": 1190,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Bao%20An%20Macrobiotic&query_place_id=ChIJFbk1jogXQjERZh1qYR7NbTo",
+      "hours": "週一至六 06:30–20:30；週日 06:30–15:30",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "Google 週日列 06:30–15:30，HappyCow 舊時段列週日休息；農曆初一、十五延長時段未再確認。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/thuc-duong-bao-an-da-nang-84953"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "dn-chickpea",
+      "name": "Chickpea Eatery - Vegan Restaurant & Cooking Class Da Nang",
+      "address": "69 Nguyễn Duy Hiệu, An Hải, Đà Nẵng",
+      "phone": "+84 902 222 107",
+      "googleRating": 4.9,
+      "googleReviewCount": 1783,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Chickpea%20Eatery%20Da%20Nang&query_place_id=ChIJ8fauS5EXQjERqkcIT0k31w0",
+      "hours": "每日 10:30–21:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://chickpeaeatery.com/"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "dn-ivegan",
+      "name": "IVEGAN SUPERSHOP",
+      "address": "Lô 31 An Thượng 4, Ngũ Hành Sơn, Đà Nẵng",
+      "phone": "+84 868 173 168",
+      "googleRating": 4.7,
+      "googleReviewCount": 1824,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=iVegan%20Supershop%20Da%20Nang&query_place_id=ChIJSWJeSCkXQjERlJNJtMOGw84",
+      "hours": "每日 08:00–21:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/ivegan-da-nang-232730"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "dn-roots",
+      "name": "Roots Plant-Based Cafe - healthy vegan restaurant",
+      "address": "266 Trần Bạch Đằng, Bắc Mỹ Phú, Ngũ Hành Sơn, Đà Nẵng",
+      "phone": "+84 905 565 826",
+      "googleRating": 4.7,
+      "googleReviewCount": 4001,
+      "googleMapsUrl": "https://www.google.com/maps?cid=629424335043623299",
+      "hours": "每日 07:30–22:30",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://rootsplantbasedcafe.com/vi/"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。",
+      "lat": 16.0486741,
+      "lng": 108.2477863
+    },
+    {
+      "id": "dn-alt",
+      "name": "ALT Plant-Based Vegan Café & Cooking Class by Chickpea Eatery",
+      "address": "90 Bà Huyện Thanh Quan, Ngũ Hành Sơn, Đà Nẵng",
+      "phone": "+84 902 222 107",
+      "googleRating": 4.9,
+      "googleReviewCount": 536,
+      "googleMapsUrl": "https://www.google.com/maps?cid=7320251811275945647",
+      "hours": "每日 08:45–21:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已直接確認獨立 Google 每週表，不再沿用品牌電話或標示無獨立時段來源。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://chickpeaeatery.com/"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。",
+      "lat": 16.0440585,
+      "lng": 108.2457956
+    },
+    {
+      "id": "dn-kurumi",
+      "name": "KURUMI - Healthy Vegan Food & Desserts",
+      "address": "17/22 Mỹ Đa Đông 12, Ngũ Hành Sơn, Đà Nẵng",
+      "phone": "+84 569 844 088",
+      "googleRating": 4.8,
+      "googleReviewCount": 2214,
+      "googleMapsUrl": "https://www.google.com/maps?cid=5989776086566850964",
+      "hours": "每日 08:00–21:30",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://kurumi.vn/vi"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。",
+      "lat": 16.0456987,
+      "lng": 108.2478571
+    },
+    {
+      "id": "dn-loving",
+      "name": "Loving Vegan",
+      "address": "61 Lê Quang Đạo, Ngũ Hành Sơn, Đà Nẵng",
+      "phone": "+84 934 969 461",
+      "googleRating": 4.8,
+      "googleReviewCount": 1939,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Loving%20Vegan&query_place_id=ChIJXSf-vzUXQjERsqQ3CyoF9gU",
+      "hours": "每日 09:00–21:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/loving-vegan-da-nang-161935"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "dn-khong",
+      "name": "KHONG Vegan Kitchen",
+      "address": "81 Phan Tôn, Ngũ Hành Sơn, Đà Nẵng",
+      "phone": "+84 353 854 949",
+      "googleRating": 4.8,
+      "googleReviewCount": 986,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Khong%20Vegan%20Restaurant%20/%20KHONG%20Vegan%20Kitchen&query_place_id=ChIJ-8AB3oAXQjERptcQoIvuNCE",
+      "hours": "每日 11:00–22:30",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "Google 核對為每日 11:00–22:30；HappyCow 舊頁 10:00 開門，採 Google 每週表並保留落差。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/khong-vegan-restaurant-da-nang-182942"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "dn-lehoi",
+      "name": "Bánh Mì Chay Lê Hội - Vegan Bread",
+      "address": "89 Phạm Tu, An Hải, Đà Nẵng",
+      "phone": "+84 782 682 972",
+      "googleRating": 5.0,
+      "googleReviewCount": 628,
+      "googleMapsUrl": "https://www.google.com/maps?cid=9239877999059860739",
+      "hours": "週一至六 06:30–22:00；週日 14:30–22:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/banh-mi-chay-le-hoi-da-nang-454240"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "dn-anmocnhien",
+      "name": "AN MỘC NHIÊN VEGAN Nhà hàng thuần chay",
+      "address": "18 Trần Bạch Đằng, An Hải, Đà Nẵng",
+      "phone": "+84 963 764 283",
+      "googleRating": 4.9,
+      "googleReviewCount": 443,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=AN%20M%E1%BB%98C%20NHI%C3%8AN%20VEGAN%20Nh%C3%A0%20h%C3%A0ng%20thu%E1%BA%A7n%20chay&query_place_id=ChIJNXFUnjoXQjEREOMSdvzZDwY",
+      "hours": "每日 07:00–22:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "Google 列每日；2026-09-21 店主更新的 HappyCow 頁只列週一至六，週日先確認。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/an-moc-nhien-da-nang-483077"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "dn-hanhphuc",
+      "name": "Chay Hạnh Phúc - Vegan Food",
+      "address": "178 Hoài Thanh, Ngũ Hành Sơn, Đà Nẵng",
+      "phone": "+84 829 394 868",
+      "googleRating": 4.9,
+      "googleReviewCount": 117,
+      "googleMapsUrl": "https://www.google.com/maps?cid=15166765112512324693",
+      "hours": "週二至日 08:30–20:00；週一休息",
+      "closedWeekdays": [
+        1
+      ],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "Google 現址 178 Hoài Thanh、週一休息；HappyCow 另有 04 An Thượng 11 舊頁，請用本商家頁。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/chay-hanh-phuc-vegan-food-da-nang-501955"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "dn-everyday",
+      "name": "Everyday Vegan Food & Coffee Da Nang",
+      "address": "45 Hoàng Kế Viêm, Ngũ Hành Sơn, Đà Nẵng",
+      "phone": "+84 338 256 795",
+      "googleRating": 4.8,
+      "googleReviewCount": 295,
+      "googleMapsUrl": "https://www.google.com/maps?cid=15189593579518914999",
+      "hours": null,
+      "closedWeekdays": [],
+      "operatingStatus": "permanently-closed",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/everyday-vegan-da-nang-427141"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "dn-xinh",
+      "name": "Quán chay xinh",
+      "address": "Đối diện 30, An Thượng 8, Ngũ Hành Sơn, Đà Nẵng",
+      "phone": "+84 943 851 598",
+      "googleRating": 4.8,
+      "googleReviewCount": 107,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20chay%20xinh+Da%20Nang&query_place_id=ChIJV2RpMPMXQjERWWQHVPqszwE",
+      "hours": "每日 07:00–22:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegetarian",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/quan-chay-xinh-da-nang-465680"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "dn-daibinh",
+      "name": "Chay Đại Bình",
+      "address": "126 Châu Thị Vĩnh Tế, Ngũ Hành Sơn, Đà Nẵng",
+      "phone": "+84 905 579 525",
+      "googleRating": 4.6,
+      "googleReviewCount": 260,
+      "googleMapsUrl": "https://www.google.com/maps?cid=12092980893700020320",
+      "hours": "每日 08:00–22:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegetarian",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/am-thuc-chay-dai-binh-da-nang-349638"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。",
+      "lat": 16.0484322,
+      "lng": 108.2418793
+    },
+    {
+      "id": "dn-duyen",
+      "name": "Duyên Vegan & Coffee",
+      "address": "63 Đặng Vũ Hỷ, An Hải, Đà Nẵng",
+      "phone": "+84 978 095 048",
+      "googleRating": 4.8,
+      "googleReviewCount": 481,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Duy%C3%AAn%20Vegan%20%26%20Coffee&query_place_id=ChIJcWBvRtoXQjERd2S2AkOiTMs",
+      "hours": "每日 08:30–22:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegetarian",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/duyen-vegan-coffee-da-nang-472374"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "hoian-chickpea",
+      "name": "Chickpea Eatery - Vegan Restaurant & Cooking Class Hoi An",
+      "address": "86 Phan Châu Trinh, Hội An, Đà Nẵng",
+      "phone": "+84 372 149 095",
+      "googleRating": 4.9,
+      "googleReviewCount": 1425,
+      "googleMapsUrl": "https://www.google.com/maps?cid=4873361824739412238",
+      "hours": "每日 12:00–21:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "Google 現列每日 12:00–21:00；先前來源列週一、二休息。官網巷內地址為 86/5，Google 顯示 86，屬同一商家。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://chickpeaeatery.com/"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。",
+      "lat": 15.8787359,
+      "lng": 108.3253216,
+      "addressReviewNote": "Google 列 86 Phan Châu Trinh，官網列巷內 86/5；採同一 Google 商家導航，入口在巷內。"
+    },
+    {
+      "id": "hoian-v-vegan",
+      "name": "V Vegan",
+      "address": "108 Nguyễn Thái Học, Old Town, Hội An, Đà Nẵng",
+      "phone": "+84 235 3919 109",
+      "googleRating": 4.8,
+      "googleReviewCount": 1235,
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=V%20Vegan+Hoi%20An&query_place_id=ChIJUU5yVzwPQjERPc_ucbw0W4o",
+      "hours": "每日 11:00–21:30",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/v-vegan-hoi-an-329758"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "hoian-kurumi",
+      "name": "KURUMI",
+      "address": "187 Lý Thường Kiệt, Hội An, Đà Nẵng",
+      "phone": "+84 984 532 047",
+      "googleRating": 4.9,
+      "googleReviewCount": 2456,
+      "googleMapsUrl": "https://www.google.com/maps?cid=9577690272023764277",
+      "hours": "每日 08:00–21:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://kurumi.vn/vi"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。",
+      "lat": 15.8835506,
+      "lng": 108.3269919
+    },
+    {
+      "id": "hoian-ivegan",
+      "name": "Ivegan Supershop Hoi An - Healthy Plant-based Cafe",
+      "address": "672 Đ. Hai Bà Trưng, Hội An, Đà Nẵng",
+      "phone": "+84 868 173 168",
+      "googleRating": 4.6,
+      "googleReviewCount": 749,
+      "googleMapsUrl": "https://www.google.com/maps?cid=2300263470873601541",
+      "hours": "每日 08:30–18:30",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/ivegan-supershop-healthy-plant-based-cafe-hoi-an-436590"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "hoian-seeds",
+      "name": "The Seeds Plant-Based Foods & Desserts/Tiệm Chay",
+      "address": "124/2 Đ. Trần Cao Vân, Hội An, Đà Nẵng",
+      "phone": "+84 347 759 983",
+      "googleRating": 4.9,
+      "googleReviewCount": 377,
+      "googleMapsUrl": "https://www.google.com/maps?cid=16430417177815741153",
+      "hours": "週一至三、週日 11:00–21:00；週六 12:00–21:00；週四、五休息",
+      "closedWeekdays": [
+        4,
+        5
+      ],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/the-seeds-plant-based-foods-and-desserts-hoi-an-419917"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。",
+      "lat": 15.8807587,
+      "lng": 108.3276456
+    },
+    {
+      "id": "hoian-emma",
+      "name": "Quán Thuần Chay Emma - Emma's Vegan Garden - Restaurant & Cafe",
+      "address": "36 Lê Quý Đôn, Hội An, Đà Nẵng",
+      "phone": "+84 776 524 497",
+      "googleRating": 5.0,
+      "googleReviewCount": 103,
+      "googleMapsUrl": "https://www.google.com/maps?cid=12600194686517776988",
+      "hours": null,
+      "closedWeekdays": [],
+      "operatingStatus": "permanently-closed",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/nha-hang-chay-emma-emmas-vegan-garden-hoi-an-468376"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "hoian-an-hy",
+      "name": "An Hy Vegetarian Restaurant",
+      "address": "59 Phan Châu Trinh, Old Town, Hội An, Đà Nẵng",
+      "phone": "+84 905 916 551",
+      "googleRating": 4.8,
+      "googleReviewCount": 399,
+      "googleMapsUrl": "https://www.google.com/maps?cid=11551586551841199152",
+      "hours": "每日 11:00–21:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "Google 每週每日 11:00–21:00；HappyCow 舊頁列農曆初二、十六休息，未確認現址是否沿用。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/an-hy-hoi-an-172950"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "hoian-minh-hien",
+      "name": "Minh Hien Vegetarian Restaurant",
+      "address": "26/16 Thái Phiên, Hội An, Đà Nẵng",
+      "phone": "+84 905 667 743",
+      "googleRating": 4.7,
+      "googleReviewCount": 1672,
+      "googleMapsUrl": "https://www.google.com/maps?cid=11769971979950204320",
+      "hours": "每日 11:30–22:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "vegetarian",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/minh-hien-hoi-an-30597"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "hoian-peanuts",
+      "name": "Peanuts - Vegan Vietnamese Food",
+      "address": "122 Trần Nhân Tông, Hội An Đông, Đà Nẵng",
+      "phone": "+84 387 010 819",
+      "googleRating": 4.9,
+      "googleReviewCount": 1061,
+      "googleMapsUrl": "https://www.google.com/maps?cid=8230268332802149477",
+      "hours": "每日 11:00–21:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "Google 現列每日營業；HappyCow 仍列週二休息，週二先電話確認。",
+      "diet": "vegetarian",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/peanuts-hoi-an-241472"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "hoian-rau-oi",
+      "name": "Rau Ơi Eatery - Vegan Food and Cooking Classes",
+      "address": "110 Trần Nhân Tông, Hội An Đông, Đà Nẵng",
+      "phone": "+84 934 792 629",
+      "googleRating": 4.9,
+      "googleReviewCount": 560,
+      "googleMapsUrl": "https://www.google.com/maps?cid=11967632547470233861",
+      "hours": "每日 10:45–21:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "Google 每日 10:45–21:00；官網頁首列 08:00–20:00，HappyCow 列 07:00–22:00。開門與最後供餐時間仍有落差，先致電確認。",
+      "diet": "vegetarian",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/rau-oi-eatery-hoi-an-399894"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "hoian-quan-chay-cua-dai",
+      "name": "An Phuoc Vegetarian",
+      "address": "333 Cửa Đại, Hội An Đông, Đà Nẵng",
+      "phone": "+84 779 713 799",
+      "googleRating": 4.5,
+      "googleReviewCount": 119,
+      "googleMapsUrl": "https://www.google.com/maps?cid=18311703607367843750",
+      "hours": "每日 06:00–22:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "Google 現列每日 06:00–22:00；HappyCow 舊頁列 08:00–20:00 及農曆初二、十六休息，例外未確認。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/quan-chay-hoi-an-150375"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "hoian-plantlab",
+      "name": "PlantLab Restaurant",
+      "address": "Tổ dân cư, số 4, tổ dân phố Thanh Đông, Hội An Đông, Đà Nẵng",
+      "phone": "+84 383 541 871",
+      "googleRating": 4.9,
+      "googleReviewCount": 247,
+      "googleMapsUrl": "https://www.google.com/maps?cid=17531369487974838213",
+      "hours": "每日 09:30–21:30",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "Google 商家電話 +84 383 541 871；官網 Zalo／WhatsApp +84 799 409 293，保留兩者用途，不將官網電話視為失效。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://plantlabfood.com/"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。",
+      "alternatePhone": "+84 799 409 293",
+      "alternatePhoneSourceUrl": "https://plantlabfood.com/"
+    },
+    {
+      "id": "hoian-phin-lounge",
+      "name": "Phin Lounge",
+      "address": "An Bang Beach, Hội An Tây, Đà Nẵng",
+      "phone": "+84 919 882 783",
+      "googleRating": 4.9,
+      "googleReviewCount": 360,
+      "googleMapsUrl": "https://www.google.com/maps?cid=10982988440730066204",
+      "hours": "每日 08:00–21:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已逐日展開 Google 每週時段核對；牌告不是旅行當日開門保證。",
+      "diet": "mixed",
+      "dietSourceUrls": [
+        "https://phincoffeehoian.com/location/phin-lounge-an-bang/"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。",
+      "veganNotes": "官網目前菜單列 Vegan Plate、燕麥奶咖啡，也同時提供火腿、蛋、乳製品與鴨肉；選明確 vegan 品項並確認醬料與麵包，不可視為全素店。"
+    },
+    {
+      "id": "hoian-fisherman",
+      "name": "The Fisherman Garden Vegan Restaurant & Cafe",
+      "address": "An Bang Beach, Hội An Tây, Đà Nẵng",
+      "phone": "+84 905 660 623",
+      "googleRating": 4.6,
+      "googleReviewCount": 658,
+      "googleMapsUrl": "https://www.google.com/maps?cid=11189365269074679466",
+      "hours": "每日 08:00–21:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "Google 只列 An Bang Beach，HappyCow 列 86 Nguyễn Phan Vinh；後街入口請先聯絡，不將海灘地址當作精確門牌。",
+      "diet": "uncertain",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/the-fisherman-vegan-restaurant-hoi-an-113002"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。",
+      "addressReviewNote": "Google 只列 An Bang Beach；HappyCow 列 86 Nguyễn Phan Vinh，後街入口請先聯絡確認。"
+    },
+    {
+      "id": "hoian-hoi-banh-mi",
+      "name": "Lê Hội Bánh MÌ Chay (Le Hoi Vegan Banh Mi)",
+      "address": "3 Nguyễn Huệ, Hội An, Đà Nẵng",
+      "phone": "+84 772 571 573",
+      "googleRating": 4.9,
+      "googleReviewCount": 2316,
+      "googleMapsUrl": "https://www.google.com/maps?cid=11524026561227759493",
+      "hours": "每日 06:30–22:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已核對 Google 3 Nguyễn Huệ 店；HappyCow 同址舊名 Hoi Banh My Chay，136 Trần Phú 為另一分店資料，不套用。",
+      "diet": "vegan",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/hoi-banh-my-chay-hoi-an-81098"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "hoian-nourish",
+      "name": "nourish eatery. / Café & Restaurant",
+      "address": "220a Nguyễn Duy Hiệu, Hội An Đông, Đà Nẵng",
+      "phone": "+84 905 501 185",
+      "googleRating": 4.9,
+      "googleReviewCount": 1763,
+      "googleMapsUrl": "https://www.google.com/maps?cid=2124084090323198897",
+      "hours": "每日 09:00–16:00",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "Google 現列每日營業；先前資料列週一休息，週一先電話確認。",
+      "diet": "mixed",
+      "dietSourceUrls": [
+        "https://nourisheatery.com/menu/"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。"
+    },
+    {
+      "id": "loving-hut-danang",
+      "name": "Loving Hut Da Nang",
+      "address": "380 Đ. Lê Văn Hiến, Ngũ Hành Sơn, Đà Nẵng",
+      "phone": "+84 353 970 606",
+      "googleRating": 4.3,
+      "googleReviewCount": 178,
+      "googleMapsUrl": "https://www.google.com/maps?cid=160676046296591163",
+      "hours": "每日 06:00–19:30",
+      "closedWeekdays": [],
+      "operatingStatus": "operating-evidence",
+      "checkedDate": "2026-10-14",
+      "method": "Chrome Google Maps 商家頁直接觀察並逐店展開完整每週時段；全素條件另查官網／HappyCow。未電話聯絡。",
+      "hoursReviewNote": "已直接開啟 Google 商家頁核對 4.3／178 則、每週表與電話；HappyCow 舊頁農曆初一、十五延長至 22:00 尚未確認。",
+      "diet": "uncertain",
+      "dietSourceUrls": [
+        "https://www.happycow.net/reviews/bien-tinh-thuong-loving-hut-da-nang-36503"
+      ],
+      "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。",
+      "lat": 16.0250415,
+      "lng": 108.2494506,
+      "originalGoogleShareUrl": "https://share.google/4D2GrpTKifnpG4sc6"
+    }
+  ]
+}
