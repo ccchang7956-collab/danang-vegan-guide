@@ -35,6 +35,19 @@ test.describe('real service worker lifecycle in Chrome', () => {
     await expect(page.locator('#trip-count')).toContainText('餐廳記錄');
     await expect(page.locator('#day-tabs [data-day="0"]')).toBeVisible();
     await expect(page.locator('#network-status')).toContainText('目前離線');
+    await page.locator('[data-view="supplies"]').click();
+    await expect(page.locator('#view-supplies')).toBeVisible();
+    await expect(page.locator('#supply-noodles .supply-card')).toHaveCount(2);
+    await expect(page.locator('#supply-snacks .supply-card')).toHaveCount(9);
+    await expect(page.locator('#supply-handy-chay')).toContainText('品牌明確全素');
+    await expect(page.locator('#supply-vifon-chay')).toContainText('仍需確認');
+    await expect(page.locator('#view-supplies .supply-photo img')).toHaveCount(11);
+    await page.waitForFunction(() => {
+      const images = [...document.querySelectorAll('#view-supplies .supply-photo img')];
+      return (
+        images.length === 11 && images.every((image) => image.complete && image.naturalWidth > 0)
+      );
+    });
     await context.setOffline(false);
   });
 

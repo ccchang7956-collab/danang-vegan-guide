@@ -1,5 +1,5 @@
 /* Versioned app shell. Bump VERSION whenever any bundled file changes. */
-const VERSION = 'v12';
+const VERSION = 'v15';
 const PREFIX = 'danang-vegan:' + new URL(self.registration.scope).pathname + ':';
 const CACHE = PREFIX + VERSION;
 const LOCAL = [
@@ -15,6 +15,17 @@ const LOCAL = [
   './assets/icon-192.png',
   './assets/icon-512.png',
   './manifest.webmanifest',
+  './assets/products/handy-chay.webp',
+  './assets/products/vifon-chay.webp',
+  './assets/products/choice-coconut.webp',
+  './assets/products/choice-cashew.webp',
+  './assets/products/oreo-vanilla.webp',
+  './assets/products/vinamit-jackfruit.webp',
+  './assets/products/choice-sweetpotato.webp',
+  './assets/products/choice-seaweed.webp',
+  './assets/products/bibigo-seaweed.webp',
+  './assets/products/langfarm-taro.webp',
+  './assets/products/langfarm-pineapple.webp',
 ];
 
 self.addEventListener('install', (event) => {

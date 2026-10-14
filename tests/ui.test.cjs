@@ -83,7 +83,7 @@ function harness(options = {}) {
   elements.get('diet-filter').value = 'all';
   const windowListeners = {},
     docListeners = {},
-    nav = ['daily', 'nearby', 'exchange', 'phrase'].map((view) => {
+    nav = ['daily', 'nearby', 'exchange', 'supplies', 'phrase'].map((view) => {
       const el = new Element();
       el.dataset = { view };
       return el;

@@ -585,7 +585,7 @@
     markers.set(p.id, marker);
   }
   function renderMap(fit = true) {
-    if (view === 'phrase') return;
+    if (view === 'phrase' || view === 'supplies') return;
     const slot =
       view === 'daily'
         ? 'daily-map-slot'
@@ -788,7 +788,9 @@
   function changeView(next) {
     cancelSearchTimers();
     view = next;
-    ['daily', 'nearby', 'exchange', 'phrase'].forEach((v) => ($('view-' + v).hidden = v !== view));
+    ['daily', 'nearby', 'exchange', 'supplies', 'phrase'].forEach(
+      (v) => ($('view-' + v).hidden = v !== view),
+    );
     document.body.setAttribute('data-current-view', view);
     document.querySelectorAll('[data-view]').forEach((b) => {
       b.classList.toggle('active', b.dataset.view === view);

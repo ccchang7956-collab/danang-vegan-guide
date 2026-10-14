@@ -336,18 +336,18 @@ test.describe('real browser UI regressions', () => {
     expect(mapMetrics.popupContentInsideMap, metricsDescription).toBe(true);
   });
 
-  test('shows four usable navigation entries and card actions at a 393 px viewport', async ({
+  test('shows five usable navigation entries and card actions at a 393 px viewport', async ({
     page,
   }) => {
     await page.setViewportSize({ width: 393, height: 852 });
     await captureLeafletMap(page);
     await loadApp(page);
     const navItems = page.locator('.bottom-nav [data-view]');
-    await expect(navItems).toHaveCount(4);
+    await expect(navItems).toHaveCount(5);
     const screenshotDirectory = path.resolve('test-results');
     await fs.mkdir(screenshotDirectory, { recursive: true });
 
-    for (const view of ['daily', 'nearby', 'exchange', 'phrase']) {
+    for (const view of ['daily', 'nearby', 'exchange', 'supplies', 'phrase']) {
       await page.locator(`.bottom-nav [data-view="${view}"]`).click();
       await page.waitForFunction(() => window.scrollY === 0);
       await expect(page.locator(`#view-${view}`)).toBeVisible();
@@ -400,6 +400,26 @@ test.describe('real browser UI regressions', () => {
           { timeout: 5_000 },
         );
         await expect(page.locator('.leaflet-popup-content')).toContainText(selectedRestaurant.name);
+      }
+
+      if (view === 'supplies') {
+        await expect(page.locator('#view-supplies .supply-photo img')).toHaveCount(11);
+        await page.waitForFunction(() =>
+          [...document.querySelectorAll('#view-supplies .supply-photo img')].every(
+            (image) => image.complete && image.naturalWidth > 0,
+          ),
+        );
+        await page.locator('#supply-handy-chay').scrollIntoViewIfNeeded();
+        await page.screenshot({
+          path: path.join(screenshotDirectory, 'mobile-supplies-image-393x852.png'),
+        });
+        await expect(page.locator('#supply-noodles .supply-card')).toHaveCount(2);
+        await expect(page.locator('#supply-snacks .supply-card')).toHaveCount(9);
+        await page.locator('[data-jump="supply-snacks"]').click();
+        await expect(page.locator('#supply-snacks-heading')).toBeInViewport();
+        await page.screenshot({
+          path: path.join(screenshotDirectory, 'mobile-supplies-snacks-393x852.png'),
+        });
       }
 
       if (view === 'phrase') {
