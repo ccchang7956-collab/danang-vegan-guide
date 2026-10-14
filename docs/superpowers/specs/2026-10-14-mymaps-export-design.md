@@ -14,6 +14,8 @@
 
 UTF-8 不含 BOM，標題列不加引號；資料欄以 CSV 引號跳脫逗號、換行與雙引號，列分隔使用 CRLF。中文和越南文保持原文。永久歇業、暫停營業、位置待確認與營運待確認在 Name 前標記。已核對與其他來源回報時間分欄，缺值留空。固定 ID 沿用店家 id，供 My Maps 重新匯入比對。
 
+CheckedDate 使用資料查核日期 checkedDate，缺值留空；營運證據日期 operatingEvidenceDate 另在 OperatingNotes 以「營運證據日期」標示，不混用兩種日期。
+
 ## 實作範圍
 
 `assets/core.js` 增加純函式 `restaurantsCsv(records)`，負責資料轉換與序列化；`assets/app.js` 使用 Blob、Object URL 與下載連結產生瀏覽器下載，完成後釋放 Object URL，失敗顯示可讀提示。`index.html` 使用既有 quick-actions 與按鈕樣式。`sw.js` 更新快取版本；README 補上使用與資料更新說明。網站只需載入新資料，不須預先產生靜態匯出檔案；離線會匯出已載入的資料，無法取得未載入的新資料。

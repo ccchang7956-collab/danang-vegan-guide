@@ -194,8 +194,13 @@
         r.phone || '',
         r.googleMapsUrl || '',
         r.addressIssue || '',
-        r.operatingEvidenceDate || r.checkedDate || '',
-        r.operatingEvidenceText || '',
+        r.checkedDate || '',
+        [
+          r.operatingEvidenceText,
+          r.operatingEvidenceDate ? `營運證據日期：${r.operatingEvidenceDate}` : '',
+        ]
+          .filter(Boolean)
+          .join('\n'),
         coordinateNote,
         r.coordinateSourceUrl || '',
         (r.sourceUrls || []).join('\n'),

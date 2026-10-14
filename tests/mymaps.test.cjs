@@ -85,10 +85,38 @@ test('My Maps CSV retains every current record with valid headers and original v
       assert.ok(e.HoursNotes.includes(note), `${r.id}: missing hours warning`);
     }
     assert.equal(e.GoogleMaps, r.googleMapsUrl || '');
+    assert.equal(
+      e.CheckedDate,
+      r.checkedDate || '',
+      `${r.id}: research date differs from evidence date`,
+    );
+    assert.ok(e.OperatingNotes.includes(r.operatingEvidenceText || ''));
+    if (r.operatingEvidenceDate) {
+      assert.ok(e.OperatingNotes.includes(`營運證據日期：${r.operatingEvidenceDate}`));
+    }
     assert.equal(e.Sources, (r.sourceUrls || []).join('\n'));
     if (r.operatingStatus === 'permanently-closed') assert.match(e.Name, /^【永久歇業】/);
   });
   assert.equal(JSON.stringify(records), before, 'export does not mutate records');
+});
+
+test('an old operating evidence date cannot become a missing research date', () => {
+  const [headers, row] = readCsv(
+    C.restaurantsCsv([
+      {
+        id: 'old-evidence',
+        name: '舊心得店家',
+        address: '1 Hội An',
+        operatingEvidenceDate: '2024-08-10',
+        operatingEvidenceText: '舊用餐心得，現況待確認',
+      },
+    ]),
+  );
+  assert.equal(row[headers.indexOf('CheckedDate')], '');
+  assert.equal(
+    row[headers.indexOf('OperatingNotes')],
+    '舊用餐心得，現況待確認\n營運證據日期：2024-08-10',
+  );
 });
 
 test('My Maps export handles commas, quotes, newlines and changes made after an earlier export', () => {

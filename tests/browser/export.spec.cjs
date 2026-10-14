@@ -60,6 +60,7 @@ test('downloads one CSV with all current records despite active filters, at mobi
   expect(csv).toContain('Ngọc Chi（市中心店）');
   expect(csv).toContain('Khai Tâm');
   expect(csv).toContain('農曆公休仍未確認');
+  expect(csv).toContain('營運證據日期：2024-08-10');
   expect(csv).not.toContain('\ufeff');
   await expect(page.locator('#toast')).toContainText(`已匯出 ${count} 筆店家`);
   expect(downloads).toHaveLength(1);
