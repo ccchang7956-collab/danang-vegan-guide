@@ -15,20 +15,20 @@
 
 ## Task 1: CSV serializer
 
-- [ ] Create `tests/mymaps.test.cjs`, require TravelCore and load current data. Parse CSV independently to compare each record with source. Include quoted text, commas, embedded line breaks, empty coordinates, uncertain hours, and post-load record edits.
-- [ ] Run `node --test tests/mymaps.test.cjs`, expect missing `restaurantsCsv` failure.
-- [ ] Add `restaurantsCsv(records)` to `assets/core.js` and its returned API. Use the 21 columns in the spec, map categorical labels, retain source values and quote each data field with doubled interior quotes. Return `headers.join(',') + '\r\n' + rows.join('\r\n') + '\r\n'`.
-- [ ] Run the targeted test; expect all pass.
+- [x] Create `tests/mymaps.test.cjs`, require TravelCore and load current data. Parse CSV independently to compare each record with source. Include quoted text, commas, embedded line breaks, empty coordinates, uncertain hours, and post-load record edits.
+- [x] Run `node --test tests/mymaps.test.cjs`, expect missing `restaurantsCsv` failure.
+- [x] Add `restaurantsCsv(records)` to `assets/core.js` and its returned API. Use the 21 columns in the spec, map categorical labels, retain source values and quote each data field with doubled interior quotes. Return `headers.join(',') + '\r\n' + rows.join('\r\n') + '\r\n'`.
+- [x] Run the targeted test; expect all pass.
 
 ## Task 2: Download UI and lifecycle
 
-- [ ] Add `tests/browser/export.spec.cjs` using existing helpers, with service workers blocked. Open nearby page, apply a vegan filter, update one restaurant and append a record to TRAVEL_DATA, then wait for one download from export click. Confirm updated values, original closed records and final added record are in the file.
-- [ ] Run `npm run test:browser -- tests/browser/export.spec.cjs`, expect export button missing.
-- [ ] Add export button and import instructions after nearby filters in `index.html`, use existing secondary-button and small-note styles.
-- [ ] Add click listener in `assets/app.js`, create `new Blob([C.restaurantsCsv(D.restaurants)], {type: 'text/csv;charset=utf-8'})`, create Object URL, click a temporary download anchor named with local YYYY-MM-DD, remove it and revoke the URL after download begins. Use the existing toast for success and failure.
-- [ ] Bump worker version in `sw.js`. Update README with full-export, Location/Name choices and reimport matching ID instructions.
-- [ ] Run Node and browser suites, formatter, syntax and diff checks. Review browser screenshot at 393 × 852.
-- [ ] Request read-only code review, resolve material findings, rerun affected checks.
+- [x] Add `tests/browser/export.spec.cjs` using existing helpers, with service workers blocked. Open nearby page, apply a vegan filter, update one restaurant and append a record to TRAVEL_DATA, then wait for one download from export click. Confirm updated values, original closed records and final added record are in the file.
+- [x] Run `npm run test:browser -- tests/browser/export.spec.cjs`, expect export button missing.
+- [x] Add export button and import instructions after nearby filters in `index.html`, use existing secondary-button and small-note styles.
+- [x] Add click listener in `assets/app.js`, create `new Blob([C.restaurantsCsv(D.restaurants)], {type: 'text/csv;charset=utf-8'})`, create Object URL, click a temporary download anchor named with local YYYY-MM-DD, remove it and revoke the URL after download begins. Use the existing toast for success and failure.
+- [x] Bump worker version in `sw.js`. Update README with full-export, Location/Name choices and reimport matching ID instructions.
+- [x] Run Node and browser suites, formatter, syntax and diff checks. Review browser screenshot at 393 × 852.
+- [x] Request read-only code review, resolve material findings, rerun affected checks.
 
 ## Delivery
 

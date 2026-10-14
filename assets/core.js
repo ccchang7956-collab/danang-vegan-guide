@@ -119,6 +119,94 @@
           (a.distance ?? Infinity) - (b.distance ?? Infinity),
       );
   }
+  function restaurantsCsv(records) {
+    const headers = [
+      'Name',
+      'Latitude',
+      'Longitude',
+      'Location',
+      'Address',
+      'Area',
+      'Diet',
+      'DietNotes',
+      'OperatingStatus',
+      'ConfirmedHours',
+      'ReportedHours',
+      'HoursNotes',
+      'Phone',
+      'GoogleMaps',
+      'AddressNotes',
+      'CheckedDate',
+      'OperatingNotes',
+      'CoordinateStatus',
+      'CoordinateSource',
+      'Sources',
+      'ID',
+    ];
+    const areas = {
+      'danang-city': '峴港市中心',
+      'danang-beach': '峴港海灘區',
+      sontra: '山茶區',
+      hoian: '會安',
+      banahills: '巴拿山',
+    };
+    const diets = {
+      vegan: '全素',
+      vegetarian: '素食（蛋奶等需確認）',
+      mixed: '葷素混合（提供素食選項）',
+      uncertain: '素食類型待確認',
+    };
+    const statuses = {
+      'operating-evidence': '查核時有營運線索',
+      'permanently-closed': '永久歇業',
+      'temporarily-closed': '暫停營業',
+      unverified: '營運待確認',
+    };
+    const quote = (value) => '"' + String(value ?? '').replace(/"/g, '""') + '"';
+    const rows = records.map((r) => {
+      const status = statuses[r.operatingStatus] || r.operatingStatus || '營運待確認';
+      const closed = ['permanently-closed', 'temporarily-closed'].includes(r.operatingStatus);
+      const prefix = closed
+        ? `【${status}】`
+        : r.navigationHold
+          ? '【位置待確認】'
+          : r.operatingStatus !== 'operating-evidence'
+            ? '【營運待確認】'
+            : '';
+      const coordinateNote = closed
+        ? '既有座標，歇業／暫停記錄，勿直接前往'
+        : r.navigationHold
+          ? '位置待確認，勿直接前往'
+          : r.coordinateStatus || '';
+      return [
+        prefix + r.name,
+        r.lat ?? '',
+        r.lng ?? '',
+        [r.name, r.address, 'Vietnam'].filter(Boolean).join(', '),
+        r.address || '',
+        areas[r.area] || r.area || '',
+        diets[r.diet] || r.diet || '素食類型待確認',
+        r.veganNotes || '',
+        status,
+        r.hours || '',
+        r.reportedHours || '',
+        [r.hoursStatus, r.hoursReviewNote, r.hoursExceptionNote].filter(Boolean).join('\n'),
+        r.phone || '',
+        r.googleMapsUrl || '',
+        r.addressIssue || '',
+        r.operatingEvidenceDate || r.checkedDate || '',
+        r.operatingEvidenceText || '',
+        coordinateNote,
+        r.coordinateSourceUrl || '',
+        (r.sourceUrls || []).join('\n'),
+        r.id,
+      ]
+        .map(quote)
+        .join(',');
+    });
+    // An unquoted ASCII header without BOM avoids My Maps header parsing failures.
+    return [headers.join(','), ...rows].join('\r\n') + '\r\n';
+  }
   return {
     hasCoordinates,
     distanceKm,
@@ -129,5 +217,6 @@
     operationRank,
     canRecommend,
     selectExchange,
+    restaurantsCsv,
   };
 });

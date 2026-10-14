@@ -953,6 +953,30 @@
     changeView('nearby');
     $('search-input').scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
+  $('export-mymaps').addEventListener('click', () => {
+    let url, anchor;
+    try {
+      const csv = C.restaurantsCsv(D.restaurants);
+      const now = new Date();
+      const date = [
+        now.getFullYear(),
+        String(now.getMonth() + 1).padStart(2, '0'),
+        String(now.getDate()).padStart(2, '0'),
+      ].join('-');
+      url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+      anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = `峴港與會安素食店家_${date}.csv`;
+      document.body.append(anchor);
+      anchor.click();
+      toast(`已匯出 ${D.restaurants.length} 筆店家。匯入定位選 Location，標題選 Name。`);
+    } catch {
+      toast('匯出失敗，請重新整理後再試一次。');
+    } finally {
+      anchor?.remove();
+      if (url) setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+  });
   $('locate-btn').addEventListener('click', () => locate('nearby'));
   $('exchange-locate-btn').addEventListener('click', () => locate('exchange'));
   $('exchange-day').addEventListener('change', () => {

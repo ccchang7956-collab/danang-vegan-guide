@@ -1,5 +1,5 @@
 /* Versioned app shell. Bump VERSION whenever any bundled file changes. */
-const VERSION = 'v15';
+const VERSION = 'v16';
 const PREFIX = 'danang-vegan:' + new URL(self.registration.scope).pathname + ':';
 const CACHE = PREFIX + VERSION;
 const LOCAL = [
