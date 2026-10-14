@@ -1,26 +1,354 @@
 {
   "places": [
-    {"id":"lesands","name":"Le Sands 沙灘海濱飯店","address":"28 Võ Nguyên Giáp, Sơn Trà, Đà Nẵng","lat":16.0902,"lng":108.2481,"type":"hotel","sourceUrls":["https://lesandshotel.com/"]},
-    {"id":"sonhotel","name":"Son 會安精品水療度假村","address":"114/4 Đào Duy Từ, Hội An","lat":15.8763,"lng":108.3195,"type":"hotel","sourceUrls":["https://sonhoianhotel.com/contact/"]},
-    {"id":"mandila","name":"Mandila 曼迪拉海灘飯店","address":"218 Võ Nguyên Giáp, Sơn Trà, Đà Nẵng","lat":16.0679,"lng":108.2466,"type":"hotel","sourceUrls":["https://mandilabeachhotel.com/contact/"]},
-    {"id":"cathedral","name":"粉紅教堂・峴港主教座堂","address":"156 Trần Phú, Hải Châu, Đà Nẵng","lat":16.0669,"lng":108.2231,"type":"attraction","sourceUrls":["https://danangfantasticity.com/"]},
-    {"id":"sontra","name":"山茶半島・靈應寺代表站","address":"Chùa Linh Ứng Bãi Bụt, Sơn Trà, Đà Nẵng","lat":16.1002,"lng":108.2779,"type":"attraction","sourceUrls":["https://danangfantasticity.com/"]},
-    {"id":"nightmarket","name":"山茶夜市","address":"Chợ đêm Sơn Trà, Võ Văn Kiệt, Đà Nẵng（區域代表點）","lat":null,"lng":null,"type":"attraction","sourceUrls":["https://danangfantasticity.com/"]},
-    {"id":"hanmarket","name":"市區・韓市場代表站","address":"119 Trần Phú, Hải Châu, Đà Nẵng","lat":16.0681,"lng":108.2240,"type":"attraction","sourceUrls":["https://danangfantasticity.com/"]},
-    {"id":"bana","name":"巴拿山・黃金橋代表站","address":"Sun World Bà Nà Hills, Hòa Vang, Đà Nẵng","lat":15.9957,"lng":107.9963,"type":"attraction","sourceUrls":["https://sunworld.vn/banahills"]},
-    {"id":"memories","name":"會安印象秀","address":"Hoi An Memories Land, Cẩm Nam, Hội An","lat":15.8741,"lng":108.3395,"type":"attraction","sourceUrls":["https://hoianmemoriesland.com/"]},
-    {"id":"myson","name":"美山聖地","address":"Mỹ Sơn Sanctuary, Duy Xuyên","lat":15.7643,"lng":108.1246,"type":"attraction","sourceUrls":["https://whc.unesco.org/en/list/949/"]},
-    {"id":"oldtown","name":"會安古城・日本橋代表站","address":"Chùa Cầu, Trần Phú, Hội An","lat":15.8771,"lng":108.3260,"type":"attraction","sourceUrls":["https://whc.unesco.org/en/list/948/"]},
-    {"id":"coconut","name":"竹籃船・錦清椰林代表站","address":"Rừng dừa Bảy Mẫu, Cẩm Thanh, Hội An","lat":15.8754,"lng":108.3693,"type":"attraction","sourceUrls":["https://danangfantasticity.com/"]},
-    {"id":"marble","name":"五行山・水山代表站","address":"Ngũ Hành Sơn, Hòa Hải, Đà Nẵng","lat":16.0034,"lng":108.2643,"type":"attraction","sourceUrls":["https://danangfantasticity.com/"]},
-    {"id":"dragon","name":"龍橋","address":"Cầu Rồng, Đà Nẵng","lat":16.0613,"lng":108.2272,"type":"attraction","sourceUrls":["https://danangfantasticity.com/en/countdown-event/the-dragon-show"]},
-    {"id":"airport","name":"峴港國際機場","address":"Da Nang International Airport, Hải Châu, Đà Nẵng","lat":16.0439,"lng":108.1993,"type":"attraction","sourceUrls":["https://danangairportterminal.vn/"]}
+    {
+      "id": "lesands",
+      "name": "Le Sands 沙灘海濱飯店",
+      "address": "28 Võ Nguyên Giáp, Sơn Trà, Đà Nẵng",
+      "lat": 16.0902,
+      "lng": 108.2481,
+      "type": "hotel",
+      "sourceUrls": [
+        "https://lesandshotel.com/"
+      ]
+    },
+    {
+      "id": "sonhotel",
+      "name": "Son 會安精品水療度假村",
+      "address": "114/4 Đào Duy Từ, Hội An",
+      "lat": 15.8763,
+      "lng": 108.3195,
+      "type": "hotel",
+      "sourceUrls": [
+        "https://sonhoianhotel.com/contact/"
+      ]
+    },
+    {
+      "id": "mandila",
+      "name": "Mandila 曼迪拉海灘飯店",
+      "address": "218 Võ Nguyên Giáp, Sơn Trà, Đà Nẵng",
+      "lat": 16.0679,
+      "lng": 108.2466,
+      "type": "hotel",
+      "sourceUrls": [
+        "https://mandilabeachhotel.com/contact/"
+      ]
+    },
+    {
+      "id": "cathedral",
+      "name": "粉紅教堂・峴港主教座堂",
+      "address": "156 Trần Phú, Hải Châu, Đà Nẵng",
+      "lat": 16.0669,
+      "lng": 108.2231,
+      "type": "attraction",
+      "sourceUrls": [
+        "https://danangfantasticity.com/"
+      ]
+    },
+    {
+      "id": "sontra",
+      "name": "山茶半島・靈應寺代表站",
+      "address": "Chùa Linh Ứng Bãi Bụt, Sơn Trà, Đà Nẵng",
+      "lat": 16.1002,
+      "lng": 108.2779,
+      "type": "attraction",
+      "sourceUrls": [
+        "https://danangfantasticity.com/"
+      ]
+    },
+    {
+      "id": "nightmarket",
+      "name": "山茶夜市",
+      "address": "Chợ đêm Sơn Trà, Võ Văn Kiệt, Đà Nẵng（區域代表點）",
+      "lat": null,
+      "lng": null,
+      "type": "attraction",
+      "sourceUrls": [
+        "https://danangfantasticity.com/"
+      ]
+    },
+    {
+      "id": "hanmarket",
+      "name": "市區・韓市場代表站",
+      "address": "119 Trần Phú, Hải Châu, Đà Nẵng",
+      "lat": 16.0681,
+      "lng": 108.224,
+      "type": "attraction",
+      "sourceUrls": [
+        "https://danangfantasticity.com/"
+      ]
+    },
+    {
+      "id": "bana",
+      "name": "巴拿山・黃金橋代表站",
+      "address": "Sun World Bà Nà Hills, Hòa Vang, Đà Nẵng",
+      "lat": 15.9957,
+      "lng": 107.9963,
+      "type": "attraction",
+      "sourceUrls": [
+        "https://sunworld.vn/banahills"
+      ]
+    },
+    {
+      "id": "memories",
+      "name": "會安印象秀",
+      "address": "Hoi An Memories Land, Cẩm Nam, Hội An",
+      "lat": 15.8741,
+      "lng": 108.3395,
+      "type": "attraction",
+      "sourceUrls": [
+        "https://hoianmemoriesland.com/"
+      ]
+    },
+    {
+      "id": "myson",
+      "name": "美山聖地",
+      "address": "Mỹ Sơn Sanctuary, Duy Xuyên",
+      "lat": 15.7643,
+      "lng": 108.1246,
+      "type": "attraction",
+      "sourceUrls": [
+        "https://whc.unesco.org/en/list/949/"
+      ]
+    },
+    {
+      "id": "oldtown",
+      "name": "會安古城・日本橋代表站",
+      "address": "Chùa Cầu, Trần Phú, Hội An",
+      "lat": 15.8771,
+      "lng": 108.326,
+      "type": "attraction",
+      "sourceUrls": [
+        "https://whc.unesco.org/en/list/948/"
+      ]
+    },
+    {
+      "id": "coconut",
+      "name": "竹籃船・錦清椰林代表站",
+      "address": "Rừng dừa Bảy Mẫu, Cẩm Thanh, Hội An",
+      "lat": 15.8754,
+      "lng": 108.3693,
+      "type": "attraction",
+      "sourceUrls": [
+        "https://danangfantasticity.com/"
+      ]
+    },
+    {
+      "id": "marble",
+      "name": "五行山・水山代表站",
+      "address": "Ngũ Hành Sơn, Hòa Hải, Đà Nẵng",
+      "lat": 16.0034,
+      "lng": 108.2643,
+      "type": "attraction",
+      "sourceUrls": [
+        "https://danangfantasticity.com/"
+      ]
+    },
+    {
+      "id": "dragon",
+      "name": "龍橋",
+      "address": "Cầu Rồng, Đà Nẵng",
+      "lat": 16.0613,
+      "lng": 108.2272,
+      "type": "attraction",
+      "sourceUrls": [
+        "https://danangfantasticity.com/en/countdown-event/the-dragon-show"
+      ]
+    },
+    {
+      "id": "airport",
+      "name": "峴港國際機場",
+      "address": "Da Nang International Airport, Hải Châu, Đà Nẵng",
+      "lat": 16.0439,
+      "lng": 108.1993,
+      "type": "attraction",
+      "sourceUrls": [
+        "https://danangairportterminal.vn/"
+      ]
+    }
   ],
   "days": [
-    {"date":"2026-10-21","shortDate":"10/21","weekday":"三","tabLabel":"峴港初見","title":"海風、山茶，初見峴港","subtitle":"粉紅教堂 → 山茶半島 → 市區 → 山茶夜市","hotel":"lesands","reference":"cathedral","notes":[{"text":"航班：台北 07:10 起飛（台灣時間） → 峴港 09:00 抵達（越南時間）。早餐為原表的飛機餐；全素餐請向航空公司另行確認。"},{"text":"粉紅教堂原表註記 08:00–11:30、13:30–16:30，作為行程筆記，非即時開放保證。山茶夜市位置資料有搬遷落差，出發前以導航和飯店確認。"}],"stops":[{"id":"cathedral","time":"抵達後","note":"粉紅教堂；先放行李再出發，依當天開放情況調整。"},{"id":"sontra","note":"山茶半島原行程未指定站點；地圖以靈應寺代表。"},{"id":"hanmarket","note":"市區散步；原表未指定市場，地圖以韓市場代表。"},{"id":"nightmarket","time":"晚上","note":"保留原行程；資料有搬遷落差，地圖為來源描述的區域代表點；入口請再確認。"},{"id":"lesands","time":"今晚入住"}]},
-    {"date":"2026-10-22","shortDate":"10/22","weekday":"四","tabLabel":"巴拿・會安","title":"上山看橋，夜訪會安","subtitle":"巴拿山 → 會安印象秀 → 會安住宿","hotel":"sonhotel","reference":"oldtown","notes":[{"text":"巴拿山與會安距離較遠，安排山下交通和秀的入場時間；原行程未提供秀場時間，請以票券為準。"},{"warning":true,"text":"巴拿山 Ngọc Chi 為素食店，全素醬料、蛋奶有負面回報。現場出示點餐卡並逐項確認，不能因標示 vegan 就省略詢問。園區外餐廳不等於山上可步行到達。"}],"stops":[{"id":"bana","time":"白天","note":"巴拿山園區；地圖以黃金橋作區域代表，非餐廳入口。"},{"id":"memories","time":"晚上・依票券","note":"會安印象秀；確認場次與入場時間。"},{"id":"sonhotel","time":"今晚入住"}]},
-    {"date":"2026-10-23","shortDate":"10/23","weekday":"五","tabLabel":"美山・古城","title":"古老遺跡與燈籠夜色","subtitle":"美山聖地 → 會安古城 → 燈籠節","hotel":"sonhotel","reference":"oldtown","notes":[{"text":"會安燈籠節 19:00 為原表安排；實際活动與交通依當地當日公告。"},{"warning":true,"text":"原表另有龍橋 21:00，與 19:00 會安燈籠節在不同城市。建議今晚留會安，龍橋沿用明晚安排；此處保留原表作備選。"},{"text":"美山園區附近尚未找到可可靠定位的全素餐廳；優先安排在會安用餐，現場飲食用點餐卡確認。"}],"stops":[{"id":"myson","time":"白天"},{"id":"oldtown","time":"下午 → 19:00","note":"會安古城與燈籠節；先在古城周邊找全素餐。"},{"id":"dragon","time":"21:00・原表備選","optional":true,"note":"跨城活動可能衝突，建議改用 10/24 的龍橋安排。"},{"id":"sonhotel","time":"今晚入住"}]},
-    {"date":"2026-10-24","shortDate":"10/24","weekday":"六","tabLabel":"椰林・龍橋","title":"椰林水路，龍橋夜遊","subtitle":"竹籃船 → 五行山 → 龍橋 21:00","hotel":"mandila","reference":"mandila","notes":[{"text":"竹籃船原表未指定船家，地圖標示錦清椰林區域。五行山周邊可靠的全素店較少，可在回美溪海灘後用餐。"},{"text":"龍橋原表 21:00；官方一般週五、六、日 21:00 演出，仍以天氣與現場公告為準。"}],"stops":[{"id":"coconut","time":"白天","note":"錦清椰林代表區域；以實際預約船家決定集合點。"},{"id":"marble","time":"下午"},{"id":"dragon","time":"21:00"},{"id":"mandila","time":"今晚入住"}]},
-    {"date":"2026-10-25","shortDate":"10/25","weekday":"日","tabLabel":"採買・返程","title":"最後採買，把海風帶回家","subtitle":"市區 → 最後採買 → 峴港機場","hotel":null,"reference":"hanmarket","notes":[{"text":"航班：峴港 17:35 起飛（越南時間） → 台北 21:20 抵達（台灣時間）。前往機場時間依航空公司和交通安排。"},{"text":"飯店早餐為原表安排，現場確認全素選擇。先吃午餐，再留時間採買、取行李與去機場。"}],"stops":[{"id":"hanmarket","time":"上午・最後採買","note":"原表未指定市場，此處以韓市場作市區參考。"},{"id":"airport","time":"17:35 起飛","note":"回台北航班；出發前自行確認登機與行李規定。"}]}
+    {
+      "date": "2026-10-21",
+      "shortDate": "10/21",
+      "weekday": "三",
+      "tabLabel": "峴港初見",
+      "title": "海風、山茶，初見峴港",
+      "subtitle": "粉紅教堂 → 山茶半島 → 市區 → 山茶夜市",
+      "hotel": "lesands",
+      "reference": "cathedral",
+      "notes": [
+        {
+          "text": "航班：台北 07:10 起飛（台灣時間） → 峴港 09:00 抵達（越南時間）。早餐為原表的飛機餐；全素餐請向航空公司另行確認。"
+        },
+        {
+          "text": "粉紅教堂原表註記 08:00–11:30、13:30–16:30，作為行程筆記，非即時開放保證。山茶夜市位置資料有搬遷落差，出發前以導航和飯店確認。"
+        }
+      ],
+      "stops": [
+        {
+          "id": "cathedral",
+          "time": "抵達後",
+          "note": "粉紅教堂；先放行李再出發，依當天開放情況調整。"
+        },
+        {
+          "id": "sontra",
+          "note": "山茶半島原行程未指定站點；地圖以靈應寺代表。"
+        },
+        {
+          "id": "hanmarket",
+          "note": "市區散步；原表未指定市場，地圖以韓市場代表。"
+        },
+        {
+          "id": "nightmarket",
+          "time": "晚上",
+          "note": "保留原行程；資料有搬遷落差，地圖為來源描述的區域代表點；入口請再確認。"
+        },
+        {
+          "id": "lesands",
+          "time": "今晚入住"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "shortDate": "10/22",
+      "weekday": "四",
+      "tabLabel": "巴拿・會安",
+      "title": "上山看橋，夜訪會安",
+      "subtitle": "巴拿山 → 會安印象秀 → 會安住宿",
+      "hotel": "sonhotel",
+      "reference": "oldtown",
+      "notes": [
+        {
+          "text": "巴拿山與會安距離較遠，安排山下交通和秀的入場時間；原行程未提供秀場時間，請以票券為準。"
+        }
+      ],
+      "stops": [
+        {
+          "id": "bana",
+          "time": "白天",
+          "note": "巴拿山園區；地圖以黃金橋作區域代表，非餐廳入口。"
+        },
+        {
+          "id": "memories",
+          "time": "晚上・依票券",
+          "note": "會安印象秀；確認場次與入場時間。"
+        },
+        {
+          "id": "sonhotel",
+          "time": "今晚入住"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "shortDate": "10/23",
+      "weekday": "五",
+      "tabLabel": "美山・古城",
+      "title": "古老遺跡與燈籠夜色",
+      "subtitle": "美山聖地 → 會安古城 → 燈籠節",
+      "hotel": "sonhotel",
+      "reference": "oldtown",
+      "notes": [
+        {
+          "text": "會安燈籠節 19:00 為原表安排；實際活动與交通依當地當日公告。"
+        },
+        {
+          "warning": true,
+          "text": "原表另有龍橋 21:00，與 19:00 會安燈籠節在不同城市。建議今晚留會安，龍橋沿用明晚安排；此處保留原表作備選。"
+        },
+        {
+          "text": "美山園區附近尚未找到可可靠定位的全素餐廳；優先安排在會安用餐，現場飲食用點餐卡確認。"
+        }
+      ],
+      "stops": [
+        {
+          "id": "myson",
+          "time": "白天"
+        },
+        {
+          "id": "oldtown",
+          "time": "下午 → 19:00",
+          "note": "會安古城與燈籠節；先在古城周邊找全素餐。"
+        },
+        {
+          "id": "dragon",
+          "time": "21:00・原表備選",
+          "optional": true,
+          "note": "跨城活動可能衝突，建議改用 10/24 的龍橋安排。"
+        },
+        {
+          "id": "sonhotel",
+          "time": "今晚入住"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "shortDate": "10/24",
+      "weekday": "六",
+      "tabLabel": "椰林・龍橋",
+      "title": "椰林水路，龍橋夜遊",
+      "subtitle": "竹籃船 → 五行山 → 龍橋 21:00",
+      "hotel": "mandila",
+      "reference": "mandila",
+      "notes": [
+        {
+          "text": "竹籃船原表未指定船家，地圖標示錦清椰林區域。五行山周邊可靠的全素店較少，可在回美溪海灘後用餐。"
+        },
+        {
+          "text": "龍橋原表 21:00；官方一般週五、六、日 21:00 演出，仍以天氣與現場公告為準。"
+        }
+      ],
+      "stops": [
+        {
+          "id": "coconut",
+          "time": "白天",
+          "note": "錦清椰林代表區域；以實際預約船家決定集合點。"
+        },
+        {
+          "id": "marble",
+          "time": "下午"
+        },
+        {
+          "id": "dragon",
+          "time": "21:00"
+        },
+        {
+          "id": "mandila",
+          "time": "今晚入住"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "shortDate": "10/25",
+      "weekday": "日",
+      "tabLabel": "採買・返程",
+      "title": "最後採買，把海風帶回家",
+      "subtitle": "市區 → 最後採買 → 峴港機場",
+      "hotel": null,
+      "reference": "hanmarket",
+      "notes": [
+        {
+          "text": "航班：峴港 17:35 起飛（越南時間） → 台北 21:20 抵達（台灣時間）。前往機場時間依航空公司和交通安排。"
+        },
+        {
+          "text": "飯店早餐為原表安排，現場確認全素選擇。先吃午餐，再留時間採買、取行李與去機場。"
+        }
+      ],
+      "stops": [
+        {
+          "id": "hanmarket",
+          "time": "上午・最後採買",
+          "note": "原表未指定市場，此處以韓市場作市區參考。"
+        },
+        {
+          "id": "airport",
+          "time": "17:35 起飛",
+          "note": "回台北航班；出發前自行確認登機與行李規定。"
+        }
+      ]
+    }
   ]
 }

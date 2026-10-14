@@ -81,6 +81,7 @@ if coords_path.exists():
         else:p['coordinateStatus']='approximate-area-marker' if p['lat'] is not None else 'unverified'
 else:
     for p in raw['places']:p['coordinateStatus']='approximate-area-marker' if p['lat'] is not None else 'unverified'
+hours_conflicts={r['id']:r for r in json.loads((root/'research/restaurant-hours-conflicts.json').read_text())}
 restaurants=[]
 for filename in ['danang-city.json','danang-beach.json','hoian-outskirts.json']:
     rows=json.loads((root/'research'/filename).read_text())
@@ -96,6 +97,8 @@ for filename in ['danang-city.json','danang-beach.json','hoian-outskirts.json']:
         if 'banahills'==r['area']:
             r['veganNotes']=r['veganNotes'].replace('無法确认就吃預備外帶。','無法確認時請詢問可現做的純植物食材；入園前先聯絡確認全素方案。')
             r['diet']='uncertain';r['risk']='有旅客回報標示 vegan 仍出現奶製品或魚露；全素用餐需店家逐项確認。'
+        if 'business-info' in str(r.get('hoursStatus','')) and any(year in str(r.get('hoursStatus','')) for year in ['2019','2020']):
+            r['hoursStatus']='old-directory; '+r['hoursStatus']
         if any(word in str(r.get('hoursStatus','')).lower() for word in ['conflict','unreliable','incomplete','old-directory','confirm closing']):
             r['reportedHours']=r['hours'];r['hours']=None
         if r['id']=='hoian-seeds':r['closedWeekdays']=[4,5]
@@ -122,6 +125,13 @@ for filename in ['danang-city.json','danang-beach.json','hoian-outskirts.json']:
         o=direct[r['id']]
         if isinstance(o.get('lat'),(int,float)) and isinstance(o.get('lng'),(int,float)) and not r.get('navigationHold'):
             r.update(lat=o['lat'],lng=o['lng'],coordinateStatus='source-google-business-marker',coordinateSourceUrl=r['googleMapsUrl'])
+        if r['id'] in hours_conflicts:
+            r['reportedHours']=r.get('reportedHours',r.get('hours'));r['hours']=None
+            r['hoursStatus']='google-single-day-conflict-with-reported-schedule'
+            r['hoursReviewNote']=hours_conflicts[r['id']]['reason']
+            r['hoursConflictSourceUrl']=r['googleMapsUrl'];r['hoursConflictCheckedDate']=o['checkedDate']
+            r['googleObservedHoursSnippet']=o['hours']
+            if r['id']=='an-lac-tam-2':r['hoursExceptionNote']='舊來源另提到農曆休息日；每週時段及農曆例外都請先確認。'
         if r['id']=='bana-ngoc-chi':r['address']=o['address']
         if r['id']=='hoian-quan-chay-cua-dai':r['name']='An Phuoc Vegetarian（333 Cửa Đại）'
         if r['id']=='khai-tam-city':r['risk']='Google 仍列有商家，但近期實際用餐紀錄與營業時段可信度不足；前往前先詢問。'
@@ -139,7 +149,16 @@ for filename in ['danang-city.json','danang-beach.json','hoian-outskirts.json']:
         restaurants.append(r)
 assert len({r['id'] for r in restaurants})==len(restaurants),'duplicate restaurant IDs'
 assert set(audits)=={r['id'] for r in restaurants}, 'audit has unmatched restaurant ids'
-raw['restaurants']=restaurants;raw['checkedDate']=audit_date;raw['restaurantGoogleCheckedDate']=audit_date
+addition=json.loads((root/'research/loving-hut-danang-addition.json').read_text())
+r=dict(addition['original']);r['dietCheckedDate']=r['checkedDate'];r.update(addition['audit'])
+assert r['id'] not in {old['id'] for old in restaurants}, 'duplicate addition'
+assert r['operatingStatus']=='unverified' and r['ratingSourceType']=='google-mirror' and not addition['observations'], 'addition must preserve limited verification'
+assert r['googleReviewCount'] is None and r['hours'] is None, 'unverified count/hours'
+assert r['coordinateSourceUrl'] in r['sourceUrls'] and -90<=r['lat']<=90 and -180<=r['lng']<=180
+assert urlparse(r['googleMapsUrl']).hostname=='share.google', 'invalid shared link'
+restaurants.append(r)
+raw['restaurants']=restaurants;raw['checkedDate']=addition['checkedDate'];raw['restaurantGoogleCheckedDate']=audit_date
+raw['restaurantAdditionCheckedDate']=addition['checkedDate']
 meal_days=json.loads((root/'research/review-meal-coverage.json').read_text())['days']
 assert [d['date'] for d in meal_days]==[d['date'] for d in raw['days']], 'meal dates mismatch'
 by_id={r['id']:r for r in restaurants}
@@ -155,6 +174,7 @@ raw['mealPlans']=meal_days
 raw['restaurantAuditSummary']={
     'records':len(restaurants),
     'exactGoogleLinks':sum(r['googleLinkType']=='place' for r in restaurants),
+    'sharedBusinessLinks':sum(r['googleLinkType']=='shared-business' for r in restaurants),
     'googleSearchLinks':sum(r['googleLinkType']=='search' for r in restaurants),
     'googleDirectRatings':sum(r['ratingSourceType']=='google-direct' for r in restaurants),
     'googleRatings':sum(r['googleRating'] is not None for r in restaurants),
@@ -163,5 +183,5 @@ raw['restaurantAuditSummary']={
     'closed':sum(r['operatingStatus'] in ['permanently-closed','temporarily-closed'] for r in restaurants),
     'heldNavigation':sum(bool(r.get('navigationHold')) for r in restaurants)
 }
-(root/'assets/data.js').write_text('/* Curated on '+audit_date+'. Sources and uncertainty preserved per venue. */\nwindow.TRAVEL_DATA = '+json.dumps(raw,ensure_ascii=False,indent=2)+';\n')
+(root/'assets/data.js').write_text('/* Updated on '+raw['checkedDate']+'. Sources and uncertainty preserved per venue. */\nwindow.TRAVEL_DATA = '+json.dumps(raw,ensure_ascii=False,indent=2)+';\n')
 print(f"Built {len(raw['days'])} days, {len(restaurants)} restaurants, {len(raw['exchangePoints'])} exchange points, {sum(r['lat'] is not None for r in restaurants)} restaurant map pins")

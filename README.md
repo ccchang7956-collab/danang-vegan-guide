@@ -4,13 +4,15 @@
 
 ## 開始使用
 
-- **每日行程**：切換五天，查看景點、住宿與餐廳地圖。餐廳參考位置可切換整天或單一景點。
-- **附近素食**：點「使用我的位置」，允許定位後依直線距離排序。也可改選飯店／景點當參考位置，搜尋店名與地址，篩選區域或全素店。
+- **每日行程**：切換五天，查看景點、住宿與餐廳地圖。餐廳參考位置可切換整天或單一景點；直線範圍預設 10 km，可切換 6／10／15 km。每日搜尋框可搜尋店名、地址與料理，清除搜尋或把關鍵字帶到「搜尋全清單」。搜尋支援多個關鍵字，忽略越南文聲調與大小寫。「今天怎麼吃」可展開三餐與不同業者的備援，附 Google 商家按鈕。
+- **附近素食**：點「使用我的位置」，允許定位後依直線距離排序。也可改選飯店／景點當參考位置，搜尋店名與地址，篩選區域或全素店。「只找全素店」會清除舊搜尋／封存篩選，目前可選 24 家全素店；「查看餐廳列表」可直接跳過地圖。
 - **換匯所**：切換旅行日期或使用 GPS，查看附近銀行與已公告授權櫃檯，依 USD／TWD 官方幣別資料篩選，並以 Google Maps 導航。地圖只替可核對座標的點放圖釘；其他官方地址仍可開導航，不虛構距離。
 - **全素點餐卡**：越南文、英文與繁體中文，可放大給店員看或複製。
 - 餐廳卡片可直接 Google Maps 導航、查看地圖、打電話及展開來源。
 
-目前保留 **45 家餐廳查核記錄**；2026-10-13 已逐一開啟對應 **Google Maps 商家頁**核對評分、評論數與地址。每家均有 Google 商家／評價連結及直接查核快照。**42 家 Google 未標歇業、1 家營業待確認、2 家永久歇業**；可選列表預設 43 家，歇業店只留在查核記錄，不進每日推薦，也不提供舊址導航。43 筆記錄有來源圖釘，其中 2 筆屬歇業舊址；其餘沒有可靠座標的店保留地址，不虛構距離。
+目前保留 **46 家餐廳查核記錄**。原 45 家於 2026-10-13 逐一開啟對應 Google Maps 商家頁核對評分、評論數與地址；新收錄 **Loving Hut Da Nang（380 Lê Văn Hiến）** 於 2026-10-14 以關聯組織餐廳目錄、HappyCow 與公開評價轉載比對，保留使用者提供的 Google 分享連結。新店未直接確認 Google 營業狀態，評分 4.3 明確標為轉載，Google 原始評論數未核實，時段與全素條件待確認，請先打電話。
+
+**42 家 Google 未標歇業、2 家營業待確認、2 家永久歇業**；預設可選列表 44 家，24 家分類為全素。歇業店只留在查核記錄，不進每日推薦，也不提供舊址導航。44 筆記錄有來源圖釘，其中 2 筆屬歇業舊址；沒有可靠座標的店保留地址，不虛構距離。Loving Hut 的座標取自 HappyCow 公開地圖標記，入口仍請確認；與 61 Lê Quang Đạo 的 Loving Vegan 分開記錄。
 
 本次確認 [Everyday Vegan（45 Hoàng Kế Viêm）](https://www.google.com/maps?cid=15189593579518914999) 與 [Emma’s Vegan Garden（36 Lê Quý Đôn）](https://www.google.com/maps?cid=12600194686517776988) 在 Google 標為永久歇業。Đại Bình 改用 126 Châu Thị Vĩnh Tế、An Hy 改用 59 Phan Châu Trinh、KURUMI 會安改用 187 Lý Thường Kiệt、iVegan 會安核對為 672 Hai Bà Trưng。ANs 的 169F Trưng Nữ Vương 商家仍列有營業時段，沒有誤套另一地址分店的歇業訊息。Khai Tâm 雖有 Google 商家頁，但牌告 24 小時及近期實際用餐資料不足，仍列待確認。
 
@@ -30,7 +32,7 @@
 4. 等 GitHub 顯示發布網址，通常是 `https://你的帳號.github.io/你的repo名稱/`。
 5. 用手機 Safari 開啟該 HTTPS 網址。桌面本機檔案預覽可看頁面，但正式定位與離線快取請用 HTTPS 或 localhost。
 
-步驟依 [GitHub Pages 官方文件](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)。本次僅準備可發布檔案，尚未建立 GitHub repository 或發布網站。
+步驟依 [GitHub Pages 官方文件](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)。本次 review 更新工作區檔案與 ZIP；尚未將這次修改上傳至 GitHub。已有網站可用新版檔案覆蓋 repository 中的對應檔案。
 
 ## iPhone 使用與離線
 
@@ -38,23 +40,24 @@
 
 服務工作執行緒只快取本站文字資料、樣式、程式與圖示；**不下載離線地圖圖磚**。因此行程、餐廳地址和點餐卡可離線，底圖、Google Maps 導航、電話／來源等需適當連線或服務。GPS 不保存在網站資料庫或本機儲存，只在瀏覽器記憶體計算距離；重整後需再次定位。瀏覽器可能清理快取，出發前與飛航模式下都建議實際確認。
 
-若更新檔案，網路優先快取會取得新版本；必要時關閉頁面後重開。修改資產集合時也請更新 `sw.js` 的 CACHE 版本。
+離線採分版本的快取優先，避免弱網時文字頁面一直等待。**每次修改任何網站檔案，均須更新 `sw.js` 的 VERSION**（本包為 v10），與其餘檔案一起上傳。首次開啟舊站時會在背景下載新版；看到新版提示後重新整理，或關閉頁面後重開，再檢查內容。頁首「離線功能已啟用」表示已有 active worker，不能代替飛航模式實測或保證瀏覽器不會清理快取。
 
 ## 旅行資料注意
 
 - 距離為直線估計，不是步行或車程；山區、河道、橋樑與園區尤其不能只看公里數。
 - 景點與部分飯店點位為來源地圖代表點，山茶半島以靈應寺、會安古城以日本橋、市區採買以韓市場代表。竹籃船未指定船家，錦清椰林點位不代表預約碼頭。
 - 原表 10/23 同時安排會安燈籠節 19:00 與峴港龍橋 21:00，已提示跨城衝突，保留龍橋備選；10/24 的龍橋安排仍在。
-- 巴拿山 Ngọc Chi 與市中心 Ngọc Chi 不同分店。山上店有蛋奶／魚露爭議，列待確認備案；不能只憑 vegan 標籤判斷。先聯絡餐廳／園區確認全素方案，亦不要假定園區允許外食。
+- 巴拿山 Ngọc Chi 與市中心 Ngọc Chi 不同分店。山上店有蛋奶／魚露爭議；出發前先聯絡園區確認足量全素正餐與供餐時間。官方有外食禁令，不能把自帶餐當退路。無法確認時，縮短遊園並預先安排下山交通，再在市區用餐；市區店不是山頂步行可達的備援。
 - 美山與五行山附近尚未找到足夠可靠的專門全素點位，可安排會安或美溪用餐。
 - Roots、Kurumi、Chickpea、Chay Hạnh Phúc 等有近期搬遷／地址變更，使用研究時較新的來源。
 - The Seeds 來源列週四、週五休，10/22、10/23 每日列表加註並降低排序優先度。
-- 來源時間有衝突／不完整則不顯示精確時段；不提供「目前營業中」假即時狀態。
+- 7 家已展開 Google 每週時段核對（KHONG、Mom’s、Seeds、Rau Ơi、iVegan、Lê Hội、An Hy）。iVegan／Mom’s 18:30 關門，Lê Hội 週日 14:30 才開，An Hy 農曆休息例外仍待確認。
+- 來源時間有衝突／不完整，或僅有 2019／2020 年舊資料，則不顯示精確時段；不把 Google 單日片段推成每週時刻表，也不提供「目前營業中」假即時狀態。
 - 所有餐點包括全素店仍可出示點餐卡：排除蛋奶蜂蜜、魚露蠔油與動物高湯。
 
 ## 來源與更新
 
-餐廳卡片附逐店來源。完整研究原稿在 `research/danang-city.json`、`research/danang-beach.json`、`research/hoian-outskirts.json`，Google 交叉研究在 `research/google-audit-*.json`、直接商家頁觀察在 `research/google-direct-observations.json`，座標來源在 `research/places-coordinates.json`，行程在 `research/itinerary.json`；換匯據點與法律／幣別證據在 `research/exchange-points.json`。店家官網優先，另交叉參考 HappyCow、Google Maps 連結、具名導航目錄等；舊來源與爭議保留註記。
+餐廳卡片附逐店來源。新店 Loving Hut 研究在 `research/loving-hut-danang-addition.json`。完整研究原稿在 `research/danang-city.json`、`research/danang-beach.json`、`research/hoian-outskirts.json`，Google 交叉研究在 `research/google-audit-*.json`、直接商家頁觀察在 `research/google-direct-observations.json`，座標來源在 `research/places-coordinates.json`，每週時段／電話覆核在 `research/restaurant-review-corrections.json`，時段衝突在 `research/restaurant-hours-conflicts.json`，每日用餐備援在 `research/review-meal-coverage.json`，行程在 `research/itinerary.json`；換匯據點與法律／幣別證據在 `research/exchange-points.json`。店家官網優先，另交叉參考 HappyCow、Google Maps 連結、具名導航目錄等；舊來源與爭議保留註記。
 
 換匯主要來源：[越南國家銀行 2026 年外幣兌換代理規則](https://congbao.chinhphu.vn/van-ban/van-ban-hop-nhat-so-79-vbhn-nhnn-469935/66805.htm)、[BIDV 外幣現鈔服務](https://bidv.com.vn/vn/ca-nhan/san-pham-dich-vu/ngoai-hoi-va-thi-truong-von/mua-ban-ngoai-te/)、[BIDV 2025 年分行地址](https://bidv.com.vn/wps/wcm/connect/a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e/BIDV_BCTN_2025_%282.1%29_VIE_interactive_15mb.pdf?CACHEID=ROOTWORKSPACE-a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e-pS-Z7xM&MOD=AJPERES)、[Vietcombank 匯率牌價](https://www.vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/Ty-gia-ngoai-te)、[AEON MALL VietinBank 授權櫃檯公告](https://danangthanhkhe.aeonmall-vietnam.com/en/news/dich-vu-doi-ngoai-te-uy-nhiem-vietinbank-da-co-mat-tai-aeon-mall-da-nang-thanh-khe.html)、[峴港機場外幣服務說明](https://danangairport.vn/facility-detail-page/brand-detail?bid=137)。
 
@@ -71,7 +74,8 @@ node --test tests/*.test.cjs
 
 ## 驗證紀錄
 
-- 27 項 Node 測試：距離、排序、搜尋、分類、資料一致性、日期切換、GPS 成功／拒絕、地圖未載入備援、跨分頁卡片選取、巴拿山無座標備案、休息日與服務工作執行緒的子目錄／跨來源行為；新增 Google 覆蓋、歇業封存、地址衝突、狀態排序與歇業彈窗禁止導航。
-- Chrome 本機成功載入互動地圖、每日行程、餐廳與點餐卡；本次再用 393 × 852 手機模擬畫面檢查附近素食卡片、Google 評分與固定導覽。預设可選 43 家，完整查核記錄 45 家。
+- 50 項 Node 測試：距離、排序、搜尋、分類、資料一致性、日期切換、GPS 成功／拒絕、地圖未載入備援、跨分頁卡片選取、巴拿山無座標備案、休息日與服務工作執行緒的子目錄／跨來源行為；新增 Google 覆蓋、歇業封存、地址衝突、狀態排序與歇業彈窗禁止導航。
+- Chrome 本機成功載入互動地圖、每日行程、餐廳與點餐卡；2026-10-14 再以 Chrome 393 × 852 手機模擬畫面確認新版頁首、全素篩選、快速跳轉與餐廳卡片，並實測 DevTools 離線模式下重新載入行程與用餐備援。此輪新增每日半徑邊界、多關鍵字搜尋、全清單跳轉及 Loving Hut 資料測試；現在預設可選 44 家、全素篩選 24 家，完整查核記錄 46 家。
+- 新增搜尋控制項沿用手機版樣式與至少 44 px 操作區，功能以自動化 UI 測試確認；本輪獨立瀏覽器預覽未可用，未新增實際畫面驗證。
 - 尚未在實體 iPhone 17 Pro、越南實際 GPS 或正式 GitHub Pages 網址實測。正式定位需裝置允許；距離演算法與成功／拒絕的頁面處理已用測試驗證。
-- 新專案目錄的 Git metadata 寫入被環境權限限制，未建立本地 commit；不影響靜態檔案交付與使用者上傳。
+- 完整修正與剩餘旅行風險見 [本次 review 報告](docs/review-2026-10-14.md)。

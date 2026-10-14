@@ -1,4 +1,4 @@
-/* Curated on 2026-10-13. Sources and uncertainty preserved per venue. */
+/* Updated on 2026-10-14. Sources and uncertainty preserved per venue. */
 window.TRAVEL_DATA = {
   "places": [
     {
@@ -252,10 +252,6 @@ window.TRAVEL_DATA = {
       "notes": [
         {
           "text": "巴拿山與會安距離較遠，安排山下交通和秀的入場時間；原行程未提供秀場時間，請以票券為準。"
-        },
-        {
-          "warning": true,
-          "text": "巴拿山 Ngọc Chi 為素食店，全素醬料、蛋奶有負面回報。現場出示點餐卡並逐項確認，不能因標示 vegan 就省略詢問。園區外餐廳不等於山上可步行到達。"
         }
       ],
       "stops": [
@@ -726,8 +722,8 @@ window.TRAVEL_DATA = {
       "coordinateStatus": "source-google-business-marker",
       "diet": "vegetarian",
       "veganNotes": "奶素餐廳；餐點、飲品逐項確認無奶蛋蜂蜜，勿將 chay 視為全素。",
-      "hours": "每日 07:00–21:00",
-      "hoursStatus": "directory only; business-info last updated 2020",
+      "hours": null,
+      "hoursStatus": "old-directory; directory only; business-info last updated 2020",
       "phone": null,
       "sourceUrls": [
         "https://www.happycow.net/reviews/ans-vegetarian-cuisine-da-nang-89317",
@@ -736,6 +732,7 @@ window.TRAVEL_DATA = {
       "checkedDate": "2026-10-13",
       "operatingEvidence": "2025-01-10 dining review; no 2026 operation confirmation; official website search indexed in 2026 confirms 169F address",
       "originalArea": "海洲市中心／韓江西岸",
+      "reportedHours": "每日 07:00–21:00",
       "dietCheckedDate": "2026-10-12",
       "googleMapsUrl": "https://www.google.com/maps?cid=2222385936785292906",
       "googleLinkType": "place",
@@ -773,8 +770,8 @@ window.TRAVEL_DATA = {
       "coordinateStatus": "verified-local-guide-map-marker-Le-Quy-Don-branch",
       "diet": "vegetarian",
       "veganNotes": "菜單未標全素；2026 客人向店員詢問後找到全素菜。確認美乃滋、醬料與飲品。",
-      "hours": "每日 07:00–14:00、16:30–21:00；據目錄農曆滿月日休息",
-      "hoursStatus": "directory only; lunar closure requires confirmation",
+      "hours": null,
+      "hoursStatus": "google-single-day-conflict-with-reported-schedule",
       "phone": null,
       "sourceUrls": [
         "https://www.happycow.net/reviews/an-lac-tam-2-da-nang-183160",
@@ -807,7 +804,13 @@ window.TRAVEL_DATA = {
       "navigationHold": false,
       "googleLinkSourceUrl": "https://monandanang.vn/restaurant/g_ChIJv2NYMzcZQjERAJy_d1NFoeg-quan-chay-an-lac-tam-da-nang-vegetarian-restaurant",
       "googleObservationDate": "2026-10-13",
-      "priorOperatingEvidenceText": "Món Ăn Đà Nẵng 轉載標示 Google 的 2026-06-01 外送經驗，HappyCow 有 2026-05-19 用餐心得；皆超過近 120 日範圍，近期營運仍待確認。"
+      "priorOperatingEvidenceText": "Món Ăn Đà Nẵng 轉載標示 Google 的 2026-06-01 外送經驗，HappyCow 有 2026-05-19 用餐心得；皆超過近 120 日範圍，近期營運仍待確認。",
+      "reportedHours": "每日 07:00–14:00、16:30–21:00；據目錄農曆滿月日休息",
+      "hoursReviewNote": "舊資料下午16:30再開，Google查核當日列17:00；未核對完整每週時段，農曆休息例外亦待確認。",
+      "hoursConflictSourceUrl": "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20Chay%20An%20L%E1%BA%A1c%20T%C3%A2m%20%C4%90%C3%A0%20N%E1%BA%B5ng%20-%20Vegetarian%20Restaurant&query_place_id=ChIJv2NYMzcZQjERAJy_d1NFoeg",
+      "hoursConflictCheckedDate": "2026-10-13",
+      "googleObservedHoursSnippet": "14:00；17:00 再開",
+      "hoursExceptionNote": "舊來源另提到農曆休息日；每週時段及農曆例外都請先確認。"
     },
     {
       "id": "khai-tam-city",
@@ -910,8 +913,8 @@ window.TRAVEL_DATA = {
       "coordinateStatus": "source-google-business-marker",
       "diet": "vegetarian",
       "veganNotes": "據目錄餐點全素但有牛奶飲品；避免含奶飲品並確認所有醬料。",
-      "hours": "每日 06:30–15:00、16:00–20:00",
-      "hoursStatus": "directory only; business-info last updated 2019",
+      "hours": null,
+      "hoursStatus": "old-directory; directory only; business-info last updated 2019",
       "phone": null,
       "sourceUrls": [
         "https://www.happycow.net/reviews/au-lac-da-nang-25831"
@@ -919,6 +922,7 @@ window.TRAVEL_DATA = {
       "checkedDate": "2026-10-13",
       "operatingEvidence": "2026-05-15 dining review",
       "originalArea": "海洲北側／韓江西岸",
+      "reportedHours": "每日 06:30–15:00、16:00–20:00",
       "dietCheckedDate": "2026-10-12",
       "googleMapsUrl": "https://www.google.com/maps?cid=8489020020553107995",
       "googleLinkType": "place",
@@ -1095,8 +1099,8 @@ window.TRAVEL_DATA = {
       "coordinateStatus": "unverified-no-coordinate-published-in-accessible-source",
       "diet": "vegetarian",
       "veganNotes": "多數餐點可全素，但優格與蜂蜜有使用紀錄；披薩義大利麵特別確認起司奶蛋。",
-      "hours": "每日 06:30–21:00",
-      "hoursStatus": "directory only; last business-info update 2024",
+      "hours": null,
+      "hoursStatus": "google-single-day-conflict-with-reported-schedule",
       "phone": null,
       "sourceUrls": [
         "https://www.happycow.net/reviews/quan-chay-tinh-quan-da-nang-330620"
@@ -1127,7 +1131,12 @@ window.TRAVEL_DATA = {
       "googleLinkSourceUrl": "https://monandanang.vn/restaurant/g_ChIJ6TXY2-sXQjERQm2Oxj4bvMQ-quan-chay-tinh-quan-am-thuc-chay-da-nang-vegan-restaurant-in-da-nang",
       "addressIssue": "Sơn Tịnh quán（Nguyễn Tuấn Thiện）為另一店家，不能沿用其 4.9／145 評分。",
       "googleObservationDate": "2026-10-13",
-      "priorOperatingEvidenceText": "Món Ăn Đà Nẵng 轉載 Google 2026-09-02、2026-08-24 與 2026-08-19 用餐評論；地址吻合 11 Trần Nhật Duật，支持近期營運。勿配到山區 Nguyễn Tuấn Thiện 的 Sơn Tịnh quán。"
+      "priorOperatingEvidenceText": "Món Ăn Đà Nẵng 轉載 Google 2026-09-02、2026-08-24 與 2026-08-19 用餐評論；地址吻合 11 Trần Nhật Duật，支持近期營運。勿配到山區 Nguyễn Tuấn Thiện 的 Sơn Tịnh quán。",
+      "reportedHours": "每日 06:30–21:00",
+      "hoursReviewNote": "舊資料06:30開門，Google查核當日列10:30；未核對完整每週時段。",
+      "hoursConflictSourceUrl": "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20Chay%20T%E1%BB%89nh%20Qu%C3%A1n%20-%20%E1%BA%A8m%20Th%E1%BB%B1c%20Chay%20%C4%90%C3%A0%20N%E1%BA%B5ng&query_place_id=ChIJ6TXY2-sXQjERQm2Oxj4bvMQ",
+      "hoursConflictCheckedDate": "2026-10-13",
+      "googleObservedHoursSnippet": "10:30"
     },
     {
       "id": "son-tra-retreat",
@@ -1792,8 +1801,8 @@ window.TRAVEL_DATA = {
       "coordinateStatus": "source-map-navigation-destination",
       "diet": "vegetarian",
       "veganNotes": "HappyCow 列素食，可能全純素但未確認；逐項確認蛋奶蜂蜜及醬汁。HappyCow 簡寫 30，導航來源為對面 30。",
-      "hours": "每日 08:00–21:00",
-      "hoursStatus": "HappyCow-listed; reconfirm",
+      "hours": null,
+      "hoursStatus": "google-single-day-conflict-with-reported-schedule",
       "phone": null,
       "sourceUrls": [
         "https://www.happycow.net/reviews/quan-chay-xinh-da-nang-465680",
@@ -1824,7 +1833,12 @@ window.TRAVEL_DATA = {
       "navigationHold": false,
       "ratingAsOfDate": "2026-10-13",
       "googleObservationDate": "2026-10-13",
-      "priorOperatingEvidenceText": "HappyCow 2026-08-13 食客評論支持近期營業；RestaurantGuru 明確寫 30 An Thượng 8 對面，非 30 號屋內。"
+      "priorOperatingEvidenceText": "HappyCow 2026-08-13 食客評論支持近期營業；RestaurantGuru 明確寫 30 An Thượng 8 對面，非 30 號屋內。",
+      "reportedHours": "每日 08:00–21:00",
+      "hoursReviewNote": "舊資料每日21:00關門，Google查核當日列22:00；未核對完整每週時段。",
+      "hoursConflictSourceUrl": "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20chay%20xinh+Da%20Nang&query_place_id=ChIJV2RpMPMXQjERWWQHVPqszwE",
+      "hoursConflictCheckedDate": "2026-10-13",
+      "googleObservedHoursSnippet": "營業中 · 打烊時間：22:00"
     },
     {
       "id": "dn-daibinh",
@@ -2785,10 +2799,67 @@ window.TRAVEL_DATA = {
       "navigationHold": false,
       "priorOperatingEvidenceText": "官方仍提供營業時間與點餐；Restaurant Guru 有相對日期「a month ago」用餐評論及店主回覆，基準不明，未取得可確定近 120 日日期的營業證據。",
       "coordinateSourceUrl": "https://www.google.com/maps?cid=2124084090323198897"
+    },
+    {
+      "id": "loving-hut-danang",
+      "name": "Loving Hut Da Nang（Biển Tình Thương）",
+      "address": "380 Lê Văn Hiến, Khuê Mỹ, Ngũ Hành Sơn, Đà Nẵng",
+      "area": "danang-beach",
+      "lat": 16.025067,
+      "lng": 108.249514,
+      "coordinateStatus": "source-happycow-map-marker",
+      "diet": "uncertain",
+      "veganNotes": "HappyCow 列全素餐廳；舊心得（2018／2020）曾指出店內販售奶精及包裝食品含酪蛋白酸鈉。本次未確認飲品／食材現況，先列全素條件待確認，逐項詢問奶精、醬料與零售食品。",
+      "hours": null,
+      "hoursStatus": "third-party-hours-unverified-current",
+      "phone": "+84 353 970 606",
+      "sourceUrls": [
+        "https://share.google/4D2GrpTKifnpG4sc6",
+        "https://suprememastertv.com/ch1/restaurant/Veg_Restaurants_PART_4.pdf",
+        "https://www.happycow.net/reviews/bien-tinh-thuong-loving-hut-da-nang-36503",
+        "https://ru.restaurantguru.com/Loving-Hut-Da-Nang-Da-Nang"
+      ],
+      "checkedDate": "2026-10-14",
+      "operatingEvidence": "HappyCow 最新可讀用餐心得 2024-08-10；RestaurantGuru 有近期 Google 評論轉載，但未直接核對 Google 狀態。",
+      "originalArea": "五行山／Lê Văn Hiến",
+      "coordinateSourceUrl": "https://www.happycow.net/reviews/bien-tinh-thuong-loving-hut-da-nang-36503",
+      "searchAliases": [
+        "愛家",
+        "Bien Tinh Thuong",
+        "Loving Hut"
+      ],
+      "reportedHours": "每日 06:00–19:30",
+      "risk": "營業現況未直接核實，前往前先打電話；不要僅憑 Loving Hut 品牌判定所有品項全素。",
+      "dietCheckedDate": "2026-10-14",
+      "googleMapsUrl": "https://share.google/4D2GrpTKifnpG4sc6",
+      "googleLinkType": "shared-business",
+      "matchConfidence": "user-shared-entity-address-crosschecked",
+      "googlePlaceName": null,
+      "googlePlaceAddress": null,
+      "operatingStatus": "unverified",
+      "operatingEvidenceText": "Supreme Master TV 餐廳目錄與 HappyCow 均列 380 Lê Văn Hiến；電話一致。HappyCow 最新可讀實際用餐心得為 2024-08-10，RestaurantGuru 的近期 Google 評論屬轉載，無原始絕對日期。本次未直接讀取 Google 商家營業狀態，不將第三方更新日期視為營運確認。",
+      "operatingEvidenceDate": "2024-08-10",
+      "operatingSourceUrls": [
+        "https://suprememastertv.com/ch1/restaurant/Veg_Restaurants_PART_4.pdf",
+        "https://www.happycow.net/reviews/bien-tinh-thuong-loving-hut-da-nang-36503",
+        "https://ru.restaurantguru.com/Loving-Hut-Da-Nang-Da-Nang"
+      ],
+      "googleRating": 4.3,
+      "googleReviewCount": null,
+      "ratingSourceType": "google-mirror",
+      "ratingSourceUrl": "https://ru.restaurantguru.com/Loving-Hut-Da-Nang-Da-Nang",
+      "ratingNote": "公開目錄轉載 Google 4.3；177 為目錄顯示總評價數，未確認為 Google 原始評論數，因此不作 Google 評論數顯示。非直接 Google 查核，轉載同步日期未知。",
+      "ratingAsOfDate": null,
+      "navigationHold": false,
+      "googleObservationDate": null,
+      "userProvidedGoogleUrl": "https://share.google/4D2GrpTKifnpG4sc6",
+      "resolvedUserGoogleUrl": "https://www.google.com/search?kgmid=/g/1hc3jvq73&q=Loving%20Hut%20Da%20Nang",
+      "hoursReviewNote": "HappyCow 的商家時段資料最後更新於2020年，另一目錄也列06:00–19:30；仍缺目前每週時段確認，因此不顯示精確時段。"
     }
   ],
-  "checkedDate": "2026-10-13",
+  "checkedDate": "2026-10-14",
   "restaurantGoogleCheckedDate": "2026-10-13",
+  "restaurantAdditionCheckedDate": "2026-10-14",
   "mealPlans": [
     {
       "date": "2026-10-21",
@@ -3010,13 +3081,14 @@ window.TRAVEL_DATA = {
     }
   ],
   "restaurantAuditSummary": {
-    "records": 45,
+    "records": 46,
     "exactGoogleLinks": 45,
+    "sharedBusinessLinks": 1,
     "googleSearchLinks": 0,
     "googleDirectRatings": 45,
-    "googleRatings": 45,
+    "googleRatings": 46,
     "recentEvidence": 42,
-    "unverified": 1,
+    "unverified": 2,
     "closed": 2,
     "heldNavigation": 0
   }

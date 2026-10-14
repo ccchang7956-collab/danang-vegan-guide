@@ -11,7 +11,7 @@ class Element{
 function harness(options={}){
  const ids=[...fs.readFileSync('index.html','utf8').matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
  const elements=new Map(ids.map(id=>[id,new Element(id)]));elements.get('area-filter').value='all';elements.get('diet-filter').value='all';
- const docListeners={},nav=['daily','nearby','exchange','phrase'].map(view=>{const el=new Element();el.dataset={view};return el;});
+ const windowListeners={},docListeners={},nav=['daily','nearby','exchange','phrase'].map(view=>{const el=new Element();el.dataset={view};return el;});
  const document={body:new Element(),getElementById:id=>elements.get(id),querySelectorAll:()=>nav,createElement:()=>new Element(),addEventListener:(t,cb)=>docListeners[t]=cb};
  const mapMarkers=[],fits=[];
  const mapStub={setView(){return this;},invalidateSize(){},fitBounds(bounds){fits.push(bounds);}};
@@ -22,10 +22,10 @@ function harness(options={}){
   circleMarker:()=>({bindTooltip(){return this;},addTo(){return this;}}),circle:()=>({addTo(){return this;}}),
   marker:(coords,opts)=>({bindPopup(box){this.popup=box;return this;},addTo(){mapMarkers.push({name:opts.title,popup:this.popup});return this;}})
  }:undefined;
- const context={window:{TRAVEL_DATA:options.data||D,TravelCore:require('../assets/core.js'),addEventListener(){},scrollTo(){},isSecureContext:true},document,navigator:{onLine:true,...options.navigator},location:{protocol:'file:'},URL,requestAnimationFrame:cb=>cb(),setTimeout:()=>1,clearTimeout(){},console};
+ const context={window:{TRAVEL_DATA:options.data||D,TravelCore:require('../assets/core.js'),addEventListener:(type,cb)=>windowListeners[type]=cb,scrollTo(){},isSecureContext:true},document,navigator:{onLine:true,...options.navigator},location:{protocol:'file:'},URL,requestAnimationFrame:cb=>cb(),setTimeout:()=>1,clearTimeout(){},console};
  if(leaflet){context.L=leaflet;context.window.L=leaflet;}
  vm.runInNewContext(fs.readFileSync('assets/app.js','utf8'),context);
- return {elements,mapMarkers,fits,clickView:v=>docListeners.click({target:{closest:selector=>selector==='[data-view]'?nav.find(n=>n.dataset.view===v):null}})};
+ return {elements,mapMarkers,fits,windowListeners,navigator:context.navigator,clickView:v=>docListeners.click({target:{closest:selector=>selector==='[data-view]'?nav.find(n=>n.dataset.view===v):null}})};
 }
 test('daily and nearby restaurant cards do not share hidden card IDs',()=>{
  const h=harness();const daily=h.elements.get('day-restaurant-list').innerHTML;h.clickView('nearby');const nearby=h.elements.get('restaurant-list').innerHTML;
@@ -111,4 +111,27 @@ test('daily meal plan follows date and exposes the Ba Na contingency',()=>{
  const h=harness();assert.match(h.elements.get('meal-plan').innerHTML,/抵達後/);
  h.elements.get('day-tabs').listeners.click({target:{closest:()=>({dataset:{day:'1'}})}});
  const plan=h.elements.get('meal-plan').innerHTML;assert.match(plan,/禁止攜帶外食/);assert.match(plan,/縮短遊園/);assert.match(plan,/Chickpea/);assert.doesNotMatch(plan,/Emma/);
+});
+
+
+test('restoring network clears the old offline map notice',()=>{
+ const h=harness({navigator:{onLine:false}});assert.equal(h.elements.get('map-message').hidden,false);
+ h.navigator.onLine=true;h.windowListeners.online();assert.equal(h.elements.get('map-message').hidden,true);
+});
+
+function rangeFixture(){const data=structuredClone(D),o=data.places.find(p=>p.id===data.days[0].stops[0].id);const base=data.restaurants.find(r=>r.diet==='vegan'&&r.operatingStatus==='operating-evidence');data.restaurants=[...data.restaurants,{...base,id:'radius-8',name:'八公里測試店',lat:o.lat+8/111.195,lng:o.lng},{...base,id:'radius-12',name:'十二公里測試店',lat:o.lat+12/111.195,lng:o.lng}];return {data,o};}
+test('daily radius defaults to 10 km and switches between 6 and 15 km',()=>{
+ const {data,o}=rangeFixture(),h=harness({data});assert.ok(h.elements.has('day-radius'),'daily radius control missing');h.elements.get('day-anchor').value=o.id;h.elements.get('day-anchor').listeners.change();
+ assert.match(h.elements.get('day-restaurant-list').innerHTML,/八公里測試店/);assert.doesNotMatch(h.elements.get('day-restaurant-list').innerHTML,/十二公里測試店/);
+ h.elements.get('day-radius').value='6';h.elements.get('day-radius').listeners.change();assert.doesNotMatch(h.elements.get('day-restaurant-list').innerHTML,/八公里測試店/);
+ h.elements.get('day-radius').value='15';h.elements.get('day-radius').listeners.change();assert.match(h.elements.get('day-restaurant-list').innerHTML,/十二公里測試店/);assert.match(h.elements.get('day-restaurant-list').innerHTML,/15 km/);
+});
+test('daily search filters cards and map pins with a useful empty state',()=>{
+ const h=harness({withMap:true});assert.ok(h.elements.has('day-search'),'daily search missing');h.elements.get('day-search').value='kurumi';h.elements.get('day-search').listeners.input();assert.match(h.elements.get('day-restaurant-list').innerHTML,/KURUMI/);assert.ok(h.mapMarkers.filter(m=>m.name.includes('Roots')).length===0);
+ h.elements.get('day-search').value='zzzz不存在';h.elements.get('day-search').listeners.input();assert.equal(h.elements.get('day-food-count').textContent,'0 間');assert.match(h.elements.get('day-restaurant-list').innerHTML,/搜尋全清單/);
+ h.elements.get('clear-day-search').listeners.click();assert.ok(!h.elements.get('day-food-count').textContent.startsWith('0 '));
+});
+test('daily full-catalogue search clears stale filters and day changes clear daily query',()=>{
+ const h=harness();assert.ok(h.elements.has('search-all'),'search all missing');h.elements.get('day-search').value='loving hut';h.elements.get('area-filter').value='hoian';h.elements.get('diet-filter').value='vegan';h.elements.get('operating-filter').value='closed';h.elements.get('search-all').listeners.click();assert.equal(h.elements.get('search-input').value,'loving hut');assert.equal(h.elements.get('area-filter').value,'all');assert.equal(h.elements.get('diet-filter').value,'all');assert.equal(h.elements.get('operating-filter').value,'available');assert.match(h.elements.get('restaurant-list').innerHTML,/Loving Hut/);
+ h.clickView('daily');h.elements.get('day-tabs').listeners.click({target:{closest:()=>({dataset:{day:'1'}})}});assert.equal(h.elements.get('day-search').value,'');
 });

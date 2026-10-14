@@ -53,3 +53,9 @@ test('unverified or malformed source links keep name and address routing',()=>{
  }
  const u=new URL(C.mapsUrl({...base,matchConfidence:'ambiguous',googleMapsUrl:'https://www.google.com/maps/search/?query_place_id=wrong'}));assert.equal(u.searchParams.get('destination_place_id'),null);
 });
+
+test('restaurant search matches multiple accent-insensitive words across fields',()=>{
+ const r={name:'Loving Hut Biển Tình Thương',address:'380 Lê Văn Hiến',veganNotes:'越式湯麵',searchAliases:['愛家'],diet:'uncertain'};
+ assert.equal(typeof C.matchesRestaurant,'function');assert.equal(C.matchesRestaurant(r,'loving 380'),true);assert.equal(C.matchesRestaurant(r,'bien tinh'),true);assert.equal(C.matchesRestaurant(r,'愛家 湯麵'),true);assert.equal(C.matchesRestaurant(r,'loving 999'),false);
+ assert.deepEqual(C.selectRestaurants([r],{query:'le van hien 380'}).map(x=>x.name),[r.name]);
+});

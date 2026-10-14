@@ -3,8 +3,8 @@
 const D=window.TRAVEL_DATA,C=window.TravelCore,$=id=>document.getElementById(id);
 if(!D||!C){document.body.insertAdjacentHTML('afterbegin','<p role="alert">資料未完整載入，請確認已上傳 assets 資料夾後重新整理。</p>');return;}
 const labels={vegan:'全素店',vegetarian:'素食店・確認蛋奶',mixed:'葷素店・可做全素',uncertain:'全素條件待確認'};
-const areas={'danang-city':'峴港市區','danang-beach':'美溪・安上','sontra':'山茶・安海','hoian':'會安','banahills':'巴拿山'};
-let dayIndex=0,view='daily',gps=null,gpsAccuracy=null,referenceId=D.days[0].hotel,dayAnchor='route',exchangeAnchor='route',exchangeUseGps=false,exchangeVisited=false,exchangeCurrency='all',map=null,markers=new Map(),layer=null,displayed=[],locating=false,locationRequest=0,offlineReady=false;
+const areas={'danang-city':'峴港市區','danang-beach':'美溪・安上・五行山','sontra':'山茶・安海','hoian':'會安','banahills':'巴拿山'};
+let dayIndex=0,view='daily',gps=null,gpsAccuracy=null,referenceId=D.days[0].hotel,dayAnchor='route',dayRadius=10,dayQuery='',exchangeAnchor='route',exchangeUseGps=false,exchangeVisited=false,exchangeCurrency='all',map=null,markers=new Map(),layer=null,displayed=[],locating=false,locationRequest=0,offlineReady=false;
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safeUrl=s=>{try{const u=new URL(s);return u.protocol==='https:'?u.href:'#';}catch{return '#';}};
 const place=id=>D.places.find(p=>p.id===id);
@@ -22,7 +22,7 @@ function restaurantCard(r){
  const state=r.operatingStatus||'unverified',status=operationLabels[state]||operationLabels.unverified;
  const held=!!r.navigationHold,canNavigate=C.canRecommend(r);
  const coords=held?'原址有衝突，停用舊址導航與圖釘。':C.hasCoordinates(r)?'座標依來源地圖；抵達路線以導航為準。':'尚無可查證座標，不參與最近距離排序；可按地址導航。';
- const googleLabel=r.googleLinkType==='place'?(r.matchConfidence==='ambiguous'?'Google 資料（地址待核對） ↗':'Google 商家／評價 ↗'):'Google 搜尋店家 ↗';
+ const googleLabel=r.googleLinkType==='place'?(r.matchConfidence==='ambiguous'?'Google 資料（地址待核對） ↗':'Google 商家／評價 ↗'):r.googleLinkType==='shared-business'?'Google 商家分享連結 ↗':'Google 搜尋店家 ↗';
  const ratingType=r.ratingSourceType==='google-mirror'?'Google 評分參考（轉載）':r.ratingSourceType==='google-indexed'?'Google 評分（搜尋索引）':'Google 評分（查核快照）';
  const count=Number.isInteger(r.googleReviewCount)?` · ${r.googleReviewCount.toLocaleString('zh-TW')} 則`:'';
  const rating=typeof r.googleRating==='number'?`<div class="google-rating-box"><p class="rating-source-label">${ratingType}</p><p class="rating-value">★ ${r.googleRating.toFixed(1)} / 5${count}</p><p class="rating-age">${r.ratingAsOfDate?(r.ratingSourceType==='google-direct'?'直接查核 ':'來源更新 ')+esc(r.ratingAsOfDate):'快照日期未公布'} · 非即時評分</p></div>`:'<p class="rating-unavailable">Google 評分未核實；請開商家頁查看最新評價。</p>';
@@ -31,7 +31,7 @@ function restaurantCard(r){
  const addressIssue=r.addressIssue?`<p class="note warning">${esc(r.addressIssue)}</p>`:'';
  const evidence=r.operatingEvidenceText||'尚未取得可核對的近期營業資料，出發前請先開 Google 商家頁或聯絡店家。';
  const actions=(canNavigate?link(C.mapsUrl(r),'開始導航 ↗','primary-action'):'')+link(googleRestaurantUrl(r),googleLabel,canNavigate?'':'primary-action')+(!held&&C.hasCoordinates(r)?`<button type="button" data-map-id="${esc(r.id)}">${C.operationRank(r)===2?'查看舊址位置':'在地圖看'}</button>`:'')+phone;
- return `<article class="restaurant-card" id="card-${view}-${esc(r.id)}"><div class="card-top"><span class="diet-badge ${esc(r.diet)}">${labels[r.diet]}</span><span class="distance-badge">${distanceText(r)}</span></div><h3 class="restaurant-name">${esc(r.name)}</h3><div class="operation-row"><span class="operation-badge ${esc(state)}">${status}</span><span class="audit-date">查核 ${esc(r.checkedDate)}</span></div>${addressIssue}${held?'<p class="note warning">暫停提供舊址導航與圖釘；請先核對最新地址。</p>':''}${rating}<p class="restaurant-address">${esc(r.address)}${held?'（既有記錄，勿直接前往）':''}</p><p class="restaurant-note">${esc(r.veganNotes)}</p>${r.hoursExceptionNote?`<p class="note warning">${esc(r.hoursExceptionNote)}</p>`:''}${r.dailyClosed?'<p class="note warning">此日來源列為休息日，請另選店家或先聯絡確認。</p>':''}${r.risk?`<p class="note warning">${esc(r.risk)}</p>`:''}<p class="hours-note">參考時段：${esc(r.hours||'未確認／來源有衝突，出發前聯絡')}<br><span>營業紀錄與牌告時段不保證旅行當日開門；出發前查看 Google 最新資訊。</span></p><div class="card-actions">${actions}</div><details class="source-details"><summary>查證來源與備註</summary><p class="operation-evidence">${r.operatingEvidenceDate?'<strong>查核資料 '+esc(r.operatingEvidenceDate)+'</strong> · ':''}${esc(evidence)}</p><p>查詢日期 ${esc(r.checkedDate)} · ${coords}</p>${r.googleLinkType!=='place'?'<p>Google 連結是店名與地址搜尋，尚未核對唯一商家頁；請確認分店與地址。</p>':''}${r.ratingNote?`<p>${esc(r.ratingNote)}</p>`:''}${r.hoursStatus&&/conflict|old|unreliable|unverified/i.test(r.hoursStatus)?'<p>營業時間來源不足、較舊或互有落差，請以店家當日回覆為準。</p>':''}<div class="source-links">${sources}</div></details></article>`;
+ return `<article class="restaurant-card" id="card-${view}-${esc(r.id)}"><div class="card-top"><span class="diet-badge ${esc(r.diet)}">${labels[r.diet]}</span><span class="distance-badge">${distanceText(r)}</span></div><h3 class="restaurant-name">${esc(r.name)}</h3><div class="operation-row"><span class="operation-badge ${esc(state)}">${status}</span><span class="audit-date">查核 ${esc(r.checkedDate)}</span></div>${addressIssue}${held?'<p class="note warning">暫停提供舊址導航與圖釘；請先核對最新地址。</p>':''}${rating}<p class="restaurant-address">${esc(r.address)}${held?'（既有記錄，勿直接前往）':''}</p><p class="restaurant-note">${esc(r.veganNotes)}</p>${r.hoursExceptionNote?`<p class="note warning">${esc(r.hoursExceptionNote)}</p>`:''}${r.dailyClosed?'<p class="note warning">此日來源列為休息日，請另選店家或先聯絡確認。</p>':''}${r.risk?`<p class="note warning">${esc(r.risk)}</p>`:''}<p class="hours-note">參考時段：${esc(r.hours||'未確認／來源有衝突，出發前聯絡')}<br><span>營業紀錄與牌告時段不保證旅行當日開門；出發前查看 Google 最新資訊。</span></p><div class="card-actions">${actions}</div><details class="source-details"><summary>查證來源與備註</summary><p class="operation-evidence">${r.operatingEvidenceDate?'<strong>查核資料 '+esc(r.operatingEvidenceDate)+'</strong> · ':''}${esc(evidence)}</p><p>查詢日期 ${esc(r.checkedDate)} · ${coords}</p>${r.googleLinkType==='search'?'<p>Google 連結是店名與地址搜尋，尚未核對唯一商家頁；請確認分店與地址。</p>':''}${r.hoursReviewNote?`<p>${esc(r.hoursReviewNote)}</p>`:''}${r.googleObservedHoursSnippet?`<p>Google 查核當日片段（非每週時刻表）：${esc(r.googleObservedHoursSnippet)}</p>`:''}${r.ratingNote?`<p>${esc(r.ratingNote)}</p>`:''}${r.hoursStatus&&/conflict|old|unreliable|unverified/i.test(r.hoursStatus)?'<p>營業時間來源不足、較舊或互有落差，請以店家當日回覆為準。</p>':''}<div class="source-links">${sources}</div></details></article>`;
 }
 function exchangeCard(p){
  const distance=p.distance===null?'尚無可靠座標，不參與距離排序':`${exchangeUseGps&&gps?'距你的定位':'距行程最近'} ${p.distance<1?Math.round(p.distance*1000)+' m':p.distance.toFixed(1)+' km'}・直線`;
@@ -71,13 +71,13 @@ function dailyRestaurants(){
  if(ids.some(id=>['mandila','lesands','dragon','nightmarket'].includes(id)))regions.add('danang-beach');
  if(ids.some(id=>['sontra','lesands','nightmarket'].includes(id)))regions.add('sontra');
  const weekday=new Date(d.date+'T12:00:00Z').getUTCDay();
- return D.restaurants.filter(C.canRecommend).map(r=>{const ds=origins.map(o=>C.distanceKm(o,r)).filter(v=>v!==null);const distance=ds.length?Math.min(...ds):null;return {...r,distance,dailyClosed:r.closedWeekdays?.includes(weekday)||false};}).filter(r=>(r.distance!==null&&r.distance<=6)||(r.distance===null&&regions.has(r.area))).sort((a,b)=>C.operationRank(a)-C.operationRank(b)||(a.distance===null?1:0)-(b.distance===null?1:0)||Number(a.dailyClosed)-Number(b.dailyClosed)||(a.diet==='vegan'?0:1)-(b.diet==='vegan'?0:1)||(a.distance??Infinity)-(b.distance??Infinity));
+ return D.restaurants.filter(C.canRecommend).map(r=>{const ds=origins.map(o=>C.distanceKm(o,r)).filter(v=>v!==null);const distance=ds.length?Math.min(...ds):null;return {...r,distance,dailyClosed:r.closedWeekdays?.includes(weekday)||false};}).filter(r=>((r.distance!==null&&r.distance<=dayRadius)||(r.distance===null&&regions.has(r.area)))&&C.matchesRestaurant(r,dayQuery)).sort((a,b)=>C.operationRank(a)-C.operationRank(b)||(a.distance===null?1:0)-(b.distance===null?1:0)||Number(a.dailyClosed)-Number(b.dailyClosed)||(a.diet==='vegan'?0:1)-(b.diet==='vegan'?0:1)||(a.distance??Infinity)-(b.distance??Infinity));
 }
 function renderDailyFood(){
- const items=dailyRestaurants();$('day-food-count').textContent=items.length+' 間';
+ const items=dailyRestaurants();$('day-food-count').textContent=items.length+' 間';$('day-radius').value=String(dayRadius);$('day-search').value=dayQuery;
  const name=dayAnchor==='route'?'當天任一景點／住宿':place(dayAnchor).name;
- const intro=`<p class="small-note">距離以${esc(name)}為參考，顯示 6 km 內點位；Google 未標歇業者優先，待確認排後。無座標備選依區域地址收錄並列於後方，無法保證距離。山區道路可能繞行。</p>`;
- $('day-restaurant-list').innerHTML=intro+(items.length?items.map(restaurantCard).join(''):'<div class="empty-state"><h3>這一站附近尚無可靠的全素點位</h3><p>美山與五行山一帶選擇較少。先用點餐卡向店家確認，或切到「附近素食」查看全區、無座標備選。</p></div>');
+ const intro=`<p class="small-note">距離以${esc(name)}為參考，顯示 ${dayRadius} km 內點位；Google 未標歇業者優先，待確認排後。無座標備選依區域地址收錄並列於後方，無法保證距離。山區道路可能繞行。${dayQuery?` 搜尋：${esc(dayQuery)}。搜尋僅限本頁整理的店家。`:""}</p>`;
+ $('day-restaurant-list').innerHTML=intro+(items.length?items.map(restaurantCard).join(''):`<div class="empty-state"><h3>${dayQuery?'這天範圍內沒有符合搜尋的店家':'這一站範圍內尚無可選店家'}</h3><p>可以擴大直線範圍、清除搜尋，或按上方「搜尋全清單」找其他區域。沒找到不代表店家不存在或已歇業。</p></div>`);
  displayed=items;
 }
 function origin(){return gps||place(referenceId);}
@@ -113,7 +113,7 @@ function initMap(){
 function addMarker(p,kind,label){
  if(!C.hasCoordinates(p)||kind==='food'&&p.navigationHold)return;
  const markerClass=kind==='food'?'restaurant-marker '+(C.operationRank(p)===2?'closed':p.diet==='vegan'?'vegan':'conditional'):kind==='hotel'?'hotel-marker':kind==='exchange'?'exchange-marker'+(p.currencies?.length?'':' exchange-unknown-marker'):'place-marker';
- const icon=L.divIcon({className:'custom-marker',html:`<span class="${markerClass}">${esc(label)}</span>`,iconSize:[32,36],iconAnchor:[16,34],popupAnchor:[0,-30]});
+ const icon=L.divIcon({className:'custom-marker',html:`<span class="${markerClass}">${esc(label)}</span>`,iconSize:[44,44],iconAnchor:[22,38],popupAnchor:[0,-30]});
  const marker=L.marker([p.lat,p.lng],{icon,title:p.name,keyboard:true}).bindPopup(popup(p,kind)).addTo(layer);markers.set(p.id,marker);
 }
 function renderMap(fit=true){
@@ -124,7 +124,7 @@ function renderMap(fit=true){
  let bounds=[];
  if(view==='daily'){
   currentDay().stops.forEach((s,i)=>{const p=place(s.id);addMarker(p,p.type==='hotel'?'hotel':'place',p.type==='hotel'?'宿':i+1);if(C.hasCoordinates(p)&&(dayAnchor==='route'||p.id===dayAnchor))bounds.push([p.lat,p.lng]);});
-  if(dayAnchor!=='route')displayed.filter(C.hasCoordinates).forEach(p=>bounds.push([p.lat,p.lng]));
+  displayed.filter(C.hasCoordinates).forEach(p=>bounds.push([p.lat,p.lng]));
   displayed.forEach(p=>addMarker(p,'food',C.operationRank(p)===2?'×':p.diet==='vegan'?'葉':'!'));
   $('map-heading').textContent='這一天的行程地圖';
   const anchor=dayAnchor==='route'?place(currentDay().reference):place(dayAnchor);$('map-external').href=C.mapsUrl(anchor);
@@ -176,7 +176,7 @@ function finishLocation(){
 function cancelLocation(){locationRequest++;finishLocation();}
 function setDay(index){
  if(!Number.isInteger(index)||!D.days[index])return;
- cancelLocation();dayIndex=index;dayAnchor='route';exchangeAnchor='route';exchangeUseGps=false;
+ cancelLocation();dayIndex=index;dayAnchor='route';dayQuery='';$('day-search').value='';exchangeAnchor='route';exchangeUseGps=false;
  if(!gps){referenceId=currentDay().hotel||currentDay().reference;fillReference();}
  render();
 }
@@ -211,6 +211,10 @@ $('close-phrase').addEventListener('click',()=>$('phrase-dialog').close());
 $('copy-phrase').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(phrases.vi+'\n\n'+phrases.en);toast('越南文與英文已複製');}catch{toast('無法自動複製，請長按點餐文字選取。');}});
 $('day-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-day]');if(!b)return;setDay(Number(b.dataset.day));});
 $('day-anchor').addEventListener('change',()=>{dayAnchor=$('day-anchor').value;renderDailyFood();renderMap();});
+$('day-radius').addEventListener('change',()=>{const radius=Number($('day-radius').value);if(![6,10,15].includes(radius))return;dayRadius=radius;renderDailyFood();renderMap();});
+$('day-search').addEventListener('input',()=>{dayQuery=$('day-search').value;renderDailyFood();renderMap();});
+$('clear-day-search').addEventListener('click',()=>{dayQuery='';renderDailyFood();renderMap();});
+$('search-all').addEventListener('click',()=>{dayQuery=$('day-search').value;$('search-input').value=dayQuery;$('area-filter').value='all';$('diet-filter').value='all';$('operating-filter').value='available';changeView('nearby');$('search-input').scrollIntoView({behavior:'smooth',block:'center'});});
 $('locate-btn').addEventListener('click',()=>locate('nearby'));
 $('exchange-locate-btn').addEventListener('click',()=>locate('exchange'));
 $('exchange-day').addEventListener('change',()=>{setDay(Number($('exchange-day').value));});
@@ -221,8 +225,9 @@ $('reference-select').addEventListener('change',()=>{if($('reference-select').va
 $('quick-vegan').addEventListener('click',()=>{$('search-input').value='';$('area-filter').value='all';$('diet-filter').value='vegan';$('operating-filter').value='available';renderNearby();renderMap();});
 $('map-reset').addEventListener('click',()=>renderMap());
 document.addEventListener('click',e=>{const jump=e.target.closest('[data-jump]');if(jump){$(jump.dataset.jump)?.scrollIntoView({behavior:'smooth',block:'start'});return;}const nav=e.target.closest('[data-view]');if(nav){changeView(nav.dataset.view);window.scrollTo({top:0,behavior:'smooth'});return;}const b=e.target.closest('[data-map-id]');if(b){const m=markers.get(b.dataset.mapId);if(!m){toast('此地點尚無可靠地圖點位，請用地址導航。');return;}if(m&&map){$('map-panel').scrollIntoView({behavior:'smooth',block:'start'});map.setView(m.getLatLng(),16);m.openPopup();}}});
-function network(){const online=navigator.onLine;$('network-status').textContent=online?(offlineReady?'離線功能已啟用・地圖需網路':'線上瀏覽・離線尚未備妥'):'目前離線・已載入文字可閱讀';$('network-status').classList.toggle('offline',!online);if(!online){$('map-message').hidden=false;$('map-message').textContent='目前離線，底圖與導航需連線。已快取的行程、地址、點餐卡可閱讀。';}}
+function network(){const online=navigator.onLine;if(online&&$('map-message').textContent.startsWith('目前離線'))$('map-message').hidden=true;$('network-status').textContent=online?(offlineReady?'離線功能已啟用・地圖需網路':'線上瀏覽・離線尚未備妥'):'目前離線・已載入文字可閱讀';$('network-status').classList.toggle('offline',!online);if(!online){$('map-message').hidden=false;$('map-message').textContent='目前離線，底圖與導航需連線。已快取的行程、地址、點餐卡可閱讀。';}}
 window.addEventListener('online',network);window.addEventListener('offline',network);
 $('trip-count').textContent=D.restaurants.length+' 筆餐廳記錄';fillReference();network();render();
+if('serviceWorker'in navigator&&location.protocol!=='file:'&&navigator.serviceWorker.controller)navigator.serviceWorker.addEventListener('controllerchange',()=>toast('新版已下載，請重新整理以載入最新行程與店家。'));
 if('serviceWorker'in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('./sw.js').then(()=>navigator.serviceWorker.ready).then(()=>{offlineReady=true;network();}).catch(()=>{offlineReady=false;network();console.info('離線快取未啟用；線上內容仍可使用。');});
 })();

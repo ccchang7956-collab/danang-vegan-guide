@@ -1,0 +1,76 @@
+{
+  "checkedDate": "2026-10-14",
+  "original": {
+    "id": "loving-hut-danang",
+    "name": "Loving Hut Da Nang（Biển Tình Thương）",
+    "address": "380 Lê Văn Hiến, Khuê Mỹ, Ngũ Hành Sơn, Đà Nẵng",
+    "area": "danang-beach",
+    "lat": 16.025067,
+    "lng": 108.249514,
+    "coordinateStatus": "source-happycow-map-marker",
+    "diet": "uncertain",
+    "veganNotes": "HappyCow 列全素餐廳；舊心得（2018／2020）曾指出店內販售奶精及包裝食品含酪蛋白酸鈉。本次未確認飲品／食材現況，先列全素條件待確認，逐項詢問奶精、醬料與零售食品。",
+    "hours": null,
+    "hoursStatus": "third-party-hours-unverified-current",
+    "phone": "+84 353 970 606",
+    "sourceUrls": [
+      "https://share.google/4D2GrpTKifnpG4sc6",
+      "https://suprememastertv.com/ch1/restaurant/Veg_Restaurants_PART_4.pdf",
+      "https://www.happycow.net/reviews/bien-tinh-thuong-loving-hut-da-nang-36503",
+      "https://ru.restaurantguru.com/Loving-Hut-Da-Nang-Da-Nang"
+    ],
+    "checkedDate": "2026-10-14",
+    "operatingEvidence": "HappyCow 最新可讀用餐心得 2024-08-10；RestaurantGuru 有近期 Google 評論轉載，但未直接核對 Google 狀態。",
+    "originalArea": "五行山／Lê Văn Hiến",
+    "coordinateSourceUrl": "https://www.happycow.net/reviews/bien-tinh-thuong-loving-hut-da-nang-36503",
+    "searchAliases": [
+      "愛家",
+      "Bien Tinh Thuong",
+      "Loving Hut"
+    ],
+    "reportedHours": "每日 06:00–19:30",
+    "risk": "營業現況未直接核實，前往前先打電話；不要僅憑 Loving Hut 品牌判定所有品項全素。"
+  },
+  "audit": {
+    "id": "loving-hut-danang",
+    "googleMapsUrl": "https://share.google/4D2GrpTKifnpG4sc6",
+    "googleLinkType": "shared-business",
+    "matchConfidence": "user-shared-entity-address-crosschecked",
+    "googlePlaceName": null,
+    "googlePlaceAddress": null,
+    "operatingStatus": "unverified",
+    "operatingEvidenceText": "Supreme Master TV 餐廳目錄與 HappyCow 均列 380 Lê Văn Hiến；電話一致。HappyCow 最新可讀實際用餐心得為 2024-08-10，RestaurantGuru 的近期 Google 評論屬轉載，無原始絕對日期。本次未直接讀取 Google 商家營業狀態，不將第三方更新日期視為營運確認。",
+    "operatingEvidenceDate": "2024-08-10",
+    "operatingSourceUrls": [
+      "https://suprememastertv.com/ch1/restaurant/Veg_Restaurants_PART_4.pdf",
+      "https://www.happycow.net/reviews/bien-tinh-thuong-loving-hut-da-nang-36503",
+      "https://ru.restaurantguru.com/Loving-Hut-Da-Nang-Da-Nang"
+    ],
+    "googleRating": 4.3,
+    "googleReviewCount": null,
+    "ratingSourceType": "google-mirror",
+    "ratingSourceUrl": "https://ru.restaurantguru.com/Loving-Hut-Da-Nang-Da-Nang",
+    "ratingNote": "公開目錄轉載 Google 4.3；177 為目錄顯示總評價數，未確認為 Google 原始評論數，因此不作 Google 評論數顯示。非直接 Google 查核，轉載同步日期未知。",
+    "checkedDate": "2026-10-14",
+    "ratingAsOfDate": null,
+    "navigationHold": false,
+    "googleObservationDate": null,
+    "userProvidedGoogleUrl": "https://share.google/4D2GrpTKifnpG4sc6",
+    "resolvedUserGoogleUrl": "https://www.google.com/search?kgmid=/g/1hc3jvq73&q=Loving%20Hut%20Da%20Nang",
+    "hoursReviewNote": "HappyCow 的商家時段資料最後更新於2020年，另一目錄也列06:00–19:30；仍缺目前每週時段確認，因此不顯示精確時段。"
+  },
+  "observations": [],
+  "researchNotes": {
+    "identity": "380 Lê Văn Hiến 分店；與現有 61 Lê Quang Đạo 的 Loving Vegan 分開，勿合併評分、地址或時段。",
+    "primaryCorroboration": "Supreme Master TV 的關聯組織餐廳 PDF 第 1 頁直接列 Loving Hut Biển Tình Thương、380 Lê Văn Hiến 與 +84 353 970 606；PDF 無可確認的近期資料更新日，不能證明現況。",
+    "officialDirectory": "2026-10-14 讀取 https://www.lovinghut.com/vn/ ，未見 Da Nang 分店；缺席不等於歇業。",
+    "hours": "HappyCow 每日 06:00–19:30，商家資訊標示最後更新 2020-03-25；另列農曆初一／十五至 22:00、春節期間休息。延長營業不作一般時段使用。RestaurantGuru 每週表亦列 06:00–19:30，仍未直接 Google 驗證。",
+    "latestReadableDiningReview": {
+      "source": "HappyCow",
+      "date": "2024-08-10",
+      "url": "https://www.happycow.net/reviews/bien-tinh-thuong-loving-hut-da-nang-36503"
+    },
+    "coordinates": "主代理2026-10-14讀取HappyCow公開HTML：listing-map-preview-mobile／desktop均為data-lat=16.025067、data-lng=108.249514。來源圖釘而非實地入口確認。",
+    "directGoogle": "Google public web open 回傳 Internal Error；未登入、未使用 CUA、未聯絡店家。observations 留空以免偽造直接 Google 查核。"
+  }
+}
