@@ -34,13 +34,15 @@ function restaurantCard(r){
  return `<article class="restaurant-card" id="card-${view}-${esc(r.id)}"><div class="card-top"><span class="diet-badge ${esc(r.diet)}">${labels[r.diet]}</span><span class="distance-badge">${distanceText(r)}</span></div><h3 class="restaurant-name">${esc(r.name)}</h3><div class="operation-row"><span class="operation-badge ${esc(state)}">${status}</span><span class="audit-date">查核 ${esc(r.checkedDate)}</span></div>${addressIssue}${held?'<p class="note warning">暫停提供舊址導航與圖釘；請先核對最新地址。</p>':''}${rating}<p class="restaurant-address">${esc(r.address)}${held?'（既有記錄，勿直接前往）':''}</p><p class="restaurant-note">${esc(r.veganNotes)}</p>${r.hoursExceptionNote?`<p class="note warning">${esc(r.hoursExceptionNote)}</p>`:''}${r.dailyClosed?'<p class="note warning">此日來源列為休息日，請另選店家或先聯絡確認。</p>':''}${r.risk?`<p class="note warning">${esc(r.risk)}</p>`:''}<p class="hours-note">參考時段：${esc(r.hours||'未確認／來源有衝突，出發前聯絡')}<br><span>營業紀錄與牌告時段不保證旅行當日開門；出發前查看 Google 最新資訊。</span></p><div class="card-actions">${actions}</div><details class="source-details"><summary>查證來源與備註</summary><p class="operation-evidence">${r.operatingEvidenceDate?'<strong>查核資料 '+esc(r.operatingEvidenceDate)+'</strong> · ':''}${esc(evidence)}</p><p>查詢日期 ${esc(r.checkedDate)} · ${coords}</p>${r.googleLinkType==='search'?'<p>Google 連結是店名與地址搜尋，尚未核對唯一商家頁；請確認分店與地址。</p>':''}${r.hoursReviewNote?`<p>${esc(r.hoursReviewNote)}</p>`:''}${r.googleObservedHoursSnippet?`<p>Google 查核當日片段（非每週時刻表）：${esc(r.googleObservedHoursSnippet)}</p>`:''}${r.ratingNote?`<p>${esc(r.ratingNote)}</p>`:''}${r.hoursStatus&&/conflict|old|unreliable|unverified/i.test(r.hoursStatus)?'<p>營業時間來源不足、較舊或互有落差，請以店家當日回覆為準。</p>':''}<div class="source-links">${sources}</div></details></article>`;
 }
 function exchangeCard(p){
- const distance=p.distance===null?'尚無可靠座標，不參與距離排序':`${exchangeUseGps&&gps?'距你的定位':'距行程最近'} ${p.distance<1?Math.round(p.distance*1000)+' m':p.distance.toFixed(1)+' km'}・直線`;
- const currencyBadges=['USD','TWD'].map(code=>p.currencies.includes(code)?`<span class="currency-badge confirmed">${code}・銀行有官方資料</span>`:`<span class="currency-badge unconfirmed">${code}・${p.kind==='authorized-agent'?'先詢問':'未查到牌價'}</span>`).join('');
+ const reference=exchangeUseGps&&gps?'你的定位':exchangeAnchor==='route'?'行程最近地標':place(exchangeAnchor)?.name||'參考地標';
+ const distance=p.distance===null?(C.hasCoordinates(p)?'參考位置沒有可靠座標，無法估算距離':'尚無可靠座標，不參與距離排序'):`距${reference} ${p.distance<1?Math.round(p.distance*1000)+' m':p.distance.toFixed(1)+' km'}・直線`;
+ const currencyBadges=['USD','TWD'].map(code=>p.currencies.includes(code)?`<span class="currency-badge confirmed">${code}・${p.kind==='bank'?'銀行層級':'櫃檯'}有官方資料</span>`:`<span class="currency-badge unconfirmed">${code}・資料待確認</span>`).join('');
  const phone=p.phone?`<a href="tel:${esc(p.phone.replace(/[^+\d]/g,''))}">電話確認</a>`:'';
  const nav=link(C.mapsUrl(p),'Google Maps 導航 ↗','primary-action');
- const sourceUrls=[...new Set([...(p.sourceUrls||[]),...(p.currencySourceUrls||[]),...(p.coordinateSourceUrl?[p.coordinateSourceUrl]:[])])];
+ const sourceUrls=[...new Set([...(p.sourceUrls||[]),...(p.currencySourceUrls||[]),...(p.coordinateSourceUrl?[p.coordinateSourceUrl]:[]),...(p.recommendationSourceUrl?[p.recommendationSourceUrl]:[])])];
  const sourceLinks=sourceUrls.map((u,i)=>link(u,`來源 ${i+1}`)).join('');
- return `<article class="exchange-card" id="card-exchange-${esc(p.id)}"><div class="exchange-card-top"><span class="exchange-status">${esc(p.statusLabel)}</span><span class="distance-badge">${esc(distance)}</span></div><h3>${esc(p.name)}</h3><p class="exchange-address">${esc(p.address)}</p><div class="currency-badges">${currencyBadges}</div><p class="exchange-evidence">${esc(p.currencyStatus)}</p>${p.phoneLabel?`<p class="exchange-contact-note">${esc(p.phoneLabel)}</p>`:''}<div class="card-actions">${nav}${C.hasCoordinates(p)?`<button type="button" data-map-id="${esc(p.id)}">在地圖看</button>`:''}${phone}</div><details class="source-details"><summary>授權、幣別與地址來源</summary><p>查詢日期 ${esc(D.exchangeCheckedDate)} · ${esc(p.coordinateStatus||'地址依官方資料核對；地圖座標未核實')}。</p><div class="source-links">${sourceLinks}</div></details></article>`;
+ const recommendation=p.recommendationLabel?`<div class="exchange-recommendation"><strong>${esc(p.recommendationLabel)}</strong><p>${esc(p.recommendationNote)}</p>${p.recommendationSourceUrl?link(p.recommendationSourceUrl,esc(p.recommendationSourceLabel||'推薦依據')+' ↗'):''}</div>`:'';
+ return `<article class="exchange-card" id="card-exchange-${esc(p.id)}"><div class="exchange-card-top"><span class="exchange-status">${esc(p.statusLabel)}</span><span class="distance-badge">${esc(distance)}</span></div><h3>${esc(p.name)}</h3>${recommendation}<p class="exchange-address">${esc(p.address)}</p><div class="currency-badges">${currencyBadges}</div><p class="exchange-evidence">${esc(p.currencyStatus)}</p>${p.hoursNote?`<p class="exchange-hours-note">${esc(p.hoursNote)}</p>`:''}${p.phoneLabel?`<p class="exchange-contact-note">${esc(p.phoneLabel)}</p>`:''}<div class="card-actions">${nav}${C.hasCoordinates(p)?`<button type="button" data-map-id="${esc(p.id)}">在地圖看</button>`:''}${phone}</div><details class="source-details"><summary>授權、幣別與地址來源</summary><p>地址查核 ${esc(p.addressCheckedDate||D.exchangeCheckedDate)} · 幣別資料查核 ${esc(p.currencyCheckedDate||D.exchangeCheckedDate)}</p><p>${esc(p.coordinateStatus||'地址依官方資料核對；地圖座標未核實')}。</p><div class="source-links">${sourceLinks}</div></details></article>`;
 }
 function renderDays(){
  $('day-tabs').innerHTML=D.days.map((d,i)=>`<button type="button" class="day-tab${i===dayIndex?' active':''}" data-day="${i}" aria-pressed="${i===dayIndex}"><span>DAY ${i+1}</span><strong>${d.shortDate}</strong><small>週${d.weekday}<span class="day-label">・${esc(d.tabLabel)}</span></small></button>`).join('');
@@ -120,7 +122,10 @@ function renderMap(fit=true){
  if(view==='phrase')return;
  const slot=view==='daily'?'daily-map-slot':view==='nearby'?'nearby-map-slot':'exchange-map-slot';$(slot).append($('map-panel'));
  initMap();if(!map)return;layer.clearLayers();markers.clear();
- const exchangeView=view==='exchange';['legend-attraction','legend-hotel','legend-vegan','legend-conditional'].forEach(id=>$(id).hidden=exchangeView);$('legend-exchange').hidden=!exchangeView;$('legend-exchange-unknown').hidden=!exchangeView;
+ const exchangeView=view==='exchange';['legend-vegan','legend-conditional'].forEach(id=>$(id).hidden=exchangeView);$('legend-exchange').hidden=!exchangeView;$('legend-exchange-unknown').hidden=!exchangeView;
+ const exchangeStops=exchangeAnchor==='route'?currentDay().stops.filter(s=>!s.optional).map(s=>place(s.id)):[place(exchangeAnchor)];
+ $('legend-attraction').hidden=exchangeView&&(exchangeUseGps||!exchangeStops.some(p=>C.hasCoordinates(p)&&(exchangeAnchor!=='route'||p.type!=='hotel')));
+ $('legend-hotel').hidden=exchangeView&&(exchangeUseGps||exchangeAnchor!=='route'||!exchangeStops.some(p=>C.hasCoordinates(p)&&p.type==='hotel'));
  let bounds=[];
  if(view==='daily'){
   currentDay().stops.forEach((s,i)=>{const p=place(s.id);addMarker(p,p.type==='hotel'?'hotel':'place',p.type==='hotel'?'宿':i+1);if(C.hasCoordinates(p)&&(dayAnchor==='route'||p.id===dayAnchor))bounds.push([p.lat,p.lng]);});
@@ -150,21 +155,20 @@ function renderExchange(){
  if(!exchangeVisited){exchangeUseGps=!!gps;exchangeVisited=true;}
  $('exchange-day').innerHTML=D.days.map((d,i)=>`<option value="${i}">${esc(d.shortDate)}（週${esc(d.weekday)}）· ${esc(d.tabLabel)}</option>`).join('');$('exchange-day').value=String(dayIndex);
  const d=currentDay(),stops=d.stops.filter(s=>!s.optional);
- $('exchange-anchor').innerHTML='<option value="route">當天行程路線</option>'+stops.map(s=>`<option value="${esc(s.id)}">${esc(place(s.id).name)} 附近</option>`).join('');$('exchange-anchor').value=exchangeAnchor;
+ $('exchange-anchor').innerHTML=(gps?'<option value="gps">我的 GPS 定位</option>':'')+'<option value="route">當天行程路線</option>'+stops.map(s=>`<option value="${esc(s.id)}">${esc(place(s.id).name)} 附近</option>`).join('');$('exchange-anchor').value=exchangeUseGps&&gps?'gps':exchangeAnchor;
  let origins=[];
  if(exchangeUseGps&&gps)origins=[gps];
  else if(exchangeAnchor==='route')origins=stops.map(s=>place(s.id)).filter(C.hasCoordinates);
  else{const p=place(exchangeAnchor);if(C.hasCoordinates(p))origins=[p];}
- let rows=D.exchangePoints.map(p=>{const ds=origins.map(o=>C.distanceKm(o,p)).filter(x=>x!==null);return {...p,distance:ds.length?Math.min(...ds):null};});
- if(exchangeCurrency==='unknown')rows=rows.filter(p=>!p.currencies.length);
- else if(exchangeCurrency!=='all')rows=rows.filter(p=>p.currencies.includes(exchangeCurrency));
- displayed=rows.sort((a,b)=>(a.distance===null?1:0)-(b.distance===null?1:0)||(a.distance??Infinity)-(b.distance??Infinity));
+ displayed=C.selectExchange(D.exchangePoints,{origins,currency:exchangeCurrency});
+ $('exchange-currency').value=exchangeCurrency;
+ $('exchange-filter-note').textContent=exchangeCurrency==='all'?'列出銀行與已公告授權櫃檯；有可靠座標者依距離排序，其餘列於後方。幣別資料不等於分行當日受理。':exchangeCurrency==='unknown'?'這些授權櫃檯未公開完整幣別名單；先確認 TWD／USD 現鈔。':'只顯示有 '+exchangeCurrency+' 官方現鈔資料的據點；銀行層級資料不保證分行當日受理。其他據點可能也能換，請切換「全部銀行／授權櫃檯」詢問。';
  $('exchange-result-count').textContent=displayed.length+' 個';
- $('exchange-list').innerHTML=displayed.length?displayed.map(exchangeCard).join(''):'<div class="empty-state"><h3>這個幣別條件沒有資料</h3><p>切換「全部已查證合法據點」查看尚未公開幣別的授權櫃檯。</p></div>';
+ $('exchange-list').innerHTML=displayed.length?displayed.map(exchangeCard).join(''):'<div class="empty-state"><h3>這個幣別條件沒有資料</h3><p>切換「全部銀行／授權櫃檯」查看其他據點；沒有資料不代表拒收這個幣別。</p></div>';
  const anchor=exchangeAnchor==='route'?'當天行程':place(exchangeAnchor)?.name||'當天行程';
  $('exchange-location-status').textContent=locating?'請允許瀏覽器定位；位置只在本頁記憶體中用來排序。':exchangeUseGps&&gps?`依你的定位排序 · GPS 精度約 ${Math.round(gpsAccuracy)} m · 直線距離`:`依 ${d.shortDate}「${anchor}」排序 · 距離為直線`;
  $('exchange-locate-btn').disabled=locating;$('exchange-locate-btn').innerHTML=locating?'正在取得位置…':'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></svg>使用我的位置';
- $('exchange-legal-sources').innerHTML=D.exchangeLegalNotes.flatMap(n=>n.sourceUrls).filter((u,i,a)=>a.indexOf(u)===i).map((u,i)=>link(u,`法規／官方來源 ${i+1}`)).join('');
+ $('exchange-legal-sources').innerHTML=D.exchangeLegalNotes.flatMap(n=>n.sourceUrls).filter((u,i,a)=>a.indexOf(u)===i).map((u,i)=>link(u,`法規／換匯參考 ${i+1}`)).join('');
 }
 function render(){renderDays();if(view==='daily'){renderItinerary();renderMealPlan();renderDailyFood();}if(view==='nearby')renderNearby();if(view==='exchange')renderExchange();renderMap();}
 function changeView(next){view=next;['daily','nearby','exchange','phrase'].forEach(v=>$('view-'+v).hidden=v!==view);document.body.setAttribute('data-current-view',view);document.querySelectorAll('[data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===view);if(b.dataset.view===view)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});render();}
@@ -176,8 +180,8 @@ function finishLocation(){
 function cancelLocation(){locationRequest++;finishLocation();}
 function setDay(index){
  if(!Number.isInteger(index)||!D.days[index])return;
- cancelLocation();dayIndex=index;dayAnchor='route';dayQuery='';$('day-search').value='';exchangeAnchor='route';exchangeUseGps=false;
- if(!gps){referenceId=currentDay().hotel||currentDay().reference;fillReference();}
+ cancelLocation();dayIndex=index;dayAnchor='route';dayQuery='';$('day-search').value='';exchangeAnchor='route';exchangeUseGps=false;exchangeVisited=true;
+ referenceId=currentDay().hotel||currentDay().reference;fillReference();
  render();
 }
 function locate(targetView='nearby'){
@@ -218,8 +222,8 @@ $('search-all').addEventListener('click',()=>{dayQuery=$('day-search').value;$('
 $('locate-btn').addEventListener('click',()=>locate('nearby'));
 $('exchange-locate-btn').addEventListener('click',()=>locate('exchange'));
 $('exchange-day').addEventListener('change',()=>{setDay(Number($('exchange-day').value));});
-$('exchange-anchor').addEventListener('change',()=>{cancelLocation();exchangeAnchor=$('exchange-anchor').value;exchangeUseGps=false;renderExchange();renderMap();});
-$('exchange-currency').addEventListener('change',()=>{exchangeCurrency=$('exchange-currency').value;renderExchange();renderMap(false);});
+$('exchange-anchor').addEventListener('change',()=>{cancelLocation();const selected=$('exchange-anchor').value;exchangeUseGps=selected==='gps'&&!!gps;if(selected!=='gps')exchangeAnchor=selected;renderExchange();renderMap();});
+$('exchange-currency').addEventListener('change',()=>{exchangeCurrency=$('exchange-currency').value;renderExchange();renderMap();});
 $('reference-select').addEventListener('change',()=>{if($('reference-select').value!=='gps'){cancelLocation();referenceId=$('reference-select').value;gps=null;gpsAccuracy=null;exchangeUseGps=false;fillReference();}renderNearby();renderMap();});
 ['search-input','area-filter','diet-filter','operating-filter'].forEach(id=>$(id).addEventListener(id==='search-input'?'input':'change',()=>{renderNearby();renderMap();}));
 $('quick-vegan').addEventListener('click',()=>{$('search-input').value='';$('area-filter').value='all';$('diet-filter').value='vegan';$('operating-filter').value='available';renderNearby();renderMap();});

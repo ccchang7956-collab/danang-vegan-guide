@@ -97,6 +97,50 @@ test('exchange map popup exposes verified status and card access',()=>{
  const h=harness({withMap:true});h.clickView('exchange');const p=D.exchangePoints.find(r=>r.lat!==null),box=h.mapMarkers.find(m=>m.name===p.name).popup;assert.ok(box.appended.some(el=>el.textContent.includes(p.statusLabel)));assert.ok(box.appended.some(el=>el.textContent==='查看換匯點資訊'));
 });
 
+test('exchange single-landmark cards describe their actual distance origin',()=>{
+ const h=harness();h.clickView('exchange');h.elements.get('exchange-anchor').value='cathedral';h.elements.get('exchange-anchor').listeners.change();
+ assert.ok(h.elements.get('exchange-list').innerHTML.includes('距'+D.places.find(p=>p.id==='cathedral').name));assert.doesNotMatch(h.elements.get('exchange-list').innerHTML,/距行程最近/);
+});
+test('exchange GPS mode is selected explicitly and can switch back to the route',()=>{
+ const h=harness({navigator:{geolocation:{getCurrentPosition:ok=>ok({coords:{latitude:16.04,longitude:108.24,accuracy:10}})}}});
+ h.elements.get('exchange-locate-btn').listeners.click();assert.equal(h.elements.get('exchange-anchor').value,'gps');
+ h.elements.get('exchange-anchor').value='route';h.elements.get('exchange-anchor').listeners.change();assert.doesNotMatch(h.elements.get('exchange-location-status').textContent,/GPS 精度/);
+ h.elements.get('exchange-anchor').value='gps';h.elements.get('exchange-anchor').listeners.change();assert.match(h.elements.get('exchange-location-status').textContent,/GPS 精度/);
+});
+test('a chosen travel day wins over GPS before the first exchange visit',()=>{
+ const h=harness({navigator:{geolocation:{getCurrentPosition:ok=>ok({coords:{latitude:16.04,longitude:108.24,accuracy:10}})}}});
+ h.elements.get('locate-btn').listeners.click();h.clickView('daily');h.elements.get('day-tabs').listeners.click({target:{closest:()=>({dataset:{day:'1'}})}});h.clickView('exchange');
+ assert.equal(h.elements.get('exchange-anchor').value,'route');assert.doesNotMatch(h.elements.get('exchange-location-status').textContent,/GPS 精度/);
+});
+test('GPS failure after changing travel days falls back to the new hotel',()=>{
+ let calls=0;const h=harness({navigator:{geolocation:{getCurrentPosition:(ok,fail)=>++calls===1?ok({coords:{latitude:16.04,longitude:108.24,accuracy:10}}):fail({code:1})}}});
+ h.elements.get('locate-btn').listeners.click();h.clickView('exchange');h.elements.get('exchange-day').value='1';h.elements.get('exchange-day').listeners.change();h.elements.get('exchange-locate-btn').listeners.click();h.clickView('nearby');
+ assert.equal(h.elements.get('reference-select').value,D.days[1].hotel);
+});
+test('exchange filters keep cards and map pins in sync and explain unlisted currencies',()=>{
+ const h=harness({withMap:true});h.clickView('exchange');const before=h.fits.length;
+ h.elements.get('exchange-currency').value='TWD';h.elements.get('exchange-currency').listeners.change();
+ const expected=D.exchangePoints.filter(p=>p.currencies.includes('TWD'));assert.equal(h.elements.get('exchange-result-count').textContent,expected.length+' 個');
+ for(const p of D.exchangePoints)assert.equal(h.elements.get('exchange-list').innerHTML.includes('card-exchange-'+p.id),p.currencies.includes('TWD'));
+ assert.ok(h.mapMarkers.every(m=>!D.exchangePoints.some(p=>p.name===m.name&&!p.currencies.includes('TWD'))));assert.ok(h.fits.length>before,'filtered map should refit');
+ assert.match(h.elements.get('exchange-filter-note')?.textContent||'',/銀行層級/);
+ h.elements.get('exchange-currency').value='unknown';h.elements.get('exchange-currency').listeners.change();assert.match(h.elements.get('exchange-list').innerHTML,/AEON/);assert.doesNotMatch(h.elements.get('exchange-list').innerHTML,/card-exchange-bidv/);
+});
+test('exchange map legends explain route landmarks and hotels',()=>{
+ const h=harness({withMap:true});h.clickView('exchange');assert.equal(h.elements.get('legend-attraction').hidden,false);assert.equal(h.elements.get('legend-hotel').hidden,false);
+ assert.equal(h.elements.get('legend-vegan').hidden,true);
+});
+test('an exchange point with coordinates is not blamed for an unlocated reference',()=>{
+ const data=structuredClone(D);data.places.find(p=>p.id==='cathedral').lat=null;data.places.find(p=>p.id==='cathedral').lng=null;
+ const h=harness({data});h.clickView('exchange');h.elements.get('exchange-anchor').value='cathedral';h.elements.get('exchange-anchor').listeners.change();
+ const p=data.exchangePoints.find(p=>p.lat!==null),card=h.elements.get('exchange-list').innerHTML.match(new RegExp('<article[^>]*id="card-exchange-'+p.id+'"[\\s\\S]*?<\\/article>'))[0];
+ assert.match(card,/參考位置沒有可靠座標/);assert.doesNotMatch(card,/尚無可靠座標，不參與距離排序/);
+});
+test('exchange cards show Taiwanese recommendation evidence without promising branch acceptance',()=>{
+ const h=harness();h.clickView('exchange');const list=h.elements.get('exchange-list').innerHTML;
+ assert.match(list,/台灣旅遊業者推薦/);assert.match(list,/www.outo.co/);assert.match(list,/分行當日/);assert.match(list,/地址查核 2026-10-12/);
+});
+
 test('quick vegan action clears stale search and closed archive filters',()=>{
  const h=harness();h.clickView('nearby');h.elements.get('search-input').value='zzzz';h.elements.get('operating-filter').value='closed';assert.ok(h.elements.get('quick-vegan'),'quick vegan control');h.elements.get('quick-vegan').listeners.click();assert.equal(h.elements.get('search-input').value,'');assert.equal(h.elements.get('operating-filter').value,'available');assert.equal(h.elements.get('diet-filter').value,'vegan');assert.ok(!h.elements.get('restaurant-list').innerHTML.includes('素食店・確認蛋奶'));
 });

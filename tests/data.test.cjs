@@ -17,3 +17,12 @@ test('obsolete and contradictory schedules cannot appear as current weekly hours
 test('Loving Hut addition preserves its Google share link and uncertainty without altering Loving Vegan',()=>{
  const r=D.restaurants.find(r=>r.id==='loving-hut-danang');assert.ok(r,'new restaurant missing');assert.match(r.address,/380/);assert.equal(r.googleMapsUrl,'https://share.google/4D2GrpTKifnpG4sc6');assert.equal(r.ratingSourceType,'google-mirror');assert.equal(r.operatingStatus,'unverified');assert.match(r.veganNotes,/奶|酪蛋白/);assert.equal(r.diet,'uncertain');assert.equal(r.lat,16.025067);assert.equal(r.lng,108.249514);assert.equal(r.googleReviewCount,null);assert.match(D.restaurants.find(r=>r.id==='dn-loving').address,/61/);
 });
+
+test('exchange recheck preserves authorization boundaries and traceable recommendations',()=>{
+ assert.equal(D.exchangeCheckedDate,'2026-10-14');assert.equal(D.exchangePoints.length,6);
+ const research=JSON.parse(fs.readFileSync('research/exchange-points.json','utf8'));assert.deepEqual(JSON.parse(JSON.stringify(D.exchangePoints)),research.points);
+ for(const p of D.exchangePoints){assert.ok(['bank','authorized-agent'].includes(p.kind));assert.ok(p.addressCheckedDate<=D.exchangeCheckedDate);assert.ok(p.currencyCheckedDate<=D.exchangeCheckedDate);assert.ok(p.currencies.every(code=>['USD','TWD'].includes(code)));if(p.lat!==null)assert.ok(p.coordinateSourceUrl);}
+ const vcb=D.exchangePoints.find(p=>p.id==='vcb-danang');assert.equal(new URL(vcb.recommendationSourceUrl).hostname,'www.outo.co');assert.match(vcb.recommendationLabel,/台灣/);
+ assert.equal(D.exchangePoints.find(p=>p.id==='aeon-vietinbank').currencies.length,0);
+ assert.ok(D.exchangePoints.filter(p=>p.id.startsWith('bidv-')).every(p=>p.currencySourceUrls.some(url=>url.includes('cong-cu-doi-ty-gia'))));
+});

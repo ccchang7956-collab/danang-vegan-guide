@@ -398,10 +398,11 @@ window.TRAVEL_DATA = {
         "USD",
         "TWD"
       ],
-      "currencyStatus": "BIDV 官方外匯服務列出台幣與美元現鈔；此分行庫存與服務時間請先確認",
+      "currencyStatus": "BIDV 官方列有 USD、TWD；匯率頁註明 TWD 牌價適用現鈔交易。此為銀行層級資料，分行當日是否受理旅客現鈔、面額與服務時間請先確認。",
       "currencySourceUrls": [
         "https://bidv.com.vn/vn/ca-nhan/san-pham-dich-vu/ngoai-hoi-va-thi-truong-von/mua-ban-ngoai-te/",
-        "https://bidv.com.vn/vn/premier/ty-gia-ngoai-te/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zivS3NTAw9DQz9DZycXA3M3A0NLF0DLdyDjMz0C7IdFQGb6nsL/"
+        "https://bidv.com.vn/vn/premier/ty-gia-ngoai-te/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zivS3NTAw9DQz9DZycXA3M3A0NLF0DLdyDjMz0C7IdFQGb6nsL/",
+        "https://bidv.com.vn/vn/doanh-nghiep/cong-cu-tien-ich/cong-cu-doi-ty-gia"
       ],
       "phone": "02363825668",
       "phoneLabel": "分行電話（官方舊網路資料，請以銀行回覆為準）",
@@ -409,7 +410,12 @@ window.TRAVEL_DATA = {
         "https://bidv.com.vn/wps/wcm/connect/a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e/BIDV_BCTN_2025_%282.1%29_VIE_interactive_15mb.pdf?CACHEID=ROOTWORKSPACE-a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e-pS-Z7xM&MOD=AJPERES",
         "https://bidv.com.vn/bidv/tin-tuc/bidvstories/cam-nhan-bidv-tu-mien-trung"
       ],
-      "mapQuery": "BIDV Da Nang Branch 90 Nguyen Chi Thanh Da Nang"
+      "mapQuery": "BIDV Da Nang Branch 90 Nguyen Chi Thanh Da Nang",
+      "addressCheckedDate": "2026-10-12",
+      "currencyCheckedDate": "2026-10-14",
+      "hoursNote": "分行營業與外幣現鈔服務時間請先確認；不提供即時營業狀態。",
+      "recommendationLabel": "台幣換匯・先聯絡分行",
+      "recommendationNote": "帶台幣者可優先聯絡的銀行備案；未向此分行電話確認，不保證當日收鈔。"
     },
     {
       "id": "bidv-song-han",
@@ -425,10 +431,11 @@ window.TRAVEL_DATA = {
         "USD",
         "TWD"
       ],
-      "currencyStatus": "BIDV 官方外匯服務列出台幣與美元現鈔；此分行庫存與服務時間請先確認",
+      "currencyStatus": "BIDV 官方列有 USD、TWD；匯率頁註明 TWD 牌價適用現鈔交易。此為銀行層級資料，分行當日是否受理旅客現鈔、面額與服務時間請先確認。",
       "currencySourceUrls": [
         "https://bidv.com.vn/vn/ca-nhan/san-pham-dich-vu/ngoai-hoi-va-thi-truong-von/mua-ban-ngoai-te/",
-        "https://bidv.com.vn/vn/premier/ty-gia-ngoai-te/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zivS3NTAw9DQz9DZycXA3M3A0NLF0DLdyDjMz0C7IdFQGb6nsL/"
+        "https://bidv.com.vn/vn/premier/ty-gia-ngoai-te/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zivS3NTAw9DQz9DZycXA3M3A0NLF0DLdyDjMz0C7IdFQGb6nsL/",
+        "https://bidv.com.vn/vn/doanh-nghiep/cong-cu-tien-ich/cong-cu-doi-ty-gia"
       ],
       "phone": "02363840733",
       "phoneLabel": "BIDV 官方公告分行電話；先確認外幣現鈔服務",
@@ -436,7 +443,12 @@ window.TRAVEL_DATA = {
         "https://bidv.com.vn/wps/wcm/connect/a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e/BIDV_BCTN_2025_%282.1%29_VIE_interactive_15mb.pdf?CACHEID=ROOTWORKSPACE-a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e-pS-Z7xM&MOD=AJPERES",
         "https://bidv.com.vn/wps/wcm/connect/a414bdef-0c77-4324-8895-864e8ae35769/SHA_TB%2BDAU%2BGIA%2BTS%2BNCT_VN%2B2025.06.20%2B%28892%29.pdf?CACHEID=ROOTWORKSPACE-a414bdef-0c77-4324-8895-864e8ae35769-pus7deP&MOD=AJPERES"
       ],
-      "mapQuery": "BIDV Song Han 129 Le Loi Da Nang"
+      "mapQuery": "BIDV Song Han 129 Le Loi Da Nang",
+      "addressCheckedDate": "2026-10-12",
+      "currencyCheckedDate": "2026-10-14",
+      "hoursNote": "分行營業與外幣現鈔服務時間請先確認；不提供即時營業狀態。",
+      "recommendationLabel": "台幣換匯・先聯絡分行",
+      "recommendationNote": "帶台幣者可優先聯絡的銀行備案；未向此分行電話確認，不保證當日收鈔。"
     },
     {
       "id": "bidv-hoian",
@@ -452,17 +464,23 @@ window.TRAVEL_DATA = {
         "USD",
         "TWD"
       ],
-      "currencyStatus": "BIDV 官方外匯服務列出台幣與美元現鈔；此分行庫存與服務時間請先確認",
+      "currencyStatus": "BIDV 官方列有 USD、TWD；匯率頁註明 TWD 牌價適用現鈔交易。此為銀行層級資料，分行當日是否受理旅客現鈔、面額與服務時間請先確認。",
       "currencySourceUrls": [
         "https://bidv.com.vn/vn/ca-nhan/san-pham-dich-vu/ngoai-hoi-va-thi-truong-von/mua-ban-ngoai-te/",
-        "https://bidv.com.vn/vn/premier/ty-gia-ngoai-te/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zivS3NTAw9DQz9DZycXA3M3A0NLF0DLdyDjMz0C7IdFQGb6nsL/"
+        "https://bidv.com.vn/vn/premier/ty-gia-ngoai-te/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zivS3NTAw9DQz9DZycXA3M3A0NLF0DLdyDjMz0C7IdFQGb6nsL/",
+        "https://bidv.com.vn/vn/doanh-nghiep/cong-cu-tien-ich/cong-cu-doi-ty-gia"
       ],
       "phone": null,
       "phoneLabel": "分行電話未找到現行官方資料；請透過 BIDV 客服確認",
       "sourceUrls": [
         "https://bidv.com.vn/wps/wcm/connect/a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e/BIDV_BCTN_2025_%282.1%29_VIE_interactive_15mb.pdf?CACHEID=ROOTWORKSPACE-a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e-pS-Z7xM&MOD=AJPERES"
       ],
-      "mapQuery": "BIDV Hoi An Branch 86 Tran Hung Dao"
+      "mapQuery": "BIDV Hoi An Branch 86 Tran Hung Dao",
+      "addressCheckedDate": "2026-10-12",
+      "currencyCheckedDate": "2026-10-14",
+      "hoursNote": "分行營業與外幣現鈔服務時間請先確認；不提供即時營業狀態。",
+      "recommendationLabel": "台幣換匯・先聯絡分行",
+      "recommendationNote": "帶台幣者可優先聯絡的銀行備案；未向此分行電話確認，不保證當日收鈔。會安行程可先詢問此分行。"
     },
     {
       "id": "vcb-danang",
@@ -485,9 +503,17 @@ window.TRAVEL_DATA = {
       "phoneLabel": "建議先透過 Vietcombank 客服確認 USD 現鈔",
       "sourceUrls": [
         "https://www.vietcombank.com.vn/Trang-thong-tin-dien-tu/Articles/2025/02/19/VCB-Da-Nang-to-chuc-Hien-mau",
-        "https://www.vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/Ty-gia-ngoai-te"
+        "https://www.vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/Ty-gia-ngoai-te",
+        "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Tin-tuc/2025/Vietcombank/Vietcombank_202507/Vietcombank_20250701/20250701_Phu-luc-dia-chi-moi-CN-va-PGD-dinh-kem-QD-2221.pdf?ts=20250702093820"
       ],
-      "mapQuery": "Vietcombank Da Nang 140 142 Le Loi"
+      "mapQuery": "Vietcombank Da Nang 140 142 Le Loi",
+      "addressCheckedDate": "2026-10-14",
+      "currencyCheckedDate": "2026-10-12",
+      "hoursNote": "分行營業與外幣現鈔服務時間請先確認；不提供即時營業狀態。",
+      "recommendationLabel": "台灣旅遊業者推薦銀行",
+      "recommendationNote": "台灣 Outo 換匯攻略推薦峴港市區 Vietcombank；此分行是市中心據點。分行當日現鈔服務仍請確認，台幣未查到官方牌價。",
+      "recommendationSourceUrl": "https://www.outo.co/blogs/articles/vietnam-exchange-currency",
+      "recommendationSourceLabel": "台灣 Outo 推薦依據"
     },
     {
       "id": "vcb-hoian",
@@ -512,7 +538,12 @@ window.TRAVEL_DATA = {
         "https://www.vietcombank.com.vn/vi-VN/Trang-thong-tin-dien-tu/Phat-mai-tai-san/20250604_Vcb-Hoi-An_Bat-dong-san",
         "https://www.vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/Ty-gia-ngoai-te"
       ],
-      "mapQuery": "Vietcombank Hoi An 02 Tran Cao Van"
+      "mapQuery": "Vietcombank Hoi An 02 Tran Cao Van",
+      "addressCheckedDate": "2026-10-12",
+      "currencyCheckedDate": "2026-10-12",
+      "hoursNote": "分行營業與外幣現鈔服務時間請先確認；不提供即時營業狀態。",
+      "recommendationLabel": "會安美元換匯備案",
+      "recommendationNote": "會安行程可先向銀行確認 USD 現鈔服務；不是台灣旅客人氣排名。"
     },
     {
       "id": "aeon-vietinbank",
@@ -526,7 +557,7 @@ window.TRAVEL_DATA = {
       "coordinateStatus": "商場地圖代表點；櫃檯在館內 1 樓 ATM 旁",
       "coordinateSourceUrl": "https://mapcarta.com/W1369663882",
       "currencies": [],
-      "currencyStatus": "商場公告稱可換 14 種外幣，但未公開幣別清單；TWD 與 USD 均先向櫃檯確認",
+      "currencyStatus": "商場公告正文稱可換 14 種外幣，未逐一列出幣別；TWD 與 USD 均請先向櫃檯確認。",
       "currencySourceUrls": [
         "https://danangthanhkhe.aeonmall-vietnam.com/en/news/dich-vu-doi-ngoai-te-uy-nhiem-vietinbank-da-co-mat-tai-aeon-mall-da-nang-thanh-khe.html",
         "https://danangthanhkhe.aeonmall-vietnam.com/en/facilities"
@@ -537,7 +568,12 @@ window.TRAVEL_DATA = {
         "https://danangthanhkhe.aeonmall-vietnam.com/en/news/dich-vu-doi-ngoai-te-uy-nhiem-vietinbank-da-co-mat-tai-aeon-mall-da-nang-thanh-khe.html",
         "https://danangthanhkhe.aeonmall-vietnam.com/en/facilities"
       ],
-      "mapQuery": "AEON MALL Da Nang Thanh Khe VietinBank exchange counter"
+      "mapQuery": "AEON MALL Da Nang Thanh Khe VietinBank exchange counter",
+      "addressCheckedDate": "2026-10-14",
+      "currencyCheckedDate": "2026-10-14",
+      "hoursNote": "商場平日 10:00–22:00、週末 09:00–22:00；這是商場時間，櫃檯當日服務時間請另確認。",
+      "recommendationLabel": "購物順路・官方公告授權",
+      "recommendationNote": "商場 2026-08-11 公告 VietinBank 授權、公開匯率與交易收據。適合購物時順路換匯；未查到足夠台灣旅客專門推薦此櫃檯的紀錄。"
     }
   ],
   "exchangeLegalNotes": [
@@ -561,9 +597,16 @@ window.TRAVEL_DATA = {
         "https://danangairport.vn/facility-detail-page/brand-detail?bid=137",
         "https://danangairport.vn/airport-guide-arrival-guide?t=2"
       ]
+    },
+    {
+      "text": "金店或公司登記、旅客換匯經驗不能代替現行外匯代理授權證明。台灣旅遊業者推薦資料與官方銀行／商場授權資料分別呈現。",
+      "sourceUrls": [
+        "https://www.seabank.com.vn/en/tin-tuc/tu-van-dich-vu/tu-van--meo/doi-ngoai-te-o-dau",
+        "https://www.outo.co/blogs/articles/vietnam-exchange-currency"
+      ]
     }
   ],
-  "exchangeCheckedDate": "2026-10-12",
+  "exchangeCheckedDate": "2026-10-14",
   "restaurants": [
     {
       "id": "om-vegan",

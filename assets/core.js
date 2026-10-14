@@ -7,5 +7,12 @@
   function canRecommend(p){return operationRank(p)!==2&&!p.navigationHold;}
   function selectRestaurants(records,options={}){const {origin,area='all',diet='all',query='',operating='all'}=options;return records.filter(p=>(area==='all'||p.area===area)&&(diet==='all'||p.diet===diet)&&matchesRestaurant(p,query)&&(operating==='all'||operating==='available'&&operationRank(p)!==2||operating==='recent'&&operationRank(p)===0||operating==='unverified'&&operationRank(p)===1||operating==='closed'&&operationRank(p)===2)).map(p=>({...p,distance:p.navigationHold?null:distanceKm(origin,p)})).sort((a,b)=>operationRank(a)-operationRank(b)||(hasCoordinates(origin)?(a.distance??Infinity)-(b.distance??Infinity):((a.diet==='vegan'?0:1)-(b.diet==='vegan'?0:1))));}
   function mapsUrl(p){const u=new URL('https://www.google.com/maps/dir/');u.searchParams.set('api','1');u.searchParams.set('destination',[p.name,p.address].filter(Boolean).join(', '));if(p.matchConfidence==='verified'&&p.googleMapsUrl){try{const source=new URL(p.googleMapsUrl);if(source.protocol==='https:'&&['www.google.com','google.com','maps.google.com'].includes(source.hostname)&&/^\/maps(?:\/|$)/.test(source.pathname)){const placeId=source.searchParams.get('query_place_id');if(placeId)u.searchParams.set('destination_place_id',placeId);}}catch{}}return u.href;}
-  return {hasCoordinates,distanceKm,normalized,matchesRestaurant,selectRestaurants,mapsUrl,operationRank,canRecommend};
+  function selectExchange(records,options={}){
+    const {origins=[],currency='all'}=options,validOrigins=origins.filter(hasCoordinates);
+    return records.filter(p=>currency==='all'||(currency==='unknown'?!p.currencies.length:p.currencies.includes(currency))).map(p=>{
+      const distances=validOrigins.map(o=>distanceKm(o,p)).filter(d=>d!==null);
+      return {...p,distance:distances.length?Math.min(...distances):null};
+    }).sort((a,b)=>(a.distance===null?1:0)-(b.distance===null?1:0)||(a.distance??Infinity)-(b.distance??Infinity));
+  }
+  return {hasCoordinates,distanceKm,normalized,matchesRestaurant,selectRestaurants,mapsUrl,operationRank,canRecommend,selectExchange};
 });

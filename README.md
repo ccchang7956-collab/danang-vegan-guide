@@ -6,7 +6,7 @@
 
 - **每日行程**：切換五天，查看景點、住宿與餐廳地圖。餐廳參考位置可切換整天或單一景點；直線範圍預設 10 km，可切換 6／10／15 km。每日搜尋框可搜尋店名、地址與料理，清除搜尋或把關鍵字帶到「搜尋全清單」。搜尋支援多個關鍵字，忽略越南文聲調與大小寫。「今天怎麼吃」可展開三餐與不同業者的備援，附 Google 商家按鈕。
 - **附近素食**：點「使用我的位置」，允許定位後依直線距離排序。也可改選飯店／景點當參考位置，搜尋店名與地址，篩選區域或全素店。「只找全素店」會清除舊搜尋／封存篩選，目前可選 24 家全素店；「查看餐廳列表」可直接跳過地圖。
-- **換匯所**：切換旅行日期或使用 GPS，查看附近銀行與已公告授權櫃檯，依 USD／TWD 官方幣別資料篩選，並以 Google Maps 導航。地圖只替可核對座標的點放圖釘；其他官方地址仍可開導航，不虛構距離。
+- **換匯所**：切換旅行日期或使用 GPS，查看附近銀行與已公告授權櫃檯，依 USD／TWD 官方幣別資料篩選，並以 Google Maps 導航。頁首提供換匯用途指引與直接跳至列表；GPS 模式會出現在參考位置選單，可切回行程路線或單一地標。地圖只替可核對座標的點放圖釘；其他官方地址仍可開導航，不虛構距離。
 - **全素點餐卡**：越南文、英文與繁體中文，可放大給店員看或複製。
 - 餐廳卡片可直接 Google Maps 導航、查看地圖、打電話及展開來源。
 
@@ -18,7 +18,7 @@
 
 「Google 未標歇業」表示查核日商家頁存在且列有營業時段，**未向店家電話確認**；不代表旅行當日一定開門。評分、評論數會變動，出發前按商家連結查看最新評論、營業時段及臨時公告。
 
-換匯頁收錄 **6 個銀行／授權櫃檯地址**：BIDV 峴港、BIDV Sông Hàn、BIDV Hội An、Vietcombank 峴港、Vietcombank Hội An，以及 AEON MALL Thanh Khê 公告的 VietinBank 授權櫃檯。BIDV 官方外匯服務列有 TWD、USD 現鈔；Vietcombank 官方牌價可查 USD 現鈔買入。授權櫃檯公告稱可換 14 種外幣，但未公開名單，因此該點的 TWD、USD 都標成先詢問。銀行層級的服務／牌價不保證每家分行當天有現鈔服務或庫存，請出發前聯絡分行確認。只有 BIDV 峴港分行與 AEON 商場點有可追溯地圖圖釘；其餘地址提供 Google Maps 搜尋導航，但不列入最近距離排序。
+換匯頁維持 **6 個銀行／授權櫃檯地址**，研究更新為 **2026-10-14**：BIDV 峴港、BIDV Sông Hàn、BIDV Hội An、Vietcombank 峴港、Vietcombank Hội An，以及 AEON MALL Thanh Khê 公告的 VietinBank 授權櫃檯。卡片新增用途說明：台灣 Outo 推薦峴港市區的 Vietcombank（沒有指定分行）；AEON 適合購物順路換匯；帶台幣者可先聯絡 BIDV。BIDV 官方匯率頁註明 TWD 牌價適用現鈔交易，Vietcombank 有 USD 現鈔買入資料；這些是銀行層級資訊，不保證分行當日受理。AEON 公告正文稱有 14 種外幣但未逐一列出，TWD、USD 均維持待確認。商場營業時間與櫃檯服務時間分開說明。個別地址與幣別查證日期保留於卡片，不將整體研究更新冒充所有地址重新查證。只有 BIDV 峴港與 AEON 有可追溯地圖圖釘，其餘提供地址導航並排於距離列表後方。
 
 本頁以越南國家銀行法規與官方公告作收錄依據：非銀行兌換代理須經授權並完成登記；「機場櫃位」或「金店」本身不代表已確認合法。峴港機場官方有列外幣兌換服務與 USD，但未公開櫃位營運商的現行授權資料，且官方清單沒有 TWD，因此不放入「已確認授權」清單。兌換前確認收鈔幣別、面額、當日匯率與費用，認明授權銀行標示並索取收據。
 
@@ -40,7 +40,7 @@
 
 服務工作執行緒只快取本站文字資料、樣式、程式與圖示；**不下載離線地圖圖磚**。因此行程、餐廳地址和點餐卡可離線，底圖、Google Maps 導航、電話／來源等需適當連線或服務。GPS 不保存在網站資料庫或本機儲存，只在瀏覽器記憶體計算距離；重整後需再次定位。瀏覽器可能清理快取，出發前與飛航模式下都建議實際確認。
 
-離線採分版本的快取優先，避免弱網時文字頁面一直等待。**每次修改任何網站檔案，均須更新 `sw.js` 的 VERSION**（本包為 v10），與其餘檔案一起上傳。首次開啟舊站時會在背景下載新版；看到新版提示後重新整理，或關閉頁面後重開，再檢查內容。頁首「離線功能已啟用」表示已有 active worker，不能代替飛航模式實測或保證瀏覽器不會清理快取。
+離線採分版本的快取優先，避免弱網時文字頁面一直等待。**每次修改任何網站檔案，均須更新 `sw.js` 的 VERSION**（本包為 v11），與其餘檔案一起上傳。首次開啟舊站時會在背景下載新版；看到新版提示後重新整理，或關閉頁面後重開，再檢查內容。頁首「離線功能已啟用」表示已有 active worker，不能代替飛航模式實測或保證瀏覽器不會清理快取。
 
 ## 旅行資料注意
 
@@ -57,7 +57,7 @@
 
 ## 來源與更新
 
-餐廳卡片附逐店來源。新店 Loving Hut 研究在 `research/loving-hut-danang-addition.json`。完整研究原稿在 `research/danang-city.json`、`research/danang-beach.json`、`research/hoian-outskirts.json`，Google 交叉研究在 `research/google-audit-*.json`、直接商家頁觀察在 `research/google-direct-observations.json`，座標來源在 `research/places-coordinates.json`，每週時段／電話覆核在 `research/restaurant-review-corrections.json`，時段衝突在 `research/restaurant-hours-conflicts.json`，每日用餐備援在 `research/review-meal-coverage.json`，行程在 `research/itinerary.json`；換匯據點與法律／幣別證據在 `research/exchange-points.json`。店家官網優先，另交叉參考 HappyCow、Google Maps 連結、具名導航目錄等；舊來源與爭議保留註記。
+餐廳卡片附逐店來源。新店 Loving Hut 研究在 `research/loving-hut-danang-addition.json`。完整研究原稿在 `research/danang-city.json`、`research/danang-beach.json`、`research/hoian-outskirts.json`，Google 交叉研究在 `research/google-audit-*.json`、直接商家頁觀察在 `research/google-direct-observations.json`，座標來源在 `research/places-coordinates.json`，每週時段／電話覆核在 `research/restaurant-review-corrections.json`，時段衝突在 `research/restaurant-hours-conflicts.json`，每日用餐備援在 `research/review-meal-coverage.json`，行程在 `research/itinerary.json`；換匯據點與法律／幣別證據在 `research/exchange-points.json`，2026-10-14 再查證紀錄在 `research/exchange-recheck-2026-10-14.md`。店家官網優先，另交叉參考 HappyCow、Google Maps 連結、具名導航目錄等；舊來源與爭議保留註記。
 
 換匯主要來源：[越南國家銀行 2026 年外幣兌換代理規則](https://congbao.chinhphu.vn/van-ban/van-ban-hop-nhat-so-79-vbhn-nhnn-469935/66805.htm)、[BIDV 外幣現鈔服務](https://bidv.com.vn/vn/ca-nhan/san-pham-dich-vu/ngoai-hoi-va-thi-truong-von/mua-ban-ngoai-te/)、[BIDV 2025 年分行地址](https://bidv.com.vn/wps/wcm/connect/a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e/BIDV_BCTN_2025_%282.1%29_VIE_interactive_15mb.pdf?CACHEID=ROOTWORKSPACE-a8d511f6-3b0b-4ac9-b7f1-8e17ac08bf7e-pS-Z7xM&MOD=AJPERES)、[Vietcombank 匯率牌價](https://www.vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/Ty-gia-ngoai-te)、[AEON MALL VietinBank 授權櫃檯公告](https://danangthanhkhe.aeonmall-vietnam.com/en/news/dich-vu-doi-ngoai-te-uy-nhiem-vietinbank-da-co-mat-tai-aeon-mall-da-nang-thanh-khe.html)、[峴港機場外幣服務說明](https://danangairport.vn/facility-detail-page/brand-detail?bid=137)。
 
@@ -74,8 +74,10 @@ node --test tests/*.test.cjs
 
 ## 驗證紀錄
 
-- 50 項 Node 測試：距離、排序、搜尋、分類、資料一致性、日期切換、GPS 成功／拒絕、地圖未載入備援、跨分頁卡片選取、巴拿山無座標備案、休息日與服務工作執行緒的子目錄／跨來源行為；新增 Google 覆蓋、歇業封存、地址衝突、狀態排序與歇業彈窗禁止導航。
+- 61 項 Node 測試：距離、排序、搜尋、分類、資料一致性、日期切換、GPS 成功／拒絕、地圖未載入備援、跨分頁卡片選取、巴拿山無座標備案、休息日與服務工作執行緒的子目錄／跨來源行為；新增 Google 覆蓋、歇業封存、地址衝突、狀態排序與歇業彈窗禁止導航。
 - Chrome 本機成功載入互動地圖、每日行程、餐廳與點餐卡；2026-10-14 再以 Chrome 393 × 852 手機模擬畫面確認新版頁首、全素篩選、快速跳轉與餐廳卡片，並實測 DevTools 離線模式下重新載入行程與用餐備援。此輪新增每日半徑邊界、多關鍵字搜尋、全清單跳轉及 Loving Hut 資料測試；現在預設可選 44 家、全素篩選 24 家，完整查核記錄 46 家。
-- 新增搜尋控制項沿用手機版樣式與至少 44 px 操作區，功能以自動化 UI 測試確認；本輪獨立瀏覽器預覽未可用，未新增實際畫面驗證。
+- 換匯覆核新增 11 項測試：幣別篩選與圖釘同步、篩選地圖視野、最近行程距離、無座標、GPS／手動模式、日期與 GPS 優先順序、定位失敗後的新日期備援、來源與資料生成一致性。完整 61 項通過，JavaScript 語法與 git diff --check 通過。換匯新增控制項沿用手機版樣式與至少 44 px 操作區；Chrome 正被使用者同步操作，自動化在動作前阻擋，未完成更新版實際瀏覽器或手機視覺驗證。
 - 尚未在實體 iPhone 17 Pro、越南實際 GPS 或正式 GitHub Pages 網址實測。正式定位需裝置允許；距離演算法與成功／拒絕的頁面處理已用測試驗證。
 - 完整修正與剩餘旅行風險見 [本次 review 報告](docs/review-2026-10-14.md)。
+
+換匯頁問題、修正與驗證範圍見 [換匯 review 報告](docs/exchange-review-2026-10-14.md)。本次更新本機專案與 ZIP，尚未推送或部署 GitHub Pages。

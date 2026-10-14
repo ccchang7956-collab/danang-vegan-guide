@@ -59,3 +59,15 @@ test('restaurant search matches multiple accent-insensitive words across fields'
  assert.equal(typeof C.matchesRestaurant,'function');assert.equal(C.matchesRestaurant(r,'loving 380'),true);assert.equal(C.matchesRestaurant(r,'bien tinh'),true);assert.equal(C.matchesRestaurant(r,'愛家 湯麵'),true);assert.equal(C.matchesRestaurant(r,'loving 999'),false);
  assert.deepEqual(C.selectRestaurants([r],{query:'le van hien 380'}).map(x=>x.name),[r.name]);
 });
+
+test('exchange selection uses the closest valid route stop and keeps unknown coordinates last',()=>{
+ assert.equal(typeof C.selectExchange,'function');
+ const points=[{id:'far',lat:16.2,lng:108,currencies:['USD']},{id:'unknown',lat:null,lng:null,currencies:['USD']},{id:'near',lat:16.05,lng:108,currencies:['TWD']}];
+ const rows=C.selectExchange(points,{origins:[{lat:null,lng:108},{lat:16,lng:108},{lat:16.051,lng:108}]});
+ assert.deepEqual(rows.map(p=>p.id),['near','far','unknown']);assert.ok(rows[0].distance<0.12);assert.equal(rows[2].distance,null);assert.equal(points[0].distance,undefined);
+ assert.ok(C.selectExchange(points,{origins:[]}).every(p=>p.distance===null));
+});
+test('exchange currency filters use published evidence without inventing unsupported currencies',()=>{
+ assert.equal(typeof C.selectExchange,'function');const rows=[{id:'bank',currencies:['USD','TWD']},{id:'usd',currencies:['USD']},{id:'ask',currencies:[]}];
+ assert.deepEqual(C.selectExchange(rows,{currency:'TWD'}).map(p=>p.id),['bank']);assert.deepEqual(C.selectExchange(rows,{currency:'unknown'}).map(p=>p.id),['ask']);assert.equal(C.selectExchange(rows,{currency:'all'}).length,3);assert.equal(C.selectExchange(rows,{currency:'JPY'}).length,0);
+});
