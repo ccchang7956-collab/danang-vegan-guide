@@ -27,6 +27,9 @@ test('downloads one CSV with all current records despite active filters, at mobi
     });
     return window.TRAVEL_DATA.restaurants.length;
   });
+  const ngocChiName = await page.evaluate(
+    () => window.TRAVEL_DATA.restaurants.find((r) => r.id === 'ngoc-chi-city').name,
+  );
   const downloads = [];
   await page.evaluate(() => {
     window.__exportUrls = [];
@@ -44,6 +47,7 @@ test('downloads one CSV with all current records despite active filters, at mobi
     };
   });
   page.on('download', (download) => downloads.push(download));
+  await page.locator('.data-tools > summary').click();
   const button = page.getByRole('button', { name: '匯出 Google 我的地圖', exact: true });
   await expect(button).toBeVisible();
   await button.evaluate((element) => element.scrollIntoView({ block: 'center' }));
@@ -57,10 +61,10 @@ test('downloads one CSV with all current records despite active filters, at mobi
   expect(csv).toContain('更新地址, Đà Nẵng');
   expect(csv).toContain('新增店 ""Chay""');
   expect(csv).toContain('【永久歇業】Everyday Vegan');
-  expect(csv).toContain('Ngọc Chi（市中心店）');
+  expect(csv).toContain(ngocChiName);
   expect(csv).toContain('Khai Tâm');
-  expect(csv).toContain('農曆公休仍未確認');
-  expect(csv).toContain('營運證據日期：2024-08-10');
+  expect(csv).toContain('ConfirmedHours');
+  expect(csv).toContain('營運證據日期：2026-10-14');
   expect(csv).not.toContain('\ufeff');
   await expect(page.locator('#toast')).toContainText(`已匯出 ${count} 筆店家`);
   expect(downloads).toHaveLength(1);
@@ -82,6 +86,7 @@ test('shows a retry message when CSV download cannot be created', async ({ page,
       throw new Error('storage unavailable');
     };
   });
+  await page.locator('.data-tools > summary').click();
   await page.getByRole('button', { name: '匯出 Google 我的地圖', exact: true }).click();
   await expect(page.locator('#toast')).toContainText('匯出失敗');
 });

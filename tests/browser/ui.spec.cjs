@@ -207,19 +207,17 @@ test.describe('real browser UI regressions', () => {
     await expect(page.locator('#result-count')).toHaveText('0 間');
   });
 
-  test('cancels a queued search when the clear-to-vegan action replaces the filters', async ({
-    page,
-  }) => {
+  test('applies a queued search when the vegan toggle preserves the filters', async ({ page }) => {
     await loadApp(page);
     await page.locator('[data-view="nearby"]').click();
     await pausePageClock(page);
     await dispatchInput(page, '#search-input', missingRestaurantQuery);
     await page.locator('#quick-vegan').evaluate((button) => button.click());
 
-    await expect(page.locator('#search-input')).toHaveValue('');
+    await expect(page.locator('#search-input')).toHaveValue(missingRestaurantQuery);
     await expect(page.locator('#diet-filter')).toHaveValue('vegan');
     const resultCount = await page.locator('#result-count').textContent();
-    expect(Number.parseInt(resultCount, 10)).toBeGreaterThan(0);
+    expect(Number.parseInt(resultCount, 10)).toBe(0);
     await page.clock.runFor(220);
     await expect(page.locator('#result-count')).toHaveText(resultCount);
     await expect(page.locator('#restaurant-list .diet-badge:not(.vegan)')).toHaveCount(0);
@@ -433,7 +431,7 @@ test.describe('real browser UI regressions', () => {
     }
 
     await page.locator('.bottom-nav [data-view="daily"]').click();
-    await page.waitForFunction(() => window.scrollY === 0);
+    await expect(page.locator('#view-daily')).toBeVisible();
     const actions = page.locator('#day-restaurant-list .restaurant-card .card-actions').first();
     await expect(actions).toBeVisible();
     expect(await actions.locator('a, button').count()).toBeGreaterThan(0);

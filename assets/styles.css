@@ -1906,3 +1906,433 @@ body:not([data-current-view='daily']) .hero {
     grid-column: auto;
   }
 }
+
+/* Task-focused controls and compact travel information. */
+:root {
+  --text-detail: 14px;
+  --control-height: 44px;
+  --space-control: 10px;
+}
+.text-button {
+  min-height: var(--control-height);
+  padding: 8px 12px;
+  color: var(--green);
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-size: 14px;
+}
+.search-feedback {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 12px;
+  background: var(--sage);
+  padding: 10px 14px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+.search-feedback p {
+  flex: 1;
+  min-width: 180px;
+}
+.input-help {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.filter-grid label:has(#search-input) {
+  grid-column: 1 / -1;
+  grid-row: 1;
+}
+.active-filters,
+.result-tools,
+.empty-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.active-filters:empty {
+  display: none;
+}
+.active-filters button {
+  font-size: 13px;
+  padding: 8px 12px;
+  min-height: 44px;
+}
+.result-tools button {
+  font-size: 14px;
+  min-height: 44px;
+  padding: 8px 12px;
+}
+.result-tools label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 14px;
+}
+.result-tools select {
+  width: auto;
+  min-height: 44px;
+  font-size: 14px;
+}
+.empty-actions {
+  margin: 16px 0 0;
+  justify-content: center;
+}
+[aria-pressed='true'].secondary-button,
+.display-switch button[aria-pressed='true'] {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--paper);
+}
+.display-switch {
+  display: none;
+}
+.data-tools {
+  margin-top: 28px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+.data-tools summary,
+.translation-details summary,
+.restaurant-details summary,
+.supply-details summary,
+.exchange-guide summary {
+  min-height: 44px;
+  cursor: pointer;
+  padding: 10px 0;
+  color: var(--green);
+  font-weight: 650;
+  font-size: 14px;
+}
+.data-tools[open] > summary {
+  margin-bottom: 12px;
+}
+.card-top {
+  margin-bottom: 9px;
+}
+.restaurant-card .diet-badge,
+.restaurant-card .distance-badge {
+  font-size: 13px;
+}
+.restaurant-card .restaurant-address {
+  font-size: var(--text-detail);
+  margin-top: 9px;
+}
+.restaurant-diet-summary,
+.day-hours {
+  font-size: var(--text-detail);
+  margin-top: 8px;
+  color: var(--muted);
+}
+.compact-rating .google-rating-box {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin-top: 9px;
+}
+.compact-rating .rating-source-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+}
+.compact-rating .rating-value {
+  font-size: 15px;
+  display: inline;
+}
+.compact-rating .rating-age {
+  font-size: 11px;
+  margin-top: 3px;
+}
+.restaurant-details {
+  margin-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.restaurant-card .card-actions {
+  gap: 7px;
+}
+.restaurant-card .card-actions a,
+.restaurant-card .card-actions button {
+  font-size: 14px;
+  padding: 8px 11px;
+}
+.restaurant-card .source-details {
+  margin-top: 4px;
+}
+.restaurant-card .operation-row {
+  margin-top: 7px;
+}
+.restaurant-card .operation-badge {
+  font-size: 12px;
+  min-height: 26px;
+  padding: 3px 7px;
+}
+.restaurant-card .audit-date {
+  font-size: 11px;
+}
+.restaurant-card .note.warning {
+  font-size: 14px;
+}
+.restaurant-details .restaurant-note {
+  margin-top: 8px;
+}
+.phrase-actions {
+  margin-top: 0;
+}
+.phrase-card-heading {
+  margin-bottom: 14px;
+}
+.translation-details {
+  margin-top: 12px;
+}
+.dialog-close {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  box-shadow: 0 2px 8px #173d2e12;
+}
+#product-dialog {
+  max-width: 700px;
+}
+#product-image {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  max-height: 62dvh;
+  object-fit: contain;
+  background: white;
+  border-radius: 10px;
+}
+#product-caption {
+  margin: 14px 0;
+  font-size: 16px;
+}
+.shopping-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  min-height: 48px;
+  margin-top: 12px;
+  font-weight: 650;
+}
+.shopping-check input {
+  width: 24px;
+  height: 24px;
+  min-height: 24px;
+  accent-color: var(--green);
+}
+.supply-use {
+  font-size: 14px;
+  color: var(--green);
+  font-weight: 650;
+}
+.is-bought .shopping-check {
+  color: var(--green);
+}
+.supply-details {
+  border-top: 1px solid var(--line);
+  margin-top: 12px;
+}
+.supply-photo a {
+  height: 200px;
+}
+.supply-card .supply-vietnamese {
+  font-size: 17px;
+}
+.update-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--green);
+  border-radius: 14px;
+  background: var(--sage);
+  margin-top: 14px;
+}
+.update-banner p {
+  flex: 1;
+  min-width: 140px;
+}
+#network-status[role='button'] {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+#return-to-card {
+  margin: 12px 16px 0;
+  min-height: 44px;
+  font-size: 14px;
+}
+@media (max-width: 759px) {
+  .display-switch {
+    display: flex;
+    gap: 4px;
+    width: fit-content;
+    padding: 4px;
+    background: #e5ecdf;
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+  .display-switch button {
+    padding: 8px 28px;
+    min-height: 44px;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--green);
+    font-size: 15px;
+  }
+  #view-nearby[data-display-mode='list'] #nearby-map-slot,
+  #view-exchange[data-display-mode='list'] #exchange-map-slot {
+    display: none;
+  }
+  .hero {
+    min-height: 105px;
+    padding: 14px 0;
+  }
+  .hero h1 {
+    font-size: 26px;
+  }
+  .hero-description {
+    display: none;
+  }
+  .hero .eyebrow {
+    margin-bottom: 6px;
+  }
+  .coast-art {
+    height: 115px;
+    width: 140px;
+  }
+  .view-intro {
+    margin-bottom: 14px;
+  }
+  .view-intro .eyebrow {
+    display: none;
+  }
+  .view-intro h2 {
+    font-size: 23px;
+  }
+  .trip-strip {
+    padding: 9px 0;
+  }
+  .day-summary {
+    padding: 12px 0;
+    gap: 10px;
+  }
+  .day-tabs .day-tab {
+    min-height: 70px;
+  }
+  .day-summary > div {
+    width: 100%;
+  }
+  .day-summary .anchor-label {
+    width: 100%;
+  }
+  .daily-search-controls {
+    grid-template-columns: 1fr 1fr;
+  }
+  .daily-search-controls label:has(#day-search) {
+    grid-column: 1/-1;
+    grid-row: 1;
+  }
+  .daily-search-actions {
+    grid-column: auto;
+    align-items: end;
+  }
+  .daily-search-actions button {
+    font-size: 12px;
+    padding: 8px;
+  }
+  .daily-search-actions #clear-day-search {
+    display: none;
+  }
+  .filter-grid {
+    margin-bottom: 12px;
+  }
+  .filter-grid label:has(#operating-filter) {
+    grid-column: 1/-1;
+  }
+  .location-box {
+    padding: 12px;
+    margin-bottom: 14px;
+  }
+  .location-box p {
+    font-size: 14px;
+    margin-top: 7px;
+  }
+  .quick-actions {
+    margin-bottom: 12px;
+  }
+  .exchange-controls {
+    padding: 14px;
+    margin-bottom: 14px;
+  }
+  .exchange-controls .currency-filter {
+    order: -1;
+  }
+  .exchange-guide {
+    padding: 8px 14px;
+  }
+  .phrase-card {
+    padding: 18px;
+  }
+  .phrase-language {
+    margin-top: 12px;
+  }
+  .phrase-vietnamese {
+    font-size: 21px;
+  }
+  .supply-guide {
+    padding: 14px;
+  }
+  .supply-guide p {
+    font-size: 14px;
+  }
+  .supply-card {
+    padding: 17px;
+  }
+}
+@media (max-width: 359px) {
+  .daily-search-controls {
+    grid-template-columns: 1fr;
+  }
+  .daily-search-actions,
+  .daily-search-controls label:has(#day-search) {
+    grid-column: 1;
+  }
+}
+.filter-grid > .search-feedback {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin-bottom: 0;
+}
+.filter-grid label:has(#reference-select) {
+  grid-column: 1 / -1;
+}
+.advanced-filters {
+  grid-column: 1 / -1;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 12px;
+}
+.advanced-filters summary {
+  min-height: 44px;
+  padding: 10px 0;
+  color: var(--green);
+  cursor: pointer;
+  font-size: 14px;
+}
+.advanced-filters[open] {
+  padding-bottom: 12px;
+}
+h2[tabindex='-1']:focus {
+  outline: none;
+}

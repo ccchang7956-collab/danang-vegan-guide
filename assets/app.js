@@ -33,6 +33,7 @@
     dayRadius = 10,
     dayQuery = '',
     nearbyQuery = '',
+    previousDiet = 'all',
     exchangeAnchor = 'route',
     exchangeUseGps = false,
     exchangeVisited = false,
@@ -81,7 +82,7 @@
   const distanceText = (r) =>
     r.distance === null || r.distance === undefined
       ? '尚無查證座標'
-      : `${r.distance < 1 ? Math.round(r.distance * 1000) + ' m' : r.distance.toFixed(1) + ' km'}・直線`;
+      : `${r.nearestPlace ? '距' + r.nearestPlace + ' ' : ''}${r.distance < 1 ? Math.round(r.distance * 1000) + ' m' : r.distance.toFixed(1) + ' km'}・直線`;
   const link = (href, text, cls = '') =>
     `<a class="${cls}" href="${esc(safeUrl(href))}" target="_blank" rel="noopener noreferrer">${text}<span class="sr-only">（開新分頁）</span></a>`;
   const operationLabels = {
@@ -168,14 +169,17 @@
   </div>
   ${addressIssue}
   ${held ? '<p class="note warning">暫停提供舊址導航與圖釘；請先核對最新地址。</p>' : ''}
-  ${rating}
+  <div class="compact-rating">${rating}</div>
   <p class="restaurant-address">${esc(r.address)}${held ? '（既有記錄，勿直接前往）' : ''}</p>
-  <p class="restaurant-note">${esc(r.veganNotes)}</p>
+  <p class="restaurant-diet-summary">${esc(labels[r.diet])} · ${esc(r.diet === 'vegan' ? '點餐前確認湯底與醬料' : r.veganNotes)}</p>
   ${r.hoursExceptionNote ? `<p class="note warning">${esc(r.hoursExceptionNote)}</p>` : ''}
   ${r.dailyClosed ? '<p class="note warning">此日來源列為休息日，請另選店家或先聯絡確認。</p>' : ''}
   ${r.risk ? `<p class="note warning">${esc(r.risk)}</p>` : ''}
-  <p class="hours-note">參考時段：${esc(r.hours || '未確認／來源有衝突，出發前聯絡')}<br><span>營業紀錄與牌告時段不保證旅行當日開門；出發前查看 Google 最新資訊。</span></p>
+  <p class="day-hours">參考時段：${esc(r.hours || '待確認')}<span class="input-help"> · 非即時營業狀態</span></p>
   <div class="card-actions">${actions}</div>
+  <details class="restaurant-details"><summary>時段、飲食與店家詳情</summary><p class="restaurant-note">${esc(r.veganNotes)}</p>
+  <p class="hours-note">參考時段：${esc(r.hours || '未確認／來源有衝突，出發前聯絡')}<br><span>營業紀錄與牌告時段不保證旅行當日開門；出發前查看 Google 最新資訊。</span></p>
+  </details>
   <details class="source-details">
     <summary>查證來源與備註</summary>
     <p class="operation-evidence">${r.operatingEvidenceDate ? '<strong>查核資料 ' + esc(r.operatingEvidenceDate) + '</strong> · ' : ''}${esc(evidence)}</p>
@@ -434,7 +438,14 @@
       .map((r) => {
         const ds = origins.map((o) => C.distanceKm(o, r)).filter((v) => v !== null);
         const distance = ds.length ? Math.min(...ds) : null;
-        return { ...r, distance, dailyClosed: r.closedWeekdays?.includes(weekday) || false };
+        const nearest =
+          distance === null ? null : origins.find((o) => C.distanceKm(o, r) === distance);
+        return {
+          ...r,
+          distance,
+          nearestPlace: nearest?.name,
+          dailyClosed: r.closedWeekdays?.includes(weekday) || false,
+        };
       })
       .filter(
         (r) =>
@@ -461,8 +472,9 @@
       intro +
       (items.length
         ? items.map(restaurantCard).join('')
-        : `<div class="empty-state"><h3>${dayQuery ? '這天範圍內沒有符合搜尋的店家' : '這一站範圍內尚無可選店家'}</h3><p>可以擴大直線範圍、清除搜尋，或按上方「搜尋全清單」找其他區域。沒找到不代表店家不存在或已歇業。</p></div>`);
+        : `<div class="empty-state"><h3>${dayQuery ? '這天範圍內沒有符合搜尋的店家' : '這一站範圍內尚無可選店家'}</h3><p>可以擴大直線範圍、清除搜尋，或按上方「搜尋全清單」找其他區域。沒找到不代表店家不存在或已歇業。</p><div class="empty-actions"><button type="button" class="secondary-button" data-recover="clear-daily">清除搜尋</button><button type="button" class="secondary-button" data-recover="expand-daily">擴大到 15 km</button><button type="button" class="secondary-button" data-recover="search-all">搜尋全清單</button></div></div>`);
     displayed = items;
+    window.TravelUX?.updated({ view, items, day: currentDay(), dayRadius, dayAnchor });
   }
   function origin() {
     return gps || place(referenceId);
@@ -475,7 +487,17 @@
       query: nearbyQuery,
       operating: $('operating-filter').value || 'available',
     };
-    displayed = C.selectRestaurants(D.restaurants, options);
+    displayed = C.selectRestaurants(D.restaurants, options).filter(
+      (r) => window.TravelUX?.includeRestaurant(r.id) ?? true,
+    );
+    if ($('nearby-sort')?.value === 'vegan')
+      displayed.sort(
+        (a, b) =>
+          C.operationRank(a) - C.operationRank(b) ||
+          Number(b.diet === 'vegan') - Number(a.diet === 'vegan') ||
+          (a.distance ?? Infinity) - (b.distance ?? Infinity),
+      );
+    $('quick-vegan').setAttribute('aria-pressed', String($('diet-filter').value === 'vegan'));
     $('result-count').textContent = displayed.length + ' 間';
     const recent = D.restaurants.filter((r) => C.operationRank(r) === 0).length,
       closed = D.restaurants.filter((r) => C.operationRank(r) === 2).length;
@@ -483,8 +505,13 @@
       `${D.restaurants.length} 筆查核記錄 · ${recent} 家 Google 未標歇業 · ${D.restaurants.length - recent - closed} 家待確認 · ${closed} 家歇業／暫停`;
     $('restaurant-list').innerHTML = displayed.length
       ? displayed.map(restaurantCard).join('')
-      : '<div class="empty-state"><h3>這個條件沒有找到餐廳</h3><p>試著改成所有區域，或調整飲食分類與營業查核條件。</p></div>';
+      : '<div class="empty-state"><h3>這個條件沒有找到餐廳</h3><p>試著改成所有區域，或調整飲食分類與營業查核條件。</p><div class="empty-actions"><button type="button" class="secondary-button" data-recover="clear-nearby">清除關鍵字</button><button type="button" class="secondary-button" data-recover="reset-nearby">重設搜尋與篩選</button><button type="button" class="secondary-button" data-recover="favorites">顯示未收藏的店家</button></div></div>';
     $('reference-select').value = gps ? 'gps' : referenceId;
+    window.TravelUX?.updated({
+      view,
+      items: displayed,
+      reference: gps ? '你的定位' : place(referenceId)?.name,
+    });
   }
   function popup(p, kind) {
     const isFood = kind === 'food',
@@ -524,6 +551,8 @@
       b.addEventListener('click', () => {
         const card = $('card-' + view + '-' + p.id);
         if (card) {
+          window.TravelUX?.showTarget(card.id);
+          window.TravelUX?.focusTarget(card);
           card.scrollIntoView({ behavior: 'smooth', block: 'start' });
           card.classList.add('selected-card');
           setTimeout(() => card.classList.remove('selected-card'), 2500);
@@ -580,7 +609,11 @@
       popupAnchor: [0, -30],
     });
     const marker = L.marker([p.lat, p.lng], { icon, title: p.name, keyboard: true })
-      .bindPopup(popup(p, kind))
+      .bindPopup(popup(p, kind), {
+        maxWidth: Math.min(300, Math.max(160, (window.innerWidth || 1024) - 110)),
+        maxHeight: 240,
+        autoPanPadding: [12, 12],
+      })
       .addTo(layer);
     markers.set(p.id, marker);
   }
@@ -718,7 +751,7 @@
         : 'https://www.google.com/maps';
     }
     requestAnimationFrame(() => {
-      map.invalidateSize();
+      map.invalidateSize({ pan: false, animate: false });
       if (fit && bounds.length) map.fitBounds(bounds, { padding: [35, 35], maxZoom: 15 });
     });
   }
@@ -765,12 +798,13 @@
     $('exchange-result-count').textContent = displayed.length + ' 個';
     $('exchange-list').innerHTML = displayed.length
       ? displayed.map(exchangeCard).join('')
-      : '<div class="empty-state"><h3>這個幣別條件沒有資料</h3><p>切換「全部銀行／授權櫃檯」查看其他據點；沒有資料不代表拒收這個幣別。</p></div>';
+      : '<div class="empty-state"><h3>這個幣別條件沒有資料</h3><p>切換「全部銀行／授權櫃檯」查看其他據點；沒有資料不代表拒收這個幣別。</p><button type="button" class="secondary-button" data-recover="exchange">顯示全部據點</button></div>';
     $('exchange-legal-sources').innerHTML = D.exchangeLegalNotes
       .flatMap((n) => n.sourceUrls)
       .filter((u, i, a) => a.indexOf(u) === i)
       .map((u, i) => link(u, `法規／換匯參考 ${i + 1}`))
       .join('');
+    window.TravelUX?.updated({ view, items: displayed, day: currentDay() });
   }
   function render() {
     cancelSearchTimers();
@@ -786,6 +820,7 @@
     updateLocationControls();
   }
   function changeView(next) {
+    window.TravelUX?.beforeView(next);
     cancelSearchTimers();
     view = next;
     ['daily', 'nearby', 'exchange', 'supplies', 'phrase'].forEach(
@@ -798,6 +833,7 @@
       else b.removeAttribute('aria-current');
     });
     render();
+    window.TravelUX?.afterView(view);
   }
   function finishLocation() {
     locating = false;
@@ -825,6 +861,7 @@
     referenceId = currentDay().hotel || currentDay().reference;
     fillReference();
     render();
+    window.TravelUX?.dateChanged(currentDay().date);
   }
   function locate(targetView = 'nearby') {
     if (locating) return;
@@ -896,8 +933,8 @@
   $('close-phrase').addEventListener('click', () => $('phrase-dialog').close());
   $('copy-phrase').addEventListener('click', async () => {
     try {
-      await navigator.clipboard.writeText(phrases.vi + '\n\n' + phrases.en);
-      toast('越南文與英文已複製');
+      await navigator.clipboard.writeText(phrases.vi);
+      toast('越南文已複製');
     } catch {
       toast('無法自動複製，請長按點餐文字選取。');
     }
@@ -946,6 +983,7 @@
     nearbySearchComposing = false;
     dayQuery = $('day-search').value;
     nearbyQuery = dayQuery;
+    window.TravelUX?.clearFavoritesFilter();
     $('search-input').value = nearbyQuery;
     $('area-filter').value = 'all';
     $('diet-filter').value = 'all';
@@ -1037,12 +1075,13 @@
   );
   $('quick-vegan').addEventListener('click', () => {
     cancelNearbySearch();
-    nearbySearchComposing = false;
-    nearbyQuery = '';
-    $('search-input').value = '';
-    $('area-filter').value = 'all';
-    $('diet-filter').value = 'vegan';
-    $('operating-filter').value = 'available';
+    if (!nearbySearchComposing) nearbyQuery = $('search-input').value;
+    const diet = $('diet-filter');
+    if (diet.value === 'vegan') diet.value = previousDiet;
+    else {
+      previousDiet = diet.value;
+      diet.value = 'vegan';
+    }
     renderNearby();
     renderMap();
   });
@@ -1053,13 +1092,16 @@
     const jump = e.target.closest('[data-jump]');
     if (jump) {
       flushActiveSearch();
-      $(jump.dataset.jump)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.TravelUX?.showTarget(jump.dataset.jump);
+      const target = $(jump.dataset.jump);
+      target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.TravelUX?.focusTarget(target);
       return;
     }
     const nav = e.target.closest('[data-view]');
     if (nav) {
       changeView(nav.dataset.view);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (!window.TravelUX) window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
     const b = e.target.closest('[data-map-id]');
@@ -1078,8 +1120,10 @@
         return;
       }
       if (map) {
+        window.TravelUX?.mapFromCard(b.closest?.('article')?.id);
+        map.invalidateSize({ pan: false, animate: false });
         $('map-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        map.setView(m.getLatLng(), 16);
+        map.setView(m.getLatLng(), 16, { animate: false });
         m.openPopup();
       }
     }
@@ -1088,11 +1132,15 @@
     const online = navigator.onLine;
     if (online && $('map-message').textContent.startsWith('目前離線'))
       $('map-message').hidden = true;
-    $('network-status').textContent = online
-      ? offlineReady
-        ? '離線功能已啟用・地圖需網路'
-        : '線上瀏覽・離線尚未備妥'
-      : '目前離線・已載入文字可閱讀';
+    $('network-status').textContent = window.TravelUX?.hasUpdate()
+      ? online
+        ? '新版已備妥 · 點此更新'
+        : '目前離線 · 新版已備妥'
+      : online
+        ? offlineReady
+          ? '離線功能已啟用・地圖需網路'
+          : '線上瀏覽・離線尚未備妥'
+        : '目前離線・已載入文字可閱讀';
     $('network-status').classList.toggle('offline', !online);
     if (!online) {
       $('map-message').hidden = false;
@@ -1106,13 +1154,61 @@
   fillReference();
   network();
   render();
+  window.TravelUX?.start({
+    changeView,
+    setDay,
+    refresh: render,
+    toast,
+    flush: flushActiveSearch,
+    snapshot: () => ({
+      dayIndex,
+      dayAnchor,
+      dayRadius,
+      dayQuery: $('day-search').value,
+      nearbyQuery: $('search-input').value,
+      referenceId,
+      exchangeAnchor,
+      exchangeCurrency,
+      area: $('area-filter').value,
+      diet: $('diet-filter').value,
+      operating: $('operating-filter').value,
+      sort: $('nearby-sort').value,
+    }),
+    restore: (state) => {
+      if (Number.isInteger(state.dayIndex) && D.days[state.dayIndex]) setDay(state.dayIndex);
+      if (state.dayAnchor === 'route' || currentDay().stops.some((s) => s.id === state.dayAnchor))
+        dayAnchor = state.dayAnchor;
+      if ([6, 10, 15].includes(state.dayRadius)) dayRadius = state.dayRadius;
+      if (typeof state.dayQuery === 'string') dayQuery = state.dayQuery;
+      if (typeof state.nearbyQuery === 'string') nearbyQuery = state.nearbyQuery;
+      if (D.places.some((p) => p.id === state.referenceId)) referenceId = state.referenceId;
+      if (state.exchangeAnchor === 'route' || D.places.some((p) => p.id === state.exchangeAnchor))
+        exchangeAnchor = state.exchangeAnchor;
+      if (['all', 'USD', 'TWD', 'unknown'].includes(state.exchangeCurrency))
+        exchangeCurrency = state.exchangeCurrency;
+      $('day-search').value = dayQuery;
+      $('search-input').value = nearbyQuery;
+      const fields = {
+        'area-filter': state.area,
+        'diet-filter': state.diet,
+        'operating-filter': state.operating,
+        'nearby-sort': state.sort,
+      };
+      for (const [id, value] of Object.entries(fields))
+        if (Array.from($(id).options).some((o) => o.value === value)) $(id).value = value;
+      fillReference();
+      render();
+    },
+  });
   if (
     'serviceWorker' in navigator &&
     location.protocol !== 'file:' &&
     navigator.serviceWorker.controller
   )
     navigator.serviceWorker.addEventListener('controllerchange', () =>
-      toast('新版已下載，請重新整理以載入最新行程與店家。'),
+      window.TravelUX
+        ? window.TravelUX.updateReady()
+        : toast('新版已下載，請重新整理以載入最新行程與店家。'),
     );
   if ('serviceWorker' in navigator && location.protocol !== 'file:')
     navigator.serviceWorker

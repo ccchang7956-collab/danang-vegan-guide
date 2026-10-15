@@ -6,7 +6,10 @@ const vm = require('node:vm');
 
 const PROJECT_ROOT = path.resolve(__dirname, '..');
 const SCOPE = 'https://example.github.io/vegan-trip/';
-const CURRENT_CACHE = 'danang-vegan:/vegan-trip/:v18';
+const WORKER_VERSION = fs
+  .readFileSync(path.join(PROJECT_ROOT, 'sw.js'), 'utf8')
+  .match(/const VERSION = ['"]([^'"]+)['"]/)[1];
+const CURRENT_CACHE = 'danang-vegan:/vegan-trip/:' + WORKER_VERSION;
 const INDEX_URL = new URL('./index.html', SCOPE).href;
 
 function deferred() {

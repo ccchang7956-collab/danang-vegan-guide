@@ -707,17 +707,31 @@ test('exchange cards show Taiwanese recommendation evidence without promising br
   assert.match(list, /地址查核 2026-10-12/);
 });
 
-test('quick vegan action clears stale search and closed archive filters', () => {
+test('quick vegan toggles diet while preserving search, area and audit filters', () => {
   const h = harness();
   h.clickView('nearby');
-  h.elements.get('search-input').value = 'zzzz';
-  h.elements.get('operating-filter').value = 'closed';
-  assert.ok(h.elements.get('quick-vegan'), 'quick vegan control');
+  h.elements.get('search-input').value = 'kurumi';
+  h.elements.get('area-filter').value = 'hoian';
+  h.elements.get('operating-filter').value = 'recent';
   h.elements.get('quick-vegan').listeners.click();
-  assert.equal(h.elements.get('search-input').value, '');
-  assert.equal(h.elements.get('operating-filter').value, 'available');
+  assert.equal(h.elements.get('search-input').value, 'kurumi');
+  assert.equal(h.elements.get('area-filter').value, 'hoian');
+  assert.equal(h.elements.get('operating-filter').value, 'recent');
   assert.equal(h.elements.get('diet-filter').value, 'vegan');
-  assert.ok(!h.elements.get('restaurant-list').innerHTML.includes('素食店・確認蛋奶'));
+  assert.match(h.elements.get('restaurant-list').innerHTML, /KURUMI/);
+  h.elements.get('quick-vegan').listeners.click();
+  assert.equal(h.elements.get('diet-filter').value, 'all');
+});
+test('empty results offer recovery actions and cards put navigation before details', () => {
+  const h = harness();
+  h.clickView('nearby');
+  const card = h.elements.get('restaurant-list').innerHTML;
+  assert.ok(card.indexOf('開始導航') < card.indexOf('restaurant-note'));
+  h.elements.get('search-input').value = 'zzzz不存在';
+  h.elements.get('search-input').listeners.input();
+  h.advanceTime(150);
+  assert.match(h.elements.get('restaurant-list').innerHTML, /data-recover="clear-nearby"/);
+  assert.match(h.elements.get('restaurant-list').innerHTML, /data-recover="reset-nearby"/);
 });
 test('choosing a daily anchor fits its nearby restaurants rather than whole cross-city route', () => {
   const h = harness({ withMap: true });
