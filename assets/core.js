@@ -39,8 +39,40 @@
     hoian: '會安 會安古城 hoi an hoian',
     banahills: '巴拿山 ba na bana hills',
   };
+  const semanticTerms = [
+    '會安古城',
+    '巴拿山',
+    '會安',
+    '美溪',
+    '峴港',
+    '全素',
+    '純素',
+    '早餐',
+    '午餐',
+    '晚餐',
+  ].sort((a, b) => b.length - a.length);
+  function searchWords(query) {
+    return normalized(query)
+      .trim()
+      .split(/\s+/)
+      .flatMap((word) => {
+        const blocks = word.match(/[\u3400-\u9fff]+|[^\u3400-\u9fff]+/g) || [];
+        return blocks.flatMap((block) => {
+          const parts = [];
+          let rest = block;
+          while (rest) {
+            const term = semanticTerms.find((candidate) => rest.startsWith(candidate));
+            // Unknown Chinese phrases remain whole: 純素雞飯 is a dish, not a store filter.
+            if (!term) return [block];
+            parts.push(term);
+            rest = rest.slice(term.length);
+          }
+          return parts;
+        });
+      });
+  }
   function matchesRestaurant(p, query = '', date = null) {
-    const words = normalized(query).trim().split(/\s+/).filter(Boolean);
+    const words = searchWords(query);
     const text = normalized(
       [
         p.name,

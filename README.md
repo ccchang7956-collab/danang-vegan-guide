@@ -2,13 +2,15 @@
 
 2026/10/21–10/25 的峴港與會安旅行指南。依使用者提供的行程截圖製作，飲食條件為全素、五辛可接受。
 
-## 手機新版（v22）
+## 手機與搜尋新版（v23）
 
 正式網址：<https://ccchang7956-collab.github.io/danang-vegan-guide/>。舊版使用者看到「新版資料已備妥」可按重新載入；收藏保留。下方歷史驗證紀錄中的「尚未推送」描述當時狀態。
 
 手機搜尋已集中常用條件、收合更多篩選；卡片直接顯示所選日期時段與菜單參考，三餐明示首選與備援。11 店有官方支持的品項／分類、10 店有標價；舊版 PDF、不同分店與無法確認的資料分開標示。
 
-驗證：99 項 Node、42 項 Chrome、12 項 WebKit 手機與離線測試；另有正式站升級檢查腳本。WebKit 不是實體 iPhone，現地 GPS 與真實鍵盤仍需裝置確認。詳見 [手機改版交付](docs/mobile-travel-improvements-2026-10-16.md) 與 [菜單查核](research/restaurant-menus-2026-10-16.md)。
+v23 支援不加空白的中文組合搜尋，例如「會安全素早餐」；超市商品與門市由同一份 JSON 生成，修正 Handy 成分與 AEON 商品數說明。
+
+驗證：119 項 Node、44 項 Chrome、14 項 WebKit 手機與離線測試全部通過；另有正式站升級檢查腳本。WebKit 不是實體 iPhone，現地 GPS 與真實鍵盤仍需裝置確認。詳見 [手機改版交付](docs/mobile-travel-improvements-2026-10-16.md) 與 [菜單查核](research/restaurant-menus-2026-10-16.md)。
 
 ## 開始使用
 
@@ -42,11 +44,11 @@
 4. 等 GitHub 顯示發布網址，通常是 `https://你的帳號.github.io/你的repo名稱/`。
 5. 用手機 Safari 開啟該 HTTPS 網址。桌面本機檔案預覽可看頁面，但正式定位與離線快取請用 HTTPS 或 localhost。
 
-步驟依 [GitHub Pages 官方文件](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)。本次 review 更新工作區檔案與 ZIP；尚未將這次修改上傳至 GitHub。已有網站可用新版檔案覆蓋 repository 中的對應檔案。
+步驟依 [GitHub Pages 官方文件](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)。目前發布版本見本文件頁首；下方保留歷史驗證紀錄。已有網站可用新版檔案覆蓋 repository 中的對應檔案。
 
 ## 餐廳搜尋優化（2026-10-16）
 
-- 中文區域與條件搜尋：例如「會安 全素 kurumi」「美溪」；「全素／純素」按飲食分類篩選。英文 vegan 保留店名搜尋，避免漏掉名稱含 vegan、但全素條件待確認的店。
+- 中文區域與條件搜尋：例如「會安 全素 kurumi」「會安全素早餐」「美溪」；「全素／純素」按飲食分類篩選。英文 vegan 保留店名搜尋，避免漏掉名稱含 vegan、但全素條件待確認的店。
 - 料理同義詞僅擴充既有資料支持的詞，例如「法國麵包／越式三明治／banh mi」，未重新查核菜單，不推測河粉等未確認料理。
 - 搜尋「早餐／午餐／晚餐」依所選日期的 08:30／12:00／18:00 牌告時段比對，不保證供應特定餐點。
 - 每日頁可填預計用餐時間；附近頁可選日期、時間，或填入越南現在時間。卡片區分牌告時段內、30 分鐘內結束、時段外（含午休）、休息日及待確認；輸入時間後，已知座標內依時段狀態再按所選排序。不是即時營業資訊，最後點餐與實際供餐需店家確認。
@@ -69,7 +71,7 @@
 
 服務工作執行緒只快取本站文字資料、樣式、程式與圖示；**不下載離線地圖圖磚**。因此行程、餐廳地址和點餐卡可離線，底圖、Google Maps 導航、電話／來源等需適當連線或服務。GPS 不保存在網站資料庫或本機儲存，只在瀏覽器記憶體計算距離；重整後需再次定位。瀏覽器可能清理快取，出發前與飛航模式下都建議實際確認。
 
-離線採分版本的快取優先，避免弱網時文字頁面一直等待。**每次修改任何網站檔案，均須更新 `sw.js` 的 VERSION**（本包為 v22），與其餘檔案一起上傳。首次開啟舊站時會在背景下載新版；看到新版橫幅後可按「重新載入」，保留每日／附近／換匯的非 GPS 條件；稍後更新可從頁首狀態再次開啟提示。頁首「離線功能已啟用」表示已有 active worker，不能代替飛航模式實測或保證瀏覽器不會清理快取。
+離線採分版本的快取優先，避免弱網時文字頁面一直等待。**每次修改任何網站檔案，均須更新 `sw.js` 的 VERSION**（本包為 v23），與其餘檔案一起上傳。首次開啟舊站時會在背景下載新版；看到新版橫幅後可按「重新載入」，保留每日／附近／換匯的非 GPS 條件；稍後更新可從頁首狀態再次開啟提示。頁首「離線功能已啟用」表示已有 active worker，不能代替飛航模式實測或保證瀏覽器不會清理快取。
 
 ## 旅行資料注意
 
@@ -111,6 +113,20 @@ npm run format:check
 ```
 
 瀏覽器測試使用獨立的無頭 Google Chrome，啟動與關閉自己的本機測試伺服器，不共用平常使用的 Chrome 設定或分頁。電腦需已安裝 Chrome；其他安裝位置可用 `PLAYWRIGHT_CHROME_EXECUTABLE` 指定執行檔。Chrome 設定依 [Playwright 官方瀏覽器文件](https://playwright.dev/docs/browsers)。測試的 GPS 回覆由測試控制，圖磚以本機測試圖片代替，離線與 service worker 則使用真正的瀏覽器機制。
+
+超市資料以 `research/supermarket-supplies.json` 為唯一編輯來源；執行 `python3 scripts/build-data.py` 同步商品與門市 HTML。`python3 scripts/supplies.py --check` 只檢查是否同步，不寫入檔案。GitHub Actions 在 push／PR 自動檢查 Node 測試、格式及生成結果，瀏覽器測試另於本機執行。
+
+正式站更新需先保存真實舊版證據，再部署新版；不能在新版上線後補做舊版準備：
+
+```sh
+# v22 還在線上時
+npm run verify:live -- prepare --from v22 --to v23
+# v23 部署後
+npm run verify:live -- verify --from v22 --to v23
+npm run verify:live -- webkit --to v23
+```
+
+腳本核對 active worker、scope、實際版本快取與網路／快取檔案 SHA256，並確認收藏保留、搜尋及離線重載。成功的升級驗證會消耗舊版證據；下一次更新須重新準備對應版本。
 
 `npm run format` 可格式化自有 JavaScript、CSS 與測試；不改寫生成的 `assets/data.js`、第三方 Leaflet、研究資料或文件。`node_modules/`、`test-results/`、`playwright-report/` 不放進部署 ZIP。
 

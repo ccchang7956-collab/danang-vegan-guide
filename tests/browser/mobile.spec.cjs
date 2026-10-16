@@ -134,3 +134,39 @@ test('mobile enlarged text fits and viewport keyboard handling returns to named 
   await expect(page.locator('#nearby-results-heading')).toBeFocused();
   await expect(page.locator('body')).not.toHaveClass(/keyboard-open/);
 });
+
+test('unspaced Chinese search works on phone without changing strict diet filters', async ({
+  page,
+}) => {
+  await loadApp(page);
+  await page.locator('[data-view="nearby"]').click();
+  await page.locator('#search-input').fill('會安全素早餐');
+  await page.locator('#search-input').press('Enter');
+  const ids = await page
+    .locator('#restaurant-list .restaurant-card')
+    .evaluateAll((cards) => cards.map((card) => card.id));
+  expect(ids.length).toBeGreaterThan(0);
+  await page.locator('#search-input').fill('會安 全素 早餐');
+  await page.locator('#search-input').press('Enter');
+  await expect
+    .poll(() =>
+      page
+        .locator('#restaurant-list .restaurant-card')
+        .evaluateAll((cards) => cards.map((card) => card.id)),
+    )
+    .toEqual(ids);
+  await expect(page.locator('#diet-filter')).toHaveValue('all');
+});
+
+test('generated store cards stay stores and never acquire product shopping actions', async ({
+  page,
+}) => {
+  await loadApp(page);
+  await page.locator('[data-view="supplies"]').click();
+  await expect(page.locator('.supply-photo')).toHaveCount(11);
+  await expect(page.locator('[data-shopping]')).toHaveCount(11);
+  await expect(page.locator('#supply-stores .shopping-check')).toHaveCount(0);
+  await expect(page.locator('#supply-stores .supply-use')).toHaveCount(0);
+  await expect(page.locator('#supply-stores')).not.toContainText('複製越南文品名');
+  await expect(page.locator('#supply-handy-chay')).not.toContainText('乾燥豆腐');
+});

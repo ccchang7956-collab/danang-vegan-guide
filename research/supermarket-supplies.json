@@ -9,7 +9,7 @@
       "vi": "Handy Hảo Hảo Chay Lẩu Nấm Thập Cẩm",
       "status": "品牌明確全素",
       "confidence": "vegan",
-      "ingredients": "官方稱為 thuần chay（全素）；配方含麵粉、植物油、豆蛋白、乾燥豆腐、蔬菜與菇類。",
+      "ingredients": "官方稱為 thuần chay（全素）；配方含麵粉、植物油、豆蛋白、蔬菜與菇粉。",
       "note": "找完整名稱中的 Chay＋Lẩu Nấm Thập Cẩm。同系列的蝦味、TomYum 等口味不可直接當全素。需要熱水，沖泡依杯身說明。",
       "source": "https://acecookvietnam.vn/product/mi-ly-handy-hao-hao/",
       "sourceLabel": "Acecook 官方商品／包裝參考",
@@ -17,7 +17,9 @@
       "imagePath": "assets/products/handy-chay.webp",
       "imageSourceUrl": "https://acecookvietnam.vn/wp/wp-content/uploads/2025/07/3D-LY-CHAY-HIEN-TAI-DBA-216x300.png",
       "imageCheckedDate": "2026-10-14",
-      "imageCaption": "包裝參考・點圖放大"
+      "imageCaption": "包裝參考・點圖放大",
+      "imageWidth": 216,
+      "imageHeight": 300
     },
     {
       "id": "vifon-chay",
@@ -35,7 +37,9 @@
       "imagePath": "assets/products/vifon-chay.webp",
       "imageSourceUrl": "https://vifon.com.vn/vnt_upload/product/mi/001mi_chay_rau_nam_65g.png",
       "imageCheckedDate": "2026-10-14",
-      "imageCaption": "包裝參考・點圖放大"
+      "imageCaption": "包裝參考・點圖放大",
+      "imageWidth": 300,
+      "imageHeight": 300
     },
     {
       "id": "choice-coconut",
@@ -52,7 +56,9 @@
       "imagePath": "assets/products/choice-coconut.webp",
       "imageSourceUrl": "https://www.lottemart.vn/media/catalog/product/cache/0x0/8/9/8938510550116-1.jpg.webp",
       "imageCheckedDate": "2026-10-14",
-      "imageCaption": "包裝參考・點圖放大"
+      "imageCaption": "包裝參考・點圖放大",
+      "imageWidth": 600,
+      "imageHeight": 600
     },
     {
       "id": "vinamit-jackfruit",
@@ -70,7 +76,9 @@
       "imagePath": "assets/products/vinamit-jackfruit.webp",
       "imageSourceUrl": "https://www.lottemart.vn/media/catalog/product/cache/0x0/8/9/8934743012902.jpg.webp",
       "imageCheckedDate": "2026-10-14",
-      "imageCaption": "包裝參考・點圖放大 · 圖示 500g"
+      "imageCaption": "包裝參考・點圖放大 · 圖示 500g",
+      "imageWidth": 600,
+      "imageHeight": 600
     },
     {
       "id": "choice-cashew",
@@ -87,7 +95,9 @@
       "imagePath": "assets/products/choice-cashew.webp",
       "imageSourceUrl": "https://www.lottemart.vn/media/catalog/product/cache/0x0/8/9/8935032204336-1.jpg.webp",
       "imageCheckedDate": "2026-10-14",
-      "imageCaption": "包裝參考・點圖放大 · 圖示 260g，商品頁標 280g"
+      "imageCaption": "包裝參考・點圖放大 · 圖示 260g，商品頁標 280g",
+      "imageWidth": 600,
+      "imageHeight": 600
     },
     {
       "id": "oreo-vanilla",
@@ -104,7 +114,9 @@
       "imagePath": "assets/products/oreo-vanilla.webp",
       "imageSourceUrl": "https://www.lottemart.vn/media/catalog/product/cache/0x0/6/9/6901668053121-1-bts.jpg.webp",
       "imageCheckedDate": "2026-10-14",
-      "imageCaption": "包裝參考・點圖放大 · 商品頁的運動版包裝"
+      "imageCaption": "包裝參考・點圖放大 · 商品頁的運動版包裝",
+      "imageWidth": 600,
+      "imageHeight": 600
     },
     {
       "id": "choice-sweetpotato",
@@ -122,7 +134,9 @@
       "imagePath": "assets/products/choice-sweetpotato.webp",
       "imageSourceUrl": "https://www.lottemart.vn/media/catalog/product/cache/0x0/8/9/8935032200178-1_1.jpg.webp",
       "imageCheckedDate": "2026-10-14",
-      "imageCaption": "包裝參考・點圖放大"
+      "imageCaption": "包裝參考・點圖放大",
+      "imageWidth": 600,
+      "imageHeight": 600
     },
     {
       "id": "choice-seaweed",
@@ -140,7 +154,9 @@
       "imagePath": "assets/products/choice-seaweed.webp",
       "imageSourceUrl": "https://www.lottemart.vn/media/catalog/product/cache/0x0/8/9/8936026321237-1.jpg.webp",
       "imageCheckedDate": "2026-10-14",
-      "imageCaption": "包裝參考・點圖放大"
+      "imageCaption": "包裝參考・點圖放大",
+      "imageWidth": 600,
+      "imageHeight": 600
     },
     {
       "id": "bibigo-seaweed",
@@ -158,7 +174,9 @@
       "imagePath": "assets/products/bibigo-seaweed.webp",
       "imageSourceUrl": "https://www.lottemart.vn/media/catalog/product/cache/0x0/8/9/8938508547388-1-1.jpg.webp",
       "imageCheckedDate": "2026-10-14",
-      "imageCaption": "包裝參考・點圖放大"
+      "imageCaption": "包裝參考・點圖放大",
+      "imageWidth": 600,
+      "imageHeight": 600
     },
     {
       "id": "langfarm-taro",
@@ -176,7 +194,9 @@
       "imagePath": "assets/products/langfarm-taro.webp",
       "imageSourceUrl": "https://www.lottemart.vn/media/catalog/product/cache/0x0/8/9/8936003728868.jpg.webp",
       "imageCheckedDate": "2026-10-14",
-      "imageCaption": "包裝參考・點圖放大"
+      "imageCaption": "包裝參考・點圖放大",
+      "imageWidth": 600,
+      "imageHeight": 600
     },
     {
       "id": "langfarm-pineapple",
@@ -194,7 +214,9 @@
       "imagePath": "assets/products/langfarm-pineapple.webp",
       "imageSourceUrl": "https://www.lottemart.vn/media/catalog/product/cache/0x0/8/9/8936003727489.jpg.webp",
       "imageCheckedDate": "2026-10-14",
-      "imageCaption": "包裝參考・點圖放大"
+      "imageCaption": "包裝參考・點圖放大",
+      "imageWidth": 600,
+      "imageHeight": 600
     }
   ],
   "stores": [
@@ -202,19 +224,22 @@
       "name": "LOTTE Mart Đà Nẵng",
       "address": "6 Nại Nam, Đà Nẵng",
       "note": "優先找 Choice L 椰子脆餅、蒜味腰果、Vinamit 菠蘿蜜乾與 Oreo 香草款；線上商品頁不代表本分店當日有貨。泡麵可出示越南文名稱詢問。",
-      "source": "https://lottemart.com.vn/he-thong/"
+      "source": "https://lottemart.com.vn/he-thong/",
+      "id": "lotte-danang"
     },
     {
       "name": "AEON 峴港 Thanh Khê",
       "address": "46 Điện Biên Phủ, Đà Nẵng",
-      "note": "可安排超市採買；本次未確認上列六款商品在此分店的販售與庫存。",
-      "source": "https://www.aeon.com.vn/he-thong-aeon-vietnam"
+      "note": "可安排超市採買；本次未確認上述商品在此分店的販售與庫存。",
+      "source": "https://www.aeon.com.vn/he-thong-aeon-vietnam",
+      "id": "aeon-thanh-khe"
     },
     {
       "name": "WinMart／WinMart+",
       "address": null,
-      "note": "用官方門市搜尋找附近據點，再出示商品名稱詢問；本次未确认特定門市商品與庫存。",
-      "source": "https://stores.winmart.vn/"
+      "note": "用官方門市搜尋找附近據點，再出示商品名稱詢問；本次未確認特定門市商品與庫存。",
+      "source": "https://stores.winmart.vn/",
+      "id": "winmart"
     }
   ],
   "excludedCandidates": [

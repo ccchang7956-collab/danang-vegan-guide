@@ -246,5 +246,8 @@ raw['restaurantAuditSummary']={
     'closed':sum(r['operatingStatus'] in ['permanently-closed','temporarily-closed'] for r in restaurants),
     'heldNavigation':sum(bool(r.get('navigationHold')) for r in restaurants)
 }
+from supplies import render_supplies
+render_supplies()
+
 (root/'assets/data.js').write_text('/* Updated on '+raw['checkedDate']+'. Sources and uncertainty preserved per venue. */\nwindow.TRAVEL_DATA = '+json.dumps(raw,ensure_ascii=False,indent=2)+';\n')
 print(f"Built {len(raw['days'])} days, {len(restaurants)} restaurants, {len(raw['exchangePoints'])} exchange points, {sum(r['lat'] is not None for r in restaurants)} restaurant map pins")

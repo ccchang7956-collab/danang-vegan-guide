@@ -95,3 +95,19 @@ test('menu research covers all records and keeps prices, sources and branch evid
   assert.equal(ha.priceVnd, 120000);
   assert.equal(venue('dn-alt').menuInfo.items.length, 0);
 });
+test('unspaced Chinese semantic searches preserve date and vegan constraints', () => {
+  const options = { date: '2026-10-23', operating: 'available' };
+  const ids = (q) =>
+    Array.from(C.selectRestaurants(D.restaurants, { ...options, query: q }), (r) => r.id);
+  assert.ok(ids('會安 全素 早餐').length > 0);
+  assert.deepEqual(ids('會安全素早餐'), ids('會安 全素 早餐'));
+  assert.deepEqual(ids('全素會安早餐'), ids('全素 會安 早餐'));
+  assert.deepEqual(ids('美溪全素晚餐'), ids('美溪 全素 晚餐'));
+  assert.deepEqual(ids('會安全素Kurumi'), ['hoian-kurumi']);
+});
+test('Chinese dish names remain literal instead of silently becoming strict store filters', () => {
+  assert.ok(C.matchesRestaurant(venue('hoian-rau-oi'), '純素雞飯'));
+  assert.equal(C.matchesRestaurant(venue('hoian-rau-oi'), '全素 純素雞飯'), false);
+  assert.ok(C.matchesRestaurant(venue('dn-lehoi'), 'banh mi'));
+  assert.ok(C.matchesRestaurant(venue('hoian-fisherman'), 'fisherman vegan'));
+});

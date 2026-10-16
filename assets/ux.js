@@ -333,6 +333,7 @@
   }
   function supplies() {
     document.querySelectorAll('.supply-card[id]').forEach((card) => {
+      if (!card.querySelector('.supply-photo')) return;
       const id = card.id;
       const terms = card.querySelector('.supply-vietnamese')?.textContent || '';
       const fullText = card.textContent;
