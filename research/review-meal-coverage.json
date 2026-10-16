@@ -5,55 +5,249 @@
       "headline": "抵達後先在峴港吃飽，夜市以散步為主",
       "warning": "機上餐與飯店餐不預設全素；夜市醬料、湯底需確認。五辛可吃，但仍排除蛋奶、蜂蜜、魚露與動物高湯。所有營業時間均須出發前再確認。",
       "meals": [
-        {"label": "早餐", "advice": "台北起飛前用餐；若未確認航空公司全素餐，勿依賴機上餐。09:00 抵達後若餓，安排行李與交通後到 KURUMI（官方每日 08:00–21:30）。", "restaurantIds": ["dn-kurumi"]},
-        {"label": "午餐", "advice": "粉紅教堂與山茶半島行程間安排專程用餐：Chickpea 峴港店為主、KURUMI 為獨立備援；海灘區餐廳需搭車，不當作景點旁餐廳。", "restaurantIds": ["dn-chickpea", "dn-kurumi"]},
-        {"label": "晚餐", "advice": "逛夜市前先在 Roots 或 KURUMI 吃正餐，遇休息即改另一家；勿把未確認的夜市餐點當唯一晚餐。", "restaurantIds": ["dn-roots", "dn-kurumi"]}
+        {
+          "label": "早餐",
+          "advice": "台北起飛前用餐；若未確認航空公司全素餐，勿依賴機上餐。09:00 抵達後若餓，安排行李與交通後到 KURUMI（官方每日 08:00–21:30）。",
+          "restaurantIds": [
+            "dn-kurumi"
+          ],
+          "anchorId": "lesands",
+          "time": "09:30"
+        },
+        {
+          "label": "午餐",
+          "advice": "粉紅教堂與山茶半島行程間安排專程用餐：Chickpea 峴港店為主、KURUMI 為獨立備援；海灘區餐廳需搭車，不當作景點旁餐廳。",
+          "restaurantIds": [
+            "dn-chickpea",
+            "dn-kurumi"
+          ],
+          "anchorId": "cathedral",
+          "time": "12:00"
+        },
+        {
+          "label": "晚餐",
+          "advice": "逛夜市前先在 Roots 或 KURUMI 吃正餐，遇休息即改另一家；勿把未確認的夜市餐點當唯一晚餐。",
+          "restaurantIds": [
+            "dn-roots",
+            "dn-kurumi"
+          ],
+          "anchorId": "nightmarket",
+          "time": "18:00"
+        }
       ],
-      "sources": [{"title": "Chickpea 官方全素餐廳與分店", "url": "https://chickpeaeatery.com/"}, {"title": "KURUMI 官方地址與營業時間", "url": "https://kurumi.vn/en"}, {"title": "Roots 官方全素餐廳", "url": "https://rootsplantbasedcafe.com/"}]
+      "sources": [
+        {
+          "title": "Chickpea 官方全素餐廳與分店",
+          "url": "https://chickpeaeatery.com/"
+        },
+        {
+          "title": "KURUMI 官方地址與營業時間",
+          "url": "https://kurumi.vn/en"
+        },
+        {
+          "title": "Roots 官方全素餐廳",
+          "url": "https://rootsplantbasedcafe.com/"
+        }
+      ]
     },
     {
       "date": "2026-10-22",
       "headline": "巴拿山午餐須先確認，不能靠市區店補山上空缺",
       "warning": "巴拿山禁止攜帶外食。Ngọc Chi 是素食店，已有起司與魚露疑慮，全素品項未確認；不能列為可靠全素備援。出發前詢問園區 1800 1000／0905 766 777，逐項確認無蛋奶、蜂蜜、魚露及動物湯底。",
       "meals": [
-        {"label": "上山前早餐", "advice": "飯店逐項確認；若無足量全素餐，改 KURUMI 峴港店 08:00 後用餐並調整出發時間。Roots 可作獨立備援，先確認當日早餐時段。", "restaurantIds": ["dn-kurumi", "dn-roots"]},
-        {"label": "巴拿山午餐／退路", "advice": "先確認園內可提供的全素正餐及供餐時間，再決定停留長度。若無法確認，縮短遊園並預先安排下山交通，到峴港 KURUMI 或 Roots 吃午餐，再前往會安。這兩店都在市區，不能從山頂步行前往。", "restaurantIds": ["dn-kurumi", "dn-roots"]},
-        {"label": "會安晚餐", "advice": "依印象秀票券倒推用餐與交通，先吃再入場；Chickpea 會安店為主、KURUMI 會安店為備援（官方每日 08:00–21:00）。Seeds 週四休息，不排今天。", "restaurantIds": ["hoian-chickpea", "hoian-kurumi"]}
+        {
+          "label": "上山前早餐",
+          "advice": "飯店逐項確認；若無足量全素餐，改 KURUMI 峴港店 08:00 後用餐並調整出發時間。Roots 可作獨立備援，先確認當日早餐時段。",
+          "restaurantIds": [
+            "dn-kurumi",
+            "dn-roots"
+          ],
+          "anchorId": "lesands",
+          "time": "08:30"
+        },
+        {
+          "label": "巴拿山午餐／退路",
+          "advice": "先確認園內可提供的全素正餐及供餐時間，再決定停留長度。若無法確認，縮短遊園並預先安排下山交通，到峴港 KURUMI 或 Roots 吃午餐，再前往會安。這兩店都在市區，不能從山頂步行前往。",
+          "restaurantIds": [
+            "dn-kurumi",
+            "dn-roots"
+          ],
+          "anchorId": "bana",
+          "time": "12:00",
+          "searchWarning": "園內全素供餐待確認；這裡只查巴拿山店家，不能把峴港市區備援當成山頂附近。無法確認園內全素正餐時，先安排縮短遊園及下山交通，再到市區用餐。"
+        },
+        {
+          "label": "會安晚餐",
+          "advice": "依印象秀票券倒推用餐與交通，先吃再入場；Chickpea 會安店為主、KURUMI 會安店為備援（官方每日 08:00–21:00）。Seeds 週四休息，不排今天。",
+          "restaurantIds": [
+            "hoian-chickpea",
+            "hoian-kurumi"
+          ],
+          "anchorId": "memories",
+          "time": "17:30"
+        }
       ],
-      "sources": [{"title": "巴拿山官方外食禁令", "url": "https://sunworld.vn/en/tin-tuc/food-ban-on-ba-na-officially-enforced-1853"}, {"title": "KURUMI 官方地址與營業時間", "url": "https://kurumi.vn/en"}, {"title": "Roots 官方全素餐廳", "url": "https://rootsplantbasedcafe.com/"}, {"title": "Chickpea 官方全素餐廳與分店", "url": "https://chickpeaeatery.com/"}]
+      "sources": [
+        {
+          "title": "巴拿山官方外食禁令",
+          "url": "https://sunworld.vn/en/tin-tuc/food-ban-on-ba-na-officially-enforced-1853"
+        },
+        {
+          "title": "KURUMI 官方地址與營業時間",
+          "url": "https://kurumi.vn/en"
+        },
+        {
+          "title": "Roots 官方全素餐廳",
+          "url": "https://rootsplantbasedcafe.com/"
+        },
+        {
+          "title": "Chickpea 官方全素餐廳與分店",
+          "url": "https://chickpeaeatery.com/"
+        }
+      ]
     },
     {
       "date": "2026-10-23",
       "headline": "美山先吃再去，回會安補午餐",
       "warning": "美山周邊尚無可靠全素正餐備援，先安排會安用餐與返程時間；不預設園內餐飲或攜食規定。Seeds 週五休息。",
       "meals": [
-        {"label": "早餐", "advice": "飯店無法確認全素時，08:00 後到 KURUMI 會安店吃早餐，再出發美山；早出發則前晚確認早餐安排，不空腹等到景區。", "restaurantIds": ["hoian-kurumi"]},
-        {"label": "午餐", "advice": "將美山往返排在兩餐之間，回會安到 Chickpea 吃午餐，KURUMI 為獨立備援。若參訪延長，先調整返程，勿依賴景區附近未知餐點。", "restaurantIds": ["hoian-chickpea", "hoian-kurumi"]},
-        {"label": "晚餐", "advice": "古城晚間活動前先在 Chickpea 或 KURUMI 吃飽；以今晚留會安為前提，不為龍橋跨城壓縮用餐。", "restaurantIds": ["hoian-chickpea", "hoian-kurumi"]}
+        {
+          "label": "早餐",
+          "advice": "飯店無法確認全素時，08:00 後到 KURUMI 會安店吃早餐，再出發美山；早出發則前晚確認早餐安排，不空腹等到景區。",
+          "restaurantIds": [
+            "hoian-kurumi"
+          ],
+          "anchorId": "sonhotel",
+          "time": "08:30"
+        },
+        {
+          "label": "午餐",
+          "advice": "將美山往返排在兩餐之間，回會安到 Chickpea 吃午餐，KURUMI 為獨立備援。若參訪延長，先調整返程，勿依賴景區附近未知餐點。",
+          "restaurantIds": [
+            "hoian-chickpea",
+            "hoian-kurumi"
+          ],
+          "anchorId": "oldtown",
+          "time": "12:30"
+        },
+        {
+          "label": "晚餐",
+          "advice": "古城晚間活動前先在 Chickpea 或 KURUMI 吃飽；以今晚留會安為前提，不為龍橋跨城壓縮用餐。",
+          "restaurantIds": [
+            "hoian-chickpea",
+            "hoian-kurumi"
+          ],
+          "anchorId": "oldtown",
+          "time": "18:00"
+        }
       ],
-      "sources": [{"title": "KURUMI 官方地址與營業時間", "url": "https://kurumi.vn/en"}, {"title": "Chickpea 官方全素餐廳與分店", "url": "https://chickpeaeatery.com/"}]
+      "sources": [
+        {
+          "title": "KURUMI 官方地址與營業時間",
+          "url": "https://kurumi.vn/en"
+        },
+        {
+          "title": "Chickpea 官方全素餐廳與分店",
+          "url": "https://chickpeaeatery.com/"
+        }
+      ]
     },
     {
       "date": "2026-10-24",
       "headline": "椰林附近吃午餐，龍橋前提早晚餐",
       "warning": "PlantLab 位於錦清區，仍須依實際船家安排交通；五行山周邊全素正餐較少，先吃再參觀。不要把龍橋 21:00 後才找餐廳當主計畫。",
       "meals": [
-        {"label": "早餐", "advice": "出發竹籃船前到 KURUMI 會安店，或逐項確認飯店餐；PlantLab 官方 09:30 才開，不作更早早餐保證。", "restaurantIds": ["hoian-kurumi"]},
-        {"label": "午餐", "advice": "竹籃船前後安排 PlantLab（官方每日 09:30–21:30）吃正餐，再出發五行山；若休息或候位太久，改會安 KURUMI 並調整車程，兩店為不同業者。", "restaurantIds": ["hoian-plantlab", "hoian-kurumi"]},
-        {"label": "提早晚餐", "advice": "五行山後回峴港，約 17:30–18:30 在 Roots 或 KURUMI 吃晚餐，再留車程前往龍橋等 21:00 演出；店家當日營業與演出仍需再確認。", "restaurantIds": ["dn-roots", "dn-kurumi"]}
+        {
+          "label": "早餐",
+          "advice": "出發竹籃船前到 KURUMI 會安店，或逐項確認飯店餐；PlantLab 官方 09:30 才開，不作更早早餐保證。",
+          "restaurantIds": [
+            "hoian-kurumi"
+          ],
+          "anchorId": "sonhotel",
+          "time": "08:30"
+        },
+        {
+          "label": "午餐",
+          "advice": "竹籃船前後安排 PlantLab（官方每日 09:30–21:30）吃正餐，再出發五行山；若休息或候位太久，改會安 KURUMI 並調整車程，兩店為不同業者。",
+          "restaurantIds": [
+            "hoian-plantlab",
+            "hoian-kurumi"
+          ],
+          "anchorId": "coconut",
+          "time": "12:00"
+        },
+        {
+          "label": "提早晚餐",
+          "advice": "五行山後回峴港，約 17:30–18:30 在 Roots 或 KURUMI 吃晚餐，再留車程前往龍橋等 21:00 演出；店家當日營業與演出仍需再確認。",
+          "restaurantIds": [
+            "dn-roots",
+            "dn-kurumi"
+          ],
+          "anchorId": "dragon",
+          "time": "18:00"
+        }
       ],
-      "sources": [{"title": "PlantLab 官方全素餐廳與營業時間", "url": "https://plantlabfood.com/"}, {"title": "KURUMI 官方地址與營業時間", "url": "https://kurumi.vn/en"}, {"title": "Roots 官方全素餐廳", "url": "https://rootsplantbasedcafe.com/"}]
+      "sources": [
+        {
+          "title": "PlantLab 官方全素餐廳與營業時間",
+          "url": "https://plantlabfood.com/"
+        },
+        {
+          "title": "KURUMI 官方地址與營業時間",
+          "url": "https://kurumi.vn/en"
+        },
+        {
+          "title": "Roots 官方全素餐廳",
+          "url": "https://rootsplantbasedcafe.com/"
+        }
+      ]
     },
     {
       "date": "2026-10-25",
       "headline": "市區先吃午餐，再取行李去機場",
       "warning": "17:35 為越南時間起飛；依航空公司報到要求及交通預留機場緩衝。機場與機上餐不預設全素；Lê Hội 週日 14:30 才開，不作早餐備援。",
       "meals": [
-        {"label": "早餐", "advice": "飯店逐項確認全素餐；否則 KURUMI 峴港店 08:00 後用餐，Roots 為另一備援但先確認當日早餐時段。", "restaurantIds": ["dn-kurumi", "dn-roots"]},
-        {"label": "市區午餐", "advice": "採買前後約 11:30–12:30 在 Roots 或 KURUMI 吃飽；兩店位於美溪海灘南側，韓市場過去需車程。遇休息立即改另一家，避免等到機場才找餐。", "restaurantIds": ["dn-roots", "dn-kurumi"]},
-        {"label": "返程餐食", "advice": "午餐後取行李並依航空公司要求前往機場；需備份餐點可在市區先詢問外帶，再依機場與航空公司攜帶規定安排，機上全素餐另行確認。", "restaurantIds": ["dn-kurumi", "dn-roots"]}
+        {
+          "label": "早餐",
+          "advice": "飯店逐項確認全素餐；否則 KURUMI 峴港店 08:00 後用餐，Roots 為另一備援但先確認當日早餐時段。",
+          "restaurantIds": [
+            "dn-kurumi",
+            "dn-roots"
+          ],
+          "anchorId": "mandila",
+          "time": "08:30"
+        },
+        {
+          "label": "市區午餐",
+          "advice": "採買前後約 11:30–12:30 在 Roots 或 KURUMI 吃飽；兩店位於美溪海灘南側，韓市場過去需車程。遇休息立即改另一家，避免等到機場才找餐。",
+          "restaurantIds": [
+            "dn-roots",
+            "dn-kurumi"
+          ],
+          "anchorId": "hanmarket",
+          "time": "12:00"
+        },
+        {
+          "label": "返程餐食",
+          "advice": "午餐後取行李並依航空公司要求前往機場；需備份餐點可在市區先詢問外帶，再依機場與航空公司攜帶規定安排，機上全素餐另行確認。",
+          "restaurantIds": [
+            "dn-kurumi",
+            "dn-roots"
+          ],
+          "anchorId": "hanmarket",
+          "time": "14:00"
+        }
       ],
-      "sources": [{"title": "KURUMI 官方地址與營業時間", "url": "https://kurumi.vn/en"}, {"title": "Roots 官方全素餐廳", "url": "https://rootsplantbasedcafe.com/"}]
+      "sources": [
+        {
+          "title": "KURUMI 官方地址與營業時間",
+          "url": "https://kurumi.vn/en"
+        },
+        {
+          "title": "Roots 官方全素餐廳",
+          "url": "https://rootsplantbasedcafe.com/"
+        }
+      ]
     }
   ]
 }

@@ -200,6 +200,21 @@ for r in restaurants:
     if r['id'] in ['dn-chickpea','dn-alt','hoian-chickpea','moms-kitchen']:
         r['brandPhone']='+84 766 731 285';r['brandPhoneSourceUrl']='https://chickpeaeatery.com/'
         r['veganNotes']+=' 卡片電話採 Google 分店號碼；Chickpea 官網品牌聯絡電話為 +84 766 731 285。'
+from restaurant_metadata import enrich_restaurants
+enrich_restaurants(restaurants, json.loads((root/'research/restaurant-search-metadata.json').read_text()))
+menu_research=json.loads((root/'research/restaurant-menus-2026-10-16.json').read_text())
+menus={m['id']:m for m in menu_research['restaurants']}
+assert len(menus)==len(restaurants) and set(menus)=={r['id'] for r in restaurants}, 'menu coverage mismatch'
+for r in restaurants:
+    menu=menus[r['id']]
+    assert menu['checkedDate']==menu_research['checkedDate']
+    assert all(urlparse(u).scheme=='https' for u in menu['sourceUrls'])
+    assert not menu['menuUrl'] or urlparse(menu['menuUrl']).scheme=='https'
+    for item in menu['items']:
+        assert item['name'] and item['veganEvidence'] and menu['sourceUrls'], 'menu evidence missing'
+        assert item['priceVnd'] is None or (isinstance(item['priceVnd'],int) and item['priceVnd']>0), 'invalid menu price'
+    r['menuInfo']=menu
+raw['menuCheckedDate']=menu_research['checkedDate']
 raw['restaurantFullRecheckDate']=recheck_date
 raw['restaurants']=restaurants;raw['checkedDate']=addition['checkedDate'];raw['restaurantGoogleCheckedDate']=audit_date
 raw['checkedDate']=max(raw['checkedDate'],recheck_date);raw['restaurantGoogleCheckedDate']=recheck_date
@@ -208,6 +223,9 @@ meal_days=json.loads((root/'research/review-meal-coverage.json').read_text())['d
 assert [d['date'] for d in meal_days]==[d['date'] for d in raw['days']], 'meal dates mismatch'
 by_id={r['id']:r for r in restaurants}
 for d in meal_days:
+    for meal in d['meals']:
+        assert meal['anchorId'] in {p['id'] for p in raw['places']}
+        assert __import__('re').fullmatch(r'([01]\d|2[0-3]):[0-5]\d', meal['time'])
     ids={id for meal in d['meals'] for id in meal['restaurantIds']}
     assert len(ids)>=2, 'need independent meal backups'
     for id in ids:

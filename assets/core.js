@@ -32,7 +32,14 @@
       .replace(/Đ/g, 'D')
       .toLowerCase();
   }
-  function matchesRestaurant(p, query = '') {
+  const areaAliases = {
+    'danang-city': '峴港 峴港市區 峴港市中心 da nang danang',
+    'danang-beach': '峴港 美溪 海灘 安上 五行山 my khe an thuong',
+    sontra: '峴港 山茶 山茶半島 安海 son tra an hai',
+    hoian: '會安 會安古城 hoi an hoian',
+    banahills: '巴拿山 ba na bana hills',
+  };
+  function matchesRestaurant(p, query = '', date = null) {
     const words = normalized(query).trim().split(/\s+/).filter(Boolean);
     const text = normalized(
       [
@@ -41,12 +48,112 @@
         p.address,
         p.area,
         p.originalArea,
+        areaAliases[p.area],
         p.veganNotes,
         p.tags,
         p.searchAliases,
+        p.cuisineAliases,
+        p.menuInfo?.items?.map((item) => [item.name, item.nameZh].join(' ')),
       ].join(' '),
     );
-    return words.every((word) => text.includes(word));
+    const meals = { 早餐: 510, 午餐: 720, 晚餐: 1080 };
+    const geography = {
+      會安: ['hoian'],
+      會安古城: ['hoian'],
+      美溪: ['danang-beach'],
+      巴拿山: ['banahills'],
+      峴港: ['danang-city', 'danang-beach', 'sontra'],
+    };
+    const dt = /^\d{4}-\d{2}-\d{2}$/.test(date || '') ? new Date(date + 'T12:00:00Z') : null;
+    const weekday =
+      dt && Number.isFinite(dt.getTime()) && dt.toISOString().slice(0, 10) === date
+        ? dt.getUTCDay()
+        : null;
+    return words.every((word) => {
+      if (['全素', '純素'].includes(word)) return p.diet === 'vegan';
+      if (geography[word]) return geography[word].includes(p.area);
+      if (meals[word] !== undefined) {
+        const spans =
+          weekday === null
+            ? p.weeklyHours?.flat()
+            : [
+                ...(p.weeklyHours?.[weekday] || []),
+                ...(p.weeklyHours?.[(weekday + 6) % 7] || [])
+                  .filter(([, b]) => b > 1440)
+                  .map(([a, b]) => [a - 1440, b - 1440]),
+              ];
+        return !!spans?.some(([a, b]) => a <= meals[word] && meals[word] < b);
+      }
+      return text.includes(word);
+    });
+  }
+  function vietnamNow(now = new Date()) {
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Asia/Ho_Chi_Minh',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hourCycle: 'h23',
+    }).formatToParts(now);
+    const get = (type) => parts.find((p) => p.type === type).value;
+    return {
+      date: `${get('year')}-${get('month')}-${get('day')}`,
+      time: `${get('hour')}:${get('minute')}`,
+    };
+  }
+  function restaurantDayHours(p, date) {
+    const dt = /^\d{4}-\d{2}-\d{2}$/.test(date || '') ? new Date(date + 'T12:00:00Z') : null;
+    if (!dt || !Number.isFinite(dt.getTime()) || dt.toISOString().slice(0, 10) !== date)
+      return '當日時段待確認';
+    const day = dt.getUTCDay();
+    const prefix = '週' + '日一二三四五六'[day];
+    if (operationRank(p) === 2) return prefix + ' · 歇業／暫停營業';
+    if (!p.weeklyHours) return prefix + ' · 供餐時段待確認';
+    const clock = (minute) =>
+      (minute >= 1440 ? '翌日 ' : '') +
+      String(Math.floor(minute / 60) % 24).padStart(2, '0') +
+      ':' +
+      String(minute % 60).padStart(2, '0');
+    const carried = (p.weeklyHours[(day + 6) % 7] || []).filter(([, b]) => b > 1440);
+    const text =
+      [
+        ...carried.map(([, b]) => `00:00–${clock(b - 1440)}（前日延續）`),
+        ...(p.weeklyHours[day] || []).map(([a, b]) => `${clock(a)}–${clock(b)}`),
+      ].join('、') || '休息';
+    const caution = p.hoursCaution?.weekdays?.some(
+      (d) => d === day || (carried.length && d === (day + 6) % 7),
+    );
+    return prefix + ' ' + text + (caution ? ' · 需確認' : '');
+  }
+  function restaurantHours(p, date, time) {
+    const unknown = { state: 'unknown', rank: 2, label: '供餐時段待確認' };
+    const dt = /^\d{4}-\d{2}-\d{2}$/.test(date || '') ? new Date(date + 'T12:00:00Z') : null;
+    if (!dt || !Number.isFinite(dt.getTime()) || dt.toISOString().slice(0, 10) !== date)
+      return unknown;
+    const day = dt.getUTCDay();
+    const caution = p.hoursCaution?.weekdays?.includes(day) ? p.hoursCaution : null;
+    if (operationRank(p) === 2) return { state: 'closed', rank: 4, label: '歇業／暫停營業記錄' };
+    if (caution)
+      return { state: 'uncertain', rank: 2, label: '供餐時段需確認', caution: caution.message };
+    if (!p.weeklyHours || !/^([01]\d|2[0-3]):[0-5]\d$/.test(time || '')) return unknown;
+    const minute = Number(time.slice(0, 2)) * 60 + Number(time.slice(3));
+    const today = p.weeklyHours[day] || [];
+    const spans = [
+      ...today,
+      ...(p.weeklyHours[(day + 6) % 7] || [])
+        .filter(([, b]) => b > 1440)
+        .map(([a, b]) => [a - 1440, b - 1440]),
+    ];
+    const active = spans.find(([a, b]) => a <= minute && minute < b);
+    if (active)
+      return active[1] - minute <= 30
+        ? { state: 'closing', rank: 1, label: '依牌告時段：30 分鐘內結束，先確認供餐' }
+        : { state: 'open', rank: 0, label: '依牌告時段可用餐，最後點餐需確認' };
+    return today.length
+      ? { state: 'outside', rank: 3, label: '不在牌告時段內（含午休）' }
+      : { state: 'closed', rank: 4, label: '此日牌告休息' };
   }
   function operationRank(p) {
     return ['permanently-closed', 'temporarily-closed'].includes(p.operatingStatus)
@@ -59,20 +166,32 @@
     return operationRank(p) !== 2 && !p.navigationHold;
   }
   function selectRestaurants(records, options = {}) {
-    const { origin, area = 'all', diet = 'all', query = '', operating = 'all' } = options;
+    const {
+      origin,
+      area = 'all',
+      diet = 'all',
+      query = '',
+      operating = 'all',
+      radius = null,
+      date = null,
+    } = options;
     return records
       .filter(
         (p) =>
           (area === 'all' || p.area === area) &&
           (diet === 'all' || p.diet === diet) &&
-          matchesRestaurant(p, query) &&
+          matchesRestaurant(p, query, date) &&
           (operating === 'all' ||
             (operating === 'available' && operationRank(p) !== 2) ||
             (operating === 'recent' && operationRank(p) === 0) ||
             (operating === 'unverified' && operationRank(p) === 1) ||
             (operating === 'closed' && operationRank(p) === 2)),
       )
-      .map((p) => ({ ...p, distance: p.navigationHold ? null : distanceKm(origin, p) }))
+      .map((p) => {
+        const distance = p.navigationHold ? null : distanceKm(origin, p);
+        return { ...p, distance, outsideRadiusUnknown: Number(radius) > 0 && distance === null };
+      })
+      .filter((p) => !(Number(radius) > 0) || p.distance === null || p.distance <= Number(radius))
       .sort(
         (a, b) =>
           operationRank(a) - operationRank(b) ||
@@ -214,6 +333,9 @@
   }
   return {
     hasCoordinates,
+    restaurantHours,
+    restaurantDayHours,
+    vietnamNow,
     distanceKm,
     normalized,
     matchesRestaurant,

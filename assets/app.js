@@ -33,6 +33,7 @@
     dayRadius = 10,
     dayQuery = '',
     nearbyQuery = '',
+    mealContext = null,
     previousDiet = 'all',
     exchangeAnchor = 'route',
     exchangeUseGps = false,
@@ -102,6 +103,17 @@
     return u.href;
   }
   function restaurantCard(r) {
+    const plannedDate = view === 'daily' ? currentDay().date : $('nearby-date').value;
+    const plannedTime = view === 'daily' ? $('day-time').value : $('nearby-time').value;
+    const timing = C.restaurantHours(r, plannedDate, plannedTime);
+    const caution = r.hoursCaution;
+    const planned = plannedTime
+      ? `<p class="planned-hours ${esc(timing.state)}">${esc(plannedDate)} ${esc(plannedTime)} · ${esc(timing.label)}</p>`
+      : '';
+    const cautionText = caution
+      ? `<p class="note warning hours-caution">${esc(caution.message)}</p>`
+      : '';
+
     const phone = r.phone
       ? `<a href="tel:${esc(r.phone.replace(/[^+\d]/g, ''))}">打電話確認</a>`
       : '';
@@ -156,32 +168,50 @@
         ? `<button type="button" data-map-id="${esc(r.id)}">${C.operationRank(r) === 2 ? '查看舊址位置' : '在地圖看'}</button>`
         : '') +
       phone;
+    const menu = r.menuInfo;
+    const firstDish = menu?.items?.[0];
+    const price = (value) =>
+      value === null ? '價格待確認' : Number(value).toLocaleString('zh-TW') + ' VND';
+    const menuPreview = firstDish
+      ? `<p class="menu-preview">${menu.menuKind === 'categories' ? '官方分類介紹' : menu.priceAge === 'dated-menu' ? '舊版菜單參考' : '菜單參考'} · ${esc(firstDish.nameZh || firstDish.name)} · ${esc(price(firstDish.priceVnd))}</p>`
+      : '<p class="menu-preview unavailable">菜單／價格待確認</p>';
+    const menuDetails = menu
+      ? `<section class="menu-info"><h4>${menu.menuKind === 'categories' ? '官方產品分類介紹' : '菜單與價位參考'}</h4>
+      ${menu.items.length ? `<ul class="menu-items">${menu.items.map((item) => `<li><strong>${esc(item.nameZh || item.name)}</strong>${item.nameZh ? `<span class="menu-original">${esc(item.name)}</span>` : ''}<span class="menu-price">${esc(price(item.priceVnd))}</span></li>`).join('')}</ul>` : ''}
+      <p class="small-note">${esc(menu.priceNote)} ${esc(menu.menuNote)}</p>
+      ${menu.items.length ? `<p class="small-note">僅列來源支持的植物性品項／分類，非逐道成分認證；醬料、湯底及加點仍需確認。</p>` : ''}
+      <p class="small-note">菜單查閱 ${esc(menu.checkedDate)} · 非價格生效日；供應與售價以現場為準。</p>
+      ${menu.menuUrl ? link(menu.menuUrl, '查看本店菜單來源 ↗', 'menu-source') : ''}</section>`
+      : '';
+    const ratingInline =
+      typeof r.googleRating === 'number'
+        ? `<p class="rating-inline">★ ${r.googleRating.toFixed(1)}${count} · 查核快照</p>`
+        : '';
     return `
 <article class="restaurant-card" id="card-${view}-${esc(r.id)}">
-  <div class="card-top">
-    <span class="diet-badge ${esc(r.diet)}">${labels[r.diet]}</span>
-    <span class="distance-badge">${distanceText(r)}</span>
-  </div>
+  <div class="card-top"><span class="diet-badge ${esc(r.diet)}">${labels[r.diet]}</span><span class="distance-badge">${distanceText(r)}</span></div>
   <h3 class="restaurant-name">${esc(r.name)}</h3>
-  <div class="operation-row">
-    <span class="operation-badge ${esc(state)}">${status}</span>
-    <span class="audit-date">查核 ${esc(r.checkedDate)}</span>
-  </div>
+  ${ratingInline}
+  <p class="day-hours"><strong>${esc(plannedDate?.slice(5).replace('-', '/') || '所選日期')} · ${esc(C.restaurantDayHours(r, plannedDate))}</strong><span class="input-help"> · 參考時段，非即時</span></p>
+  ${planned}${cautionText}
+  ${C.operationRank(r) === 1 ? '<p class="note warning">營業待確認 · 出發前請聯絡店家。</p>' : ''}
+  ${C.operationRank(r) === 2 ? `<p class="note warning">${esc(status)}，請另選餐廳。</p>` : ''}
   ${addressIssue}
   ${held ? '<p class="note warning">暫停提供舊址導航與圖釘；請先核對最新地址。</p>' : ''}
-  <div class="compact-rating">${rating}</div>
-  <p class="restaurant-address">${esc(r.address)}${held ? '（既有記錄，勿直接前往）' : ''}</p>
-  <p class="restaurant-diet-summary">${esc(labels[r.diet])} · ${esc(r.diet === 'vegan' ? '點餐前確認湯底與醬料' : r.veganNotes)}</p>
-  ${r.hoursExceptionNote ? `<p class="note warning">${esc(r.hoursExceptionNote)}</p>` : ''}
+  ${r.diet !== 'vegan' ? `<p class="restaurant-diet-summary">${esc(r.veganNotes)}</p>` : ''}
+  ${r.hoursExceptionNote && !caution ? `<p class="note warning">${esc(r.hoursExceptionNote)}</p>` : ''}
   ${r.dailyClosed ? '<p class="note warning">此日來源列為休息日，請另選店家或先聯絡確認。</p>' : ''}
   ${r.risk ? `<p class="note warning">${esc(r.risk)}</p>` : ''}
-  <p class="day-hours">參考時段：${esc(r.hours || '待確認')}<span class="input-help"> · 非即時營業狀態</span></p>
+  <p class="restaurant-address">${esc(r.address)}${held ? '（既有記錄，勿直接前往）' : ''}</p>
+  ${menuPreview}
   <div class="card-actions">${actions}</div>
-  <details class="restaurant-details"><summary>時段、飲食與店家詳情</summary><p class="restaurant-note">${esc(r.veganNotes)}</p>
-  <p class="hours-note">參考時段：${esc(r.hours || '未確認／來源有衝突，出發前聯絡')}<br><span>營業紀錄與牌告時段不保證旅行當日開門；出發前查看 Google 最新資訊。</span></p>
+  <details class="restaurant-details"><summary>菜單、完整時段與店家詳情</summary>
+    ${menuDetails}<p class="restaurant-note">${esc(r.veganNotes)}</p>
+    <p class="hours-note">完整每週參考時段：${esc(r.hours || '未確認／來源有衝突，出發前聯絡')}<br><span>牌告不保證旅行當日開門與廚房接單；出發前查看 Google 最新資訊。</span></p>
   </details>
-  <details class="source-details">
-    <summary>查證來源與備註</summary>
+  <details class="source-details"><summary>查證來源與備註</summary>
+    <div class="operation-row"><span class="operation-badge ${esc(state)}">${status}</span><span class="audit-date">查核 ${esc(r.checkedDate)}</span></div>
+    ${rating}
     <p class="operation-evidence">${r.operatingEvidenceDate ? '<strong>查核資料 ' + esc(r.operatingEvidenceDate) + '</strong> · ' : ''}${esc(evidence)}</p>
     <p>查詢日期 ${esc(r.checkedDate)} · ${coords}</p>
     ${r.googleLinkType === 'search' ? '<p>Google 連結是店名與地址搜尋，尚未核對唯一商家頁；請確認分店與地址。</p>' : ''}
@@ -194,6 +224,7 @@
 </article>
 `.trim();
   }
+
   function exchangeCard(p) {
     const reference =
       exchangeUseGps && gps
@@ -389,18 +420,27 @@
     }
     const mountain = plan.date === '2026-10-22';
     const meals = plan.meals
-      .map(
-        (meal) =>
-          `<div class="meal-row"><strong>${esc(meal.label)}</strong><p>${esc(meal.advice)}</p><div class="meal-links">${meal.restaurantIds
-            .map((id) => D.restaurants.find((r) => r.id === id))
-            .filter((r) => r && C.canRecommend(r))
-            .map((r) => link(googleRestaurantUrl(r), esc(r.name) + ' ↗'))
-            .join('')}</div></div>`,
-      )
+      .map((meal, index) => {
+        const choices = meal.restaurantIds
+          .map((id) => D.restaurants.find((r) => r.id === id))
+          .filter((r) => r && C.canRecommend(r));
+        const rows = choices
+          .map(
+            (r, i) =>
+              `<div class="meal-choice ${i ? 'meal-choice-backup' : 'meal-choice-primary'}"><span class="meal-role">${meal.searchWarning ? '下山後市區備援' : i ? '備援' : '首選'}</span><strong>${esc(r.searchAliases?.find((name) => name) || r.name)}</strong><div class="meal-choice-actions"><button type="button" class="text-button" data-meal-restaurant="${esc(r.id)}" data-meal-source-index="${index}">在這裡看店家</button>${link(C.mapsUrl(r), '導航 ↗')}</div></div>`,
+          )
+          .join('');
+        return `<section class="meal-row"><div class="meal-row-heading"><h4>${esc(meal.label)}</h4><span>${esc(meal.time)} · 越南時間</span></div><p class="small-note">${esc(place(meal.anchorId)?.name || '')}附近${meal.searchWarning ? ' · 園內全素待確認' : ''}</p>
+        ${meal.searchWarning ? `<p class="note warning">${esc(meal.searchWarning)}</p>` : ''}${rows}
+        ${choices.length < 2 ? '<p class="small-note">尚無已確認的獨立餐廳備援，請先確認飯店或行前用餐安排。</p>' : ''}
+        <button type="button" class="secondary-button meal-search" data-meal-index="${index}">${meal.searchWarning ? '查園內供餐（需確認）' : '查看這餐附近的全素店'}</button>
+        <button type="button" class="text-button" data-meal-advice="${index}" aria-expanded="${meal.searchWarning ? 'true' : 'false'}" aria-controls="meal-advice-${index}">交通與用餐提醒</button><p id="meal-advice-${index}" class="meal-advice" ${meal.searchWarning ? '' : 'hidden'}>${esc(meal.advice)}</p></section>`;
+      })
       .join('');
     $('meal-plan').innerHTML =
-      `<h3>今天怎麼吃</h3><p>${esc(plan.headline)}</p>${mountain ? `<p class="note warning">${esc(plan.warning)}</p>` : ''}<details><summary>早餐、午餐、晚餐與備援店家</summary>${!mountain ? `<p class="small-note">${esc(plan.warning)}</p>` : ''}${meals}<p class="small-note">建議安排，尚未訂位；餐廳按鈕開啟 Google 商家，先核對當日供餐。</p><div class="source-links">${plan.sources.map((s) => link(s.url, esc(s.title))).join('')}</div></details>`;
+      `<h3>今天怎麼吃</h3><p>${esc(plan.headline)}</p>${mountain ? `<p class="note warning">${esc(plan.warning)}</p>` : ''}<details open><summary>三餐首選與備援</summary>${!mountain ? `<p class="small-note">${esc(plan.warning)}</p>` : ''}${meals}<p class="small-note">行程建議，尚未訂位；出發前先核對供餐與交通。</p><div class="source-links">${plan.sources.map((source) => link(source.url, esc(source.title))).join('')}</div></details>`;
   }
+
   function renderItinerary() {
     const d = currentDay();
     $('day-notes').innerHTML = d.notes
@@ -451,12 +491,16 @@
         (r) =>
           ((r.distance !== null && r.distance <= dayRadius) ||
             (r.distance === null && regions.has(r.area))) &&
-          C.matchesRestaurant(r, dayQuery),
+          C.matchesRestaurant(r, dayQuery, d.date),
       )
       .sort(
         (a, b) =>
           C.operationRank(a) - C.operationRank(b) ||
           (a.distance === null ? 1 : 0) - (b.distance === null ? 1 : 0) ||
+          ($('day-time').value
+            ? C.restaurantHours(a, d.date, $('day-time').value).rank -
+              C.restaurantHours(b, d.date, $('day-time').value).rank
+            : 0) ||
           Number(a.dailyClosed) - Number(b.dailyClosed) ||
           (a.diet === 'vegan' ? 0 : 1) - (b.diet === 'vegan' ? 0 : 1) ||
           (a.distance ?? Infinity) - (b.distance ?? Infinity),
@@ -465,6 +509,10 @@
   function renderDailyFood() {
     const items = dailyRestaurants();
     $('day-food-count').textContent = items.length + ' 間';
+    $('daily-food-heading').setAttribute(
+      'aria-label',
+      '當日餐廳搜尋結果，共 ' + items.length + ' 間',
+    );
     $('day-radius').value = String(dayRadius);
     const name = dayAnchor === 'route' ? '當天任一景點／住宿' : place(dayAnchor).name;
     const intro = `<p class="small-note">距離以${esc(name)}為參考，顯示 ${dayRadius} km 內點位；Google 未標歇業者優先，待確認排後。無座標備選依區域地址收錄並列於後方，無法保證距離。山區道路可能繞行。${dayQuery ? ` 搜尋：${esc(dayQuery)}。搜尋僅限本頁整理的店家。` : ''}</p>`;
@@ -486,31 +534,60 @@
       diet: $('diet-filter').value,
       query: nearbyQuery,
       operating: $('operating-filter').value || 'available',
+      radius: $('nearby-radius').value,
+      date: $('nearby-date').value,
     };
     displayed = C.selectRestaurants(D.restaurants, options).filter(
       (r) => window.TravelUX?.includeRestaurant(r.id) ?? true,
     );
-    if ($('nearby-sort')?.value === 'vegan')
-      displayed.sort(
-        (a, b) =>
-          C.operationRank(a) - C.operationRank(b) ||
-          Number(b.diet === 'vegan') - Number(a.diet === 'vegan') ||
-          (a.distance ?? Infinity) - (b.distance ?? Infinity),
-      );
+    displayed.sort(
+      (a, b) =>
+        C.operationRank(a) - C.operationRank(b) ||
+        Number(a.distance === null) - Number(b.distance === null) ||
+        ($('nearby-time').value
+          ? C.restaurantHours(a, $('nearby-date').value, $('nearby-time').value).rank -
+            C.restaurantHours(b, $('nearby-date').value, $('nearby-time').value).rank
+          : 0) ||
+        ($('nearby-sort')?.value === 'vegan'
+          ? Number(b.diet === 'vegan') - Number(a.diet === 'vegan')
+          : 0) ||
+        (a.distance ?? Infinity) - (b.distance ?? Infinity),
+    );
+    const activeMealContext =
+      mealContext &&
+      mealContext.date === $('nearby-date').value &&
+      mealContext.time === $('nearby-time').value &&
+      mealContext.anchorId === referenceId &&
+      !gps;
+    $('meal-search-note').hidden = !activeMealContext;
+    $('meal-search-note').textContent = activeMealContext ? mealContext.message : '';
     $('quick-vegan').setAttribute('aria-pressed', String($('diet-filter').value === 'vegan'));
     $('result-count').textContent = displayed.length + ' 間';
+    $('nearby-results-heading').setAttribute(
+      'aria-label',
+      '餐廳搜尋結果，共 ' + displayed.length + ' 間',
+    );
     const recent = D.restaurants.filter((r) => C.operationRank(r) === 0).length,
       closed = D.restaurants.filter((r) => C.operationRank(r) === 2).length;
     $('audit-summary').textContent =
       `${D.restaurants.length} 筆查核記錄 · ${recent} 家 Google 未標歇業 · ${D.restaurants.length - recent - closed} 家待確認 · ${closed} 家歇業／暫停`;
+    const located = displayed.filter((r) => r.distance !== null);
+    const unlocated = displayed.filter((r) => r.distance === null);
     $('restaurant-list').innerHTML = displayed.length
-      ? displayed.map(restaurantCard).join('')
-      : '<div class="empty-state"><h3>這個條件沒有找到餐廳</h3><p>試著改成所有區域，或調整飲食分類與營業查核條件。</p><div class="empty-actions"><button type="button" class="secondary-button" data-recover="clear-nearby">清除關鍵字</button><button type="button" class="secondary-button" data-recover="reset-nearby">重設搜尋與篩選</button><button type="button" class="secondary-button" data-recover="favorites">顯示未收藏的店家</button></div></div>';
+      ? located.map(restaurantCard).join('') +
+        (unlocated.length
+          ? '<div class="unlocated-heading"><h4>距離未確認的備選</h4><p class="small-note">以下店家或參考位置缺少可靠座標，不計入已確認的附近範圍。</p></div>' +
+            unlocated.map(restaurantCard).join('')
+          : '')
+      : '<div class="empty-state"><h3>這個條件沒有找到餐廳</h3><p>試著改成所有區域，或調整飲食分類與營業查核條件。</p><div class="empty-actions"><button type="button" class="secondary-button" data-recover="clear-nearby">清除關鍵字</button><button type="button" class="secondary-button" data-recover="reset-nearby">重設搜尋與篩選</button><button type="button" class="secondary-button" data-recover="radius">改為不限距離</button><button type="button" class="secondary-button" data-recover="favorites">顯示未收藏的店家</button></div></div>';
     $('reference-select').value = gps ? 'gps' : referenceId;
     window.TravelUX?.updated({
       view,
       items: displayed,
       reference: gps ? '你的定位' : place(referenceId)?.name,
+      radius: $('nearby-radius').value,
+      plannedDate: $('nearby-date').value,
+      plannedTime: $('nearby-time').value,
     });
   }
   function popup(p, kind) {
@@ -851,6 +928,8 @@
     cancelLocation();
     daySearchComposing = false;
     dayIndex = index;
+    $('nearby-date').value = currentDay().date;
+    mealContext = null;
     dayAnchor = 'route';
     dayQuery = '';
     $('day-search').value = '';
@@ -960,6 +1039,67 @@
     renderDailyFood();
     renderMap();
   });
+  $('day-time').addEventListener('change', () => {
+    flushActiveSearch({ fitMap: false });
+    renderDailyFood();
+    renderMap();
+  });
+  for (const id of ['nearby-date', 'nearby-time', 'nearby-radius']) {
+    $(id).addEventListener('change', () => {
+      cancelNearbySearch();
+      if (!nearbySearchComposing) nearbyQuery = $('search-input').value;
+      renderNearby();
+      renderMap();
+    });
+  }
+  $('nearby-now').addEventListener('click', () => {
+    const now = C.vietnamNow();
+    $('nearby-date').value = now.date;
+    $('nearby-time').value = now.time;
+    $('nearby-time').dispatchEvent(new Event('change', { bubbles: true }));
+  });
+  function resetNearbyExtras() {
+    $('nearby-date').value = currentDay().date;
+    $('nearby-time').value = '';
+    $('nearby-radius').value = 'all';
+    mealContext = null;
+    $('meal-search-note').hidden = true;
+  }
+  function searchMeal(index) {
+    const meal = D.mealPlans?.find((p) => p.date === currentDay().date)?.meals[index];
+    if (!meal || !place(meal.anchorId)) return;
+    cancelSearchTimers();
+    cancelLocation();
+    gps = null;
+    gpsAccuracy = null;
+    exchangeUseGps = false;
+    exchangeManualMode = true;
+    locationError = '';
+    referenceId = meal.anchorId;
+    nearbyQuery = '';
+    nearbySearchComposing = false;
+    $('search-input').value = '';
+    $('nearby-date').value = currentDay().date;
+    $('nearby-time').value = meal.time;
+    $('nearby-radius').value = '5';
+    $('diet-filter').value = meal.searchWarning ? 'all' : 'vegan';
+    $('area-filter').value = meal.searchWarning ? 'banahills' : 'all';
+    $('operating-filter').value = 'available';
+    window.TravelUX?.clearFavoritesFilter();
+    mealContext = {
+      date: currentDay().date,
+      time: meal.time,
+      anchorId: meal.anchorId,
+      message:
+        meal.searchWarning ||
+        `${meal.label} · 以${place(meal.anchorId).name}為參考，預計 ${meal.time} 用餐；距離是直線估計，請預留交通及點餐時間。`,
+    };
+    fillReference();
+    changeView('nearby');
+    window.TravelUX?.showTarget('restaurant-list');
+    $('nearby-search-summary').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.TravelUX?.focusTarget($('nearby-search-summary'));
+  }
   $('day-search').addEventListener('compositionstart', () => {
     daySearchComposing = true;
     cancelDailySearch();
@@ -988,6 +1128,7 @@
     $('area-filter').value = 'all';
     $('diet-filter').value = 'all';
     $('operating-filter').value = 'available';
+    resetNearbyExtras();
     changeView('nearby');
     $('search-input').scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
@@ -1088,9 +1229,55 @@
   $('map-reset').addEventListener('click', () => {
     if (!flushActiveSearch()) renderMap();
   });
+  function showMealRestaurant(id, mealIndex) {
+    const r = D.restaurants.find((record) => record.id === id);
+    if (!r || !C.canRecommend(r)) return;
+    const meal = D.mealPlans.find((plan) => plan.date === currentDay().date)?.meals[mealIndex];
+    cancelSearchTimers();
+    resetNearbyExtras();
+    nearbyQuery = r.name;
+    nearbySearchComposing = false;
+    $('search-input').value = nearbyQuery;
+    $('area-filter').value = 'all';
+    $('diet-filter').value = 'all';
+    $('operating-filter').value = 'available';
+    if (meal) $('nearby-time').value = meal.time;
+    window.TravelUX?.clearFavoritesFilter();
+    changeView('nearby');
+    window.TravelUX?.showTarget('restaurant-list');
+    requestAnimationFrame(() => {
+      const card = $('card-nearby-' + id);
+      window.TravelUX?.focusTarget(card);
+      card?.scrollIntoView({ block: 'start', behavior: 'instant' });
+    });
+  }
   document.addEventListener('click', (e) => {
+    const localMeal = e.target.closest('[data-meal-restaurant]');
+    if (localMeal) {
+      showMealRestaurant(
+        localMeal.dataset.mealRestaurant,
+        Number(localMeal.dataset.mealSourceIndex),
+      );
+      return;
+    }
+    const advice = e.target.closest('[data-meal-advice]');
+    if (advice) {
+      const text = $('meal-advice-' + advice.dataset.mealAdvice);
+      text.hidden = !text.hidden;
+      advice.setAttribute('aria-expanded', String(!text.hidden));
+      return;
+    }
+    const meal = e.target.closest('[data-meal-index]');
+    if (meal) {
+      searchMeal(Number(meal.dataset.mealIndex));
+      return;
+    }
     const jump = e.target.closest('[data-jump]');
     if (jump) {
+      if (window.TravelUX?.navigateTarget) {
+        window.TravelUX.navigateTarget(jump.dataset.jump);
+        return;
+      }
       flushActiveSearch();
       window.TravelUX?.showTarget(jump.dataset.jump);
       const target = $(jump.dataset.jump);
@@ -1125,6 +1312,7 @@
         $('map-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
         map.setView(m.getLatLng(), 16, { animate: false });
         m.openPopup();
+        window.TravelUX?.focusTarget($('map-heading'));
       }
     }
   });
@@ -1151,6 +1339,8 @@
   window.addEventListener('online', network);
   window.addEventListener('offline', network);
   $('trip-count').textContent = D.restaurants.length + ' 筆餐廳記錄';
+  $('nearby-date').value = currentDay().date;
+  $('nearby-radius').value = 'all';
   fillReference();
   network();
   render();
@@ -1160,7 +1350,13 @@
     refresh: render,
     toast,
     flush: flushActiveSearch,
+    resetNearbyExtras,
     snapshot: () => ({
+      dayTime: $('day-time').value,
+      nearbyDate: $('nearby-date').value,
+      nearbyTime: $('nearby-time').value,
+      nearbyRadius: $('nearby-radius').value,
+      mealContext,
       dayIndex,
       dayAnchor,
       dayRadius,
@@ -1186,6 +1382,17 @@
         exchangeAnchor = state.exchangeAnchor;
       if (['all', 'USD', 'TWD', 'unknown'].includes(state.exchangeCurrency))
         exchangeCurrency = state.exchangeCurrency;
+      if (typeof state.dayTime === 'string') $('day-time').value = state.dayTime;
+      if (typeof state.nearbyDate === 'string') $('nearby-date').value = state.nearbyDate;
+      if (typeof state.nearbyTime === 'string') $('nearby-time').value = state.nearbyTime;
+      if (['all', '1', '3', '5', '10'].includes(state.nearbyRadius))
+        $('nearby-radius').value = state.nearbyRadius;
+      if (
+        state.mealContext &&
+        typeof state.mealContext.message === 'string' &&
+        D.places.some((p) => p.id === state.mealContext.anchorId)
+      )
+        mealContext = state.mealContext;
       $('day-search').value = dayQuery;
       $('search-input').value = nearbyQuery;
       const fields = {

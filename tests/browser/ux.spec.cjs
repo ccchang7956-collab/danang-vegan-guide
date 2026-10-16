@@ -1,3 +1,4 @@
+const { openNearbyFilters } = require('./helpers.cjs');
 const { test, expect } = require('@playwright/test');
 const { loadApp, mockMapTiles } = require('./helpers.cjs');
 test.use({ serviceWorkers: 'block', viewport: { width: 393, height: 852 } });
@@ -10,6 +11,7 @@ test('search feedback, recovery, diet toggle and removable filters stay consiste
 }) => {
   await loadApp(page);
   await page.locator('[data-view="nearby"]').click();
+  await openNearbyFilters(page);
   await page.locator('#area-filter').selectOption('hoian');
   await page.locator('#search-input').fill('kurumi');
   await page.locator('#quick-vegan').click();
@@ -157,6 +159,7 @@ test('updating from the phrase page restores non GPS travel and search settings'
   await page.locator('#day-tabs [data-day="2"]').click();
   await page.locator('#day-anchor').selectOption('oldtown');
   await page.locator('#day-radius').selectOption('15');
+  await page.locator('#day-time').fill('12:30');
   await page.locator('#day-search').fill('kurumi');
   await page.locator('[data-view="exchange"]').click();
   await page.locator('#exchange-currency').selectOption('TWD');
@@ -164,7 +167,13 @@ test('updating from the phrase page restores non GPS travel and search settings'
   await page.locator('[data-view="nearby"]').click();
   await page.locator('#reference-select').selectOption('oldtown');
   await page.locator('#search-input').fill('kurumi');
+  await openNearbyFilters(page);
   await page.locator('#area-filter').selectOption('hoian');
+  await openNearbyFilters(page);
+  await page.locator('#nearby-date').fill('2026-10-24');
+  await openNearbyFilters(page);
+  await page.locator('#nearby-time').fill('18:00');
+  await page.locator('#nearby-radius').selectOption('5');
   await page.locator('[data-view="phrase"]').click();
   await page.evaluate(() => window.TravelUX.updateReady());
   await page.locator('#reload-update').click();
@@ -172,6 +181,7 @@ test('updating from the phrase page restores non GPS travel and search settings'
   await page.locator('[data-view="daily"]').click();
   await expect(page.locator('#day-anchor')).toHaveValue('oldtown');
   await expect(page.locator('#day-radius')).toHaveValue('15');
+  await expect(page.locator('#day-time')).toHaveValue('12:30');
   await expect(page.locator('#day-search')).toHaveValue('kurumi');
   await page.locator('[data-view="exchange"]').click();
   await expect(page.locator('#exchange-currency')).toHaveValue('TWD');
@@ -180,6 +190,9 @@ test('updating from the phrase page restores non GPS travel and search settings'
   await expect(page.locator('#search-input')).toHaveValue('kurumi');
   await expect(page.locator('#reference-select')).toHaveValue('oldtown');
   await expect(page.locator('#area-filter')).toHaveValue('hoian');
+  await expect(page.locator('#nearby-date')).toHaveValue('2026-10-24');
+  await expect(page.locator('#nearby-time')).toHaveValue('18:00');
+  await expect(page.locator('#nearby-radius')).toHaveValue('5');
   await expect(page.locator('#nearby-search-summary')).toContainText('找到 1 間');
 });
 
@@ -202,8 +215,10 @@ test('search summary stays next to the input and advanced filters remain operabl
   await expect(page.locator('#nearby-search-summary')).toBeInViewport();
   await expect(page.locator('#operating-filter')).toBeHidden();
   await page.locator('.advanced-filters > summary').click();
+  await openNearbyFilters(page);
   await page.locator('#operating-filter').selectOption('closed');
   await expect(page.locator('#active-filters')).toContainText('歇業');
+  await openNearbyFilters(page);
   await page.locator('#reset-nearby').click();
   await page.setViewportSize({ width: 320, height: 740 });
   for (const view of ['daily', 'nearby', 'exchange', 'supplies', 'phrase']) {

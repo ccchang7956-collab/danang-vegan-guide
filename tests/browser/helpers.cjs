@@ -131,3 +131,10 @@ module.exports = {
   pausePageClock,
   waitForActiveWorker,
 };
+
+async function openNearbyFilters(page) {
+  const filters = page.locator('#nearby-filters');
+  if ((await filters.count()) && !(await filters.evaluate((element) => element.open)))
+    await filters.locator(':scope > summary').click();
+}
+module.exports.openNearbyFilters = openNearbyFilters;

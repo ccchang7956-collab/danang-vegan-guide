@@ -2,6 +2,7 @@ const { defineConfig } = require('@playwright/test');
 const fs = require('node:fs');
 
 const macChrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+const useWebkit = process.env.PLAYWRIGHT_TEST_BROWSER === 'webkit';
 const port = Number(process.env.PLAYWRIGHT_TEST_PORT || 4173);
 const baseURL = `http://127.0.0.1:${port}`;
 const chromeLaunchOptions = process.env.PLAYWRIGHT_CHROME_EXECUTABLE
@@ -21,9 +22,9 @@ module.exports = defineConfig({
   outputDir: 'test-results/browser',
   use: {
     baseURL,
-    browserName: 'chromium',
+    browserName: useWebkit ? 'webkit' : 'chromium',
     headless: true,
-    launchOptions: chromeLaunchOptions,
+    launchOptions: useWebkit ? {} : chromeLaunchOptions,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
   },

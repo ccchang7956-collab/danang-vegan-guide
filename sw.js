@@ -1,11 +1,12 @@
 /* Versioned app shell. Bump VERSION whenever any bundled file changes. */
-const VERSION = 'v20';
+const VERSION = 'v22';
 const PREFIX = 'danang-vegan:' + new URL(self.registration.scope).pathname + ':';
 const CACHE = PREFIX + VERSION;
 const LOCAL = [
   './',
   './index.html',
   './assets/styles.css',
+  './assets/mobile.css',
   './assets/core.js',
   './assets/data.js',
   './assets/app.js',

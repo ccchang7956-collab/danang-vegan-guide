@@ -34,6 +34,7 @@
     imageTrigger = null,
     productName = '';
   const scrollPositions = {};
+  const focusMemory = {};
   function persist() {
     try {
       localStorage.setItem(
@@ -52,7 +53,8 @@
   }
   function focusTarget(target) {
     if (!target) return;
-    target.setAttribute('tabindex', '-1');
+    if (!target.matches('a[href],button,input,select,textarea,[tabindex]'))
+      target.setAttribute('tabindex', '-1');
     target.focus({ preventScroll: true });
   }
   function button(text, attributes, handler) {
@@ -78,6 +80,25 @@
   function showTarget(id) {
     if (!['nearby', 'exchange'].includes(currentView)) return;
     setMode(id === 'map-panel' ? 'map' : 'list');
+  }
+  function navigateTarget(id) {
+    api.flush();
+    const active = document.activeElement;
+    if (active?.matches('input,textarea,select')) active.blur();
+    showTarget(id);
+    const targetId =
+      id === 'restaurant-list'
+        ? 'nearby-results-heading'
+        : id === 'day-restaurant-list'
+          ? 'daily-food-heading'
+          : id === 'map-panel'
+            ? 'map-heading'
+            : id;
+    const target = $(targetId);
+    requestAnimationFrame(() => {
+      focusTarget(target);
+      target?.scrollIntoView({ block: 'start', behavior: 'instant' });
+    });
   }
   function decorateCards(view) {
     const list = $(view === 'daily' ? 'day-restaurant-list' : 'restaurant-list');
@@ -124,23 +145,35 @@
       'diet-filter': '飲食',
       'operating-filter': '營業查核',
       'search-input': '搜尋',
+      'nearby-radius': '直線範圍',
+      'nearby-time': '用餐時間',
+      'nearby-date': '用餐日期',
     };
     for (const id of Object.keys(labels)) {
       const control = $(id),
         value = control.value;
       const inactive =
-        id === 'search-input'
+        id === 'search-input' || id === 'nearby-time'
           ? !value.trim()
-          : value === (id === 'operating-filter' ? 'available' : 'all');
+          : id === 'nearby-date'
+            ? value === currentDate
+            : value === (id === 'operating-filter' ? 'available' : 'all');
       if (inactive) continue;
-      const text = id === 'search-input' ? value : control.selectedOptions[0]?.textContent;
+      const text = ['search-input', 'nearby-date', 'nearby-time'].includes(id)
+        ? value
+        : control.selectedOptions[0]?.textContent;
       container.append(
         button(
           `${labels[id]}：${text} ×`,
           { 'data-remove-filter': id, 'aria-label': `移除${labels[id]}條件：${text}` },
           () => {
-            control.value =
-              id === 'search-input' ? '' : id === 'operating-filter' ? 'available' : 'all';
+            control.value = ['search-input', 'nearby-time'].includes(id)
+              ? ''
+              : id === 'nearby-date'
+                ? currentDate
+                : id === 'operating-filter'
+                  ? 'available'
+                  : 'all';
             control.dispatchEvent(
               new Event(id === 'search-input' ? 'input' : 'change', { bubbles: true }),
             );
@@ -150,6 +183,12 @@
         ),
       );
     }
+    const extraCount =
+      ['area-filter', 'diet-filter'].filter((id) => $(id).value !== 'all').length +
+      Number($('operating-filter').value !== 'available') +
+      Number(!!$('nearby-time').value) +
+      Number($('nearby-date').value !== currentDate);
+    $('more-filter-count').textContent = extraCount ? `（${extraCount} 項）` : '';
   }
   function updated(state) {
     const count = state.items.length;
@@ -158,15 +197,20 @@
         state.dayAnchor === 'route'
           ? '整天行程'
           : D.places.find((p) => p.id === state.dayAnchor)?.name;
+      const dailyTime = $('day-time').value;
       $('day-search-summary').textContent =
-        `找到 ${count} 間 · ${state.day.shortDate} · ${anchor} ${state.dayRadius} km 範圍（含無座標備選）`;
+        `找到 ${count} 間 · ${state.day.shortDate} · ${anchor} ${state.dayRadius} km 範圍（含無座標備選）${dailyTime ? ` · ${dailyTime} 依牌告時段排序` : ''}`;
       decorateCards('daily');
     }
     if (state.view === 'nearby') {
+      const unknown = state.items.filter((r) => r.distance === null).length;
       $('nearby-search-summary').textContent =
-        `找到 ${count} 間 · 距離以${state.reference || '所選地標'}為準 · ${$('nearby-sort').selectedOptions[0]?.textContent || '距離優先'}，營業待確認排後${onlyFavorites ? ' · 只看收藏' : ''}`;
+        `找到 ${count} 間 · 距離以${state.reference || '所選地標'}為準 · ${$('nearby-sort').selectedOptions[0]?.textContent || '距離優先'}，營業待確認排後${onlyFavorites ? ' · 只看收藏' : ''}${state.radius && state.radius !== 'all' ? ` · ${state.radius} km 內 ${count - unknown} 間` : ''}${unknown ? ` · 另含距離未確認 ${unknown} 間` : ''}${state.plannedTime ? ` · ${state.plannedDate} ${state.plannedTime} 依牌告時段優先` : ''}`;
       $('favorites-only').setAttribute('aria-pressed', String(onlyFavorites));
       $('favorites-only').textContent = `♥ 只看收藏（${favorites.size}）`;
+      document
+        .querySelector('[data-recover="radius"]')
+        ?.toggleAttribute('hidden', state.radius === 'all');
       filters();
       decorateCards('nearby');
       document
@@ -188,6 +232,17 @@
   }
   function beforeView(next) {
     scrollPositions[currentView] = window.scrollY;
+    const remembered = $(focusMemory[currentView]);
+    const box = remembered?.getBoundingClientRect();
+    if (box && (box.bottom <= 0 || box.top >= innerHeight)) {
+      const visibleCard = [
+        ...document.querySelectorAll('#view-' + currentView + ' .restaurant-card'),
+      ].find((card) => {
+        const r = card.getBoundingClientRect();
+        return r.top < innerHeight && r.bottom > 0;
+      });
+      if (visibleCard) focusMemory[currentView] = visibleCard.id;
+    }
     sameView = next === currentView;
     if (next !== currentView) {
       returnCard = null;
@@ -199,10 +254,12 @@
     currentView = view;
     if (modes[view]) setMode(modes[view]);
     writeRoute();
-    focusTarget($('view-' + view).querySelector('h2'));
-    requestAnimationFrame(() =>
-      window.scrollTo({ top: sameView ? 0 : scrollPositions[view] || 0, behavior: 'instant' }),
-    );
+    $('map-list-return').hidden = !['daily', 'nearby', 'exchange'].includes(view);
+    const target = (!sameView && $(focusMemory[view])) || $('view-' + view).querySelector('h2');
+    requestAnimationFrame(() => {
+      focusTarget(target);
+      window.scrollTo({ top: sameView ? 0 : scrollPositions[view] || 0, behavior: 'instant' });
+    });
   }
   function dateChanged(date) {
     currentDate = date;
@@ -223,6 +280,7 @@
   }
   function resetNearby() {
     $('search-input').value = '';
+    api.resetNearbyExtras();
     for (const id of ['area-filter', 'diet-filter', 'operating-filter'])
       $(id).value = id === 'operating-filter' ? 'available' : 'all';
     onlyFavorites = false;
@@ -242,6 +300,10 @@
       $('day-radius').value = '15';
       $('day-radius').dispatchEvent(new Event('change'));
     }
+    if (action === 'radius') {
+      $('nearby-radius').value = 'all';
+      $('nearby-radius').dispatchEvent(new Event('change', { bubbles: true }));
+    }
     if (action === 'search-all') $('search-all').click();
     if (action === 'exchange') {
       $('exchange-currency').value = 'all';
@@ -259,8 +321,7 @@
           ? 'nearby-search-summary'
           : 'exchange-search-summary',
     );
-    focusTarget(target);
-    target?.scrollIntoView({ block: 'nearest' });
+    navigateTarget(target?.id || 'restaurant-list');
   }
   async function copy(text, success) {
     try {
@@ -355,9 +416,14 @@
         const target =
           control.dataset.display === 'map'
             ? $('map-panel')
-            : $(currentView === 'nearby' ? 'restaurant-list' : 'exchange-list');
-        target.scrollIntoView({ block: 'start', behavior: 'smooth' });
-        focusTarget(target);
+            : $(
+                currentView === 'daily'
+                  ? 'day-restaurant-list'
+                  : currentView === 'nearby'
+                    ? 'restaurant-list'
+                    : 'exchange-list',
+              );
+        navigateTarget(target.id);
       }
       const recovery = event.target.closest('[data-recover]');
       if (recovery) {
@@ -377,22 +443,62 @@
         input.blur();
         const target = $(id === 'day-search' ? 'day-restaurant-list' : 'restaurant-list');
         showTarget(target.id);
-        target.scrollIntoView({ block: 'start', behavior: 'smooth' });
-        focusTarget(target);
+        navigateTarget(target.id);
         const count = $(id === 'day-search' ? 'day-food-count' : 'result-count').textContent;
         api.toast('搜尋結果：' + count);
       });
     }
     const returnButton = button('← 回到剛才的店家', { id: 'return-to-card' }, () => {
       if (!returnCard) return;
-      const card = $(returnCard);
-      showTarget(returnCard);
-      card?.scrollIntoView({ block: 'start', behavior: 'smooth' });
-      focusTarget(card);
+      navigateTarget(
+        $(returnCard)
+          ? returnCard
+          : currentView === 'daily'
+            ? 'day-restaurant-list'
+            : currentView === 'nearby'
+              ? 'restaurant-list'
+              : 'exchange-list',
+      );
       returnButton.hidden = true;
     });
     returnButton.hidden = true;
     $('map-panel').prepend(returnButton);
+    $('map-list-return').addEventListener('click', () => {
+      navigateTarget(
+        returnCard && $(returnCard)
+          ? returnCard
+          : currentView === 'daily'
+            ? 'day-restaurant-list'
+            : currentView === 'nearby'
+              ? 'restaurant-list'
+              : 'exchange-list',
+      );
+      $('return-to-card').hidden = true;
+    });
+    document.addEventListener('focusin', (event) => {
+      const section = event.target.closest('.view');
+      if (section) {
+        const card = event.target.closest('.restaurant-card');
+        const id = card?.id || event.target.id;
+        if (id) focusMemory[section.id.replace('view-', '')] = id;
+      }
+      updateKeyboard();
+    });
+    function updateKeyboard() {
+      const editing = document.activeElement?.matches('input:not([type="checkbox"]),textarea');
+      const reduced = window.visualViewport && window.visualViewport.height < innerHeight * 0.78;
+      document.body.classList.toggle('keyboard-open', !!editing && !!reduced);
+    }
+    document.addEventListener('focusout', () => requestAnimationFrame(updateKeyboard));
+    window.visualViewport?.addEventListener('resize', updateKeyboard);
+    const nav = document.querySelector('.bottom-nav');
+    if (window.ResizeObserver && nav)
+      new ResizeObserver(() => {
+        document.documentElement.style.setProperty(
+          '--nav-height',
+          nav.getBoundingClientRect().height + 'px',
+        );
+      }).observe(nav);
     $('reload-update').addEventListener('click', () => {
       try {
         sessionStorage.setItem('danang-search-restore', JSON.stringify(api.snapshot()));
@@ -461,6 +567,7 @@
     afterView,
     dateChanged,
     showTarget,
+    navigateTarget,
     focusTarget,
     includeRestaurant: (id) => !onlyFavorites || favorites.has(id),
     hasUpdate: () => updateAvailable,

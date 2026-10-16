@@ -607,6 +607,7 @@ window.TRAVEL_DATA = {
     }
   ],
   "exchangeCheckedDate": "2026-10-14",
+  "menuCheckedDate": "2026-10-16",
   "restaurantFullRecheckDate": "2026-10-14",
   "restaurants": [
     {
@@ -713,7 +714,96 @@ window.TRAVEL_DATA = {
       "hoursSourceUrl": "https://www.google.com/maps?cid=2479299816126277206",
       "phoneSourceUrl": "https://www.google.com/maps?cid=2479299816126277206",
       "coordinateCheckedDate": "2026-10-13",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            630,
+            870
+          ],
+          [
+            990,
+            1260
+          ]
+        ],
+        [
+          [
+            630,
+            840
+          ],
+          [
+            990,
+            1260
+          ]
+        ],
+        [
+          [
+            630,
+            840
+          ],
+          [
+            990,
+            1260
+          ]
+        ],
+        [
+          [
+            630,
+            840
+          ],
+          [
+            990,
+            1260
+          ]
+        ],
+        [
+          [
+            630,
+            840
+          ],
+          [
+            990,
+            1260
+          ]
+        ],
+        [
+          [
+            630,
+            840
+          ],
+          [
+            990,
+            1260
+          ]
+        ],
+        [
+          [
+            630,
+            840
+          ],
+          [
+            990,
+            1260
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "om-vegan",
+        "menuUrl": null,
+        "sourceUrls": [
+          "https://www.facebook.com/giontamesay",
+          "https://www.findglocal.com/VN/Da-Nang/1139577916230406/Om-Vegan---V%E1%BB%81-%C4%91%C3%A2y-%C4%83n-chay"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店當前價位；社群鏡像 2026-09-17 曾列自助餐 60,000 越南盾／人，非旅行日保證。",
+        "menuNote": "官方 Facebook 本輪無法讀取；鏡像可見每日變動菜單與已過期中秋活動，不列固定菜色或當前單價。已排除位於 Quy Nhơn 的同名 OM Vegan Bistro。",
+        "researchStatus": "official-source-unreadable",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "ngoc-chi-city",
@@ -819,7 +909,68 @@ window.TRAVEL_DATA = {
       "hoursSourceUrl": "https://www.google.com/maps/search/?api=1&query=Nh%C3%A0%20H%C3%A0ng%20Chay%20Ng%E1%BB%8Dc%20Chi%20-%20Vegetarian%20Restaurant%20Michelin%20guide%202025&query_place_id=ChIJPwlvPjMYQjERE56T1OCbYpM",
       "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=Nh%C3%A0%20H%C3%A0ng%20Chay%20Ng%E1%BB%8Dc%20Chi%20-%20Vegetarian%20Restaurant%20Michelin%20guide%202025&query_place_id=ChIJPwlvPjMYQjERE56T1OCbYpM",
       "coordinateCheckedDate": "2026-10-13",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            540,
+            1260
+          ]
+        ],
+        [
+          [
+            540,
+            1260
+          ]
+        ],
+        [
+          [
+            540,
+            1260
+          ]
+        ],
+        [
+          [
+            540,
+            1260
+          ]
+        ],
+        [
+          [
+            540,
+            1260
+          ]
+        ],
+        [
+          [
+            540,
+            1260
+          ]
+        ],
+        [
+          [
+            540,
+            1260
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "ngoc-chi-city",
+        "menuUrl": "https://chayngocchi.vn/thuc-don/",
+        "sourceUrls": [
+          "https://chayngocchi.vn/thuc-don/",
+          "https://chayngocchi.vn/wp-content/uploads/2026/01/chayngocchi-cn-hoangdieu-2.jpg"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "官方菜單可開啟；尚無足夠純素證據可列入的本分店單品價位。",
+        "menuNote": "已讀官方 Hoàng Diệu 分店菜單並目視第 2 頁；店址 202 Hoàng Diệu 相符。菜單有沙拉與價格，但此店為奶素、未見逐道 Vegan 證據，故不列純素推薦品項。",
+        "researchStatus": "official-menu-reviewed",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "tiem-chay-xua",
@@ -924,7 +1075,95 @@ window.TRAVEL_DATA = {
       "addressCheckedDate": "2026-10-14",
       "hoursSourceUrl": "https://www.google.com/maps/search/?api=1&query=Ti%E1%BB%87m%20Chay%20X%C6%B0a&query_place_id=ChIJT0sifzoZQjERSWvLiKArplY",
       "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=Ti%E1%BB%87m%20Chay%20X%C6%B0a&query_place_id=ChIJT0sifzoZQjERSWvLiKArplY",
-      "coordinateCheckedDate": "2026-10-13"
+      "coordinateCheckedDate": "2026-10-13",
+      "weeklyHours": [
+        [
+          [
+            420,
+            840
+          ],
+          [
+            960,
+            1260
+          ]
+        ],
+        [
+          [
+            420,
+            840
+          ],
+          [
+            960,
+            1260
+          ]
+        ],
+        [
+          [
+            420,
+            840
+          ],
+          [
+            960,
+            1260
+          ]
+        ],
+        [
+          [
+            420,
+            840
+          ],
+          [
+            960,
+            1260
+          ]
+        ],
+        [
+          [
+            420,
+            840
+          ],
+          [
+            960,
+            1260
+          ]
+        ],
+        [
+          [
+            420,
+            840
+          ],
+          [
+            960,
+            1260
+          ]
+        ],
+        [
+          [
+            420,
+            840
+          ],
+          [
+            960,
+            1260
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "tiem-chay-xua",
+        "menuUrl": null,
+        "sourceUrls": [
+          "https://www.facebook.com/tiemchayxua/"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱與現址搜尋菜單，並嘗試讀取對應官方頁；本輪官方頁受登入限制、快取錯誤或逾時影響，未取得可核對菜單，不引用評論價格。",
+        "researchStatus": "official-source-unreadable",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "ans-vegetarian",
@@ -1028,7 +1267,68 @@ window.TRAVEL_DATA = {
       "addressCheckedDate": "2026-10-14",
       "hoursSourceUrl": "https://www.google.com/maps?cid=2222385936785292906",
       "phoneSourceUrl": "https://www.google.com/maps?cid=2222385936785292906",
-      "coordinateCheckedDate": "2026-10-13"
+      "coordinateCheckedDate": "2026-10-13",
+      "weeklyHours": [
+        [
+          [
+            420,
+            1260
+          ]
+        ],
+        [
+          [
+            420,
+            1260
+          ]
+        ],
+        [
+          [
+            420,
+            1260
+          ]
+        ],
+        [
+          [
+            420,
+            1260
+          ]
+        ],
+        [
+          [
+            420,
+            1260
+          ]
+        ],
+        [
+          [
+            420,
+            1260
+          ]
+        ],
+        [
+          [
+            420,
+            1260
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "ans-vegetarian",
+        "menuUrl": null,
+        "sourceUrls": [
+          "https://nhahangchayans.com/",
+          "https://nhahangchayans.com/menu/"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱與現址搜尋菜單，並嘗試讀取對應官方頁；本輪官方頁受登入限制、快取錯誤或逾時影響，未取得可核對菜單，不引用評論價格。",
+        "researchStatus": "official-source-unreadable",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "an-lac-tam-2",
@@ -1133,7 +1433,112 @@ window.TRAVEL_DATA = {
       "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20Chay%20An%20L%E1%BA%A1c%20T%C3%A2m%20%C4%90%C3%A0%20N%E1%BA%B5ng%20-%20Vegetarian%20Restaurant&query_place_id=ChIJv2NYMzcZQjERAJy_d1NFoeg",
       "coordinateCheckedDate": "2026-10-13",
       "addressIssue": "",
-      "hoursExceptionNote": "Google 已展開核對午休與晚餐時段；HappyCow 舊頁另列滿月日休息，農曆例外未確認。"
+      "hoursExceptionNote": "Google 已展開核對午休與晚餐時段；HappyCow 舊頁另列滿月日休息，農曆例外未確認。",
+      "weeklyHours": [
+        [
+          [
+            390,
+            840
+          ],
+          [
+            1020,
+            1260
+          ]
+        ],
+        [
+          [
+            390,
+            840
+          ],
+          [
+            1020,
+            1260
+          ]
+        ],
+        [
+          [
+            390,
+            840
+          ],
+          [
+            1020,
+            1260
+          ]
+        ],
+        [
+          [
+            390,
+            840
+          ],
+          [
+            1020,
+            1260
+          ]
+        ],
+        [
+          [
+            390,
+            840
+          ],
+          [
+            1020,
+            1260
+          ]
+        ],
+        [
+          [
+            390,
+            840
+          ],
+          [
+            1020,
+            1260
+          ]
+        ],
+        [
+          [
+            390,
+            840
+          ],
+          [
+            1020,
+            1260
+          ]
+        ]
+      ],
+      "hoursCaution": {
+        "weekdays": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "kind": "exception",
+        "message": "Google 已展開核對午休與晚餐時段；HappyCow 舊頁另列滿月日休息，農曆例外未確認。",
+        "sourceUrls": [
+          "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20Chay%20An%20L%E1%BA%A1c%20T%C3%A2m%20%C4%90%C3%A0%20N%E1%BA%B5ng%20-%20Vegetarian%20Restaurant&query_place_id=ChIJv2NYMzcZQjERAJy_d1NFoeg",
+          "https://www.happycow.net/reviews/an-lac-tam-2-da-nang-183160"
+        ],
+        "checkedDate": "2026-10-14"
+      },
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "an-lac-tam-2",
+        "menuUrl": null,
+        "sourceUrls": [
+          "https://www.facebook.com/AnLacTamVegetarian"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱與現址搜尋菜單，並嘗試讀取對應官方頁；本輪官方頁受登入限制、快取錯誤或逾時影響，未取得可核對菜單，不引用評論價格。",
+        "researchStatus": "official-source-unreadable",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "khai-tam-city",
@@ -1235,7 +1640,39 @@ window.TRAVEL_DATA = {
       "addressCheckedDate": "2026-10-14",
       "hoursSourceUrl": "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20Chay%20Khai%20T%C3%A2m&query_place_id=ChIJB44Sw8gZQjERlR6MkjlQ6sI",
       "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20Chay%20Khai%20T%C3%A2m&query_place_id=ChIJB44Sw8gZQjERlR6MkjlQ6sI",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": null,
+      "hoursCaution": {
+        "weekdays": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "kind": "unverified",
+        "message": "Google 每週均列 24 小時，但 HappyCow 舊頁列分段供餐；不能視為全天都有餐，先致電確認。",
+        "sourceUrls": [
+          "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20Chay%20Khai%20T%C3%A2m&query_place_id=ChIJB44Sw8gZQjERlR6MkjlQ6sI",
+          "https://www.happycow.net/reviews/khai-tam-da-nang-76023"
+        ],
+        "checkedDate": "2026-10-14"
+      },
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "khai-tam-city",
+        "menuUrl": null,
+        "sourceUrls": [],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱及現址進行菜單搜尋；本輪僅找到第三方介紹、評論或無法確認屬本店的結果，未找到可核對官方菜單。",
+        "researchStatus": "no-verifiable-menu-found",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "shala-vegan-house",
@@ -1337,7 +1774,65 @@ window.TRAVEL_DATA = {
       "hoursSourceUrl": "https://www.google.com/maps?cid=17069506861586918572",
       "phoneSourceUrl": "https://www.google.com/maps?cid=17069506861586918572",
       "coordinateCheckedDate": "2026-10-13",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            600,
+            1200
+          ]
+        ],
+        [
+          [
+            630,
+            1200
+          ]
+        ],
+        [
+          [
+            630,
+            1200
+          ]
+        ],
+        [
+          [
+            630,
+            1200
+          ]
+        ],
+        [
+          [
+            630,
+            1200
+          ]
+        ],
+        [
+          [
+            630,
+            1200
+          ]
+        ],
+        [
+          [
+            600,
+            1200
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "shala-vegan-house",
+        "menuUrl": null,
+        "sourceUrls": [],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱及現址進行菜單搜尋；本輪僅找到第三方介紹、評論或無法確認屬本店的結果，未找到可核對官方菜單。",
+        "researchStatus": "no-verifiable-menu-found",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "au-lac",
@@ -1439,7 +1934,65 @@ window.TRAVEL_DATA = {
       "addressCheckedDate": "2026-10-14",
       "hoursSourceUrl": "https://www.google.com/maps?cid=8489020020553107995",
       "phoneSourceUrl": "https://www.google.com/maps?cid=8489020020553107995",
-      "coordinateCheckedDate": "2026-10-13"
+      "coordinateCheckedDate": "2026-10-13",
+      "weeklyHours": [
+        [
+          [
+            390,
+            1200
+          ]
+        ],
+        [
+          [
+            390,
+            1200
+          ]
+        ],
+        [
+          [
+            390,
+            1200
+          ]
+        ],
+        [
+          [
+            390,
+            1200
+          ]
+        ],
+        [
+          [
+            390,
+            1200
+          ]
+        ],
+        [
+          [
+            390,
+            1200
+          ]
+        ],
+        [
+          [
+            390,
+            1200
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "au-lac",
+        "menuUrl": null,
+        "sourceUrls": [],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱及現址進行菜單搜尋；本輪僅找到第三方介紹、評論或無法確認屬本店的結果，未找到可核對官方菜單。",
+        "researchStatus": "no-verifiable-menu-found",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "dieu-hoa-city",
@@ -1542,7 +2095,67 @@ window.TRAVEL_DATA = {
       "hoursSourceUrl": "https://www.google.com/maps/search/?api=1&query=Quan%20Chay%20Dieu%20Hoa%20-%20Vegan%20restaurant%20in%20Danang&query_place_id=ChIJLRVpnTkYQjER4bAlCno0JNQ",
       "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=Quan%20Chay%20Dieu%20Hoa%20-%20Vegan%20restaurant%20in%20Danang&query_place_id=ChIJLRVpnTkYQjER4bAlCno0JNQ",
       "coordinateCheckedDate": "2026-10-13",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            420,
+            1230
+          ]
+        ],
+        [
+          [
+            420,
+            1230
+          ]
+        ],
+        [
+          [
+            420,
+            1230
+          ]
+        ],
+        [
+          [
+            420,
+            1230
+          ]
+        ],
+        [
+          [
+            420,
+            1230
+          ]
+        ],
+        [
+          [
+            420,
+            1230
+          ]
+        ],
+        [
+          [
+            420,
+            1230
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "dieu-hoa-city",
+        "menuUrl": null,
+        "sourceUrls": [
+          "https://www.facebook.com/Qu%C3%A1n-Chay-Di%E1%BB%87u-Hoa-1590578277919741/"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱與現址搜尋菜單，並嘗試讀取對應官方頁；本輪官方頁受登入限制、快取錯誤或逾時影響，未取得可核對菜單，不引用評論價格。",
+        "researchStatus": "official-source-unreadable",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "phuc-an-city",
@@ -1649,7 +2262,57 @@ window.TRAVEL_DATA = {
       "hoursSourceUrl": "https://www.google.com/maps/search/?api=1&query=Nh%C3%A0%20H%C3%A0ng%20Chay%20Ph%C3%BAc%20An&query_place_id=ChIJ3xT1QS4ZQjER8qV4HPop8io",
       "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=Nh%C3%A0%20H%C3%A0ng%20Chay%20Ph%C3%BAc%20An&query_place_id=ChIJ3xT1QS4ZQjER8qV4HPop8io",
       "coordinateCheckedDate": "2026-10-13",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [],
+        [],
+        [
+          [
+            600,
+            1290
+          ]
+        ],
+        [
+          [
+            600,
+            1290
+          ]
+        ],
+        [
+          [
+            600,
+            1290
+          ]
+        ],
+        [
+          [
+            600,
+            1290
+          ]
+        ],
+        [
+          [
+            600,
+            1290
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "phuc-an-city",
+        "menuUrl": null,
+        "sourceUrls": [
+          "https://www.facebook.com/phucan"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱與現址搜尋菜單，並嘗試讀取對應官方頁；本輪官方頁受登入限制、快取錯誤或逾時影響，未取得可核對菜單，不引用評論價格。",
+        "researchStatus": "official-source-unreadable",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "bao-an",
@@ -1753,7 +2416,76 @@ window.TRAVEL_DATA = {
       "hoursSourceUrl": "https://www.google.com/maps/search/?api=1&query=Bao%20An%20Macrobiotic&query_place_id=ChIJFbk1jogXQjERZh1qYR7NbTo",
       "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=Bao%20An%20Macrobiotic&query_place_id=ChIJFbk1jogXQjERZh1qYR7NbTo",
       "coordinateCheckedDate": "2026-10-13",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            390,
+            930
+          ]
+        ],
+        [
+          [
+            390,
+            1230
+          ]
+        ],
+        [
+          [
+            390,
+            1230
+          ]
+        ],
+        [
+          [
+            390,
+            1230
+          ]
+        ],
+        [
+          [
+            390,
+            1230
+          ]
+        ],
+        [
+          [
+            390,
+            1230
+          ]
+        ],
+        [
+          [
+            390,
+            1230
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "bao-an",
+        "menuUrl": "https://thucduongbaoan.com.vn/sp-category/thuc-don-bao-an/thuc-don-thu-sau/",
+        "sourceUrls": [
+          "https://thucduongbaoan.com.vn/",
+          "https://thucduongbaoan.com.vn/sp-category/thuc-don-bao-an/thuc-don-thu-sau/",
+          "https://thucduongbaoan.com.vn/sp/com-rong-bien/"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [
+          {
+            "name": "Cơm rong biển",
+            "nameZh": "海苔糙米飯",
+            "priceVnd": 35000,
+            "veganEvidence": "既有經查核的全店 vegan 分類；官方本店產品頁描述糙米飯與海苔，未聲稱所有單品成分獨立驗證。"
+          }
+        ],
+        "priceNote": "官網海苔飯單品標價 35,000 VND；未見更新日期，現場可能調整。",
+        "menuNote": "官方同址 56 Hoàng Bích Sơn；星期菜單多數餐點標示 Hết hàng（售罄），只採仍顯示加入購物車的海苔飯。不是完整主餐菜單。",
+        "researchStatus": "official-menu-reviewed",
+        "menuKind": "items",
+        "priceAge": "undated-menu"
+      }
     },
     {
       "id": "tinh-quan",
@@ -1853,7 +2585,71 @@ window.TRAVEL_DATA = {
       "nameCheckedDate": "2026-10-14",
       "addressCheckedDate": "2026-10-14",
       "hoursSourceUrl": "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20Chay%20T%E1%BB%89nh%20Qu%C3%A1n%20-%20%E1%BA%A8m%20Th%E1%BB%B1c%20Chay%20%C4%90%C3%A0%20N%E1%BA%B5ng&query_place_id=ChIJ6TXY2-sXQjERQm2Oxj4bvMQ",
-      "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20Chay%20T%E1%BB%89nh%20Qu%C3%A1n%20-%20%E1%BA%A8m%20Th%E1%BB%B1c%20Chay%20%C4%90%C3%A0%20N%E1%BA%B5ng&query_place_id=ChIJ6TXY2-sXQjERQm2Oxj4bvMQ"
+      "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20Chay%20T%E1%BB%89nh%20Qu%C3%A1n%20-%20%E1%BA%A8m%20Th%E1%BB%B1c%20Chay%20%C4%90%C3%A0%20N%E1%BA%B5ng&query_place_id=ChIJ6TXY2-sXQjERQm2Oxj4bvMQ",
+      "weeklyHours": [
+        [
+          [
+            630,
+            1200
+          ]
+        ],
+        [
+          [
+            630,
+            1140
+          ]
+        ],
+        [
+          [
+            630,
+            1200
+          ]
+        ],
+        [
+          [
+            630,
+            1200
+          ]
+        ],
+        [
+          [
+            630,
+            1200
+          ]
+        ],
+        [
+          [
+            630,
+            1200
+          ]
+        ],
+        [
+          [
+            630,
+            1200
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [
+        "披薩",
+        "比薩",
+        "pizza"
+      ],
+      "menuInfo": {
+        "id": "tinh-quan",
+        "menuUrl": "https://www.hocthiendanang.com/ve-am-thuc-chay-tinh-quan",
+        "sourceUrls": [
+          "https://www.hocthiendanang.com/ve-am-thuc-chay-tinh-quan"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "找到 Tỉnh Quán 自有介紹頁，地址 11 Trần Nhật Duật 相符，有菜名與菜單介紹；既有分類提醒可能使用優格與蜂蜜，未取得逐道全素及價格證據，保留空白。",
+        "researchStatus": "official-menu-reviewed",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "son-tra-retreat",
@@ -1955,7 +2751,68 @@ window.TRAVEL_DATA = {
       "hoursSourceUrl": "https://www.google.com/maps?cid=18224764546628337695",
       "phoneSourceUrl": "https://www.google.com/maps?cid=18224764546628337695",
       "coordinateCheckedDate": "2026-10-13",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            570,
+            1320
+          ]
+        ],
+        [
+          [
+            570,
+            1320
+          ]
+        ],
+        [
+          [
+            570,
+            1320
+          ]
+        ],
+        [
+          [
+            570,
+            1320
+          ]
+        ],
+        [
+          [
+            570,
+            1320
+          ]
+        ],
+        [
+          [
+            570,
+            1320
+          ]
+        ],
+        [
+          [
+            570,
+            1320
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "son-tra-retreat",
+        "menuUrl": "https://sontraretreat.vn/vi/thuc-don/",
+        "sourceUrls": [
+          "https://sontraretreat.vn/vi/thuc-don/",
+          "https://sontraretreat.vn/wp-content/uploads/2026/04/13.png"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "官方圖像菜單標示另加 5% 服務費；尚無可證實全素單品價位。",
+        "menuNote": "已開啟官方菜單並查看配菜／點心頁。未見逐道 Vegan 標示；蔬菜菜名未足以證實醬料或用油無動物成分，故 items 保留空白。",
+        "researchStatus": "official-menu-reviewed",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "moms-kitchen",
@@ -2080,7 +2937,111 @@ window.TRAVEL_DATA = {
       "nameCheckedDate": "2026-10-14",
       "addressCheckedDate": "2026-10-14",
       "coordinateCheckedDate": "2026-10-13",
-      "addressIssue": "Google 列 73-12 Trương Định，官網列 73/12；兩者指向同一巷內店家。"
+      "addressIssue": "Google 列 73-12 Trương Định，官網列 73/12；兩者指向同一巷內店家。",
+      "weeklyHours": [
+        [
+          [
+            510,
+            1110
+          ]
+        ],
+        [
+          [
+            510,
+            1110
+          ]
+        ],
+        [
+          [
+            510,
+            1110
+          ]
+        ],
+        [
+          [
+            510,
+            1110
+          ]
+        ],
+        [
+          [
+            510,
+            1110
+          ]
+        ],
+        [
+          [
+            510,
+            1110
+          ]
+        ],
+        [
+          [
+            510,
+            1110
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "moms-kitchen",
+        "menuUrl": "https://chickpeaeatery.com/wp-content/uploads/2023/06/MOMS-KITCHEN-BY-CHICKPEA-EATERY.pdf",
+        "sourceUrls": [
+          "https://chickpeaeatery.com/",
+          "https://chickpeaeatery.com/wp-content/uploads/2023/06/MOMS-KITCHEN-BY-CHICKPEA-EATERY.pdf"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [
+          {
+            "name": "FRESH SPRING ROLLS",
+            "nameZh": "生春捲",
+            "priceVnd": 50000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "BAO BUNS",
+            "nameZh": "刈包",
+            "priceVnd": 40000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "BÚN CHẢ GIÒ",
+            "nameZh": "炸春捲米線",
+            "priceVnd": 50000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "BÁNH XÈO – VIETNAMESE PANCAKE",
+            "nameZh": "越式煎餅",
+            "priceVnd": 50000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "HOI AN STYLE NOODLES - CAO LẦU",
+            "nameZh": "會安高樓麵",
+            "priceVnd": 50000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "PROTEIN BURGER AWARDED BY PETA",
+            "nameZh": "植物蛋白漢堡",
+            "priceVnd": 65000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "TEMPEH BANH MI",
+            "nameZh": "天貝越式法國麵包",
+            "priceVnd": 35000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          }
+        ],
+        "priceNote": "官方目前連結 PDF，檔案路徑含 2023/06；未見新生效日期，請現場確認。",
+        "menuNote": "官網明確列 mom’s kitchen menu 與 73/12 Trương Định 地址；不採用另一分店較高售價。",
+        "researchStatus": "official-menu-reviewed",
+        "menuKind": "items",
+        "priceAge": "dated-menu"
+      }
     },
     {
       "id": "dn-roots",
@@ -2183,7 +3144,72 @@ window.TRAVEL_DATA = {
       "phoneSourceUrl": "https://www.google.com/maps?cid=629424335043623299",
       "coordinateSourceUrl": "https://www.google.com/maps?cid=629424335043623299",
       "coordinateCheckedDate": "2026-10-14",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            450,
+            1350
+          ]
+        ],
+        [
+          [
+            450,
+            1350
+          ]
+        ],
+        [
+          [
+            450,
+            1350
+          ]
+        ],
+        [
+          [
+            450,
+            1350
+          ]
+        ],
+        [
+          [
+            450,
+            1350
+          ]
+        ],
+        [
+          [
+            450,
+            1350
+          ]
+        ],
+        [
+          [
+            450,
+            1350
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [
+        "咖啡",
+        "cafe",
+        "coffee"
+      ],
+      "menuInfo": {
+        "id": "dn-roots",
+        "menuUrl": "https://rootsplantbasedcafe.com/",
+        "sourceUrls": [
+          "https://rootsplantbasedcafe.com/",
+          "https://rootsplantbasedcafe.com/wp-content/uploads/roots-web/menu-danang-1.webp"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "官方明示純素並列 266 Trần Bạch Đằng；首頁 Danang View Menu 實際連結到餐點照片，已查看第一張，沒有可抄錄的菜名或價格。舊 /menu-vn/ 本輪回傳 404，不使用 Saigon 菜單。",
+        "researchStatus": "no-verifiable-menu-found",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "dn-chickpea",
@@ -2285,7 +3311,117 @@ window.TRAVEL_DATA = {
       "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=Chickpea%20Eatery%20Da%20Nang&query_place_id=ChIJ8fauS5EXQjERqkcIT0k31w0",
       "addressIssue": "",
       "brandPhone": "+84 766 731 285",
-      "brandPhoneSourceUrl": "https://chickpeaeatery.com/"
+      "brandPhoneSourceUrl": "https://chickpeaeatery.com/",
+      "weeklyHours": [
+        [
+          [
+            630,
+            1260
+          ]
+        ],
+        [
+          [
+            630,
+            1260
+          ]
+        ],
+        [
+          [
+            630,
+            1260
+          ]
+        ],
+        [
+          [
+            630,
+            1260
+          ]
+        ],
+        [
+          [
+            630,
+            1260
+          ]
+        ],
+        [
+          [
+            630,
+            1260
+          ]
+        ],
+        [
+          [
+            630,
+            1260
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "dn-chickpea",
+        "menuUrl": "https://chickpeaeatery.com/wp-content/uploads/Online-Chickpea-DA-NANG-MENU.pdf.pdf",
+        "sourceUrls": [
+          "https://chickpeaeatery.com/",
+          "https://chickpeaeatery.com/wp-content/uploads/Online-Chickpea-DA-NANG-MENU.pdf.pdf"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [
+          {
+            "name": "FRESH SPRING ROLLS",
+            "nameZh": "生春捲",
+            "priceVnd": 50000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "TEMPEH BÁNH MÌ",
+            "nameZh": "天貝越式法國麵包",
+            "priceVnd": 50000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "BÚN CHẢ GIÒ",
+            "nameZh": "炸春捲米線",
+            "priceVnd": 65000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "HOI AN STYLE NOODLES/ CAO LẦU",
+            "nameZh": "會安高樓麵",
+            "priceVnd": 65000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "PHO COMFORT NOODLE SOUP BOWL",
+            "nameZh": "河粉湯麵",
+            "priceVnd": 85000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "DA NANG’S SIGNATURE NOODLES/ MỲ QUẢNG ĐÀ NẴNG",
+            "nameZh": "峴港廣南麵",
+            "priceVnd": 80000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "BÁNH XÈO/ VIETNAMESE PANCAKE",
+            "nameZh": "越式煎餅",
+            "priceVnd": 70000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "SIGNATURE HOI AN VEGAN CHICKEN RICE",
+            "nameZh": "會安純素雞飯",
+            "priceVnd": 80000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          }
+        ],
+        "priceNote": "官方峴港 PDF 標價；K 為千越南盾。未見生效日期，以現場為準。",
+        "menuNote": "官網明確連結 Da nang menu；僅用於 69 Nguyễn Duy Hiệu 分店，不套用 ALT 或 Mom Kitchen。",
+        "researchStatus": "official-menu-reviewed",
+        "menuKind": "items",
+        "priceAge": "undated-menu"
+      }
     },
     {
       "id": "dn-alt",
@@ -2389,7 +3525,71 @@ window.TRAVEL_DATA = {
       "coordinateCheckedDate": "2026-10-14",
       "addressIssue": "",
       "brandPhone": "+84 766 731 285",
-      "brandPhoneSourceUrl": "https://chickpeaeatery.com/"
+      "brandPhoneSourceUrl": "https://chickpeaeatery.com/",
+      "weeklyHours": [
+        [
+          [
+            525,
+            1260
+          ]
+        ],
+        [
+          [
+            525,
+            1260
+          ]
+        ],
+        [
+          [
+            525,
+            1260
+          ]
+        ],
+        [
+          [
+            525,
+            1260
+          ]
+        ],
+        [
+          [
+            525,
+            1260
+          ]
+        ],
+        [
+          [
+            525,
+            1260
+          ]
+        ],
+        [
+          [
+            525,
+            1260
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [
+        "咖啡",
+        "cafe",
+        "coffee"
+      ],
+      "menuInfo": {
+        "id": "dn-alt",
+        "menuUrl": null,
+        "sourceUrls": [
+          "https://chickpeaeatery.com/"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "官方列 ALT 為品牌分店，但未取得明確適用 90 Bà Huyện Thanh Quan 的獨立菜單；不套用其他 Chickpea 分店菜色或價格。",
+        "researchStatus": "no-verifiable-menu-found",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "dn-kurumi",
@@ -2492,7 +3692,117 @@ window.TRAVEL_DATA = {
       "phoneSourceUrl": "https://www.google.com/maps?cid=5989776086566850964",
       "coordinateSourceUrl": "https://www.google.com/maps?cid=5989776086566850964",
       "coordinateCheckedDate": "2026-10-14",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            480,
+            1290
+          ]
+        ],
+        [
+          [
+            480,
+            1290
+          ]
+        ],
+        [
+          [
+            480,
+            1290
+          ]
+        ],
+        [
+          [
+            480,
+            1290
+          ]
+        ],
+        [
+          [
+            480,
+            1290
+          ]
+        ],
+        [
+          [
+            480,
+            1290
+          ]
+        ],
+        [
+          [
+            480,
+            1290
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "dn-kurumi",
+        "menuUrl": "https://kurumi.vn/en/menu?branch=danang",
+        "sourceUrls": [
+          "https://kurumi.vn/en/menu?branch=danang",
+          "https://kurumi.vn/vi"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [
+          {
+            "name": "Oat Coconut Pancakes",
+            "nameZh": "燕麥椰奶鬆餅",
+            "priceVnd": 115000,
+            "veganEvidence": "官方本分店菜單明示 100% plant-based；以全店官方分類為依據，並非逐道獨立成分驗證。"
+          },
+          {
+            "name": "Oat Porridge With Chia Pudding And Dragon Fruit Jam",
+            "nameZh": "奇亞籽布丁火龍果醬燕麥粥",
+            "priceVnd": 95000,
+            "veganEvidence": "官方本分店菜單明示 100% plant-based；以全店官方分類為依據，並非逐道獨立成分驗證。"
+          },
+          {
+            "name": "Chickpea Protein Omelette",
+            "nameZh": "鷹嘴豆蛋白歐姆餅",
+            "priceVnd": 99000,
+            "veganEvidence": "官方本分店菜單明示 100% plant-based；以全店官方分類為依據，並非逐道獨立成分驗證。"
+          },
+          {
+            "name": "Tofu Benedict",
+            "nameZh": "豆腐班尼迪克",
+            "priceVnd": 110000,
+            "veganEvidence": "官方本分店菜單明示 100% plant-based；以全店官方分類為依據，並非逐道獨立成分驗證。"
+          },
+          {
+            "name": "Avocado Heart Toast",
+            "nameZh": "酪梨吐司",
+            "priceVnd": 65000,
+            "veganEvidence": "官方本分店菜單明示 100% plant-based；以全店官方分類為依據，並非逐道獨立成分驗證。"
+          },
+          {
+            "name": "Choco Sense",
+            "nameZh": "巧克力果昔碗",
+            "priceVnd": 89000,
+            "veganEvidence": "官方本分店菜單明示 100% plant-based；以全店官方分類為依據，並非逐道獨立成分驗證。"
+          },
+          {
+            "name": "KURUMI Smoothie Bowl",
+            "nameZh": "KURUMI 果昔碗",
+            "priceVnd": 99000,
+            "veganEvidence": "官方本分店菜單明示 100% plant-based；以全店官方分類為依據，並非逐道獨立成分驗證。"
+          },
+          {
+            "name": "Bean Quesadilla",
+            "nameZh": "紅豆墨西哥烤餅",
+            "priceVnd": 115000,
+            "veganEvidence": "官方本分店菜單明示 100% plant-based；以全店官方分類為依據，並非逐道獨立成分驗證。"
+          }
+        ],
+        "priceNote": "官方峴港分店菜單明列越南盾價格，與會安部分品項不同。",
+        "menuNote": "已依 branch=danang 核對；頁面與官方地址為 17/22 Mỹ Đa Đông 12。菜單列示不保證旅行當日庫存。",
+        "researchStatus": "official-menu-reviewed",
+        "menuKind": "items",
+        "priceAge": "undated-menu"
+      }
     },
     {
       "id": "dn-ivegan",
@@ -2590,7 +3900,68 @@ window.TRAVEL_DATA = {
       "addressCheckedDate": "2026-10-14",
       "hoursSourceUrl": "https://www.google.com/maps/search/?api=1&query=iVegan%20Supershop%20Da%20Nang&query_place_id=ChIJSWJeSCkXQjERlJNJtMOGw84",
       "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=iVegan%20Supershop%20Da%20Nang&query_place_id=ChIJSWJeSCkXQjERlJNJtMOGw84",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "dn-ivegan",
+        "menuUrl": null,
+        "sourceUrls": [
+          "https://ivegansupershop.com/",
+          "https://ivegansupershop.com/menu"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "官方品牌頁標示 100% plant-based，但本輪未取得可讀且明確適用本分店的完整菜單；不以河內總店或用餐者照片推定供應。",
+        "researchStatus": "official-source-unreadable",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "dn-loving",
@@ -2688,7 +4059,67 @@ window.TRAVEL_DATA = {
       "addressCheckedDate": "2026-10-14",
       "hoursSourceUrl": "https://www.google.com/maps/search/?api=1&query=Loving%20Vegan&query_place_id=ChIJXSf-vzUXQjERsqQ3CyoF9gU",
       "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=Loving%20Vegan&query_place_id=ChIJXSf-vzUXQjERsqQ3CyoF9gU",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            540,
+            1260
+          ]
+        ],
+        [
+          [
+            540,
+            1260
+          ]
+        ],
+        [
+          [
+            540,
+            1260
+          ]
+        ],
+        [
+          [
+            540,
+            1260
+          ]
+        ],
+        [
+          [
+            540,
+            1260
+          ]
+        ],
+        [
+          [
+            540,
+            1260
+          ]
+        ],
+        [
+          [
+            540,
+            1260
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "dn-loving",
+        "menuUrl": null,
+        "sourceUrls": [
+          "https://www.facebook.com/LovingVeganRestaurant"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱與現址搜尋菜單，並嘗試讀取對應官方頁；本輪官方頁受登入限制、快取錯誤或逾時影響，未取得可核對菜單，不引用評論價格。",
+        "researchStatus": "official-source-unreadable",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "dn-khong",
@@ -2803,7 +4234,67 @@ window.TRAVEL_DATA = {
       "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。",
       "nameCheckedDate": "2026-10-14",
       "addressCheckedDate": "2026-10-14",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            660,
+            1350
+          ]
+        ],
+        [
+          [
+            660,
+            1350
+          ]
+        ],
+        [
+          [
+            660,
+            1350
+          ]
+        ],
+        [
+          [
+            660,
+            1350
+          ]
+        ],
+        [
+          [
+            660,
+            1350
+          ]
+        ],
+        [
+          [
+            660,
+            1350
+          ]
+        ],
+        [
+          [
+            660,
+            1350
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "dn-khong",
+        "menuUrl": null,
+        "sourceUrls": [
+          "https://www.facebook.com/KhongVeganKitchen/"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱與現址搜尋菜單，並嘗試讀取對應官方頁；本輪官方頁受登入限制、快取錯誤或逾時影響，未取得可核對菜單，不引用評論價格。",
+        "researchStatus": "official-source-unreadable",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "dn-lehoi",
@@ -2912,7 +4403,74 @@ window.TRAVEL_DATA = {
       "nameCheckedDate": "2026-10-14",
       "addressCheckedDate": "2026-10-14",
       "coordinateCheckedDate": "2026-10-13",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            870,
+            1320
+          ]
+        ],
+        [
+          [
+            390,
+            1320
+          ]
+        ],
+        [
+          [
+            390,
+            1320
+          ]
+        ],
+        [
+          [
+            390,
+            1320
+          ]
+        ],
+        [
+          [
+            390,
+            1320
+          ]
+        ],
+        [
+          [
+            390,
+            1320
+          ]
+        ],
+        [
+          [
+            390,
+            1320
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [
+        "法國麵包",
+        "越式三明治",
+        "越南麵包",
+        "banh mi",
+        "banh my"
+      ],
+      "menuInfo": {
+        "id": "dn-lehoi",
+        "menuUrl": null,
+        "sourceUrls": [
+          "https://www.facebook.com/61562888946022",
+          "https://hellodanang.vn/topAZ/quan-chay-o-son-tra"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "搜尋到對應 89 Phạm Tu 的 Facebook 商家連結，但本輪無法讀取官方菜單；不套用會安 Lê Hội 的評論價。",
+        "researchStatus": "official-source-unreadable",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "dn-anmocnhien",
@@ -3013,7 +4571,76 @@ window.TRAVEL_DATA = {
       "addressCheckedDate": "2026-10-14",
       "hoursSourceUrl": "https://www.google.com/maps/search/?api=1&query=AN%20M%E1%BB%98C%20NHI%C3%8AN%20VEGAN%20Nh%C3%A0%20h%C3%A0ng%20thu%E1%BA%A7n%20chay&query_place_id=ChIJNXFUnjoXQjEREOMSdvzZDwY",
       "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=AN%20M%E1%BB%98C%20NHI%C3%8AN%20VEGAN%20Nh%C3%A0%20h%C3%A0ng%20thu%E1%BA%A7n%20chay&query_place_id=ChIJNXFUnjoXQjEREOMSdvzZDwY",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            420,
+            1320
+          ]
+        ],
+        [
+          [
+            420,
+            1320
+          ]
+        ],
+        [
+          [
+            420,
+            1320
+          ]
+        ],
+        [
+          [
+            420,
+            1320
+          ]
+        ],
+        [
+          [
+            420,
+            1320
+          ]
+        ],
+        [
+          [
+            420,
+            1320
+          ]
+        ],
+        [
+          [
+            420,
+            1320
+          ]
+        ]
+      ],
+      "hoursCaution": {
+        "weekdays": [
+          0
+        ],
+        "kind": "conflict",
+        "message": "Google 列每日；2026-09-21 店主更新的 HappyCow 頁只列週一至六，週日先確認。",
+        "sourceUrls": [
+          "https://www.google.com/maps/search/?api=1&query=AN%20M%E1%BB%98C%20NHI%C3%8AN%20VEGAN%20Nh%C3%A0%20h%C3%A0ng%20thu%E1%BA%A7n%20chay&query_place_id=ChIJNXFUnjoXQjEREOMSdvzZDwY",
+          "https://www.happycow.net/reviews/an-moc-nhien-da-nang-483077"
+        ],
+        "checkedDate": "2026-10-14"
+      },
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "dn-anmocnhien",
+        "menuUrl": null,
+        "sourceUrls": [],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱及現址進行菜單搜尋；本輪僅找到第三方介紹、評論或無法確認屬本店的結果，未找到可核對官方菜單。",
+        "researchStatus": "no-verifiable-menu-found",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "dn-hanhphuc",
@@ -3116,7 +4743,60 @@ window.TRAVEL_DATA = {
       "addressCheckedDate": "2026-10-14",
       "hoursSourceUrl": "https://www.google.com/maps?cid=15166765112512324693",
       "phoneSourceUrl": "https://www.google.com/maps?cid=15166765112512324693",
-      "coordinateCheckedDate": "2026-10-13"
+      "coordinateCheckedDate": "2026-10-13",
+      "weeklyHours": [
+        [
+          [
+            510,
+            1200
+          ]
+        ],
+        [],
+        [
+          [
+            510,
+            1200
+          ]
+        ],
+        [
+          [
+            510,
+            1200
+          ]
+        ],
+        [
+          [
+            510,
+            1200
+          ]
+        ],
+        [
+          [
+            510,
+            1200
+          ]
+        ],
+        [
+          [
+            510,
+            1200
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "dn-hanhphuc",
+        "menuUrl": null,
+        "sourceUrls": [],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱及現址進行菜單搜尋；本輪僅找到第三方介紹、評論或無法確認屬本店的結果，未找到可核對官方菜單。",
+        "researchStatus": "no-verifiable-menu-found",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "dn-everyday",
@@ -3214,7 +4894,22 @@ window.TRAVEL_DATA = {
       "addressCheckedDate": "2026-10-14",
       "hoursSourceUrl": "https://www.google.com/maps?cid=15189593579518914999",
       "phoneSourceUrl": "https://www.google.com/maps?cid=15189593579518914999",
-      "coordinateCheckedDate": "2026-10-13"
+      "coordinateCheckedDate": "2026-10-13",
+      "weeklyHours": null,
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "dn-everyday",
+        "menuUrl": null,
+        "sourceUrls": [],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "已封存歇業，無可用當前菜單價位。",
+        "menuNote": "沿用既有商家查核的永久歇業封存狀態；本輪仍搜尋本店名稱、現址與菜單，未將舊菜單列為可用選餐資料。",
+        "researchStatus": "archived-closed",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "dn-xinh",
@@ -3315,7 +5010,65 @@ window.TRAVEL_DATA = {
       "addressCheckedDate": "2026-10-14",
       "hoursSourceUrl": "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20chay%20xinh+Da%20Nang&query_place_id=ChIJV2RpMPMXQjERWWQHVPqszwE",
       "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20chay%20xinh+Da%20Nang&query_place_id=ChIJV2RpMPMXQjERWWQHVPqszwE",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            420,
+            1320
+          ]
+        ],
+        [
+          [
+            420,
+            1320
+          ]
+        ],
+        [
+          [
+            420,
+            1320
+          ]
+        ],
+        [
+          [
+            420,
+            1320
+          ]
+        ],
+        [
+          [
+            420,
+            1320
+          ]
+        ],
+        [
+          [
+            420,
+            1320
+          ]
+        ],
+        [
+          [
+            420,
+            1320
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "dn-xinh",
+        "menuUrl": null,
+        "sourceUrls": [],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱及現址進行菜單搜尋；本輪僅找到第三方介紹、評論或無法確認屬本店的結果，未找到可核對官方菜單。",
+        "researchStatus": "no-verifiable-menu-found",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "dn-daibinh",
@@ -3423,7 +5176,65 @@ window.TRAVEL_DATA = {
       "addressCheckedDate": "2026-10-14",
       "hoursSourceUrl": "https://www.google.com/maps?cid=12092980893700020320",
       "phoneSourceUrl": "https://www.google.com/maps?cid=12092980893700020320",
-      "coordinateCheckedDate": "2026-10-14"
+      "coordinateCheckedDate": "2026-10-14",
+      "weeklyHours": [
+        [
+          [
+            480,
+            1320
+          ]
+        ],
+        [
+          [
+            480,
+            1320
+          ]
+        ],
+        [
+          [
+            480,
+            1320
+          ]
+        ],
+        [
+          [
+            480,
+            1320
+          ]
+        ],
+        [
+          [
+            480,
+            1320
+          ]
+        ],
+        [
+          [
+            480,
+            1320
+          ]
+        ],
+        [
+          [
+            480,
+            1320
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "dn-daibinh",
+        "menuUrl": null,
+        "sourceUrls": [],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱及現址進行菜單搜尋；本輪僅找到第三方介紹、評論或無法確認屬本店的結果，未找到可核對官方菜單。",
+        "researchStatus": "no-verifiable-menu-found",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "dn-duyen",
@@ -3522,7 +5333,65 @@ window.TRAVEL_DATA = {
       "addressCheckedDate": "2026-10-14",
       "hoursSourceUrl": "https://www.google.com/maps/search/?api=1&query=Duy%C3%AAn%20Vegan%20%26%20Coffee&query_place_id=ChIJcWBvRtoXQjERd2S2AkOiTMs",
       "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=Duy%C3%AAn%20Vegan%20%26%20Coffee&query_place_id=ChIJcWBvRtoXQjERd2S2AkOiTMs",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            510,
+            1320
+          ]
+        ],
+        [
+          [
+            510,
+            1320
+          ]
+        ],
+        [
+          [
+            510,
+            1320
+          ]
+        ],
+        [
+          [
+            510,
+            1320
+          ]
+        ],
+        [
+          [
+            510,
+            1320
+          ]
+        ],
+        [
+          [
+            510,
+            1320
+          ]
+        ],
+        [
+          [
+            510,
+            1320
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "dn-duyen",
+        "menuUrl": null,
+        "sourceUrls": [],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱及現址進行菜單搜尋；本輪僅找到第三方介紹、評論或無法確認屬本店的結果，未找到可核對官方菜單。",
+        "researchStatus": "no-verifiable-menu-found",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "hoian-chickpea",
@@ -3628,7 +5497,105 @@ window.TRAVEL_DATA = {
       "coordinateCheckedDate": "2026-10-14",
       "addressIssue": "Google 列 86 Phan Châu Trinh，官網列巷內 86/5；採同一 Google 商家導航，入口在巷內。",
       "brandPhone": "+84 766 731 285",
-      "brandPhoneSourceUrl": "https://chickpeaeatery.com/"
+      "brandPhoneSourceUrl": "https://chickpeaeatery.com/",
+      "weeklyHours": [
+        [
+          [
+            720,
+            1260
+          ]
+        ],
+        [
+          [
+            720,
+            1260
+          ]
+        ],
+        [
+          [
+            720,
+            1260
+          ]
+        ],
+        [
+          [
+            720,
+            1260
+          ]
+        ],
+        [
+          [
+            720,
+            1260
+          ]
+        ],
+        [
+          [
+            720,
+            1260
+          ]
+        ],
+        [
+          [
+            720,
+            1260
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "hoian-chickpea",
+        "menuUrl": "https://chickpeaeatery.com/wp-content/uploads/2024/03/2024-Chickpea-Menu.pdf",
+        "sourceUrls": [
+          "https://chickpeaeatery.com/",
+          "https://chickpeaeatery.com/wp-content/uploads/2024/03/2024-Chickpea-Menu.pdf"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [
+          {
+            "name": "FRESH SPRING ROLLS",
+            "nameZh": "生春捲",
+            "priceVnd": 50000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "TEMPEH BANH MI",
+            "nameZh": "天貝越式法國麵包",
+            "priceVnd": 45000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "BÚN CHẢ GIÒ",
+            "nameZh": "炸春捲米線",
+            "priceVnd": 65000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "HOI AN STYLE NOODLES/ CAO LẦU",
+            "nameZh": "會安高樓麵",
+            "priceVnd": 65000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "BÁNH XÈO/ VIETNAMESE PANCAKE",
+            "nameZh": "越式煎餅",
+            "priceVnd": 70000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          },
+          {
+            "name": "SIGNATURE HOI AN VEGAN CHICKEN RICE",
+            "nameZh": "會安純素雞飯",
+            "priceVnd": 80000,
+            "veganEvidence": "官方品牌頁明示所有餐點為 100% plant-based；菜名與價格取自官網連結的本分店 PDF，未另外宣稱逐道成分獨立驗證。"
+          }
+        ],
+        "priceNote": "官網目前仍連結 2024 印刷版 PDF；價格可能已調整，請到店再確認。",
+        "menuNote": "官方 HOI AN menu 連結；檔案年份 2024，非宣稱 2026 新版菜單。",
+        "researchStatus": "official-menu-reviewed",
+        "menuKind": "items",
+        "priceAge": "dated-menu"
+      }
     },
     {
       "id": "hoian-v-vegan",
@@ -3725,7 +5692,67 @@ window.TRAVEL_DATA = {
       "addressCheckedDate": "2026-10-14",
       "hoursSourceUrl": "https://www.google.com/maps/search/?api=1&query=V%20Vegan+Hoi%20An&query_place_id=ChIJUU5yVzwPQjERPc_ucbw0W4o",
       "phoneSourceUrl": "https://www.google.com/maps/search/?api=1&query=V%20Vegan+Hoi%20An&query_place_id=ChIJUU5yVzwPQjERPc_ucbw0W4o",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            660,
+            1290
+          ]
+        ],
+        [
+          [
+            660,
+            1290
+          ]
+        ],
+        [
+          [
+            660,
+            1290
+          ]
+        ],
+        [
+          [
+            660,
+            1290
+          ]
+        ],
+        [
+          [
+            660,
+            1290
+          ]
+        ],
+        [
+          [
+            660,
+            1290
+          ]
+        ],
+        [
+          [
+            660,
+            1290
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "hoian-v-vegan",
+        "menuUrl": null,
+        "sourceUrls": [
+          "https://www.facebook.com/VveganHoiAn"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱與現址搜尋菜單，並嘗試讀取對應官方頁；本輪官方頁受登入限制、快取錯誤或逾時影響，未取得可核對菜單，不引用評論價格。",
+        "researchStatus": "official-source-unreadable",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "hoian-kurumi",
@@ -3830,7 +5857,117 @@ window.TRAVEL_DATA = {
       "addressCheckedDate": "2026-10-14",
       "hoursSourceUrl": "https://www.google.com/maps?cid=9577690272023764277",
       "phoneSourceUrl": "https://www.google.com/maps?cid=9577690272023764277",
-      "coordinateCheckedDate": "2026-10-14"
+      "coordinateCheckedDate": "2026-10-14",
+      "weeklyHours": [
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "hoian-kurumi",
+        "menuUrl": "https://kurumi.vn/en/locations/hoian/menu",
+        "sourceUrls": [
+          "https://kurumi.vn/en/locations/hoian/menu",
+          "https://kurumi.vn/vi"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [
+          {
+            "name": "Oat Coconut Pancakes",
+            "nameZh": "燕麥椰奶鬆餅",
+            "priceVnd": 115000,
+            "veganEvidence": "官方本分店菜單明示 100% plant-based；以全店官方分類為依據，並非逐道獨立成分驗證。"
+          },
+          {
+            "name": "Oat Porridge With Chia Pudding And Dragon Fruit Jam",
+            "nameZh": "奇亞籽布丁火龍果醬燕麥粥",
+            "priceVnd": 99000,
+            "veganEvidence": "官方本分店菜單明示 100% plant-based；以全店官方分類為依據，並非逐道獨立成分驗證。"
+          },
+          {
+            "name": "Chickpea Protein Omelette",
+            "nameZh": "鷹嘴豆蛋白歐姆餅",
+            "priceVnd": 99000,
+            "veganEvidence": "官方本分店菜單明示 100% plant-based；以全店官方分類為依據，並非逐道獨立成分驗證。"
+          },
+          {
+            "name": "Tofu Benedict",
+            "nameZh": "豆腐班尼迪克",
+            "priceVnd": 120000,
+            "veganEvidence": "官方本分店菜單明示 100% plant-based；以全店官方分類為依據，並非逐道獨立成分驗證。"
+          },
+          {
+            "name": "Avocado Heart Toast",
+            "nameZh": "酪梨吐司",
+            "priceVnd": 70000,
+            "veganEvidence": "官方本分店菜單明示 100% plant-based；以全店官方分類為依據，並非逐道獨立成分驗證。"
+          },
+          {
+            "name": "Choco Sense",
+            "nameZh": "巧克力果昔碗",
+            "priceVnd": 99000,
+            "veganEvidence": "官方本分店菜單明示 100% plant-based；以全店官方分類為依據，並非逐道獨立成分驗證。"
+          },
+          {
+            "name": "KURUMI Smoothie Bowl",
+            "nameZh": "KURUMI 果昔碗",
+            "priceVnd": 105000,
+            "veganEvidence": "官方本分店菜單明示 100% plant-based；以全店官方分類為依據，並非逐道獨立成分驗證。"
+          },
+          {
+            "name": "Bean Quesadilla",
+            "nameZh": "紅豆墨西哥烤餅",
+            "priceVnd": 115000,
+            "veganEvidence": "官方本分店菜單明示 100% plant-based；以全店官方分類為依據，並非逐道獨立成分驗證。"
+          }
+        ],
+        "priceNote": "官方會安分店菜單明列越南盾價格；未套用峴港價。",
+        "menuNote": "分店頁明列 187 Lý Thường Kiệt；已核對會安專屬價格。菜單列示不保證旅行當日庫存。",
+        "researchStatus": "official-menu-reviewed",
+        "menuKind": "items",
+        "priceAge": "undated-menu"
+      }
     },
     {
       "id": "hoian-ivegan",
@@ -3947,7 +6084,74 @@ window.TRAVEL_DATA = {
       "dietReviewNote": "重新讀取列出的飲食來源，保留全素／蛋奶素／葷素混合與成分爭議界線；店名及 Google 分類不是全素保證。",
       "nameCheckedDate": "2026-10-14",
       "addressCheckedDate": "2026-10-14",
-      "coordinateCheckedDate": "2026-10-13"
+      "coordinateCheckedDate": "2026-10-13",
+      "weeklyHours": [
+        [
+          [
+            510,
+            1110
+          ]
+        ],
+        [
+          [
+            510,
+            1110
+          ]
+        ],
+        [
+          [
+            510,
+            1110
+          ]
+        ],
+        [
+          [
+            510,
+            1110
+          ]
+        ],
+        [
+          [
+            510,
+            1110
+          ]
+        ],
+        [
+          [
+            510,
+            1110
+          ]
+        ],
+        [
+          [
+            510,
+            1110
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [
+        "漢堡",
+        "burger",
+        "咖啡",
+        "cafe",
+        "coffee"
+      ],
+      "menuInfo": {
+        "id": "hoian-ivegan",
+        "menuUrl": null,
+        "sourceUrls": [
+          "https://ivegansupershop.com/",
+          "https://ivegansupershop.com/menu"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "官方品牌頁標示 100% plant-based，但本輪未取得可讀且明確適用本分店的完整菜單；不以河內總店或用餐者照片推定供應。",
+        "researchStatus": "official-source-unreadable",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "hoian-seeds",
@@ -4063,7 +6267,55 @@ window.TRAVEL_DATA = {
       "nameCheckedDate": "2026-10-14",
       "addressCheckedDate": "2026-10-14",
       "coordinateCheckedDate": "2026-10-14",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            660,
+            1260
+          ]
+        ],
+        [
+          [
+            660,
+            1260
+          ]
+        ],
+        [
+          [
+            660,
+            1260
+          ]
+        ],
+        [
+          [
+            660,
+            1260
+          ]
+        ],
+        [],
+        [],
+        [
+          [
+            720,
+            1260
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "hoian-seeds",
+        "menuUrl": null,
+        "sourceUrls": [],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱及現址進行菜單搜尋；本輪僅找到第三方介紹、評論或無法確認屬本店的結果，未找到可核對官方菜單。",
+        "researchStatus": "no-verifiable-menu-found",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "hoian-emma",
@@ -4161,7 +6413,26 @@ window.TRAVEL_DATA = {
       "hoursSourceUrl": "https://www.google.com/maps?cid=12600194686517776988",
       "phoneSourceUrl": "https://www.google.com/maps?cid=12600194686517776988",
       "coordinateCheckedDate": "2026-10-13",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": null,
+      "hoursCaution": null,
+      "cuisineAliases": [
+        "咖啡",
+        "cafe",
+        "coffee"
+      ],
+      "menuInfo": {
+        "id": "hoian-emma",
+        "menuUrl": null,
+        "sourceUrls": [],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "已封存歇業，無可用當前菜單價位。",
+        "menuNote": "沿用既有商家查核的永久歇業封存狀態；本輪仍搜尋本店名稱、現址與菜單，未將舊菜單列為可用選餐資料。",
+        "researchStatus": "archived-closed",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "hoian-an-hy",
@@ -4280,7 +6551,82 @@ window.TRAVEL_DATA = {
       "nameCheckedDate": "2026-10-14",
       "addressCheckedDate": "2026-10-14",
       "coordinateCheckedDate": "2026-10-13",
-      "hoursExceptionNote": "Google 每週每日 11:00–21:00；HappyCow 舊頁列農曆初二、十六休息，未確認現址是否沿用。"
+      "hoursExceptionNote": "Google 每週每日 11:00–21:00；HappyCow 舊頁列農曆初二、十六休息，未確認現址是否沿用。",
+      "weeklyHours": [
+        [
+          [
+            660,
+            1260
+          ]
+        ],
+        [
+          [
+            660,
+            1260
+          ]
+        ],
+        [
+          [
+            660,
+            1260
+          ]
+        ],
+        [
+          [
+            660,
+            1260
+          ]
+        ],
+        [
+          [
+            660,
+            1260
+          ]
+        ],
+        [
+          [
+            660,
+            1260
+          ]
+        ],
+        [
+          [
+            660,
+            1260
+          ]
+        ]
+      ],
+      "hoursCaution": {
+        "weekdays": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "kind": "exception",
+        "message": "Google 每週每日 11:00–21:00；HappyCow 舊頁列農曆初二、十六休息，未確認現址是否沿用。",
+        "sourceUrls": [
+          "https://www.google.com/maps?cid=11551586551841199152",
+          "https://www.happycow.net/reviews/an-hy-hoi-an-172950"
+        ],
+        "checkedDate": "2026-10-14"
+      },
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "hoian-an-hy",
+        "menuUrl": null,
+        "sourceUrls": [],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱及現址進行菜單搜尋；本輪僅找到第三方介紹、評論或無法確認屬本店的結果，未找到可核對官方菜單。",
+        "researchStatus": "no-verifiable-menu-found",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "hoian-minh-hien",
@@ -4380,7 +6726,67 @@ window.TRAVEL_DATA = {
       "hoursSourceUrl": "https://www.google.com/maps?cid=11769971979950204320",
       "phoneSourceUrl": "https://www.google.com/maps?cid=11769971979950204320",
       "coordinateCheckedDate": "2026-10-13",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            690,
+            1320
+          ]
+        ],
+        [
+          [
+            690,
+            1320
+          ]
+        ],
+        [
+          [
+            690,
+            1320
+          ]
+        ],
+        [
+          [
+            690,
+            1320
+          ]
+        ],
+        [
+          [
+            690,
+            1320
+          ]
+        ],
+        [
+          [
+            690,
+            1320
+          ]
+        ],
+        [
+          [
+            690,
+            1320
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "hoian-minh-hien",
+        "menuUrl": null,
+        "sourceUrls": [
+          "https://www.facebook.com/minhhienvegetarian/"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱與現址搜尋菜單，並嘗試讀取對應官方頁；本輪官方頁受登入限制、快取錯誤或逾時影響，未取得可核對菜單，不引用評論價格。",
+        "researchStatus": "official-source-unreadable",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "hoian-peanuts",
@@ -4482,7 +6888,105 @@ window.TRAVEL_DATA = {
       "hoursSourceUrl": "https://www.google.com/maps?cid=8230268332802149477",
       "phoneSourceUrl": "https://www.google.com/maps?cid=8230268332802149477",
       "coordinateCheckedDate": "2026-10-13",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            660,
+            1260
+          ]
+        ],
+        [
+          [
+            660,
+            1260
+          ]
+        ],
+        [
+          [
+            660,
+            1260
+          ]
+        ],
+        [
+          [
+            660,
+            1260
+          ]
+        ],
+        [
+          [
+            660,
+            1260
+          ]
+        ],
+        [
+          [
+            660,
+            1260
+          ]
+        ],
+        [
+          [
+            660,
+            1260
+          ]
+        ]
+      ],
+      "hoursCaution": {
+        "weekdays": [
+          2
+        ],
+        "kind": "conflict",
+        "message": "Google 現列每日營業；HappyCow 仍列週二休息，週二先電話確認。",
+        "sourceUrls": [
+          "https://www.google.com/maps?cid=8230268332802149477",
+          "https://www.happycow.net/reviews/peanuts-hoi-an-241472"
+        ],
+        "checkedDate": "2026-10-14"
+      },
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "hoian-peanuts",
+        "menuUrl": "https://peanuts-restaurant.com/en/menu",
+        "sourceUrls": [
+          "https://peanuts-restaurant.com/en/menu",
+          "https://peanuts-restaurant.com/images/English_5.jpg",
+          "https://peanuts-restaurant.com/images/English_6.jpg"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [
+          {
+            "name": "Savory Vegan Mince",
+            "nameZh": "純素鹹香植物絞肉",
+            "priceVnd": 85000,
+            "veganEvidence": "官方圖像菜單菜名明示 Vegan；本店原有資料為 ovo 素食，故僅採 Vegan 菜名，點餐仍請確認隨附醬料無蛋奶。"
+          },
+          {
+            "name": "Vegan chicken popcorn",
+            "nameZh": "純素雞米花",
+            "priceVnd": 90000,
+            "veganEvidence": "官方圖像菜單菜名明示 Vegan；本店原有資料為 ovo 素食，故僅採 Vegan 菜名，點餐仍請確認隨附醬料無蛋奶。"
+          },
+          {
+            "name": "Vegan chick’n Banh Mi — Regular Baguette",
+            "nameZh": "純素雞越式法國麵包（一般麵包）",
+            "priceVnd": 75000,
+            "veganEvidence": "官方圖像菜單菜名明示 Vegan；本店原有資料為 ovo 素食，故僅採 Vegan 菜名，點餐仍請確認隨附醬料無蛋奶。"
+          },
+          {
+            "name": "Vegan chick’n Banh Mi — Sourdough Baguette",
+            "nameZh": "純素雞越式法國麵包（酸種麵包）",
+            "priceVnd": 95000,
+            "veganEvidence": "官方圖像菜單菜名明示 Vegan；本店原有資料為 ovo 素食，故僅採 Vegan 菜名，點餐仍請確認隨附醬料無蛋奶。"
+          }
+        ],
+        "priceNote": "官方圖像菜單標示 k（千越南盾）；沒有版次日期。",
+        "menuNote": "已目視核對官方 English_5.jpg 與 English_6.jpg；只列菜名明示 Vegan 的品項，未把全店視為純素。",
+        "researchStatus": "official-menu-reviewed",
+        "menuKind": "items",
+        "priceAge": "undated-menu"
+      }
     },
     {
       "id": "hoian-rau-oi",
@@ -4592,7 +7096,109 @@ window.TRAVEL_DATA = {
       "nameCheckedDate": "2026-10-14",
       "addressCheckedDate": "2026-10-14",
       "coordinateCheckedDate": "2026-10-13",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            645,
+            1260
+          ]
+        ],
+        [
+          [
+            645,
+            1260
+          ]
+        ],
+        [
+          [
+            645,
+            1260
+          ]
+        ],
+        [
+          [
+            645,
+            1260
+          ]
+        ],
+        [
+          [
+            645,
+            1260
+          ]
+        ],
+        [
+          [
+            645,
+            1260
+          ]
+        ],
+        [
+          [
+            645,
+            1260
+          ]
+        ]
+      ],
+      "hoursCaution": {
+        "weekdays": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "kind": "conflict",
+        "message": "Google 每日 10:45–21:00；官網頁首列 08:00–20:00，HappyCow 列 07:00–22:00。開門與最後供餐時間仍有落差，先致電確認。",
+        "sourceUrls": [
+          "https://www.google.com/maps?cid=11967632547470233861",
+          "https://www.happycow.net/reviews/rau-oi-eatery-hoi-an-399894"
+        ],
+        "checkedDate": "2026-10-14"
+      },
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "hoian-rau-oi",
+        "menuUrl": "https://rauoieatery.com/menu/",
+        "sourceUrls": [
+          "https://rauoieatery.com/menu/"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [
+          {
+            "name": "Vietnamese Vegan Yellow Curry",
+            "nameZh": "越式純素黃咖哩",
+            "priceVnd": 140000,
+            "veganEvidence": "官方本店菜單菜名逐道明示 Vegan；未將全店當成純素。"
+          },
+          {
+            "name": "Vegan Hoi An Chicken Rice",
+            "nameZh": "會安純素雞飯",
+            "priceVnd": 105000,
+            "veganEvidence": "官方本店菜單菜名逐道明示 Vegan；未將全店當成純素。"
+          },
+          {
+            "name": "Vegan Pad Thai Authentic",
+            "nameZh": "純素泰式炒河粉",
+            "priceVnd": 130000,
+            "veganEvidence": "官方本店菜單菜名逐道明示 Vegan；未將全店當成純素。"
+          },
+          {
+            "name": "Vegan Thai Green Curry",
+            "nameZh": "純素泰式綠咖哩",
+            "priceVnd": 140000,
+            "veganEvidence": "官方本店菜單菜名逐道明示 Vegan；未將全店當成純素。"
+          }
+        ],
+        "priceNote": "官方菜單標示 VND；未標示版次日期。",
+        "menuNote": "官方地址 110 Trần Nhân Tông；本店原有 ovo 素食分類，只採菜名明示 Vegan 的標準版本。",
+        "researchStatus": "official-menu-reviewed",
+        "menuKind": "items",
+        "priceAge": "undated-menu"
+      }
     },
     {
       "id": "hoian-quan-chay-cua-dai",
@@ -4693,7 +7299,82 @@ window.TRAVEL_DATA = {
       "hoursSourceUrl": "https://www.google.com/maps?cid=18311703607367843750",
       "phoneSourceUrl": "https://www.google.com/maps?cid=18311703607367843750",
       "coordinateCheckedDate": "2026-10-13",
-      "hoursExceptionNote": "Google 現列每日 06:00–22:00；HappyCow 舊頁列 08:00–20:00 及農曆初二、十六休息，例外未確認。"
+      "hoursExceptionNote": "Google 現列每日 06:00–22:00；HappyCow 舊頁列 08:00–20:00 及農曆初二、十六休息，例外未確認。",
+      "weeklyHours": [
+        [
+          [
+            360,
+            1320
+          ]
+        ],
+        [
+          [
+            360,
+            1320
+          ]
+        ],
+        [
+          [
+            360,
+            1320
+          ]
+        ],
+        [
+          [
+            360,
+            1320
+          ]
+        ],
+        [
+          [
+            360,
+            1320
+          ]
+        ],
+        [
+          [
+            360,
+            1320
+          ]
+        ],
+        [
+          [
+            360,
+            1320
+          ]
+        ]
+      ],
+      "hoursCaution": {
+        "weekdays": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "kind": "exception",
+        "message": "Google 現列每日 06:00–22:00；HappyCow 舊頁列 08:00–20:00 及農曆初二、十六休息，例外未確認。",
+        "sourceUrls": [
+          "https://www.google.com/maps?cid=18311703607367843750",
+          "https://www.happycow.net/reviews/quan-chay-hoi-an-150375"
+        ],
+        "checkedDate": "2026-10-14"
+      },
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "hoian-quan-chay-cua-dai",
+        "menuUrl": null,
+        "sourceUrls": [],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱及現址進行菜單搜尋；本輪僅找到第三方介紹、評論或無法確認屬本店的結果，未找到可核對官方菜單。",
+        "researchStatus": "no-verifiable-menu-found",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "hoian-plantlab",
@@ -4797,7 +7478,92 @@ window.TRAVEL_DATA = {
       "hoursSourceUrl": "https://www.google.com/maps?cid=17531369487974838213",
       "phoneSourceUrl": "https://www.google.com/maps?cid=17531369487974838213",
       "coordinateCheckedDate": "2026-10-13",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            570,
+            1290
+          ]
+        ],
+        [
+          [
+            570,
+            1290
+          ]
+        ],
+        [
+          [
+            570,
+            1290
+          ]
+        ],
+        [
+          [
+            570,
+            1290
+          ]
+        ],
+        [
+          [
+            570,
+            1290
+          ]
+        ],
+        [
+          [
+            570,
+            1290
+          ]
+        ],
+        [
+          [
+            570,
+            1290
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "hoian-plantlab",
+        "menuUrl": "https://plantlabfood.com/#menu",
+        "sourceUrls": [
+          "https://plantlabfood.com/"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [
+          {
+            "name": "Cashew Cheeses",
+            "nameZh": "腰果起司",
+            "priceVnd": null,
+            "veganEvidence": "官方標示 100% vegan／100% plant-based；僅保留官方菜單分類，不推定特定口味當日供應。"
+          },
+          {
+            "name": "Coconut Yogurt",
+            "nameZh": "椰奶優格",
+            "priceVnd": null,
+            "veganEvidence": "官方標示 100% vegan／100% plant-based；僅保留官方菜單分類，不推定特定口味當日供應。"
+          },
+          {
+            "name": "Raw Vegan Cakes",
+            "nameZh": "生食純素蛋糕",
+            "priceVnd": null,
+            "veganEvidence": "官方標示 100% vegan／100% plant-based；僅保留官方菜單分類，不推定特定口味當日供應。"
+          },
+          {
+            "name": "Craft Shrub Sodas",
+            "nameZh": "手作水果醋氣泡飲",
+            "priceVnd": null,
+            "veganEvidence": "官方標示 100% vegan／100% plant-based；僅保留官方菜單分類，不推定特定口味當日供應。"
+          }
+        ],
+        "priceNote": "官方介紹頁沒有單品售價。",
+        "menuNote": "此頁為產品與菜單分類介紹，並非含完整主餐的點餐菜單；所列是分類名稱。",
+        "researchStatus": "official-menu-reviewed",
+        "menuKind": "categories",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "hoian-phin-lounge",
@@ -4898,7 +7664,97 @@ window.TRAVEL_DATA = {
       "hoursSourceUrl": "https://www.google.com/maps?cid=10982988440730066204",
       "phoneSourceUrl": "https://www.google.com/maps?cid=10982988440730066204",
       "coordinateCheckedDate": "2026-10-13",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [
+        "咖啡",
+        "cafe",
+        "coffee"
+      ],
+      "menuInfo": {
+        "id": "hoian-phin-lounge",
+        "menuUrl": "https://phincoffeehoian.com/location/phin-lounge-an-bang/",
+        "sourceUrls": [
+          "https://phincoffeehoian.com/location/phin-lounge-an-bang/",
+          "https://phincoffeehoian.com/our-food/"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [
+          {
+            "name": "Vegan Plate",
+            "nameZh": "純素炒豆腐餐盤",
+            "priceVnd": 135000,
+            "veganEvidence": "官方 An Bang 本分店菜單逐道菜名明示 Vegan；品牌說明 Vegan 不含肉、海鮮、奶與蛋。"
+          },
+          {
+            "name": "Vegan Hoi An",
+            "nameZh": "純素會安高樓麵",
+            "priceVnd": 155000,
+            "veganEvidence": "官方 An Bang 本分店菜單逐道菜名明示 Vegan；品牌說明 Vegan 不含肉、海鮮、奶與蛋。"
+          },
+          {
+            "name": "Fried Vegan Spring Rolls (4 pieces)",
+            "nameZh": "炸純素春捲（4 個）",
+            "priceVnd": 95000,
+            "veganEvidence": "官方 An Bang 本分店菜單逐道菜名明示 Vegan；品牌說明 Vegan 不含肉、海鮮、奶與蛋。"
+          },
+          {
+            "name": "Vegan Green Curry",
+            "nameZh": "純素綠咖哩",
+            "priceVnd": 155000,
+            "veganEvidence": "官方 An Bang 本分店菜單逐道菜名明示 Vegan；品牌說明 Vegan 不含肉、海鮮、奶與蛋。"
+          }
+        ],
+        "priceNote": "本店官方頁數字標價以越南盾列示；未標示版次日期。",
+        "menuNote": "官方本分店頁列 End of Alley, 128 Nguyễn Phan Vinh；葷素混合餐廳，未套用其他 Phin 分店菜單。",
+        "researchStatus": "official-menu-reviewed",
+        "menuKind": "items",
+        "priceAge": "undated-menu"
+      }
     },
     {
       "id": "hoian-fisherman",
@@ -5009,7 +7865,74 @@ window.TRAVEL_DATA = {
       "addressCheckedDate": "2026-10-14",
       "hoursSourceUrl": "https://www.google.com/maps?cid=11189365269074679466",
       "phoneSourceUrl": "https://www.google.com/maps?cid=11189365269074679466",
-      "coordinateCheckedDate": "2026-10-13"
+      "coordinateCheckedDate": "2026-10-13",
+      "weeklyHours": [
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ],
+        [
+          [
+            480,
+            1260
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [
+        "披薩",
+        "比薩",
+        "pizza",
+        "咖啡",
+        "cafe",
+        "coffee"
+      ],
+      "menuInfo": {
+        "id": "hoian-fisherman",
+        "menuUrl": null,
+        "sourceUrls": [
+          "https://www.facebook.com/theFishermanAnBang"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱與現址搜尋菜單，並嘗試讀取對應官方頁；本輪官方頁受登入限制、快取錯誤或逾時影響，未取得可核對菜單，不引用評論價格。",
+        "researchStatus": "official-source-unreadable",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "hoian-hoi-banh-mi",
@@ -5112,7 +8035,71 @@ window.TRAVEL_DATA = {
       "addressCheckedDate": "2026-10-14",
       "hoursSourceUrl": "https://www.google.com/maps?cid=11524026561227759493",
       "phoneSourceUrl": "https://www.google.com/maps?cid=11524026561227759493",
-      "coordinateCheckedDate": "2026-10-13"
+      "coordinateCheckedDate": "2026-10-13",
+      "weeklyHours": [
+        [
+          [
+            390,
+            1320
+          ]
+        ],
+        [
+          [
+            390,
+            1320
+          ]
+        ],
+        [
+          [
+            390,
+            1320
+          ]
+        ],
+        [
+          [
+            390,
+            1320
+          ]
+        ],
+        [
+          [
+            390,
+            1320
+          ]
+        ],
+        [
+          [
+            390,
+            1320
+          ]
+        ],
+        [
+          [
+            390,
+            1320
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [
+        "法國麵包",
+        "越式三明治",
+        "越南麵包",
+        "banh mi",
+        "banh my"
+      ],
+      "menuInfo": {
+        "id": "hoian-hoi-banh-mi",
+        "menuUrl": null,
+        "sourceUrls": [],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "未取得可核對官方菜單；第三方用餐評論所述價格未當作現行牌價。與峴港 89 Phạm Tu 分開處理。",
+        "researchStatus": "no-verifiable-menu-found",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "bana-ngoc-chi",
@@ -5215,7 +8202,68 @@ window.TRAVEL_DATA = {
       "hoursSourceUrl": "https://www.google.com/maps?cid=10906564159448198055",
       "phoneSourceUrl": "https://www.google.com/maps?cid=10906564159448198055",
       "coordinateCheckedDate": "2026-10-14",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            480,
+            1020
+          ]
+        ],
+        [
+          [
+            480,
+            1020
+          ]
+        ],
+        [
+          [
+            480,
+            1020
+          ]
+        ],
+        [
+          [
+            480,
+            1020
+          ]
+        ],
+        [
+          [
+            480,
+            1020
+          ]
+        ],
+        [
+          [
+            480,
+            1020
+          ]
+        ],
+        [
+          [
+            480,
+            1020
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "bana-ngoc-chi",
+        "menuUrl": null,
+        "sourceUrls": [
+          "https://sunworld.vn/banahills/an-choi/nha-hang-chay-ngoc-chi",
+          "https://sunworld.vn/vi/banahills/an-choi/ba-na-hills-co-nha-hang-chay-khong-28928"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "園區官方介紹表示餐點約 70,000 VND 起；這是起價資訊，非任何單品固定售價。",
+        "menuNote": "已讀園區官方餐廳介紹，明示完全植物性，但未列可逐道核對的餐點名稱與價格，不套用市區分店菜單。",
+        "researchStatus": "no-verifiable-menu-found",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     },
     {
       "id": "hoian-nourish",
@@ -5317,7 +8365,120 @@ window.TRAVEL_DATA = {
       "hoursSourceUrl": "https://www.google.com/maps?cid=2124084090323198897",
       "phoneSourceUrl": "https://www.google.com/maps?cid=2124084090323198897",
       "coordinateCheckedDate": "2026-10-13",
-      "addressIssue": ""
+      "addressIssue": "",
+      "weeklyHours": [
+        [
+          [
+            540,
+            960
+          ]
+        ],
+        [
+          [
+            540,
+            960
+          ]
+        ],
+        [
+          [
+            540,
+            960
+          ]
+        ],
+        [
+          [
+            540,
+            960
+          ]
+        ],
+        [
+          [
+            540,
+            960
+          ]
+        ],
+        [
+          [
+            540,
+            960
+          ]
+        ],
+        [
+          [
+            540,
+            960
+          ]
+        ]
+      ],
+      "hoursCaution": null,
+      "cuisineAliases": [
+        "咖啡",
+        "cafe",
+        "coffee"
+      ],
+      "menuInfo": {
+        "id": "hoian-nourish",
+        "menuUrl": "https://nourisheatery.com/menu/",
+        "sourceUrls": [
+          "https://nourisheatery.com/menu/"
+        ],
+        "checkedDate": "2026-10-16",
+        "items": [
+          {
+            "name": "The Classic Burger",
+            "nameZh": "經典植物漢堡",
+            "priceVnd": 115000,
+            "veganEvidence": "官方菜單於本品項逐道標記 Vegan；只採原始標準版本，不含任何動物性加點。"
+          },
+          {
+            "name": "Hola Hola",
+            "nameZh": "墨西哥風味蔬食碗",
+            "priceVnd": 125000,
+            "veganEvidence": "官方菜單於本品項逐道標記 Vegan；只採原始標準版本，不含任何動物性加點。"
+          },
+          {
+            "name": "Cauliflower Tacos",
+            "nameZh": "花椰菜塔可",
+            "priceVnd": 115000,
+            "veganEvidence": "官方菜單於本品項逐道標記 Vegan；只採原始標準版本，不含任何動物性加點。"
+          },
+          {
+            "name": "Nutty Toast",
+            "nameZh": "堅果醬吐司",
+            "priceVnd": 115000,
+            "veganEvidence": "官方菜單於本品項逐道標記 Vegan；只採原始標準版本，不含任何動物性加點。"
+          },
+          {
+            "name": "Hot Oats Porridge",
+            "nameZh": "熱燕麥粥",
+            "priceVnd": 105000,
+            "veganEvidence": "官方菜單於本品項逐道標記 Vegan；只採原始標準版本，不含任何動物性加點。"
+          },
+          {
+            "name": "Scrambled Tofu",
+            "nameZh": "炒豆腐吐司",
+            "priceVnd": 110000,
+            "veganEvidence": "官方菜單於本品項逐道標記 Vegan；只採原始標準版本，不含任何動物性加點。"
+          },
+          {
+            "name": "Hummus",
+            "nameZh": "鷹嘴豆泥",
+            "priceVnd": 80000,
+            "veganEvidence": "官方菜單於本品項逐道標記 Vegan；只採原始標準版本，不含任何動物性加點。"
+          },
+          {
+            "name": "Raw Chocolate Almond Cake",
+            "nameZh": "生食巧克力杏仁蛋糕",
+            "priceVnd": 80000,
+            "veganEvidence": "官方菜單於本品項逐道標記 Vegan；只採原始標準版本，不含任何動物性加點。"
+          }
+        ],
+        "priceNote": "官方菜單數字以越南盾列示；不包含另購加點。",
+        "menuNote": "本店為葷素混合，僅列官方逐道 Vegan 標示餐點。不要選牛肉加點；Vegetarian 標示餐點未列入。",
+        "researchStatus": "official-menu-reviewed",
+        "menuKind": "items",
+        "priceAge": "undated-menu"
+      }
     },
     {
       "id": "loving-hut-danang",
@@ -5430,7 +8591,82 @@ window.TRAVEL_DATA = {
       "phoneSourceUrl": "https://www.google.com/maps?cid=160676046296591163",
       "coordinateCheckedDate": "2026-10-14",
       "addressIssue": "",
-      "hoursExceptionNote": "已直接開啟 Google 商家頁核對 4.3／178 則、每週表與電話；HappyCow 舊頁農曆初一、十五延長至 22:00 尚未確認。"
+      "hoursExceptionNote": "已直接開啟 Google 商家頁核對 4.3／178 則、每週表與電話；HappyCow 舊頁農曆初一、十五延長至 22:00 尚未確認。",
+      "weeklyHours": [
+        [
+          [
+            360,
+            1170
+          ]
+        ],
+        [
+          [
+            360,
+            1170
+          ]
+        ],
+        [
+          [
+            360,
+            1170
+          ]
+        ],
+        [
+          [
+            360,
+            1170
+          ]
+        ],
+        [
+          [
+            360,
+            1170
+          ]
+        ],
+        [
+          [
+            360,
+            1170
+          ]
+        ],
+        [
+          [
+            360,
+            1170
+          ]
+        ]
+      ],
+      "hoursCaution": {
+        "weekdays": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "kind": "exception",
+        "message": "已直接開啟 Google 商家頁核對 4.3／178 則、每週表與電話；HappyCow 舊頁農曆初一、十五延長至 22:00 尚未確認。",
+        "sourceUrls": [
+          "https://www.google.com/maps?cid=160676046296591163",
+          "https://www.happycow.net/reviews/bien-tinh-thuong-loving-hut-da-nang-36503"
+        ],
+        "checkedDate": "2026-10-14"
+      },
+      "cuisineAliases": [],
+      "menuInfo": {
+        "id": "loving-hut-danang",
+        "menuUrl": null,
+        "sourceUrls": [],
+        "checkedDate": "2026-10-16",
+        "items": [],
+        "priceNote": "尚無可核對的本分店價位",
+        "menuNote": "已用本店名稱及現址進行菜單搜尋；本輪僅找到第三方介紹、評論或無法確認屬本店的結果，未找到可核對官方菜單。",
+        "researchStatus": "no-verifiable-menu-found",
+        "menuKind": "unavailable",
+        "priceAge": "unavailable"
+      }
     }
   ],
   "checkedDate": "2026-10-14",
@@ -5447,7 +8683,9 @@ window.TRAVEL_DATA = {
           "advice": "台北起飛前用餐；若未確認航空公司全素餐，勿依賴機上餐。09:00 抵達後若餓，安排行李與交通後到 KURUMI（官方每日 08:00–21:30）。",
           "restaurantIds": [
             "dn-kurumi"
-          ]
+          ],
+          "anchorId": "lesands",
+          "time": "09:30"
         },
         {
           "label": "午餐",
@@ -5455,7 +8693,9 @@ window.TRAVEL_DATA = {
           "restaurantIds": [
             "dn-chickpea",
             "dn-kurumi"
-          ]
+          ],
+          "anchorId": "cathedral",
+          "time": "12:00"
         },
         {
           "label": "晚餐",
@@ -5463,7 +8703,9 @@ window.TRAVEL_DATA = {
           "restaurantIds": [
             "dn-roots",
             "dn-kurumi"
-          ]
+          ],
+          "anchorId": "nightmarket",
+          "time": "18:00"
         }
       ],
       "sources": [
@@ -5492,7 +8734,9 @@ window.TRAVEL_DATA = {
           "restaurantIds": [
             "dn-kurumi",
             "dn-roots"
-          ]
+          ],
+          "anchorId": "lesands",
+          "time": "08:30"
         },
         {
           "label": "巴拿山午餐／退路",
@@ -5500,7 +8744,10 @@ window.TRAVEL_DATA = {
           "restaurantIds": [
             "dn-kurumi",
             "dn-roots"
-          ]
+          ],
+          "anchorId": "bana",
+          "time": "12:00",
+          "searchWarning": "園內全素供餐待確認；這裡只查巴拿山店家，不能把峴港市區備援當成山頂附近。無法確認園內全素正餐時，先安排縮短遊園及下山交通，再到市區用餐。"
         },
         {
           "label": "會安晚餐",
@@ -5508,7 +8755,9 @@ window.TRAVEL_DATA = {
           "restaurantIds": [
             "hoian-chickpea",
             "hoian-kurumi"
-          ]
+          ],
+          "anchorId": "memories",
+          "time": "17:30"
         }
       ],
       "sources": [
@@ -5540,7 +8789,9 @@ window.TRAVEL_DATA = {
           "advice": "飯店無法確認全素時，08:00 後到 KURUMI 會安店吃早餐，再出發美山；早出發則前晚確認早餐安排，不空腹等到景區。",
           "restaurantIds": [
             "hoian-kurumi"
-          ]
+          ],
+          "anchorId": "sonhotel",
+          "time": "08:30"
         },
         {
           "label": "午餐",
@@ -5548,7 +8799,9 @@ window.TRAVEL_DATA = {
           "restaurantIds": [
             "hoian-chickpea",
             "hoian-kurumi"
-          ]
+          ],
+          "anchorId": "oldtown",
+          "time": "12:30"
         },
         {
           "label": "晚餐",
@@ -5556,7 +8809,9 @@ window.TRAVEL_DATA = {
           "restaurantIds": [
             "hoian-chickpea",
             "hoian-kurumi"
-          ]
+          ],
+          "anchorId": "oldtown",
+          "time": "18:00"
         }
       ],
       "sources": [
@@ -5580,7 +8835,9 @@ window.TRAVEL_DATA = {
           "advice": "出發竹籃船前到 KURUMI 會安店，或逐項確認飯店餐；PlantLab 官方 09:30 才開，不作更早早餐保證。",
           "restaurantIds": [
             "hoian-kurumi"
-          ]
+          ],
+          "anchorId": "sonhotel",
+          "time": "08:30"
         },
         {
           "label": "午餐",
@@ -5588,7 +8845,9 @@ window.TRAVEL_DATA = {
           "restaurantIds": [
             "hoian-plantlab",
             "hoian-kurumi"
-          ]
+          ],
+          "anchorId": "coconut",
+          "time": "12:00"
         },
         {
           "label": "提早晚餐",
@@ -5596,7 +8855,9 @@ window.TRAVEL_DATA = {
           "restaurantIds": [
             "dn-roots",
             "dn-kurumi"
-          ]
+          ],
+          "anchorId": "dragon",
+          "time": "18:00"
         }
       ],
       "sources": [
@@ -5625,7 +8886,9 @@ window.TRAVEL_DATA = {
           "restaurantIds": [
             "dn-kurumi",
             "dn-roots"
-          ]
+          ],
+          "anchorId": "mandila",
+          "time": "08:30"
         },
         {
           "label": "市區午餐",
@@ -5633,7 +8896,9 @@ window.TRAVEL_DATA = {
           "restaurantIds": [
             "dn-roots",
             "dn-kurumi"
-          ]
+          ],
+          "anchorId": "hanmarket",
+          "time": "12:00"
         },
         {
           "label": "返程餐食",
@@ -5641,7 +8906,9 @@ window.TRAVEL_DATA = {
           "restaurantIds": [
             "dn-kurumi",
             "dn-roots"
-          ]
+          ],
+          "anchorId": "hanmarket",
+          "time": "14:00"
         }
       ],
       "sources": [

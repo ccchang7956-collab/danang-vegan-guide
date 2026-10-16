@@ -2336,3 +2336,47 @@ body:not([data-current-view='daily']) .hero {
 h2[tabindex='-1']:focus {
   outline: none;
 }
+
+/* Planned restaurant searches share the existing form and card styles. */
+.filter-grid input[type='date'],
+.filter-grid input[type='time'],
+.daily-search-controls input[type='time'] {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  font: inherit;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+.filter-grid > #nearby-now {
+  align-self: end;
+}
+.planned-hours {
+  margin: 10px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.planned-hours.open {
+  color: var(--green);
+}
+.planned-hours.closing,
+.planned-hours.uncertain {
+  color: #80501e;
+}
+.planned-hours.outside,
+.planned-hours.closed {
+  color: #8b3a32;
+}
+.unlocated-heading {
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.meal-search {
+  margin-top: 12px;
+}

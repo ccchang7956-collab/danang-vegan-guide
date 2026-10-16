@@ -1,0 +1,134 @@
+{
+  "an-lac-tam-2": {
+    "weekdays": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "kind": "exception",
+    "message": "Google 已展開核對午休與晚餐時段；HappyCow 舊頁另列滿月日休息，農曆例外未確認。",
+    "sourceUrls": [
+      "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20Chay%20An%20L%E1%BA%A1c%20T%C3%A2m%20%C4%90%C3%A0%20N%E1%BA%B5ng%20-%20Vegetarian%20Restaurant&query_place_id=ChIJv2NYMzcZQjERAJy_d1NFoeg",
+      "https://www.happycow.net/reviews/an-lac-tam-2-da-nang-183160"
+    ],
+    "checkedDate": "2026-10-14"
+  },
+  "khai-tam-city": {
+    "weekdays": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "kind": "unverified",
+    "message": "Google 每週均列 24 小時，但 HappyCow 舊頁列分段供餐；不能視為全天都有餐，先致電確認。",
+    "sourceUrls": [
+      "https://www.google.com/maps/search/?api=1&query=Qu%C3%A1n%20Chay%20Khai%20T%C3%A2m&query_place_id=ChIJB44Sw8gZQjERlR6MkjlQ6sI",
+      "https://www.happycow.net/reviews/khai-tam-da-nang-76023"
+    ],
+    "checkedDate": "2026-10-14"
+  },
+  "dn-anmocnhien": {
+    "weekdays": [
+      0
+    ],
+    "kind": "conflict",
+    "message": "Google 列每日；2026-09-21 店主更新的 HappyCow 頁只列週一至六，週日先確認。",
+    "sourceUrls": [
+      "https://www.google.com/maps/search/?api=1&query=AN%20M%E1%BB%98C%20NHI%C3%8AN%20VEGAN%20Nh%C3%A0%20h%C3%A0ng%20thu%E1%BA%A7n%20chay&query_place_id=ChIJNXFUnjoXQjEREOMSdvzZDwY",
+      "https://www.happycow.net/reviews/an-moc-nhien-da-nang-483077"
+    ],
+    "checkedDate": "2026-10-14"
+  },
+  "hoian-an-hy": {
+    "weekdays": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "kind": "exception",
+    "message": "Google 每週每日 11:00–21:00；HappyCow 舊頁列農曆初二、十六休息，未確認現址是否沿用。",
+    "sourceUrls": [
+      "https://www.google.com/maps?cid=11551586551841199152",
+      "https://www.happycow.net/reviews/an-hy-hoi-an-172950"
+    ],
+    "checkedDate": "2026-10-14"
+  },
+  "hoian-peanuts": {
+    "weekdays": [
+      2
+    ],
+    "kind": "conflict",
+    "message": "Google 現列每日營業；HappyCow 仍列週二休息，週二先電話確認。",
+    "sourceUrls": [
+      "https://www.google.com/maps?cid=8230268332802149477",
+      "https://www.happycow.net/reviews/peanuts-hoi-an-241472"
+    ],
+    "checkedDate": "2026-10-14"
+  },
+  "hoian-rau-oi": {
+    "weekdays": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "kind": "conflict",
+    "message": "Google 每日 10:45–21:00；官網頁首列 08:00–20:00，HappyCow 列 07:00–22:00。開門與最後供餐時間仍有落差，先致電確認。",
+    "sourceUrls": [
+      "https://www.google.com/maps?cid=11967632547470233861",
+      "https://www.happycow.net/reviews/rau-oi-eatery-hoi-an-399894"
+    ],
+    "checkedDate": "2026-10-14"
+  },
+  "hoian-quan-chay-cua-dai": {
+    "weekdays": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "kind": "exception",
+    "message": "Google 現列每日 06:00–22:00；HappyCow 舊頁列 08:00–20:00 及農曆初二、十六休息，例外未確認。",
+    "sourceUrls": [
+      "https://www.google.com/maps?cid=18311703607367843750",
+      "https://www.happycow.net/reviews/quan-chay-hoi-an-150375"
+    ],
+    "checkedDate": "2026-10-14"
+  },
+  "loving-hut-danang": {
+    "weekdays": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "kind": "exception",
+    "message": "已直接開啟 Google 商家頁核對 4.3／178 則、每週表與電話；HappyCow 舊頁農曆初一、十五延長至 22:00 尚未確認。",
+    "sourceUrls": [
+      "https://www.google.com/maps?cid=160676046296591163",
+      "https://www.happycow.net/reviews/bien-tinh-thuong-loving-hut-da-nang-36503"
+    ],
+    "checkedDate": "2026-10-14"
+  }
+}

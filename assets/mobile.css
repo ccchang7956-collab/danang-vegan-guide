@@ -1,0 +1,325 @@
+/* Focused travel flows. Desktop shares the controls and readable card hierarchy. */
+:root {
+  --nav-height: 80px;
+}
+html {
+  scroll-padding-bottom: calc(var(--nav-height) + 16px);
+}
+body {
+  padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom) + 16px);
+}
+.nearby-primary-controls {
+  margin-bottom: 12px;
+}
+.filter-grid.nearby-primary-controls {
+  grid-template-columns: minmax(0, 2fr) minmax(100px, 1fr);
+}
+.nearby-primary-controls label:has(#reference-select) {
+  grid-column: auto;
+}
+.nearby-primary-controls .search-feedback {
+  grid-column: 1/-1;
+}
+.nearby-shortcuts {
+  display: flex;
+  gap: 8px;
+}
+.nearby-shortcuts > button {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+}
+#location-status {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin: 8px 0 12px;
+  overflow-wrap: anywhere;
+}
+#nearby-filters {
+  margin: 12px 0;
+}
+#nearby-filters > summary {
+  font-weight: 600;
+}
+.secondary-controls {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+.secondary-controls > #nearby-now {
+  grid-column: 1/-1;
+}
+#nearby-time-help {
+  margin-bottom: 12px;
+}
+#nearby-results-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+#nearby-results-heading .count-badge {
+  font-size: 0.8rem;
+}
+.restaurant-card {
+  overflow-wrap: anywhere;
+}
+.restaurant-card .restaurant-name {
+  margin-bottom: 6px;
+}
+.rating-inline {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.restaurant-card .day-hours {
+  color: var(--green);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.restaurant-card .planned-hours {
+  font-size: 0.85rem;
+}
+.menu-preview {
+  color: var(--green);
+  font-size: 0.85rem;
+  margin-top: 8px;
+  line-height: 1.6;
+}
+.menu-preview.unavailable {
+  color: var(--muted);
+}
+.menu-info {
+  padding: 12px 0;
+}
+.menu-info h4 {
+  margin: 0 0 10px;
+}
+.menu-items {
+  padding-left: 20px;
+  margin: 8px 0 12px;
+}
+.menu-items li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+.menu-original {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.menu-price {
+  display: block;
+  font-size: 0.9rem;
+}
+.menu-source,
+.meal-choice-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.meal-row-heading {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.meal-row-heading h4 {
+  font-size: 1rem;
+  margin: 0;
+}
+.meal-row-heading span {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.meal-choice {
+  border-left: 3px solid var(--line);
+  padding: 8px 12px;
+  margin: 10px 0;
+}
+.meal-choice-primary {
+  border-left-color: var(--green);
+}
+.meal-role {
+  color: var(--green);
+  font-size: 0.8rem;
+  display: block;
+}
+.meal-choice strong {
+  display: block;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+.meal-choice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+.meal-advice {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+#map-list-return {
+  min-height: 44px;
+  padding: 8px 12px;
+  flex-shrink: 0;
+}
+.map-toolbar {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.map-toolbar > div {
+  flex: 1;
+  min-width: 120px;
+}
+#map-panel,
+.restaurant-card,
+#nearby-results-heading,
+#daily-food-heading {
+  scroll-margin-top: 72px;
+}
+@media (max-width: 767px) {
+  body[data-current-view='nearby'] .view-intro {
+    margin-bottom: 12px;
+  }
+  .nearby-intro-note {
+    display: none;
+  }
+  #view-nearby .result-tools {
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  #view-nearby .display-switch {
+    position: sticky;
+    top: 0;
+    z-index: 1050;
+    background: var(--cream);
+    padding: 8px 0;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  #view-nearby .display-switch .text-button {
+    margin-left: auto;
+    font-size: 0.8rem;
+  }
+  #view-nearby .section-heading {
+    margin: 12px 0;
+  }
+  .restaurant-card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+  .restaurant-card .card-actions {
+    margin-top: 12px;
+  }
+  .restaurant-card .card-actions > a,
+  .restaurant-card .card-actions > button {
+    min-height: 44px;
+  }
+  .restaurant-card .restaurant-name {
+    font-size: 1.08rem;
+  }
+  .restaurant-card .source-details > summary,
+  .restaurant-details > summary {
+    min-height: 44px;
+    display: list-item;
+    padding: 10px 0;
+  }
+  .meal-plan {
+    padding: 14px;
+  }
+  .meal-plan .meal-row {
+    padding: 14px 0;
+  }
+  #map {
+    height: min(52svh, 420px);
+    min-height: 220px;
+  }
+  .bottom-nav {
+    padding-left: max(6px, env(safe-area-inset-left));
+    padding-right: max(6px, env(safe-area-inset-right));
+  }
+  .nav-item {
+    font-size: 0.7rem;
+  }
+  .nav-item span {
+    white-space: normal;
+    text-align: center;
+    line-height: 1.4;
+  }
+  .keyboard-open .bottom-nav {
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .search-feedback {
+    font-size: 0.82rem;
+    padding: 9px 12px;
+  }
+  .search-feedback p {
+    min-width: 0;
+    flex-basis: 100%;
+  }
+  .secondary-controls {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .secondary-controls label:has(#diet-filter),
+  .secondary-controls label:has(#operating-filter) {
+    grid-column: 1/-1;
+  }
+  #nearby-filters input {
+    min-inline-size: 0;
+  }
+}
+@media (max-width: 359px) {
+  .nearby-shortcuts > button {
+    padding: 10px 8px;
+    font-size: 0.8rem;
+  }
+  .filter-grid.nearby-primary-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .nearby-primary-controls label:has(#reference-select) {
+    grid-column: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Keep date values readable on narrow phones and use native disclosure markers. */
+.filter-grid.nearby-primary-controls {
+  grid-template-columns: minmax(0, 1.4fr) minmax(124px, 1fr);
+}
+.secondary-controls label:has(#area-filter) {
+  grid-column: 1/-1;
+}
+.restaurant-card .source-details summary::after {
+  content: '';
+}
+.restaurant-card .source-details summary {
+  list-style: disclosure-closed;
+}
+.restaurant-card .source-details[open] summary {
+  list-style: disclosure-open;
+}
+@media (max-width: 359px) {
+  .filter-grid.nearby-primary-controls,
+  .secondary-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* Normalize native WebKit selects while preserving their platform picker. */
+select:not([multiple]) {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath d='m3 5 4 4 4-4' fill='none' stroke='%23234f3d' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+  padding-right: 34px;
+}
+.restaurant-card .source-details summary::before {
+  content: none;
+}
