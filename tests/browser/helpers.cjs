@@ -138,3 +138,16 @@ async function openNearbyFilters(page) {
     await filters.locator(':scope > summary').click();
 }
 module.exports.openNearbyFilters = openNearbyFilters;
+
+async function openDailyFilters(page) {
+  const filters = page.locator('#daily-filters');
+  if (!(await filters.evaluate((element) => element.open)))
+    await filters.locator(':scope > summary').click();
+}
+async function openRestaurantDetails(card) {
+  const details = card.locator('.restaurant-details');
+  if (!(await details.evaluate((element) => element.open)))
+    await details.locator(':scope > summary').click();
+}
+module.exports.openDailyFilters = openDailyFilters;
+module.exports.openRestaurantDetails = openRestaurantDetails;

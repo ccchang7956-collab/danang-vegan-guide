@@ -1,3 +1,4 @@
+const { openDailyFilters, openRestaurantDetails } = require('./helpers.cjs');
 const { test, expect } = require('@playwright/test');
 const { loadApp, mockMapTiles, openNearbyFilters } = require('./helpers.cjs');
 test.use({ serviceWorkers: 'block', viewport: { width: 393, height: 852 } });
@@ -16,6 +17,7 @@ test('official Grab venues have a visible tag and can be found by typing Grab', 
   await expect(page.locator('#restaurant-list .restaurant-card')).toHaveCount(1);
   await expect(page.locator('#card-nearby-hoian-kurumi .grab-badge')).toBeVisible();
   await page.locator('[data-view="daily"]').click();
+  await openDailyFilters(page);
   await page.locator('#day-search').fill('grab');
   await expect(page.locator('#day-restaurant-list .restaurant-card')).toHaveCount(1);
   await expect(page.locator('#day-restaurant-list .grab-badge')).toHaveText('有 Grab');
@@ -64,6 +66,7 @@ test('Grab clipboard uses branch name, falls back to selectable text and closed 
   await page.locator('#search-input').fill('loving vegan');
   await expect(page.locator('#restaurant-list .restaurant-card')).toHaveCount(1);
   const card = page.locator('#card-nearby-dn-loving');
+  await openRestaurantDetails(card);
   await card.locator('.grab-details summary').click();
   await card.locator('[data-copy-grab]').click();
   expect(await page.evaluate(() => window.__copiedGrab)).toBe('Loving Vegan');
@@ -96,6 +99,7 @@ test('Grab filter survives update snapshot restore and narrow cards do not overf
   await expect(page.locator('#grab-filter')).toHaveValue('official-link');
   await expect(page.locator('#restaurant-list .restaurant-card')).toHaveCount(3);
   const card = page.locator('#card-nearby-hoian-peanuts');
+  await openRestaurantDetails(card);
   await card.locator('.grab-details summary').click();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await card.screenshot({ path: 'test-results/grab-320.png' });

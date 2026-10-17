@@ -183,15 +183,18 @@
       r.operatingEvidenceText ||
       '尚未取得可核對的近期營業資料，出發前請先開 Google 商家頁或聯絡店家。';
     const actions =
-      (canNavigate ? link(C.mapsUrl(r), '開始導航 ↗', 'primary-action') : '') +
-      link(googleRestaurantUrl(r), googleLabel, canNavigate ? '' : 'primary-action') +
-      (!held && C.hasCoordinates(r)
-        ? `<button type="button" data-map-id="${esc(r.id)}">${C.operationRank(r) === 2 ? '查看舊址位置' : '在地圖看'}</button>`
-        : '') +
-      phone +
+      (canNavigate
+        ? link(C.mapsUrl(r), '開始導航 ↗', 'primary-action')
+        : link(googleRestaurantUrl(r), googleLabel, 'primary-action')) +
       (canNavigate && C.grabStatus(r) === 'official-link'
         ? link(r.grabInfo.url, '開啟 Grab 分店 ↗', 'grab-action')
         : '');
+    const secondaryActions =
+      (canNavigate ? link(googleRestaurantUrl(r), googleLabel) : '') +
+      (!held && C.hasCoordinates(r)
+        ? `<button type="button" data-map-id="${esc(r.id)}">${C.operationRank(r) === 2 ? '查看舊址位置' : '在地圖看'}</button>`
+        : '') +
+      phone;
     const menu = r.menuInfo;
     const firstDish = menu?.items?.[0];
     const price = (value) =>
@@ -228,13 +231,13 @@
   ${r.risk ? `<p class="note warning">${esc(r.risk)}</p>` : ''}
   <p class="restaurant-address">${esc(r.address)}${held ? '（既有記錄，勿直接前往）' : ''}</p>
   ${menuPreview}
-  <p class="grab-status ${esc(C.grabStatus(r))}">${esc(grabLabels[C.grabStatus(r)])}</p>
-  <div class="card-actions">${actions}</div>
-  ${grabDetails(r)}
-  <details class="restaurant-details"><summary>菜單、完整時段與店家詳情</summary>
+  <div class="card-actions primary-actions">${actions}</div>
+  <details class="restaurant-details"><summary>店家詳情 <span>菜單・聯絡・Grab 查核</span></summary>
+    <div class="card-actions secondary-actions">${secondaryActions}</div>
     ${menuDetails}<p class="restaurant-note">${esc(r.veganNotes)}</p>
     <p class="hours-note">完整每週參考時段：${esc(r.hours || '未確認／來源有衝突，出發前聯絡')}<br><span>牌告不保證旅行當日開門與廚房接單；出發前查看 Google 最新資訊。</span></p>
-  </details>
+  <p class="grab-status ${esc(C.grabStatus(r))}">${esc(grabLabels[C.grabStatus(r)])}</p>
+  ${grabDetails(r)}
   <details class="source-details"><summary>查證來源與備註</summary>
     <div class="operation-row"><span class="operation-badge ${esc(state)}">${status}</span><span class="audit-date">查核 ${esc(r.checkedDate)}</span></div>
     ${rating}
@@ -246,6 +249,7 @@
     ${r.ratingNote ? `<p>${esc(r.ratingNote)}</p>` : ''}
     ${r.hoursStatus && /conflict|old|unreliable|unverified/i.test(r.hoursStatus) ? '<p>營業時間來源不足、較舊或互有落差，請以店家當日回覆為準。</p>' : ''}
     <div class="source-links">${sources}</div>
+  </details>
   </details>
 </article>
 `.trim();
@@ -297,7 +301,6 @@
   ${recommendation}
   <p class="exchange-address">${esc(p.address)}</p>
   <div class="currency-badges">${currencyBadges}</div>
-  <p class="exchange-evidence">${esc(p.currencyStatus)}</p>
   ${p.hoursNote ? `<p class="exchange-hours-note">${esc(p.hoursNote)}</p>` : ''}
   ${p.phoneLabel ? `<p class="exchange-contact-note">${esc(p.phoneLabel)}</p>` : ''}
   <div class="card-actions">
@@ -307,6 +310,7 @@
   </div>
   <details class="source-details">
     <summary>授權、幣別與地址來源</summary>
+    <p class="exchange-evidence">${esc(p.currencyStatus)}</p>
     <p>地址查核 ${esc(p.addressCheckedDate || D.exchangeCheckedDate)} · 幣別資料查核 ${esc(p.currencyCheckedDate || D.exchangeCheckedDate)}</p>
     <p>${esc(p.coordinateStatus || '地址依官方資料核對；地圖座標未核實')}。</p>
     <div class="source-links">${sourceLinks}</div>
@@ -404,7 +408,7 @@
     $('location-status').textContent = nearbyStatus;
     $('exchange-location-status').textContent = exchangeStatus;
     $('locate-btn').disabled = locating;
-    $('locate-btn').textContent = locating ? '正在取得位置…' : '用我的位置找最近';
+    $('locate-btn').textContent = locating ? '正在取得位置…' : '使用定位';
     $('exchange-locate-btn').disabled = locating;
     $('exchange-locate-btn').innerHTML = locating ? '正在取得位置…' : exchangeLocateButton;
   }
@@ -588,6 +592,11 @@
       !gps;
     $('meal-search-note').hidden = !activeMealContext;
     $('meal-search-note').textContent = activeMealContext ? mealContext.message : '';
+    $('grab-filter-note').hidden = $('grab-filter').value !== 'official-link';
+    $('quick-grab').setAttribute(
+      'aria-pressed',
+      String($('grab-filter').value === 'official-link'),
+    );
     $('quick-vegan').setAttribute('aria-pressed', String($('diet-filter').value === 'vegan'));
     $('result-count').textContent = displayed.length + ' 間';
     $('nearby-results-heading').setAttribute(
@@ -1037,6 +1046,9 @@
     $('phrase-dialog').showModal();
   });
   $('close-phrase').addEventListener('click', () => $('phrase-dialog').close());
+  $('phrase-dialog').addEventListener('close', () =>
+    $('enlarge-phrase').focus({ preventScroll: true }),
+  );
   $('copy-phrase').addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(phrases.vi);
@@ -1243,6 +1255,11 @@
       renderMap();
     }),
   );
+  $('quick-grab').addEventListener('click', () => {
+    const filter = $('grab-filter');
+    filter.value = filter.value === 'official-link' ? 'all' : 'official-link';
+    filter.dispatchEvent(new Event('change', { bubbles: true }));
+  });
   $('quick-vegan').addEventListener('click', () => {
     cancelNearbySearch();
     if (!nearbySearchComposing) nearbyQuery = $('search-input').value;

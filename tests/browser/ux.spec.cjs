@@ -1,3 +1,4 @@
+const { openDailyFilters, openRestaurantDetails } = require('./helpers.cjs');
 const { openNearbyFilters } = require('./helpers.cjs');
 const { test, expect } = require('@playwright/test');
 const { loadApp, mockMapTiles } = require('./helpers.cjs');
@@ -37,6 +38,7 @@ test('mobile list and map switch preserve filters and support returning to the c
   await page.locator('#search-input').fill('roots');
   const card = page.locator('#restaurant-list .restaurant-card').first();
   await expect(card).toContainText('Roots');
+  await openRestaurantDetails(card);
   await card.locator('[data-map-id]').click();
   await expect(page.locator('#nearby-map-slot')).toBeVisible();
   await expect(page.locator('#return-to-card')).toBeVisible();
@@ -73,6 +75,10 @@ test('phrase action is in first viewport and product image opens inside the site
   await page.locator('#enlarge-phrase').click();
   await expect(page.locator('#phrase-dialog')).toBeVisible();
   await page.locator('#close-phrase').click();
+  await expect(page.locator('#enlarge-phrase')).toBeFocused();
+  await page.locator('#enlarge-phrase').click();
+  await page.keyboard.press('Escape');
+  await expect(page.locator('#phrase-dialog')).not.toBeVisible();
   await expect(page.locator('#enlarge-phrase')).toBeFocused();
   await page.locator('[data-view="supplies"]').click();
   await page.locator('.supply-photo a').first().click();
@@ -133,6 +139,7 @@ test('update reminder remains reachable after dismissal and network changes', as
 test('switching views clears the old map return destination', async ({ page }) => {
   await loadApp(page);
   await page.locator('[data-view="nearby"]').click();
+  await openRestaurantDetails(page.locator('#restaurant-list .restaurant-card').first());
   await page.locator('#restaurant-list [data-map-id]').first().click();
   await expect(page.locator('#return-to-card')).toBeVisible();
   await page.locator('[data-view="exchange"]').click();
@@ -146,6 +153,7 @@ test('searching the full catalogue clears favorites restriction', async ({ page 
   await page.locator('#favorites-only').click();
   await expect(page.locator('#restaurant-list .restaurant-card')).toHaveCount(0);
   await page.locator('[data-view="daily"]').click();
+  await openDailyFilters(page);
   await page.locator('#day-search').fill('roots');
   await page.locator('#search-all').click();
   await expect(page.locator('#nearby-search-summary')).toContainText('找到 1 間');
@@ -157,9 +165,13 @@ test('updating from the phrase page restores non GPS travel and search settings'
 }) => {
   await loadApp(page);
   await page.locator('#day-tabs [data-day="2"]').click();
+  await openDailyFilters(page);
   await page.locator('#day-anchor').selectOption('oldtown');
+  await openDailyFilters(page);
   await page.locator('#day-radius').selectOption('15');
+  await openDailyFilters(page);
   await page.locator('#day-time').fill('12:30');
+  await openDailyFilters(page);
   await page.locator('#day-search').fill('kurumi');
   await page.locator('[data-view="exchange"]').click();
   await page.locator('#exchange-currency').selectOption('TWD');
@@ -207,14 +219,14 @@ test('travel date defaults use Vietnam time and URL dates take priority', async 
   await expect(page.locator('#day-tabs [data-day="1"]')).toHaveAttribute('aria-pressed', 'true');
 });
 
-test('search summary stays next to the input and advanced filters remain operable at small widths', async ({
+test('search summary stays visible above the results and advanced filters remain operable at small widths', async ({
   page,
 }) => {
   await loadApp(page);
   await page.locator('[data-view="nearby"]').click();
   await expect(page.locator('#nearby-search-summary')).toBeInViewport();
   await expect(page.locator('#operating-filter')).toBeHidden();
-  await page.locator('.advanced-filters > summary').click();
+  await page.locator('#nearby-filters > summary').click();
   await openNearbyFilters(page);
   await page.locator('#operating-filter').selectOption('closed');
   await expect(page.locator('#active-filters')).toContainText('歇業');

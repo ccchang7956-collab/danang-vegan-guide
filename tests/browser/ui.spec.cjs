@@ -1,3 +1,4 @@
+const { openRestaurantDetails } = require('./helpers.cjs');
 const fs = require('node:fs/promises');
 const path = require('node:path');
 const { test, expect } = require('@playwright/test');
@@ -249,6 +250,7 @@ test.describe('real browser UI regressions', () => {
     await page.locator('[data-view="nearby"]').click();
 
     const mapButton = page.locator('#restaurant-list .restaurant-card button[data-map-id]').first();
+    await openRestaurantDetails(page.locator('#restaurant-list .restaurant-card').first());
     await expect(mapButton).toBeVisible();
     const restaurantId = await mapButton.getAttribute('data-map-id');
     const card = page.locator(`#card-nearby-${restaurantId}`);
@@ -357,6 +359,7 @@ test.describe('real browser UI regressions', () => {
         const mapButton = page
           .locator('#restaurant-list .restaurant-card button[data-map-id]')
           .first();
+        await openRestaurantDetails(page.locator('#restaurant-list .restaurant-card').first());
         await expect(mapButton).toBeVisible();
         const restaurantId = await mapButton.getAttribute('data-map-id');
         const selectedRestaurant = await page.evaluate((id) => {

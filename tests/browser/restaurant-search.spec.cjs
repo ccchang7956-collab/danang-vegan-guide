@@ -1,3 +1,4 @@
+const { openDailyFilters } = require('./helpers.cjs');
 const { openNearbyFilters } = require('./helpers.cjs');
 const { test, expect } = require('@playwright/test');
 const { loadApp, mockMapTiles } = require('./helpers.cjs');
@@ -69,7 +70,9 @@ test('each meal opens a dated vegan nearby search, mountain lunch stays on mount
 });
 test('daily planned time updates cards and new controls fit a narrow phone', async ({ page }) => {
   await loadApp(page);
+  await openDailyFilters(page);
   await page.locator('#day-time').fill('15:00');
+  await openDailyFilters(page);
   await page.locator('#day-search').fill('om vegan ve day');
   await expect(page.locator('#day-restaurant-list .restaurant-card')).toHaveCount(1);
   await expect(page.locator('#day-restaurant-list .planned-hours')).toContainText('不在牌告時段');

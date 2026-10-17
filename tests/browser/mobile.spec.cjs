@@ -1,3 +1,4 @@
+const { openRestaurantDetails } = require('./helpers.cjs');
 const { test, expect } = require('@playwright/test');
 const { loadApp, mockMapTiles } = require('./helpers.cjs');
 test.use({
@@ -59,6 +60,7 @@ test('mobile map always returns to the list and preserves card focus', async ({ 
   await page.locator('#search-input').fill('roots');
   const card = page.locator('#card-nearby-dn-roots');
   await expect(page.locator('#restaurant-list .restaurant-card')).toHaveCount(1);
+  await openRestaurantDetails(card);
   await card.locator('[data-map-id]').click();
   await expect(page.locator('#map-heading')).toBeFocused();
   await expect(page.locator('#map-list-return')).toBeVisible();

@@ -95,6 +95,7 @@
             ? 'map-heading'
             : id;
     const target = $(targetId);
+    if (target?.tagName === 'DETAILS') target.open = true;
     requestAnimationFrame(() => {
       focusTarget(target);
       target?.scrollIntoView({ block: 'start', behavior: 'instant' });
@@ -206,9 +207,9 @@
     if (state.view === 'nearby') {
       const unknown = state.items.filter((r) => r.distance === null).length;
       $('nearby-search-summary').textContent =
-        `找到 ${count} 間 · 距離以${state.reference || '所選地標'}為準 · ${$('nearby-sort').selectedOptions[0]?.textContent || '距離優先'}，營業待確認排後${onlyFavorites ? ' · 只看收藏' : ''}${state.radius && state.radius !== 'all' ? ` · ${state.radius} km 內 ${count - unknown} 間` : ''}${unknown ? ` · 另含距離未確認 ${unknown} 間` : ''}${state.plannedTime ? ` · ${state.plannedDate} ${state.plannedTime} 依牌告時段優先` : ''}`;
+        `找到 ${count} 間${state.radius && state.radius !== 'all' ? ` · ${state.radius} km 內 ${count - unknown} 間` : ''}${unknown ? ` · ${unknown} 間距離待確認` : ''}${state.plannedTime ? ` · ${state.plannedDate} ${state.plannedTime} 參考時段` : ''}`;
       $('favorites-only').setAttribute('aria-pressed', String(onlyFavorites));
-      $('favorites-only').textContent = `♥ 只看收藏（${favorites.size}）`;
+      $('favorites-only').textContent = `收藏 ${favorites.size}`;
       document
         .querySelector('[data-recover="radius"]')
         ?.toggleAttribute('hidden', state.radius === 'all');
@@ -346,7 +347,14 @@
       card
         .querySelectorAll('.supply-ingredients, .note, .supply-availability')
         .forEach((p) => details.append(p));
-      card.querySelector('.card-actions')?.before(details);
+      const sourceActions = card.querySelector('.card-actions');
+      sourceActions?.before(details);
+      if (sourceActions) {
+        details.append(sourceActions);
+        const actions = document.createElement('div');
+        actions.className = 'card-actions product-actions';
+        details.before(actions);
+      }
       const use = document.createElement('p');
       use.className = 'supply-use';
       use.textContent = /需要熱水|需準備碗與熱水/.test(fullText) ? '♨ 需熱水沖泡' : '✓ 可直接食用';
