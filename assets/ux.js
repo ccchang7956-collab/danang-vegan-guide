@@ -144,6 +144,7 @@
       'area-filter': '區域',
       'diet-filter': '飲食',
       'operating-filter': '營業查核',
+      'grab-filter': 'Grab',
       'search-input': '搜尋',
       'nearby-radius': '直線範圍',
       'nearby-time': '用餐時間',
@@ -184,7 +185,7 @@
       );
     }
     const extraCount =
-      ['area-filter', 'diet-filter'].filter((id) => $(id).value !== 'all').length +
+      ['area-filter', 'diet-filter', 'grab-filter'].filter((id) => $(id).value !== 'all').length +
       Number($('operating-filter').value !== 'available') +
       Number(!!$('nearby-time').value) +
       Number($('nearby-date').value !== currentDate);
@@ -281,7 +282,7 @@
   function resetNearby() {
     $('search-input').value = '';
     api.resetNearbyExtras();
-    for (const id of ['area-filter', 'diet-filter', 'operating-filter'])
+    for (const id of ['area-filter', 'diet-filter', 'operating-filter', 'grab-filter'])
       $(id).value = id === 'operating-filter' ? 'available' : 'all';
     onlyFavorites = false;
     persist();

@@ -53,6 +53,7 @@
   ].sort((a, b) => b.length - a.length);
   function searchWords(query) {
     return normalized(query)
+      .replace(/有\s*grab(?:food)?/g, ' grab ')
       .trim()
       .split(/\s+/)
       .flatMap((word) => {
@@ -102,6 +103,7 @@
         ? dt.getUTCDay()
         : null;
     return words.every((word) => {
+      if (['grab', 'grabfood'].includes(word)) return grabStatus(p) === 'official-link';
       if (['全素', '純素'].includes(word)) return p.diet === 'vegan';
       if (geography[word]) return geography[word].includes(p.area);
       if (meals[word] !== undefined) {
@@ -197,6 +199,14 @@
   function canRecommend(p) {
     return operationRank(p) !== 2 && !p.navigationHold;
   }
+  function grabStatus(p) {
+    if (operationRank(p) === 2) return 'closed';
+    if (p.navigationHold) return 'unverified';
+    const status = p.grabInfo?.status;
+    return ['official-link', 'reported', 'historical', 'unverified', 'closed'].includes(status)
+      ? status
+      : 'unverified';
+  }
   function selectRestaurants(records, options = {}) {
     const {
       origin,
@@ -204,6 +214,7 @@
       diet = 'all',
       query = '',
       operating = 'all',
+      grab = 'all',
       radius = null,
       date = null,
     } = options;
@@ -212,6 +223,10 @@
         (p) =>
           (area === 'all' || p.area === area) &&
           (diet === 'all' || p.diet === diet) &&
+          (grab === 'all' ||
+            (grab === 'evidence'
+              ? ['official-link', 'reported'].includes(grabStatus(p))
+              : grabStatus(p) === grab)) &&
           matchesRestaurant(p, query, date) &&
           (operating === 'all' ||
             (operating === 'available' && operationRank(p) !== 2) ||
@@ -372,6 +387,7 @@
     normalized,
     matchesRestaurant,
     selectRestaurants,
+    grabStatus,
     mapsUrl,
     operationRank,
     canRecommend,

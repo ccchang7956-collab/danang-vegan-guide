@@ -215,6 +215,25 @@ for r in restaurants:
         assert item['priceVnd'] is None or (isinstance(item['priceVnd'],int) and item['priceVnd']>0), 'invalid menu price'
     r['menuInfo']=menu
 raw['menuCheckedDate']=menu_research['checkedDate']
+grab_research=json.loads((root/'research/restaurant-grab-2026-10-17.json').read_text())
+grab_rows=grab_research['restaurants']
+grabs={g['id']:g for g in grab_rows}
+assert len(grabs)==len(grab_rows)==len(restaurants) and set(grabs)=={r['id'] for r in restaurants}, 'Grab coverage mismatch'
+for r in restaurants:
+    g=grabs[r['id']]
+    assert g['status'] in ['official-link','reported','historical','unverified','closed'], 'invalid Grab status'
+    assert g['checkedDate']==grab_research['checkedDate'] and date.fromisoformat(g['checkedDate'])
+    assert g['branchAddress']==r['address'] and g['searchName'].strip() and g['note'].strip() and g['evidenceType'], 'Grab branch/evidence missing'
+    assert all(urlparse(u).scheme=='https' and urlparse(u).hostname for u in g['sourceUrls'])
+    if g['status']=='official-link':
+        u=urlparse(g['url'])
+        assert u.scheme=='https' and u.hostname in ['food.grab.com','grab.onelink.me'] and not u.username and not u.password, 'invalid Grab link'
+        assert g['evidenceType']=='official-website' and g['sourceUrls'], 'official Grab link needs official source'
+    else: assert g['url'] is None, 'unverified Grab deep link'
+    if g['status'] in ['reported','historical']: assert g['sourceUrls'], 'Grab evidence missing'
+    assert (g['status']=='closed') == (r['operatingStatus'] in ['permanently-closed','temporarily-closed']), 'Grab closure mismatch'
+    r['grabInfo']=g
+raw['grabCheckedDate']=grab_research['checkedDate']
 raw['restaurantFullRecheckDate']=recheck_date
 raw['restaurants']=restaurants;raw['checkedDate']=addition['checkedDate'];raw['restaurantGoogleCheckedDate']=audit_date
 raw['checkedDate']=max(raw['checkedDate'],recheck_date);raw['restaurantGoogleCheckedDate']=recheck_date

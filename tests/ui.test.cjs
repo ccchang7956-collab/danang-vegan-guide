@@ -81,6 +81,7 @@ function harness(options = {}) {
   const elements = new Map(ids.map((id) => [id, new Element(id)]));
   elements.get('area-filter').value = 'all';
   elements.get('diet-filter').value = 'all';
+  elements.get('grab-filter').value = 'all';
   const windowListeners = {},
     docListeners = {},
     nav = ['daily', 'nearby', 'exchange', 'supplies', 'phrase'].map((view) => {

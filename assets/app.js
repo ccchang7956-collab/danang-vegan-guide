@@ -102,6 +102,27 @@
     u.searchParams.set('query', [r.name, r.address].join(', '));
     return u.href;
   }
+  const grabLabels = {
+    'official-link': 'Grab：有官方入口',
+    reported: 'Grab：有回報或索引線索・需確認',
+    historical: 'Grab：僅舊資料・需確認',
+    unverified: 'Grab：待確認',
+    closed: 'Grab：歇業記錄・停止推薦',
+  };
+  function grabDetails(r) {
+    const g = r.grabInfo;
+    const status = C.grabStatus(r);
+    const canOrder = C.canRecommend(r) && status !== 'closed';
+    const searchName = g?.searchName || r.name;
+    const sourceLinks = (g?.sourceUrls || [])
+      .map((url, i) => link(url, `Grab 查核來源 ${i + 1} ↗`))
+      .join('');
+    return `<details class="grab-details"><summary>Grab 外送查核與搜尋</summary>
+      <p>${esc(g?.note || '尚未完成此分店的 Grab 查核；查不到不代表沒有上架。')}</p>
+      <p class="small-note">查核 ${esc(g?.checkedDate || '日期未記錄')} · 證據日期：${esc(g?.evidenceDate || '未標示／未核實')}。查核日期不代表即時接單。</p>
+      ${canOrder ? `<p>Grab 搜尋名稱：<strong class="grab-search-name">${esc(searchName)}</strong></p><p class="small-note">核對分店：${esc(r.address)}</p><div class="card-actions"><button type="button" data-copy-grab="${esc(r.id)}">複製 Grab 搜尋名稱</button>${status === 'official-link' ? '' : link('https://www.grab.com/vn/en/food/', '開啟 GrabFood 越南 ↗', 'grab-action')}</div><p class="small-note">${status === 'official-link' ? '官方提供的連結；手機可嘗試開 App，若轉到下載頁，請改用搜尋名稱。' : '此入口不是本店直達；請在 Grab 選 Food、貼上店名並核對地址。'}配送範圍、餐點、價格、接單及運費以 App 為準。</p>` : ''}
+      <div class="source-links">${sourceLinks}</div></details>`;
+  }
   function restaurantCard(r) {
     const plannedDate = view === 'daily' ? currentDay().date : $('nearby-date').value;
     const plannedTime = view === 'daily' ? $('day-time').value : $('nearby-time').value;
@@ -167,7 +188,10 @@
       (!held && C.hasCoordinates(r)
         ? `<button type="button" data-map-id="${esc(r.id)}">${C.operationRank(r) === 2 ? '查看舊址位置' : '在地圖看'}</button>`
         : '') +
-      phone;
+      phone +
+      (canNavigate && C.grabStatus(r) === 'official-link'
+        ? link(r.grabInfo.url, '開啟 Grab 分店 ↗', 'grab-action')
+        : '');
     const menu = r.menuInfo;
     const firstDish = menu?.items?.[0];
     const price = (value) =>
@@ -189,7 +213,7 @@
         : '';
     return `
 <article class="restaurant-card" id="card-${view}-${esc(r.id)}">
-  <div class="card-top"><span class="diet-badge ${esc(r.diet)}">${labels[r.diet]}</span><span class="distance-badge">${distanceText(r)}</span></div>
+  <div class="card-top"><div class="card-badges"><span class="diet-badge ${esc(r.diet)}">${labels[r.diet]}</span>${C.grabStatus(r) === 'official-link' ? '<span class="grab-badge" title="店家官網提供 Grab 分店入口；實際接單以 App 為準">有 Grab</span>' : ''}</div><span class="distance-badge">${distanceText(r)}</span></div>
   <h3 class="restaurant-name">${esc(r.name)}</h3>
   ${ratingInline}
   <p class="day-hours"><strong>${esc(plannedDate?.slice(5).replace('-', '/') || '所選日期')} · ${esc(C.restaurantDayHours(r, plannedDate))}</strong><span class="input-help"> · 參考時段，非即時</span></p>
@@ -204,7 +228,9 @@
   ${r.risk ? `<p class="note warning">${esc(r.risk)}</p>` : ''}
   <p class="restaurant-address">${esc(r.address)}${held ? '（既有記錄，勿直接前往）' : ''}</p>
   ${menuPreview}
+  <p class="grab-status ${esc(C.grabStatus(r))}">${esc(grabLabels[C.grabStatus(r)])}</p>
   <div class="card-actions">${actions}</div>
+  ${grabDetails(r)}
   <details class="restaurant-details"><summary>菜單、完整時段與店家詳情</summary>
     ${menuDetails}<p class="restaurant-note">${esc(r.veganNotes)}</p>
     <p class="hours-note">完整每週參考時段：${esc(r.hours || '未確認／來源有衝突，出發前聯絡')}<br><span>牌告不保證旅行當日開門與廚房接單；出發前查看 Google 最新資訊。</span></p>
@@ -534,6 +560,7 @@
       diet: $('diet-filter').value,
       query: nearbyQuery,
       operating: $('operating-filter').value || 'available',
+      grab: $('grab-filter').value,
       radius: $('nearby-radius').value,
       date: $('nearby-date').value,
     };
@@ -1062,6 +1089,7 @@
     $('nearby-date').value = currentDay().date;
     $('nearby-time').value = '';
     $('nearby-radius').value = 'all';
+    $('grab-filter').value = 'all';
     mealContext = null;
     $('meal-search-note').hidden = true;
   }
@@ -1085,6 +1113,7 @@
     $('diet-filter').value = meal.searchWarning ? 'all' : 'vegan';
     $('area-filter').value = meal.searchWarning ? 'banahills' : 'all';
     $('operating-filter').value = 'available';
+    $('grab-filter').value = 'all';
     window.TravelUX?.clearFavoritesFilter();
     mealContext = {
       date: currentDay().date,
@@ -1206,7 +1235,7 @@
     scheduleNearbySearch();
   });
   $('search-input').addEventListener('input', scheduleNearbySearch);
-  ['area-filter', 'diet-filter', 'operating-filter'].forEach((id) =>
+  ['area-filter', 'diet-filter', 'operating-filter', 'grab-filter'].forEach((id) =>
     $(id).addEventListener('change', () => {
       cancelNearbySearch();
       if (!nearbySearchComposing) nearbyQuery = $('search-input').value;
@@ -1251,7 +1280,19 @@
       card?.scrollIntoView({ block: 'start', behavior: 'instant' });
     });
   }
-  document.addEventListener('click', (e) => {
+  document.addEventListener('click', async (e) => {
+    const copy = e.target.closest('[data-copy-grab]');
+    if (copy) {
+      const r = D.restaurants.find((item) => item.id === copy.dataset.copyGrab);
+      if (!r || !C.canRecommend(r)) return;
+      try {
+        await navigator.clipboard.writeText(r.grabInfo?.searchName || r.name);
+        toast('Grab 搜尋名稱已複製；請在 App 核對分店地址。');
+      } catch {
+        toast('無法自動複製，請長按上方 Grab 搜尋名稱選取。');
+      }
+      return;
+    }
     const localMeal = e.target.closest('[data-meal-restaurant]');
     if (localMeal) {
       showMealRestaurant(
@@ -1368,6 +1409,7 @@
       area: $('area-filter').value,
       diet: $('diet-filter').value,
       operating: $('operating-filter').value,
+      grab: $('grab-filter').value,
       sort: $('nearby-sort').value,
     }),
     restore: (state) => {
@@ -1399,6 +1441,7 @@
         'area-filter': state.area,
         'diet-filter': state.diet,
         'operating-filter': state.operating,
+        'grab-filter': state.grab,
         'nearby-sort': state.sort,
       };
       for (const [id, value] of Object.entries(fields))

@@ -608,6 +608,7 @@ window.TRAVEL_DATA = {
   ],
   "exchangeCheckedDate": "2026-10-14",
   "menuCheckedDate": "2026-10-16",
+  "grabCheckedDate": "2026-10-17",
   "restaurantFullRecheckDate": "2026-10-14",
   "restaurants": [
     {
@@ -803,6 +804,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-source-unreadable",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "om-vegan",
+        "status": "unverified",
+        "searchName": "Om Vegan - Về đây ăn chay",
+        "branchAddress": "338/42 Hoàng Diệu, Hải Châu, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -970,6 +983,21 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-menu-reviewed",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "ngoc-chi-city",
+        "status": "reported",
+        "searchName": "Nhà Hàng Chay Ngọc Chi",
+        "branchAddress": "202 Hoàng Diệu, Hải Châu, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": "2025（Grab 新聞）",
+        "evidenceType": "platform-news-and-local-guide",
+        "url": null,
+        "sourceUrls": [
+          "https://www.grab.com/vn/en/press/others/grab-va-hiep-hoi-van-hoa-am-thuc-tp-da-nang-vinh-danh-hang-loat-quan-ngon-dia-phuong/",
+          "https://khamphadanang.vn/dia-diem/nha-hang-ngoc-chi/"
+        ],
+        "note": "Grab 官方新聞列 Ngọc Chi 為使用者偏好店家；202 Hoàng Diệu 的本地店家介紹另明列 Grab 優惠。無已核實分店直達連結，請在 App 核對地址；不套用巴拿山店。"
       }
     },
     {
@@ -1163,6 +1191,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-source-unreadable",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "tiem-chay-xua",
+        "status": "unverified",
+        "searchName": "Tiệm Chay Xưa",
+        "branchAddress": "373 Phan Châu Trinh, Hòa Cường, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -1328,6 +1368,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-source-unreadable",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "ans-vegetarian",
+        "status": "unverified",
+        "searchName": "ANs - Vegetarian Cuisine",
+        "branchAddress": "169F Trưng Nữ Vương, Hòa Cường, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -1538,6 +1590,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-source-unreadable",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "an-lac-tam-2",
+        "status": "unverified",
+        "searchName": "Quán Chay An Lạc Tâm",
+        "branchAddress": "41 Lê Quý Đôn, Hòa Cường, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -1672,6 +1736,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "no-verifiable-menu-found",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "khai-tam-city",
+        "status": "unverified",
+        "searchName": "Quán Chay Khai Tâm",
+        "branchAddress": "352 Phan Châu Trinh, Hòa Cường, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -1832,6 +1908,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "no-verifiable-menu-found",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "shala-vegan-house",
+        "status": "unverified",
+        "searchName": "Shala Vegan House",
+        "branchAddress": "87/16 Nguyễn Du, Hải Châu, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -1992,6 +2080,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "no-verifiable-menu-found",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "au-lac",
+        "status": "unverified",
+        "searchName": "Cơm Chay Âu Lạc",
+        "branchAddress": "113/14 Nguyễn Du, Hải Châu, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -2155,6 +2255,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-source-unreadable",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "dieu-hoa-city",
+        "status": "unverified",
+        "searchName": "Quan Chay Dieu Hoa - Vegan restaurant in Danang",
+        "branchAddress": "87/4, Nguyen Du Street, Hai Chau, Hải Châu, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -2312,6 +2424,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-source-unreadable",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "phuc-an-city",
+        "status": "unverified",
+        "searchName": "Nhà hàng chay Phúc An - PhucAn Vegetarian",
+        "branchAddress": "547 Nguyễn Tất Thành, Thanh Khê, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -2485,6 +2609,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-menu-reviewed",
         "menuKind": "items",
         "priceAge": "undated-menu"
+      },
+      "grabInfo": {
+        "id": "bao-an",
+        "status": "unverified",
+        "searchName": "Thực Dưỡng Bảo An",
+        "branchAddress": "56 Hoàng Bích Sơn, An Hải, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -2649,6 +2785,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-menu-reviewed",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "tinh-quan",
+        "status": "unverified",
+        "searchName": "Quán Chay Tỉnh Quán - Ẩm Thực Chay Đà Nẵng (Vegan restaurant in Da Nang)",
+        "branchAddress": "11 Trần Nhật Duật, Sơn Trà, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -2812,6 +2960,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-menu-reviewed",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "son-tra-retreat",
+        "status": "unverified",
+        "searchName": "Son Tra Retreat",
+        "branchAddress": "11 Lê Văn Lương, Sơn Trà, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -3041,6 +3201,20 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-menu-reviewed",
         "menuKind": "items",
         "priceAge": "dated-menu"
+      },
+      "grabInfo": {
+        "id": "moms-kitchen",
+        "status": "unverified",
+        "searchName": "Mom Kitchen by Chickpea Eatery",
+        "branchAddress": "73-12 Trương Định, Sơn Trà, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [
+          "https://chickpeaeatery.com/"
+        ],
+        "note": "Chickpea 官網列出本分店，但未提供此分店 Grab 入口。會安 Chickpea 的外送回報不可當成本分店證據；Grab 狀態待確認。"
       }
     },
     {
@@ -3209,6 +3383,20 @@ window.TRAVEL_DATA = {
         "researchStatus": "no-verifiable-menu-found",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "dn-roots",
+        "status": "reported",
+        "searchName": "Roots Plant-Based Cafe",
+        "branchAddress": "266 Trần Bạch Đằng, Bắc Mỹ Phú, Ngũ Hành Sơn, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "indexed-review",
+        "url": null,
+        "sourceUrls": [
+          "https://www.happycow.net/reviews/roots-da-nang-130441/2132971"
+        ],
+        "note": "HappyCow 搜尋索引回報從 Roots Da Nang 透過 Grab 叫外帶；本次開啟頁面未重現該段，日期未核實。Roots 有舊址資料，務必在 App 核對現址 266 Trần Bạch Đằng。"
       }
     },
     {
@@ -3421,6 +3609,20 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-menu-reviewed",
         "menuKind": "items",
         "priceAge": "undated-menu"
+      },
+      "grabInfo": {
+        "id": "dn-chickpea",
+        "status": "unverified",
+        "searchName": "Chickpea Eatery",
+        "branchAddress": "69 Nguyễn Duy Hiệu, An Hải, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [
+          "https://chickpeaeatery.com/"
+        ],
+        "note": "Chickpea 官網列出本分店，但未提供此分店 Grab 入口。會安 Chickpea 的外送回報不可當成本分店證據；Grab 狀態待確認。"
       }
     },
     {
@@ -3589,6 +3791,20 @@ window.TRAVEL_DATA = {
         "researchStatus": "no-verifiable-menu-found",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "dn-alt",
+        "status": "unverified",
+        "searchName": "ALT Plant-Based Cafe",
+        "branchAddress": "90 Bà Huyện Thanh Quan, Ngũ Hành Sơn, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [
+          "https://chickpeaeatery.com/"
+        ],
+        "note": "Chickpea 官網列出本分店，但未提供此分店 Grab 入口。會安 Chickpea 的外送回報不可當成本分店證據；Grab 狀態待確認。"
       }
     },
     {
@@ -3802,6 +4018,20 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-menu-reviewed",
         "menuKind": "items",
         "priceAge": "undated-menu"
+      },
+      "grabInfo": {
+        "id": "dn-kurumi",
+        "status": "official-link",
+        "searchName": "KURUMI",
+        "branchAddress": "17/22 Mỹ Đa Đông 12, Ngũ Hành Sơn, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "official-website",
+        "url": "https://food.grab.com/vn/vi/restaurant/kurumi-healthy-vegan-desserts-food-delivery/5-C2BVPADKJA2AR2",
+        "sourceUrls": [
+          "https://kurumi.vn/en/contact"
+        ],
+        "note": "官網峴港分店地址吻合，提供獨立 Order on Grab 連結；Grab 頁面本次無法讀取，未驗證即時接單。"
       }
     },
     {
@@ -3961,6 +4191,20 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-source-unreadable",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "dn-ivegan",
+        "status": "historical",
+        "searchName": "IVEGAN SUPERSHOP",
+        "branchAddress": "Lô 31 An Thượng 4, Ngũ Hành Sơn, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": "2022-01-10",
+        "evidenceType": "press-article",
+        "url": null,
+        "sourceUrls": [
+          "https://afamily.vn/ivegan-supershop-da-co-mat-tai-da-nang-ru-ca-cung-di-tham-do-thuan-chay-ngay-va-luon-2022011010171083.chn"
+        ],
+        "note": "2022 年峴港開店文章提及 Grab App；資料較舊，不能確認目前仍上架。不套用會安或河內分店。"
       }
     },
     {
@@ -4119,6 +4363,20 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-source-unreadable",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "dn-loving",
+        "status": "reported",
+        "searchName": "Loving Vegan",
+        "branchAddress": "61 Lê Quang Đạo, Ngũ Hành Sơn, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": "2026-01-08",
+        "evidenceType": "firsthand-review",
+        "url": null,
+        "sourceUrls": [
+          "https://www.happycow.net/reviews/loving-vegan-da-nang-161935/2092446"
+        ],
+        "note": "HappyCow 用餐者明確回報透過 Grab 外送；屬過往用餐證據，無已核實直達連結，請核對 61 Lê Quang Đạo。"
       }
     },
     {
@@ -4294,6 +4552,20 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-source-unreadable",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "dn-khong",
+        "status": "reported",
+        "searchName": "KHONG Vegan Kitchen",
+        "branchAddress": "81 Phan Tôn, Ngũ Hành Sơn, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "indexed-mirrored-review",
+        "url": null,
+        "sourceUrls": [
+          "https://www.top-rated.online/cities/%C4%90%C3%A0%2BN%E1%BA%B5ng/place/p/9315462/KHONG%2BVegan%2BKitchen"
+        ],
+        "note": "81 Phan Tôn 店頁的搜尋索引顯示用餐者透過 Grab App 收到店家訊息；本次頁面未重現該段，日期未核實。ShopeeFood 店頁另存在，但不作為 Grab 證據。"
       }
     },
     {
@@ -4470,6 +4742,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-source-unreadable",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "dn-lehoi",
+        "status": "unverified",
+        "searchName": "Bánh Mì Chay Lê Hội - Vegan Bread",
+        "branchAddress": "89 Phạm Tu, An Hải, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -4640,6 +4924,20 @@ window.TRAVEL_DATA = {
         "researchStatus": "no-verifiable-menu-found",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "dn-anmocnhien",
+        "status": "reported",
+        "searchName": "An Mộc Nhiên Vegan",
+        "branchAddress": "18 Trần Bạch Đằng, An Hải, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": "2025（索引顯示，確切日期未核實）",
+        "evidenceType": "indexed-social-post",
+        "url": null,
+        "sourceUrls": [
+          "https://www.reddit.com/r/DaNang/comments/1on1d2i/"
+        ],
+        "note": "搜尋索引中的店家宣傳貼文寫 Available on GrabFood，地址為 18 Trần Bạch Đằng；貼文身份及 App 現況未直接驗證，請在 App 確認。"
       }
     },
     {
@@ -4796,6 +5094,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "no-verifiable-menu-found",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "dn-hanhphuc",
+        "status": "unverified",
+        "searchName": "Chay Hạnh Phúc - Vegan Food",
+        "branchAddress": "178 Hoài Thanh, Ngũ Hành Sơn, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -4909,6 +5219,20 @@ window.TRAVEL_DATA = {
         "researchStatus": "archived-closed",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "dn-everyday",
+        "status": "closed",
+        "searchName": "Everyday Vegan Food & Coffee Da Nang",
+        "branchAddress": "45 Hoàng Kế Viêm, Ngũ Hành Sơn, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": "2026-10-14",
+        "evidenceType": "project-closure-record",
+        "url": null,
+        "sourceUrls": [
+          "https://www.google.com/maps?cid=15189593579518914999"
+        ],
+        "note": "專案先前查核已記錄永久歇業，停止外送推薦；不據此宣稱已確認 Grab 下架。"
       }
     },
     {
@@ -5068,6 +5392,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "no-verifiable-menu-found",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "dn-xinh",
+        "status": "unverified",
+        "searchName": "Quán chay xinh",
+        "branchAddress": "Đối diện 30, An Thượng 8, Ngũ Hành Sơn, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -5234,6 +5570,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "no-verifiable-menu-found",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "dn-daibinh",
+        "status": "unverified",
+        "searchName": "Chay Đại Bình",
+        "branchAddress": "126 Châu Thị Vĩnh Tế, Ngũ Hành Sơn, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -5391,6 +5739,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "no-verifiable-menu-found",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "dn-duyen",
+        "status": "unverified",
+        "searchName": "Duyên Vegan & Coffee",
+        "branchAddress": "63 Đặng Vũ Hỷ, An Hải, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -5595,6 +5955,21 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-menu-reviewed",
         "menuKind": "items",
         "priceAge": "dated-menu"
+      },
+      "grabInfo": {
+        "id": "hoian-chickpea",
+        "status": "reported",
+        "searchName": "Chickpea Eatery",
+        "branchAddress": "86 Phan Châu Trinh, Hội An, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": "2026-04-10（文章更新）",
+        "evidenceType": "firsthand-travel-report",
+        "url": null,
+        "sourceUrls": [
+          "https://nomadearthcatalog.com/vegan-cooking-class-hoi-an/",
+          "https://chickpeaeatery.com/"
+        ],
+        "note": "作者描述在會安 Chickpea 透過 Grab 叫外帶。品牌官網確認會安分店；不能套用峴港 Chickpea、ALT 或 Mom Kitchen。無已核實直達連結。"
       }
     },
     {
@@ -5752,6 +6127,20 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-source-unreadable",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "hoian-v-vegan",
+        "status": "reported",
+        "searchName": "V Vegan",
+        "branchAddress": "108 Nguyễn Thái Học, Old Town, Hội An, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": "來源僅列約 2 個月前，確切日期未核實",
+        "evidenceType": "mirrored-review",
+        "url": null,
+        "sourceUrls": [
+          "https://restaurantguru.com/Vvegan-Vegan-Cafe-and-Restaurant-tp-Hoi-An"
+        ],
+        "note": "108 Nguyễn Thái Học 的 Google 評論轉載明確回報 Grab 送餐；為轉載證據，無已核實直達連結。"
       }
     },
     {
@@ -5967,6 +6356,20 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-menu-reviewed",
         "menuKind": "items",
         "priceAge": "undated-menu"
+      },
+      "grabInfo": {
+        "id": "hoian-kurumi",
+        "status": "official-link",
+        "searchName": "KURUMI",
+        "branchAddress": "187 Lý Thường Kiệt, Hội An, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "official-website",
+        "url": "https://food.grab.com/vn/en/restaurant/kurumi-healthy-vegan-food-desserts-hoi-an-delivery/5-C63GATEKGREVVT",
+        "sourceUrls": [
+          "https://kurumi.vn/en/contact"
+        ],
+        "note": "官網會安 187 Lý Thường Kiệt 分店提供獨立 Grab 連結；與峴港分店 merchant ID 不同。未驗證即時接單。"
       }
     },
     {
@@ -6151,6 +6554,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-source-unreadable",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "hoian-ivegan",
+        "status": "unverified",
+        "searchName": "Ivegan Supershop Hoi An",
+        "branchAddress": "672 Đ. Hai Bà Trưng, Hội An, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -6315,6 +6730,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "no-verifiable-menu-found",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "hoian-seeds",
+        "status": "unverified",
+        "searchName": "The Seeds",
+        "branchAddress": "124/2 Đ. Trần Cao Vân, Hội An, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -6432,6 +6859,20 @@ window.TRAVEL_DATA = {
         "researchStatus": "archived-closed",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "hoian-emma",
+        "status": "closed",
+        "searchName": "Quán Thuần Chay Emma - Emma's Vegan Garden - Restaurant & Cafe",
+        "branchAddress": "36 Lê Quý Đôn, Hội An, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": "2026-10-14",
+        "evidenceType": "project-closure-record",
+        "url": null,
+        "sourceUrls": [
+          "https://www.google.com/maps?cid=12600194686517776988"
+        ],
+        "note": "專案先前查核已記錄永久歇業，停止外送推薦；不據此宣稱已確認 Grab 下架。"
       }
     },
     {
@@ -6626,6 +7067,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "no-verifiable-menu-found",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "hoian-an-hy",
+        "status": "unverified",
+        "searchName": "An Hy Vegetarian Restaurant",
+        "branchAddress": "59 Phan Châu Trinh, Old Town, Hội An, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -6786,6 +7239,20 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-source-unreadable",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "hoian-minh-hien",
+        "status": "unverified",
+        "searchName": "Minh Hien Vegetarian Restaurant",
+        "branchAddress": "26/16 Thái Phiên, Hội An, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [
+          "https://www.happycow.net/reviews/minh-hien-2-hoi-an-83119"
+        ],
+        "note": "搜尋有 Minh Hien／Minh Hien 2 的 Grab 回報，但地址或分店對應不足；不可套用到本記錄 26/16 Thái Phiên。請在 App 核對。"
       }
     },
     {
@@ -6986,6 +7453,20 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-menu-reviewed",
         "menuKind": "items",
         "priceAge": "undated-menu"
+      },
+      "grabInfo": {
+        "id": "hoian-peanuts",
+        "status": "official-link",
+        "searchName": "Peanuts",
+        "branchAddress": "122 Trần Nhân Tông, Hội An Đông, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "official-website",
+        "url": "https://grab.onelink.me/2695613898?af_dp=grab%3A%2F%2Fopen%3FscreenType%3DGRABFOOD%26sourceID%3DA4pcqCZkS4%26merchantIDs%3D5-C3EXAXMHN4CGMA&af_force_deeplink=true&af_web_dp=https%3A%2F%2Fwww.grab.com%2Fdownload&c=5-C3EXAXMHN4CGMA&is_retargeting=true&pid=inappsharing",
+        "sourceUrls": [
+          "https://www.peanuts-restaurant.com/en/"
+        ],
+        "note": "官網 122 Trần Nhân Tông 列 Grab 入口。手機可嘗試開 App；桌機導向下載頁，並非商家停止接單的證據。官網自送費用不等同 Grab 運費。"
       }
     },
     {
@@ -7198,6 +7679,20 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-menu-reviewed",
         "menuKind": "items",
         "priceAge": "undated-menu"
+      },
+      "grabInfo": {
+        "id": "hoian-rau-oi",
+        "status": "historical",
+        "searchName": "Rau Ơi Eatery",
+        "branchAddress": "110 Trần Nhân Tông, Hội An Đông, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": "2024-08-25",
+        "evidenceType": "firsthand-review",
+        "url": null,
+        "sourceUrls": [
+          "https://www.happycow.net/reviews/rau-oi-eatery-hoi-an-399894"
+        ],
+        "note": "HappyCow 在 110 Trần Nhân Tông 店頁的 2024-08-25 評論明確寫透過 Grab 點餐；資料較舊，現況待確認。未採活動轉載的 Danang 地點作為分店證據。"
       }
     },
     {
@@ -7374,6 +7869,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "no-verifiable-menu-found",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "hoian-quan-chay-cua-dai",
+        "status": "unverified",
+        "searchName": "An Phuoc Vegetarian",
+        "branchAddress": "333 Cửa Đại, Hội An Đông, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -7563,6 +8070,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-menu-reviewed",
         "menuKind": "categories",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "hoian-plantlab",
+        "status": "unverified",
+        "searchName": "PlantLab Restaurant",
+        "branchAddress": "Tổ dân cư, số 4, tổ dân phố Thanh Đông, Hội An Đông, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -7754,6 +8273,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-menu-reviewed",
         "menuKind": "items",
         "priceAge": "undated-menu"
+      },
+      "grabInfo": {
+        "id": "hoian-phin-lounge",
+        "status": "unverified",
+        "searchName": "Phin Lounge",
+        "branchAddress": "An Bang Beach, Hội An Tây, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -7932,6 +8463,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-source-unreadable",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "hoian-fisherman",
+        "status": "unverified",
+        "searchName": "The Fisherman Garden Vegan Restaurant & Cafe",
+        "branchAddress": "An Bang Beach, Hội An Tây, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -8099,6 +8642,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "no-verifiable-menu-found",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "hoian-hoi-banh-mi",
+        "status": "unverified",
+        "searchName": "Lê Hội Bánh MÌ Chay (Le Hoi Vegan Banh Mi)",
+        "branchAddress": "3 Nguyễn Huệ, Hội An, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -8263,6 +8818,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "no-verifiable-menu-found",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "bana-ngoc-chi",
+        "status": "unverified",
+        "searchName": "Ngoc Chi Bà Nà Hills",
+        "branchAddress": "Bà Nà Hills, Ba Na, Da Nang",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次未找到巴拿山園內分店 GrabFood 證據；峴港 202 Hoàng Diệu 的 Grab 資料不可套用。園區餐廳亦不推定能配送下山。"
       }
     },
     {
@@ -8478,6 +9045,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "official-menu-reviewed",
         "menuKind": "items",
         "priceAge": "undated-menu"
+      },
+      "grabInfo": {
+        "id": "hoian-nourish",
+        "status": "unverified",
+        "searchName": "nourish eatery. / Café & Restaurant",
+        "branchAddress": "220a Nguyễn Duy Hiệu, Hội An Đông, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     },
     {
@@ -8666,6 +9245,18 @@ window.TRAVEL_DATA = {
         "researchStatus": "no-verifiable-menu-found",
         "menuKind": "unavailable",
         "priceAge": "unavailable"
+      },
+      "grabInfo": {
+        "id": "loving-hut-danang",
+        "status": "unverified",
+        "searchName": "Loving Hut Da Nang",
+        "branchAddress": "380 Đ. Lê Văn Hiến, Ngũ Hành Sơn, Đà Nẵng",
+        "checkedDate": "2026-10-17",
+        "evidenceDate": null,
+        "evidenceType": "public-search-inconclusive",
+        "url": null,
+        "sourceUrls": [],
+        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
       }
     }
   ],
