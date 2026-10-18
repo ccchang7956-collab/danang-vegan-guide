@@ -1,0 +1,30 @@
+{
+  "verifiedAt": "2026-10-18T14:00:34.439Z",
+  "url": "https://ccchang7956-collab.github.io/danang-vegan-guide/",
+  "appCommit": "3b43da9",
+  "version": "v30",
+  "checks": [
+    {
+      "command": "npm run verify:live -- verify --from v29 --to v30",
+      "exitCode": 0,
+      "result": "Chrome v29 → v30: active scope/cache, network and cached asset SHA256, branch menu/search, favorite preserved, offline reload, fresh nearby homepage, controlled GPS + Vietnam time + 3 km, offline phrase card passed.",
+      "profileLineage": "Original isolated v27 profile after failed v29 upgrade; preserved and prepared for v30 while v29 was still live."
+    },
+    {
+      "command": "npm run verify:live -- webkit --to v30",
+      "exitCode": 0,
+      "result": "Fresh WebKit v30: active scope/cache, network and cached asset SHA256, branch menu/search, offline reload, fresh nearby homepage, controlled GPS + Vietnam time + 3 km, offline phrase card passed."
+    }
+  ],
+  "assetSHA256": {
+    "sw.js": "a9b4bb8521b6fed8dcf636be4aef505c0f9b90e474251159b2056a8c8650f4d6",
+    "index.html": "0d0ce87835988479c67f4aa6f83d89f7ada71ac9b158fed8e56a1fbf10e2f16c",
+    "assets/app.js": "a8690d7ae43deaefa763c0cff0cbf0bb8bc65ee4f7efa79629a905c52fa518db",
+    "assets/core.js": "7f084222453428222c57c9948cf9821c99dcf74cac3ef1572bdd0089fa0f098e",
+    "assets/ux.js": "fdc99ae7fa4d3a70eacaa03bdde6c04399efd038de6053dd79191ea89e5be246",
+    "assets/data.js": "8d4467b24992fd41f8997eafa067cc2643c9c3e77322838be3fe5406ff5fd18a",
+    "assets/styles.css": "ae444191c57b819ef90d5cdad1ea538127729f2e0059975cafc42d56ad7bde7f",
+    "assets/mobile.css": "f4c7f9ffa1079259067caf9b9cc50cc8af2bb1f54b6eafdaddb76fea7009e4cb"
+  },
+  "physicalPhoneVerified": false
+}

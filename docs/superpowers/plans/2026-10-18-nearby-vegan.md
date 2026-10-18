@@ -40,4 +40,4 @@
 - [x] 檢視 320／393／430 px、大字體及導航安全區，記錄模擬與實體裝置的限制。
 - [x] sw.js 更新 v29，README 記錄行為，重建既有部署 ZIP。
 
-完成紀錄：見 `docs/nearby-vegan-delivery-2026-10-18.md`。本次未建立提交或執行發布。
+完成紀錄：見 `docs/nearby-vegan-delivery-2026-10-18.md`。後續依使用者「幫我做」授權，已提交、推送並以 v30 正式發布；修復升級快取並通過正式站 Chrome 舊版升級與全新 WebKit 驗證。見 `docs/nearby-vegan-live-release-2026-10-18.md`。實體手機 GPS 與外部 App 交接仍待使用者確認。
