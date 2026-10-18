@@ -151,3 +151,14 @@ async function openRestaurantDetails(card) {
 }
 module.exports.openDailyFilters = openDailyFilters;
 module.exports.openRestaurantDetails = openRestaurantDetails;
+
+async function openPlanningControl(page, selector) {
+  if (['#reference-select', '#nearby-radius', '#nearby-sort'].includes(selector))
+    await openNearbyFilters(page);
+  if (['#exchange-anchor', '#exchange-day'].includes(selector)) {
+    const details = page.locator('#exchange-reference');
+    if (!(await details.evaluate((element) => element.open)))
+      await details.locator(':scope > summary').click();
+  }
+}
+module.exports.openPlanningControl = openPlanningControl;

@@ -1,3 +1,4 @@
+const { openPlanningControl } = require('./helpers.cjs');
 const { openDailyFilters, openRestaurantDetails } = require('./helpers.cjs');
 const { openNearbyFilters } = require('./helpers.cjs');
 const { test, expect } = require('@playwright/test');
@@ -175,8 +176,10 @@ test('updating from the phrase page restores non GPS travel and search settings'
   await page.locator('#day-search').fill('kurumi');
   await page.locator('[data-view="exchange"]').click();
   await page.locator('#exchange-currency').selectOption('TWD');
+  await openPlanningControl(page, '#exchange-anchor');
   await page.locator('#exchange-anchor').selectOption('oldtown');
   await page.locator('[data-view="nearby"]').click();
+  await openPlanningControl(page, '#reference-select');
   await page.locator('#reference-select').selectOption('oldtown');
   await page.locator('#search-input').fill('kurumi');
   await openNearbyFilters(page);
@@ -185,6 +188,7 @@ test('updating from the phrase page restores non GPS travel and search settings'
   await page.locator('#nearby-date').fill('2026-10-24');
   await openNearbyFilters(page);
   await page.locator('#nearby-time').fill('18:00');
+  await openPlanningControl(page, '#nearby-radius');
   await page.locator('#nearby-radius').selectOption('5');
   await page.locator('[data-view="phrase"]').click();
   await page.evaluate(() => window.TravelUX.updateReady());

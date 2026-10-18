@@ -12,7 +12,7 @@ test('official Grab venues have a visible tag and can be found by typing Grab', 
   await page.locator('#search-input').fill('有 Grab');
   await expect(page.locator('#restaurant-list .restaurant-card')).toHaveCount(3);
   await expect(page.locator('#restaurant-list .grab-badge')).toHaveCount(3);
-  await expect(page.locator('#card-nearby-dn-kurumi .grab-badge')).toHaveText('有 Grab');
+  await expect(page.locator('#card-nearby-dn-kurumi .grab-badge')).toHaveText('Grab 入口');
   await page.locator('#search-input').fill('會安有grab全素');
   await expect(page.locator('#restaurant-list .restaurant-card')).toHaveCount(1);
   await expect(page.locator('#card-nearby-hoian-kurumi .grab-badge')).toBeVisible();
@@ -20,7 +20,7 @@ test('official Grab venues have a visible tag and can be found by typing Grab', 
   await openDailyFilters(page);
   await page.locator('#day-search').fill('grab');
   await expect(page.locator('#day-restaurant-list .restaurant-card')).toHaveCount(1);
-  await expect(page.locator('#day-restaurant-list .grab-badge')).toHaveText('有 Grab');
+  await expect(page.locator('#day-restaurant-list .grab-badge')).toHaveText('Grab 入口');
 });
 
 test('Grab evidence filter combines with search, exposes distinct branch links and resets', async ({

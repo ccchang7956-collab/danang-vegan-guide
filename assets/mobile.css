@@ -592,3 +592,275 @@ body:not([data-current-view='daily']) .trip-strip {
     padding: 8px;
   }
 }
+
+/* Phone travel tasks: clear source, early actions, optional planning controls. */
+.filter-grid.nearby-primary-controls {
+  grid-template-columns: minmax(0, 1fr);
+}
+.location-tools {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px;
+}
+.location-tools > button {
+  min-height: 44px;
+}
+.location-tools #location-status {
+  grid-column: 1 / -1;
+  padding: 0;
+  font-size: 13px;
+}
+#view-nearby .result-tools {
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+#nearby-filters > label {
+  display: block;
+  margin: 12px 0;
+}
+#apply-nearby-filters {
+  position: sticky;
+  bottom: calc(var(--nav-height) + 8px);
+  z-index: 2;
+  margin: 8px 8px 8px 0;
+}
+#view-nearby .active-filters:empty {
+  display: none;
+}
+#view-nearby .search-feedback {
+  font-size: 13px;
+}
+.exchange-reference {
+  grid-column: 1 / -1;
+}
+.exchange-reference summary,
+.meal-details > summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 10px 0;
+  font-weight: 650;
+}
+.exchange-reference .exchange-selects {
+  margin-top: 10px;
+}
+.exchange-service-caution {
+  font-size: 14px;
+  margin: 8px 0;
+}
+.daily-task-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0;
+}
+.daily-task-summary > * {
+  flex: 1;
+  min-height: 44px;
+  font-size: 14px;
+  text-align: center;
+}
+.meal-details > summary > span + span {
+  margin-left: 12px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 400;
+}
+.meal-plan .meal-row {
+  padding: 4px 0;
+}
+.map-food-control {
+  padding: 6px 16px 12px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 14px;
+}
+.map-food-control input {
+  width: 22px;
+  min-height: 22px;
+  height: 22px;
+  accent-color: var(--green);
+}
+.map-food-control span {
+  font-size: 12px;
+  color: var(--muted);
+}
+.shopping-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+  margin: 12px 0;
+}
+.shopping-controls p {
+  grid-column: 1 / -1;
+  font-size: 14px;
+  margin: 0;
+}
+.phrase-format {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.phrase-format [aria-pressed='true'] {
+  background: var(--green);
+  color: var(--paper);
+}
+.phrase-points-text {
+  font-size: clamp(22px, 5vw, 32px);
+  line-height: 1.5;
+  font-weight: 600;
+}
+.phrase-points-text p {
+  margin: 12px 0;
+}
+#offline-link-url {
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+#offline-dialog {
+  font-size: 16px;
+}
+#offline-dialog .dialog-close,
+#phrase-dialog .dialog-close {
+  margin-bottom: 12px;
+}
+#network-status {
+  font-size: 13px;
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  .restaurant-card .primary-actions {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .restaurant-card .rating-inline {
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  .restaurant-card .day-hours {
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  .restaurant-card .primary-actions .primary-action,
+  .exchange-card .primary-action {
+    background: var(--green);
+    color: var(--paper);
+  }
+  .exchange-controls {
+    padding: 12px;
+  }
+  #view-exchange .view-intro > p:not(.eyebrow),
+  #view-exchange .exchange-caveat {
+    display: none;
+  }
+  #view-exchange .exchange-guide {
+    margin: 8px 0;
+    padding: 0 12px;
+  }
+  #view-exchange .exchange-card {
+    padding: 16px;
+  }
+  #view-exchange .exchange-card-top {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  #view-exchange .currency-badges {
+    margin: 8px 0;
+    gap: 4px;
+  }
+  #view-exchange .currency-badge {
+    font-size: 12px;
+  }
+  .nav-item {
+    font-size: 12px;
+  }
+  .supply-card[data-product-use] {
+    display: grid;
+    grid-template-columns: 82px minmax(0, 1fr);
+    column-gap: 12px;
+    padding: 16px;
+  }
+  .supply-card[data-product-use] .supply-photo {
+    grid-column: 1;
+    grid-row: 1 / 5;
+    margin: 0;
+  }
+  .supply-card[data-product-use] .supply-photo a {
+    height: 96px;
+    padding: 4px;
+  }
+  .supply-card[data-product-use] .supply-photo figcaption {
+    font-size: 11px;
+  }
+  .supply-card[data-product-use] > :not(.supply-photo) {
+    grid-column: 2;
+  }
+  .supply-card[data-product-use] > .supply-details,
+  .supply-card[data-product-use] > .product-actions,
+  .supply-card[data-product-use] > .shopping-check {
+    grid-column: 1 / -1;
+  }
+  .supply-card[data-product-use] .supply-vietnamese {
+    font-size: 15px;
+  }
+  .supply-card[data-product-use] h4 {
+    font-size: 16px;
+    margin: 6px 0;
+  }
+  .supply-card[data-product-use] .diet-badge {
+    white-space: normal;
+    font-size: 12px;
+  }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  #phrase-dialog {
+    width: min(960px, calc(100% - 28px));
+    padding: 16px 20px;
+  }
+  #phrase-dialog .large-phrase,
+  #phrase-dialog .phrase-points-text {
+    font-size: clamp(18px, 5.2dvh, 24px);
+    line-height: 1.4;
+  }
+  #phrase-dialog .phrase-language {
+    display: none;
+  }
+  #phrase-dialog .dialog-close {
+    float: right;
+    margin-bottom: 8px;
+  }
+  #phrase-dialog .large-phrase {
+    clear: both;
+    margin-top: 8px;
+  }
+}
+@media (max-width: 767px) {
+  #view-exchange .view-intro {
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+}
+/* Reserve room for a phone's bottom safe area before the first primary action. */
+@media (max-width: 767px) {
+  #view-nearby {
+    padding-top: 8px;
+  }
+  #view-nearby .view-intro {
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+  #view-exchange {
+    padding-top: 0;
+  }
+  #view-exchange .exchange-controls {
+    padding: 10px;
+    gap: 6px;
+  }
+  #view-exchange .section-heading {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+}

@@ -1,3 +1,4 @@
+const { openPlanningControl } = require('./helpers.cjs');
 const { openRestaurantDetails } = require('./helpers.cjs');
 const fs = require('node:fs/promises');
 const path = require('node:path');
@@ -62,7 +63,7 @@ test.describe('real browser UI regressions', () => {
       ),
     ).toBe(true);
     await expect(page.locator('#reference-select')).not.toHaveValue('gps');
-    await expect(page.locator('#location-status')).toContainText('尚未使用 GPS');
+    await expect(page.locator('#location-status')).toContainText('非目前位置');
   });
 
   test('keeps the focused date button through a successful nearby GPS rerender', async ({
@@ -111,7 +112,7 @@ test.describe('real browser UI regressions', () => {
     });
 
     await expect(page.locator('#exchange-anchor')).toHaveValue('gps');
-    await expect(page.locator('#exchange-location-status')).toContainText('你的定位');
+    await expect(page.locator('#exchange-location-status')).toContainText('我的位置');
   });
 
   test('lets a manual landmark cancel nearby GPS before the first Exchange visit completes', async ({
@@ -129,6 +130,7 @@ test.describe('real browser UI regressions', () => {
     await expect(exchangeAnchor).toHaveValue('route');
     const manualAnchor = await exchangeAnchor.locator('option').nth(1).getAttribute('value');
     expect(manualAnchor).toBeTruthy();
+    await openPlanningControl(page, '#exchange-anchor');
     await exchangeAnchor.selectOption(manualAnchor);
 
     await page.evaluate(() => {

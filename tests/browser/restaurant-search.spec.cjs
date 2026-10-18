@@ -1,3 +1,4 @@
+const { openPlanningControl } = require('./helpers.cjs');
 const { openDailyFilters } = require('./helpers.cjs');
 const { openNearbyFilters } = require('./helpers.cjs');
 const { test, expect } = require('@playwright/test');
@@ -32,7 +33,9 @@ test('planned time exposes conflicts, Sunday starts and radius recovery', async 
   await page.locator('#search-input').fill('kurumi');
   await openNearbyFilters(page);
   await page.locator('#area-filter').selectOption('hoian');
+  await openPlanningControl(page, '#reference-select');
   await page.locator('#reference-select').selectOption('lesands');
+  await openPlanningControl(page, '#nearby-radius');
   await page.locator('#nearby-radius').selectOption('1');
   await expect(page.locator('#restaurant-list .restaurant-card')).toHaveCount(0);
   await page.locator('[data-recover="radius"]').click();
@@ -46,7 +49,7 @@ test('each meal opens a dated vegan nearby search, mountain lunch stays on mount
   page,
 }) => {
   await loadApp(page);
-  await page.locator('#meal-plan details').evaluate((e) => (e.open = true));
+  await page.locator('#meal-plan > details').evaluate((e) => (e.open = true));
   await page.locator('[data-meal-index="1"]').click();
   await expect(page.locator('#view-nearby')).toBeVisible();
   await expect(page.locator('#diet-filter')).toHaveValue('vegan');
@@ -59,7 +62,7 @@ test('each meal opens a dated vegan nearby search, mountain lunch stays on mount
   await expect(page.locator('#meal-search-note')).toBeHidden();
   await page.locator('[data-view="daily"]').click();
   await page.locator('[data-day="1"]').click();
-  await page.locator('#meal-plan details').evaluate((e) => (e.open = true));
+  await page.locator('#meal-plan > details').evaluate((e) => (e.open = true));
   await page.locator('[data-meal-index="1"]').click();
   await expect(page.locator('#reference-select')).toHaveValue('bana');
   await expect(page.locator('#meal-search-note')).toContainText('園內全素供餐待確認');
@@ -78,6 +81,7 @@ test('daily planned time updates cards and new controls fit a narrow phone', asy
   await expect(page.locator('#day-restaurant-list .planned-hours')).toContainText('不在牌告時段');
   await page.locator('[data-view="nearby"]').click();
   await page.setViewportSize({ width: 320, height: 740 });
+  await openNearbyFilters(page);
   await expect(page.locator('#nearby-radius')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.locator('#nearby-date').scrollIntoViewIfNeeded();
@@ -103,6 +107,7 @@ test('Vietnam now uses the destination timezone and removing chips resets the in
   await expect(page.locator('#nearby-time')).toHaveValue('01:30');
   await page.locator('[data-remove-filter="nearby-time"]').click();
   await expect(page.locator('#nearby-time')).toHaveValue('');
+  await openPlanningControl(page, '#nearby-radius');
   await page.locator('#nearby-radius').selectOption('3');
   await page.locator('[data-remove-filter="nearby-radius"]').click();
   await expect(page.locator('#nearby-radius')).toHaveValue('all');

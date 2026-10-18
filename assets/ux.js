@@ -5,6 +5,9 @@
   const D = window.TRAVEL_DATA;
   if (!D) return;
   const key = 'danang-ux-v1';
+  const sessionKey = 'danang-travel-session-v1';
+  let started = false;
+  const vietnamDate = () => window.TravelCore.vietnamNow().date;
   let saved = {};
   try {
     saved = JSON.parse(localStorage.getItem(key) || '{}') || {};
@@ -44,11 +47,39 @@
           shopping: [...shopping],
           modes,
           onlyFavorites,
+          diet: $('diet-filter')?.value || saved.diet || 'all',
         }),
       );
       return true;
     } catch {
       return false;
+    }
+  }
+  function saveSession() {
+    if (!started || restoring || !api) return;
+    const visible = [...document.querySelectorAll('#view-' + currentView + ' article')].find(
+      (card) => {
+        const rect = card.getBoundingClientRect();
+        return rect.top < innerHeight - 80 && rect.bottom > 80;
+      },
+    );
+    const focused = document.activeElement?.closest('article');
+    const target = focused && focused.getBoundingClientRect().bottom > 0 ? focused : visible;
+    scrollPositions[currentView] = scrollY;
+    try {
+      sessionStorage.setItem(
+        sessionKey,
+        JSON.stringify({
+          snapshot: api.snapshot(),
+          view: currentView,
+          date: currentDate,
+          savedDate: vietnamDate(),
+          scroll: scrollY,
+          target: target?.id || '',
+        }),
+      );
+    } catch {
+      /* Reading and search also work without storage. */
     }
   }
   function focusTarget(target) {
@@ -74,7 +105,7 @@
     section
       .querySelectorAll('[data-display]')
       .forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.display === mode)));
-    persist();
+    if (started && !restoring) persist();
     if (mode === 'map') window.dispatchEvent(new Event('resize'));
   }
   function showTarget(id) {
@@ -92,12 +123,15 @@
         : id === 'day-restaurant-list'
           ? 'daily-food-heading'
           : id === 'map-panel'
-            ? 'map-heading'
+            ? 'map-panel'
             : id;
     const target = $(targetId);
     if (target?.tagName === 'DETAILS') target.open = true;
+    for (let ancestor = target?.parentElement; ancestor; ancestor = ancestor.parentElement) {
+      if (ancestor.tagName === 'DETAILS') ancestor.open = true;
+    }
     requestAnimationFrame(() => {
-      focusTarget(target);
+      focusTarget(id === 'map-panel' ? $('map-heading') : target);
       target?.scrollIntoView({ block: 'start', behavior: 'instant' });
     });
   }
@@ -207,9 +241,11 @@
     if (state.view === 'nearby') {
       const unknown = state.items.filter((r) => r.distance === null).length;
       $('nearby-search-summary').textContent =
-        `找到 ${count} 間${state.radius && state.radius !== 'all' ? ` · ${state.radius} km 內 ${count - unknown} 間` : ''}${unknown ? ` · ${unknown} 間距離待確認` : ''}${state.plannedTime ? ` · ${state.plannedDate} ${state.plannedTime} 參考時段` : ''}`;
+        `找到 ${count} 間 · ${state.plannedDate}（越南）${state.radius && state.radius !== 'all' ? ` · ${state.radius} km 內 ${count - unknown} 間` : ''}${unknown ? ` · ${unknown} 間距離待確認` : ''}${state.plannedTime ? ` · ${state.plannedDate} ${state.plannedTime} 參考時段` : ''}`;
+      $('apply-nearby-filters').textContent = `查看 ${count} 間結果`;
+      if (started && !restoring) persist();
       $('favorites-only').setAttribute('aria-pressed', String(onlyFavorites));
-      $('favorites-only').textContent = `收藏 ${favorites.size}`;
+      $('favorites-only').textContent = `只看收藏 (${favorites.size})`;
       document
         .querySelector('[data-recover="radius"]')
         ?.toggleAttribute('hidden', state.radius === 'all');
@@ -257,6 +293,7 @@
     if (modes[view]) setMode(modes[view]);
     writeRoute();
     $('map-list-return').hidden = !['daily', 'nearby', 'exchange'].includes(view);
+    $('map-list-return').textContent = view === 'daily' ? '回今日行程' : '回列表';
     const target = (!sameView && $(focusMemory[view])) || $('view-' + view).querySelector('h2');
     requestAnimationFrame(() => {
       focusTarget(target);
@@ -333,6 +370,24 @@
       api.toast('無法自動複製，請長按文字選取。');
     }
   }
+  function filterShopping() {
+    const status = $('shopping-filter').value;
+    const use = $('supply-use-filter').value;
+    let visible = 0;
+    document.querySelectorAll('.supply-card[data-product-use]').forEach((card) => {
+      const bought = shopping.has(card.id);
+      card.hidden =
+        (status === 'bought' && !bought) ||
+        (status === 'unbought' && bought) ||
+        (use !== 'all' && card.dataset.productUse !== use);
+      if (!card.hidden) visible++;
+    });
+    for (const id of ['supply-noodles', 'supply-snacks']) {
+      $(id).hidden = ![...$(id).querySelectorAll('.supply-card')].some((card) => !card.hidden);
+    }
+    $('shopping-empty').hidden = visible > 0;
+    $('shopping-count').textContent = `顯示 ${visible} 款・已買 ${shopping.size} 款`;
+  }
   function supplies() {
     document.querySelectorAll('.supply-card[id]').forEach((card) => {
       if (!card.querySelector('.supply-photo')) return;
@@ -357,7 +412,8 @@
       }
       const use = document.createElement('p');
       use.className = 'supply-use';
-      use.textContent = /需要熱水|需準備碗與熱水/.test(fullText) ? '♨ 需熱水沖泡' : '✓ 可直接食用';
+      card.dataset.productUse = /需要熱水|需準備碗與熱水/.test(fullText) ? 'hot' : 'ready';
+      use.textContent = card.dataset.productUse === 'hot' ? '♨ 需熱水沖泡' : '✓ 可直接食用';
       card.querySelector('.supply-vietnamese')?.after(use);
       const label = document.createElement('label');
       label.className = 'shopping-check';
@@ -372,6 +428,7 @@
       check.addEventListener('change', () => {
         check.checked ? shopping.add(id) : shopping.delete(id);
         card.classList.toggle('is-bought', check.checked);
+        filterShopping();
         api.toast(
           persist()
             ? check.checked
@@ -399,6 +456,15 @@
         });
       }
     });
+    $('shopping-filter').addEventListener('change', filterShopping);
+    $('supply-use-filter').addEventListener('change', filterShopping);
+    $('reset-shopping-filters').addEventListener('click', () => {
+      $('shopping-filter').value = 'all';
+      $('supply-use-filter').value = 'all';
+      filterShopping();
+      navigateTarget('shopping-filter');
+    });
+    filterShopping();
     $('close-product').addEventListener('click', () => $('product-dialog').close());
     $('product-dialog').addEventListener('close', () =>
       imageTrigger?.focus({ preventScroll: true }),
@@ -407,7 +473,12 @@
   }
   function start(callbacks) {
     api = callbacks;
+    const explicitDate = location.hash.match(/day=(\d{4}-\d{2}-\d{2})/)?.[1];
     $('reset-nearby').addEventListener('click', resetNearby);
+    $('apply-nearby-filters').addEventListener('click', () => {
+      $('nearby-filters').open = false;
+      navigateTarget('restaurant-list');
+    });
     $('nearby-sort').addEventListener('change', () => {
       api.flush();
       api.refresh();
@@ -478,7 +549,7 @@
         returnCard && $(returnCard)
           ? returnCard
           : currentView === 'daily'
-            ? 'day-restaurant-list'
+            ? 'day-heading'
             : currentView === 'nearby'
               ? 'restaurant-list'
               : 'exchange-list',
@@ -529,8 +600,54 @@
         focusTarget($('update-banner'));
         return;
       }
-      api.toast('行程、店家與點餐卡可離線閱讀；地圖及導航需網路。可用瀏覽器分享選單加入主畫面。');
+      $('offline-link-info').hidden = true;
+      $('offline-dialog').showModal();
     };
+    let offlineTrigger = null;
+    $('close-offline').addEventListener('click', () => $('offline-dialog').close());
+    $('offline-dialog').addEventListener('close', () => {
+      (offlineTrigger || $('network-status')).focus({ preventScroll: true });
+      offlineTrigger = null;
+    });
+    $('copy-offline-link').addEventListener('click', () =>
+      copy($('offline-link-url').textContent, '連結已複製'),
+    );
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest('a[href]');
+      if (
+        !link ||
+        navigator.onLine ||
+        !/^https?:/.test(link.href) ||
+        new URL(link.href).origin === location.origin
+      )
+        return;
+      event.preventDefault();
+      offlineTrigger = link;
+      $('offline-link-info').hidden = false;
+      const card = link.closest('article');
+      const heading = card?.querySelector('h3,h4');
+      $('offline-link-name').textContent = heading?.textContent || link.textContent;
+      $('offline-link-url').textContent = link.href;
+      $('offline-dialog').showModal();
+    });
+    function phraseFormat(points) {
+      const full = $('phrase-dialog').querySelector('.large-phrase');
+      full.hidden = points;
+      $('phrase-points-text').hidden = !points;
+      $('phrase-full').setAttribute('aria-pressed', String(!points));
+      $('phrase-points').setAttribute('aria-pressed', String(points));
+      if (points && !$('phrase-points-text').children.length) {
+        // Reformat the existing, reviewed text; no translation or omissions.
+        const original = $('phrase-vi').textContent;
+        for (const sentence of original.match(/[^.!]+[.!]?/g) || [original]) {
+          const line = document.createElement('p');
+          line.textContent = sentence.trim();
+          $('phrase-points-text').append(line);
+        }
+      }
+    }
+    $('phrase-full').addEventListener('click', () => phraseFormat(false));
+    $('phrase-points').addEventListener('click', () => phraseFormat(true));
     $('network-status').addEventListener('click', showOfflineInfo);
     $('network-status').addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
@@ -539,6 +656,19 @@
       }
     });
     window.addEventListener('popstate', readRoute);
+    window.addEventListener('pagehide', () => {
+      api.flush();
+      saveSession();
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') {
+        api.flush();
+        saveSession();
+      }
+    });
+    document.addEventListener('change', () => {
+      if (started) persist();
+    });
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     supplies();
     const today = new Intl.DateTimeFormat('en-CA', {
@@ -567,7 +697,42 @@
     } catch {
       /* Invalid or unavailable session storage is harmless. */
     }
+    if (['all', 'vegan', 'vegetarian', 'mixed', 'uncertain'].includes(saved.diet))
+      $('diet-filter').value = saved.diet;
+    let previous;
+    try {
+      previous = JSON.parse(sessionStorage.getItem(sessionKey) || 'null');
+    } catch {
+      /* Optional. */
+    }
+    if (previous?.snapshot && (!explicitDate || explicitDate === previous.date)) {
+      restoring = true;
+      api.restore(previous.snapshot);
+      restoring = false;
+      writeRoute(true);
+      if (
+        previous.savedDate !== vietnamDate() ||
+        (previous.snapshot.nearbyTime && previous.snapshot.nearbyDate !== vietnamDate())
+      )
+        $('restored-query-note').hidden = false;
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          const target = $(previous.target);
+          if (target && target.closest('.view')?.id === 'view-' + currentView) {
+            focusTarget(target);
+            target.scrollIntoView({ block: 'start', behavior: 'instant' });
+          } else
+            window.scrollTo({
+              top: Math.max(0, Number(previous.scroll) || 0),
+              behavior: 'instant',
+            });
+        }),
+      );
+    }
+    $('map-list-return').hidden = !['daily', 'nearby', 'exchange'].includes(currentView);
+    $('map-list-return').textContent = currentView === 'daily' ? '回今日行程' : '回列表';
     api.refresh();
+    started = true;
     for (const view of ['nearby', 'exchange']) $('view-' + view).dataset.displayMode = modes[view];
   }
   window.TravelUX = {

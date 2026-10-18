@@ -28,6 +28,8 @@
     view = 'daily',
     gps = null,
     gpsAccuracy = null,
+    gpsTimestamp = null,
+    selectedMapRestaurant = null,
     referenceId = D.days[0].hotel,
     dayAnchor = 'route',
     dayRadius = 10,
@@ -83,7 +85,7 @@
   const distanceText = (r) =>
     r.distance === null || r.distance === undefined
       ? '尚無查證座標'
-      : `${r.nearestPlace ? '距' + r.nearestPlace + ' ' : ''}${r.distance < 1 ? Math.round(r.distance * 1000) + ' m' : r.distance.toFixed(1) + ' km'}・直線`;
+      : `${r.nearestPlace ? '距' + r.nearestPlace + ' ' : view === 'nearby' ? (gps ? '距定位 ' : '距地標 ') : ''}${r.distance < 1 ? Math.round(r.distance * 1000) + ' m' : r.distance.toFixed(1) + ' km'}・直線`;
   const link = (href, text, cls = '') =>
     `<a class="${cls}" href="${esc(safeUrl(href))}" target="_blank" rel="noopener noreferrer">${text}<span class="sr-only">（開新分頁）</span></a>`;
   const operationLabels = {
@@ -178,7 +180,11 @@
     const sources = sourceUrls
       .map((u, i) => link(u, `${esc(new URL(u).hostname.replace('www.', ''))} ${i + 1}`))
       .join('');
-    const addressIssue = r.addressIssue ? `<p class="note warning">${esc(r.addressIssue)}</p>` : '';
+    const minorAddressIssue = r.addressIssue && /73-12|門牌寫法/.test(r.addressIssue) && !held;
+    const addressIssue =
+      r.addressIssue && !minorAddressIssue
+        ? `<p class="note warning">${esc(r.addressIssue)}</p>`
+        : '';
     const evidence =
       r.operatingEvidenceText ||
       '尚未取得可核對的近期營業資料，出發前請先開 Google 商家頁或聯絡店家。';
@@ -216,7 +222,7 @@
         : '';
     return `
 <article class="restaurant-card" id="card-${view}-${esc(r.id)}">
-  <div class="card-top"><div class="card-badges"><span class="diet-badge ${esc(r.diet)}">${labels[r.diet]}</span>${C.grabStatus(r) === 'official-link' ? '<span class="grab-badge" title="店家官網提供 Grab 分店入口；實際接單以 App 為準">有 Grab</span>' : ''}</div><span class="distance-badge">${distanceText(r)}</span></div>
+  <div class="card-top"><div class="card-badges"><span class="diet-badge ${esc(r.diet)}">${labels[r.diet]}</span>${C.grabStatus(r) === 'official-link' ? '<span class="grab-badge" title="店家官網提供 Grab 分店入口；實際接單以 App 為準">Grab 入口</span>' : ''}</div><span class="distance-badge">${distanceText(r)}</span></div>
   <h3 class="restaurant-name">${esc(r.name)}</h3>
   ${ratingInline}
   <p class="day-hours"><strong>${esc(plannedDate?.slice(5).replace('-', '/') || '所選日期')} · ${esc(C.restaurantDayHours(r, plannedDate))}</strong><span class="input-help"> · 參考時段，非即時</span></p>
@@ -229,11 +235,12 @@
   ${r.hoursExceptionNote && !caution ? `<p class="note warning">${esc(r.hoursExceptionNote)}</p>` : ''}
   ${r.dailyClosed ? '<p class="note warning">此日來源列為休息日，請另選店家或先聯絡確認。</p>' : ''}
   ${r.risk ? `<p class="note warning">${esc(r.risk)}</p>` : ''}
+  <div class="card-actions primary-actions">${actions}</div>
   <p class="restaurant-address">${esc(r.address)}${held ? '（既有記錄，勿直接前往）' : ''}</p>
   ${menuPreview}
-  <div class="card-actions primary-actions">${actions}</div>
   <details class="restaurant-details"><summary>店家詳情 <span>菜單・聯絡・Grab 查核</span></summary>
     <div class="card-actions secondary-actions">${secondaryActions}</div>
+    ${minorAddressIssue ? `<p class="note">${esc(r.addressIssue)}</p>` : ''}
     ${menuDetails}<p class="restaurant-note">${esc(r.veganNotes)}</p>
     <p class="hours-note">完整每週參考時段：${esc(r.hours || '未確認／來源有衝突，出發前聯絡')}<br><span>牌告不保證旅行當日開門與廚房接單；出發前查看 Google 最新資訊。</span></p>
   <p class="grab-status ${esc(C.grabStatus(r))}">${esc(grabLabels[C.grabStatus(r)])}</p>
@@ -298,18 +305,19 @@
     <span class="distance-badge">${esc(distance)}</span>
   </div>
   <h3>${esc(p.name)}</h3>
-  ${recommendation}
-  <p class="exchange-address">${esc(p.address)}</p>
   <div class="currency-badges">${currencyBadges}</div>
-  ${p.hoursNote ? `<p class="exchange-hours-note">${esc(p.hoursNote)}</p>` : ''}
-  ${p.phoneLabel ? `<p class="exchange-contact-note">${esc(p.phoneLabel)}</p>` : ''}
+  <p class="exchange-service-caution">分行當日受理與服務時間請先確認。</p>
   <div class="card-actions">
     ${nav}
     ${C.hasCoordinates(p) ? `<button type="button" data-map-id="${esc(p.id)}">在地圖看</button>` : ''}
     ${phone}
   </div>
+  <p class="exchange-address">${esc(p.address)}</p>
   <details class="source-details">
-    <summary>授權、幣別與地址來源</summary>
+    <summary>服務說明、授權與幣別來源</summary>
+    ${recommendation}
+    ${p.hoursNote ? `<p class="exchange-hours-note">${esc(p.hoursNote)}</p>` : ''}
+    ${p.phoneLabel ? `<p class="exchange-contact-note">${esc(p.phoneLabel)}</p>` : ''}
     <p class="exchange-evidence">${esc(p.currencyStatus)}</p>
     <p>地址查核 ${esc(p.addressCheckedDate || D.exchangeCheckedDate)} · 幣別資料查核 ${esc(p.currencyCheckedDate || D.exchangeCheckedDate)}</p>
     <p>${esc(p.coordinateStatus || '地址依官方資料核對；地圖座標未核實')}。</p>
@@ -388,14 +396,20 @@
       }
     }, 150);
   }
+  function locationAge() {
+    const minutes = Math.max(0, Math.floor((Date.now() - (gpsTimestamp || Date.now())) / 60000));
+    return minutes === 0
+      ? '剛剛取得'
+      : `${minutes} 分鐘前取得${minutes >= 5 ? '・請更新定位' : ''}`;
+  }
   function updateLocationControls() {
     const nearbyStatus =
       locationError ||
       (locating
         ? locationWaitingMessage
         : gps
-          ? `依你的定位排序 · GPS 精度約 ${Math.round(gpsAccuracy)} m · 距離為直線`
-          : `依「${place(referenceId).name}」排序，尚未使用 GPS。`);
+          ? `我的位置・${locationAge()}・GPS 精度約 ${Math.round(gpsAccuracy)} m・直線距離`
+          : `依「${place(referenceId).name}」排序・非目前位置`);
     const anchor =
       exchangeAnchor === 'route' ? '當天行程' : place(exchangeAnchor)?.name || '當天行程';
     const exchangeStatus =
@@ -403,12 +417,12 @@
       (locating
         ? locationWaitingMessage
         : exchangeUseGps && gps
-          ? `依你的定位排序 · GPS 精度約 ${Math.round(gpsAccuracy)} m · 直線距離`
+          ? `我的位置・${locationAge()}・GPS 精度約 ${Math.round(gpsAccuracy)} m・直線距離`
           : `依 ${currentDay().shortDate}「${anchor}」排序 · 距離為直線`);
     $('location-status').textContent = nearbyStatus;
     $('exchange-location-status').textContent = exchangeStatus;
     $('locate-btn').disabled = locating;
-    $('locate-btn').textContent = locating ? '正在取得位置…' : '使用定位';
+    $('locate-btn').textContent = locating ? '正在取得位置…' : gps ? '更新定位' : '使用定位';
     $('exchange-locate-btn').disabled = locating;
     $('exchange-locate-btn').innerHTML = locating ? '正在取得位置…' : exchangeLocateButton;
   }
@@ -441,6 +455,17 @@
     });
     $('day-heading').textContent = currentDay().title;
     $('day-subtitle').textContent = currentDay().subtitle;
+    const hotel = place(currentDay().hotel);
+    $('hotel-shortcut').href = C.mapsUrl(hotel);
+    $('hotel-shortcut').textContent = '今晚住宿導航';
+    $('hotel-shortcut').setAttribute('aria-label', '導航至今晚住宿：' + hotel.name);
+    const meals = D.mealPlans?.find((plan) => plan.date === currentDay().date)?.meals || [];
+    const now = C.vietnamNow();
+    const foundMeal =
+      currentDay().date === now.date ? meals.findIndex((meal) => meal.time >= now.time) : 1;
+    const next = foundMeal < 0 ? Math.max(0, meals.length - 1) : foundMeal;
+    $('next-meal-shortcut').textContent = '用餐：' + (meals[next]?.label || '晚餐');
+    $('next-meal-shortcut').dataset.mealTarget = String(next);
   }
   function renderMealPlan() {
     const plan = D.mealPlans?.find((p) => p.date === currentDay().date);
@@ -448,6 +473,9 @@
       $('meal-plan').innerHTML = '';
       return;
     }
+    const now = C.vietnamNow();
+    const nextMeal =
+      plan.date === now.date ? plan.meals.findIndex((meal) => meal.time >= now.time) : 1;
     const mountain = plan.date === '2026-10-22';
     const meals = plan.meals
       .map((meal, index) => {
@@ -460,11 +488,11 @@
               `<div class="meal-choice ${i ? 'meal-choice-backup' : 'meal-choice-primary'}"><span class="meal-role">${meal.searchWarning ? '下山後市區備援' : i ? '備援' : '首選'}</span><strong>${esc(r.searchAliases?.find((name) => name) || r.name)}</strong><div class="meal-choice-actions"><button type="button" class="text-button" data-meal-restaurant="${esc(r.id)}" data-meal-source-index="${index}">在這裡看店家</button>${link(C.mapsUrl(r), '導航 ↗')}</div></div>`,
           )
           .join('');
-        return `<section class="meal-row"><div class="meal-row-heading"><h4>${esc(meal.label)}</h4><span>${esc(meal.time)} · 越南時間</span></div><p class="small-note">${esc(place(meal.anchorId)?.name || '')}附近${meal.searchWarning ? ' · 園內全素待確認' : ''}</p>
+        return `<section class="meal-row" id="daily-meal-${index}"><details class="meal-details" ${index === (nextMeal < 0 ? plan.meals.length - 1 : nextMeal) ? 'open' : ''}><summary><span>${esc(meal.label)}</span><span>${esc(meal.time)} · 越南時間</span></summary><p class="small-note">${esc(place(meal.anchorId)?.name || '')}附近${meal.searchWarning ? ' · 園內全素待確認' : ''}</p>
         ${meal.searchWarning ? `<p class="note warning">${esc(meal.searchWarning)}</p>` : ''}${rows}
         ${choices.length < 2 ? '<p class="small-note">尚無已確認的獨立餐廳備援，請先確認飯店或行前用餐安排。</p>' : ''}
         <button type="button" class="secondary-button meal-search" data-meal-index="${index}">${meal.searchWarning ? '查園內供餐（需確認）' : '查看這餐附近的全素店'}</button>
-        <button type="button" class="text-button" data-meal-advice="${index}" aria-expanded="${meal.searchWarning ? 'true' : 'false'}" aria-controls="meal-advice-${index}">交通與用餐提醒</button><p id="meal-advice-${index}" class="meal-advice" ${meal.searchWarning ? '' : 'hidden'}>${esc(meal.advice)}</p></section>`;
+        <button type="button" class="text-button" data-meal-advice="${index}" aria-expanded="${meal.searchWarning ? 'true' : 'false'}" aria-controls="meal-advice-${index}">交通與用餐提醒</button></details><p id="meal-advice-${index}" class="meal-advice" ${meal.searchWarning ? '' : 'hidden'}>${esc(meal.advice)}</p></section>`;
       })
       .join('');
     $('meal-plan').innerHTML =
@@ -739,6 +767,7 @@
           ? 'nearby-map-slot'
           : 'exchange-map-slot';
     $(slot).append($('map-panel'));
+    $('map-food-control').hidden = view !== 'daily';
     initMap();
     if (!map) return;
     layer.clearLayers();
@@ -772,8 +801,16 @@
         if (C.hasCoordinates(p) && (dayAnchor === 'route' || p.id === dayAnchor))
           bounds.push([p.lat, p.lng]);
       });
-      displayed.filter(C.hasCoordinates).forEach((p) => bounds.push([p.lat, p.lng]));
-      displayed.forEach((p) =>
+      const primaryIds = new Set(
+        (D.mealPlans?.find((plan) => plan.date === currentDay().date)?.meals || []).map(
+          (meal) => meal.restaurantIds[0],
+        ),
+      );
+      const mapFood = $('map-all-restaurants').checked
+        ? displayed
+        : displayed.filter((r) => primaryIds.has(r.id) || r.id === selectedMapRestaurant);
+      mapFood.filter(C.hasCoordinates).forEach((p) => bounds.push([p.lat, p.lng]));
+      mapFood.forEach((p) =>
         addMarker(p, 'food', C.operationRank(p) === 2 ? '×' : p.diet === 'vegan' ? '葉' : '!'),
       );
       $('map-heading').textContent = '這一天的行程地圖';
@@ -964,6 +1001,7 @@
     cancelLocation();
     daySearchComposing = false;
     dayIndex = index;
+    selectedMapRestaurant = null;
     $('nearby-date').value = currentDay().date;
     mealContext = null;
     dayAnchor = 'route';
@@ -997,6 +1035,7 @@
         if (request !== locationRequest) return;
         gps = { lat: p.coords.latitude, lng: p.coords.longitude };
         gpsAccuracy = p.coords.accuracy;
+        gpsTimestamp = Number.isFinite(p.timestamp) ? p.timestamp : Date.now();
         locationError = '';
         if (targetView === 'exchange' || exchangeFollowGpsRequest) {
           exchangeUseGps = true;
@@ -1091,6 +1130,37 @@
       renderMap();
     });
   }
+  $('eat-now').addEventListener('click', () => {
+    cancelSearchTimers();
+    const now = C.vietnamNow();
+    nearbyQuery = '';
+    $('search-input').value = '';
+    $('nearby-date').value = now.date;
+    $('nearby-time').value = now.time;
+    $('diet-filter').value = 'vegan';
+    $('area-filter').value = 'all';
+    $('grab-filter').value = 'all';
+    $('operating-filter').value = 'available';
+    mealContext = null;
+    window.TravelUX?.clearFavoritesFilter();
+    $('nearby-filters').open = false;
+    $('restored-query-note').hidden = true;
+    render();
+    window.TravelUX?.navigateTarget('restaurant-list');
+    toast('依越南現在時間與牌告時段排序；出發前請確認接單。');
+  });
+  $('map-all-restaurants').addEventListener('change', () => renderMap());
+  $('next-meal-shortcut').addEventListener('click', () => {
+    const target = $('daily-meal-' + $('next-meal-shortcut').dataset.mealTarget);
+    const disclosure = target?.querySelector('details');
+    if (disclosure) disclosure.open = true;
+    if (target) window.TravelUX?.navigateTarget(target.id);
+  });
+  window.addEventListener('focus', updateLocationControls);
+  window.setInterval?.(updateLocationControls, 60000);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) updateLocationControls();
+  });
   $('nearby-now').addEventListener('click', () => {
     const now = C.vietnamNow();
     $('nearby-date').value = now.date;
@@ -1353,6 +1423,10 @@
     if (b) {
       const mapId = b.dataset.mapId;
       flushActiveSearch({ fitMap: false });
+      if (view === 'daily' && !markers.has(mapId) && displayed.some((r) => r.id === mapId)) {
+        selectedMapRestaurant = mapId;
+        renderMap(false);
+      }
       const m = markers.get(mapId);
       if (!m) {
         const inCurrentResults = displayed.some((item) => item.id === mapId);
@@ -1384,9 +1458,9 @@
         : '目前離線 · 新版已備妥'
       : online
         ? offlineReady
-          ? '離線功能已啟用・地圖需網路'
-          : '線上瀏覽・離線尚未備妥'
-        : '目前離線・已載入文字可閱讀';
+          ? '離線可讀'
+          : '離線準備中'
+        : '目前離線';
     $('network-status').classList.toggle('offline', !online);
     if (!online) {
       $('map-message').hidden = false;

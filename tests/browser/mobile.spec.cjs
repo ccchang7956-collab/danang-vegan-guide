@@ -48,6 +48,7 @@ test('mobile meals distinguish primary and independent backup and open a local c
   await loadApp(page);
   await expect(page.locator('.meal-choice-primary').first()).toContainText('首選');
   await expect(page.locator('.meal-choice-backup').first()).toContainText('備援');
+  await page.locator('#daily-meal-0 .meal-details > summary').click();
   await page.locator('[data-meal-restaurant="dn-kurumi"]').first().click();
   await expect(page.locator('#view-nearby')).toBeVisible();
   await expect(page.locator('#card-nearby-dn-kurumi')).toBeFocused();
@@ -74,7 +75,7 @@ test('mobile map always returns to the list and preserves card focus', async ({ 
   await page.locator('#view-daily [data-jump="map-panel"]').click();
   await expect(page.locator('#map-list-return')).toBeVisible();
   await page.locator('#map-list-return').click();
-  await expect(page.locator('#daily-food-heading')).toBeFocused();
+  await expect(page.locator('#day-heading')).toBeFocused();
 });
 
 for (const [width, height] of [
