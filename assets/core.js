@@ -199,6 +199,17 @@
   function canRecommend(p) {
     return operationRank(p) !== 2 && !p.navigationHold;
   }
+  function groupNearbyRestaurants(records, date, time) {
+    const groups = { ready: [], confirm: [], other: [], unlocated: [] };
+    for (const r of records) {
+      const timing = restaurantHours(r, date, time);
+      if (r.distance === null || !hasCoordinates(r) || r.navigationHold) groups.unlocated.push(r);
+      else if (['outside', 'closed'].includes(timing.state)) groups.other.push(r);
+      else if (timing.state === 'open' && operationRank(r) === 0) groups.ready.push(r);
+      else groups.confirm.push(r);
+    }
+    return groups;
+  }
   function grabStatus(p) {
     if (operationRank(p) === 2) return 'closed';
     if (p.navigationHold) return 'unverified';
@@ -391,6 +402,7 @@
     mapsUrl,
     operationRank,
     canRecommend,
+    groupNearbyRestaurants,
     selectExchange,
     restaurantsCsv,
   };

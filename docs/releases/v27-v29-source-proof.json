@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "from": "v27",
+  "to": "v29",
+  "url": "https://ccchang7956-collab.github.io/danang-vegan-guide/",
+  "sourceVersion": "v27",
+  "sourceSHA256": "69ac43441e9900805c03951d33a25b1a519c3177ec0457b7e5357d1d220aad09",
+  "state": {
+    "scope": "https://ccchang7956-collab.github.io/danang-vegan-guide/",
+    "activeURL": "https://ccchang7956-collab.github.io/danang-vegan-guide/sw.js",
+    "activeState": "activated",
+    "controllerURL": "https://ccchang7956-collab.github.io/danang-vegan-guide/sw.js",
+    "cacheNames": [
+      "danang-vegan:/danang-vegan-guide/:v27"
+    ],
+    "runtimeVersion": "v27"
+  },
+  "favorite": "dn-kurumi",
+  "preparedAt": "2026-10-18T13:48:31.007Z"
+}

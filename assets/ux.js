@@ -32,6 +32,14 @@
     restoring = false,
     sameView = false;
   let updateAvailable = false;
+  let dailyMapRequested = false;
+  function shouldLoadMap(view) {
+    return view === 'daily' ? dailyMapRequested : modes[view] === 'map';
+  }
+  function requestMap() {
+    if (currentView === 'daily') dailyMapRequested = true;
+    else if (modes[currentView]) modes[currentView] = 'map';
+  }
   let onlyFavorites = saved.onlyFavorites === true,
     returnCard = null,
     imageTrigger = null,
@@ -106,7 +114,11 @@
       .querySelectorAll('[data-display]')
       .forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.display === mode)));
     if (started && !restoring) persist();
-    if (mode === 'map') window.dispatchEvent(new Event('resize'));
+    if (mode === 'map') {
+      requestMap();
+      api.refreshMap(false);
+      window.dispatchEvent(new Event('resize'));
+    }
   }
   function showTarget(id) {
     if (!['nearby', 'exchange'].includes(currentView)) return;
@@ -117,6 +129,10 @@
     const active = document.activeElement;
     if (active?.matches('input,textarea,select')) active.blur();
     showTarget(id);
+    if (id === 'map-panel') {
+      requestMap();
+      api.refreshMap();
+    }
     const targetId =
       id === 'restaurant-list'
         ? 'nearby-results-heading'
@@ -188,6 +204,12 @@
     for (const id of Object.keys(labels)) {
       const control = $(id),
         value = control.value;
+      if (
+        $('view-nearby').dataset.nowMode === 'true' &&
+        (['nearby-date', 'nearby-time', 'nearby-radius'].includes(id) ||
+          (id === 'diet-filter' && value === 'vegan'))
+      )
+        continue;
       const inactive =
         id === 'search-input' || id === 'nearby-time'
           ? !value.trim()
@@ -239,9 +261,15 @@
       decorateCards('daily');
     }
     if (state.view === 'nearby') {
+      const radiusLabel = $('nearby-radius').closest('label');
+      const radiusContainer = state.nowMode
+        ? document.querySelector('.nearby-control-bar')
+        : document.querySelector('#nearby-filters .secondary-controls');
+      if (radiusLabel.parentElement !== radiusContainer) radiusContainer.prepend(radiusLabel);
       const unknown = state.items.filter((r) => r.distance === null).length;
-      $('nearby-search-summary').textContent =
-        `找到 ${count} 間 · ${state.plannedDate}（越南）${state.radius && state.radius !== 'all' ? ` · ${state.radius} km 內 ${count - unknown} 間` : ''}${unknown ? ` · ${unknown} 間距離待確認` : ''}${state.plannedTime ? ` · ${state.plannedDate} ${state.plannedTime} 參考時段` : ''}`;
+      $('nearby-search-summary').textContent = state.nowMode
+        ? `本站收錄・${state.plannedDate}（越南）・${state.radius === 'all' ? '不限距離' : state.radius + ' km 內'} ${count - unknown} 間${unknown ? `・另 ${unknown} 間距離未確認` : ''}・依牌告推估`
+        : `找到 ${count} 間 · ${state.plannedDate}（越南）${state.radius && state.radius !== 'all' ? ` · ${state.radius} km 內 ${count - unknown} 間` : ''}${unknown ? ` · ${unknown} 間距離待確認` : ''}${state.plannedTime ? ` · ${state.plannedDate} ${state.plannedTime} 參考時段` : ''}`;
       $('apply-nearby-filters').textContent = `查看 ${count} 間結果`;
       if (started && !restoring) persist();
       $('favorites-only').setAttribute('aria-pressed', String(onlyFavorites));
@@ -473,6 +501,7 @@
   }
   function start(callbacks) {
     api = callbacks;
+    const explicitRoute = /^#(daily|nearby|exchange|supplies|phrase)(?:\?|$)/.test(location.hash);
     const explicitDate = location.hash.match(/day=(\d{4}-\d{2}-\d{2})/)?.[1];
     $('reset-nearby').addEventListener('click', resetNearby);
     $('apply-nearby-filters').addEventListener('click', () => {
@@ -685,6 +714,8 @@
     if (!readRoute()) {
       restoring = true;
       if (todayIndex >= 0) api.setDay(todayIndex);
+      api.prepareNearbyNow();
+      api.changeView('nearby');
       restoring = false;
       writeRoute(true);
     }
@@ -697,7 +728,7 @@
     } catch {
       /* Invalid or unavailable session storage is harmless. */
     }
-    if (['all', 'vegan', 'vegetarian', 'mixed', 'uncertain'].includes(saved.diet))
+    if (explicitRoute && ['all', 'vegan', 'vegetarian', 'mixed', 'uncertain'].includes(saved.diet))
       $('diet-filter').value = saved.diet;
     let previous;
     try {
@@ -707,7 +738,13 @@
     }
     if (previous?.snapshot && (!explicitDate || explicitDate === previous.date)) {
       restoring = true;
+      api.restoreReadingTarget(previous.target);
       api.restore(previous.snapshot);
+      if (
+        !explicitRoute &&
+        ['daily', 'nearby', 'exchange', 'supplies', 'phrase'].includes(previous.view)
+      )
+        api.changeView(previous.view);
       restoring = false;
       writeRoute(true);
       if (
@@ -719,6 +756,8 @@
         requestAnimationFrame(() => {
           const target = $(previous.target);
           if (target && target.closest('.view')?.id === 'view-' + currentView) {
+            for (let ancestor = target.parentElement; ancestor; ancestor = ancestor.parentElement)
+              if (ancestor.tagName === 'DETAILS') ancestor.open = true;
             focusTarget(target);
             target.scrollIntoView({ block: 'start', behavior: 'instant' });
           } else
@@ -734,8 +773,22 @@
     api.refresh();
     started = true;
     for (const view of ['nearby', 'exchange']) $('view-' + view).dataset.displayMode = modes[view];
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (currentView === 'daily' && entries.some((entry) => entry.isIntersecting)) {
+            dailyMapRequested = true;
+            api.refreshMap();
+          }
+        },
+        { rootMargin: '100px' },
+      );
+      observer.observe($('daily-map-slot'));
+    }
   }
   window.TravelUX = {
+    shouldLoadMap,
+    requestMap,
     start,
     updated,
     beforeView,

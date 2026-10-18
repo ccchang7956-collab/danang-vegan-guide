@@ -214,7 +214,9 @@ test('updating from the phrase page restores non GPS travel and search settings'
 
 test('travel date defaults use Vietnam time and URL dates take priority', async ({ page }) => {
   await page.clock.install({ time: new Date('2026-10-21T17:30:00Z') });
-  await loadApp(page);
+  await loadApp(page, '/');
+  await expect(page.locator('#view-nearby')).toBeVisible();
+  await page.locator('[data-view="daily"]').click();
   await expect(page.locator('#day-tabs [data-day="1"]')).toHaveAttribute('aria-pressed', 'true');
   await expect(page.locator('#today-button')).toBeVisible();
   await page.goto('/#daily?day=2026-10-24');

@@ -50,6 +50,10 @@
     locating = false,
     locationRequest = 0,
     locationError = '',
+    nearbyNowMode = false,
+    nowSearchTimestamp = null,
+    nearbyLocationIssue = '',
+    returnedRestaurantId = null,
     offlineReady = false;
   let dayButtons = [],
     daySearchTimer = null,
@@ -126,12 +130,13 @@
       <div class="source-links">${sourceLinks}</div></details>`;
   }
   function restaurantCard(r) {
+    const compact = view === 'nearby' && nearbyNowMode;
     const plannedDate = view === 'daily' ? currentDay().date : $('nearby-date').value;
     const plannedTime = view === 'daily' ? $('day-time').value : $('nearby-time').value;
     const timing = C.restaurantHours(r, plannedDate, plannedTime);
     const caution = r.hoursCaution;
     const planned = plannedTime
-      ? `<p class="planned-hours ${esc(timing.state)}">${esc(plannedDate)} ${esc(plannedTime)} · ${esc(timing.label)}</p>`
+      ? `<p class="planned-hours ${esc(timing.state)}">${compact ? '' : esc(plannedDate) + ' ' + esc(plannedTime) + ' · '}${esc(timing.label)}</p>`
       : '';
     const cautionText = caution
       ? `<p class="note warning hours-caution">${esc(caution.message)}</p>`
@@ -225,7 +230,7 @@
   <div class="card-top"><div class="card-badges"><span class="diet-badge ${esc(r.diet)}">${labels[r.diet]}</span>${C.grabStatus(r) === 'official-link' ? '<span class="grab-badge" title="店家官網提供 Grab 分店入口；實際接單以 App 為準">Grab 入口</span>' : ''}</div><span class="distance-badge">${distanceText(r)}</span></div>
   <h3 class="restaurant-name">${esc(r.name)}</h3>
   ${ratingInline}
-  <p class="day-hours"><strong>${esc(plannedDate?.slice(5).replace('-', '/') || '所選日期')} · ${esc(C.restaurantDayHours(r, plannedDate))}</strong><span class="input-help"> · 參考時段，非即時</span></p>
+  ${compact ? '' : `<p class="day-hours"><strong>${esc(plannedDate?.slice(5).replace('-', '/') || '所選日期')} · ${esc(C.restaurantDayHours(r, plannedDate))}</strong><span class="input-help"> · 參考時段，非即時</span></p>`}
   ${planned}${cautionText}
   ${C.operationRank(r) === 1 ? '<p class="note warning">營業待確認 · 出發前請聯絡店家。</p>' : ''}
   ${C.operationRank(r) === 2 ? `<p class="note warning">${esc(status)}，請另選餐廳。</p>` : ''}
@@ -235,10 +240,11 @@
   ${r.hoursExceptionNote && !caution ? `<p class="note warning">${esc(r.hoursExceptionNote)}</p>` : ''}
   ${r.dailyClosed ? '<p class="note warning">此日來源列為休息日，請另選店家或先聯絡確認。</p>' : ''}
   ${r.risk ? `<p class="note warning">${esc(r.risk)}</p>` : ''}
-  <div class="card-actions primary-actions">${actions}</div>
-  <p class="restaurant-address">${esc(r.address)}${held ? '（既有記錄，勿直接前往）' : ''}</p>
-  ${menuPreview}
-  <details class="restaurant-details"><summary>店家詳情 <span>菜單・聯絡・Grab 查核</span></summary>
+  <div class="card-actions primary-actions">${actions}${compact && (timing.state !== 'open' || C.operationRank(r) !== 0) ? phone : ''}</div>
+  ${compact ? '' : `<p class="restaurant-address">${esc(r.address)}${held ? '（既有記錄，勿直接前往）' : ''}</p>`}
+  ${compact && !firstDish ? '' : menuPreview}
+  <details class="restaurant-details"><summary>${compact ? '菜單・地址・聯絡' : '店家詳情'} <span>菜單・聯絡・Grab 查核</span></summary>
+    ${compact ? `<p class="restaurant-address">${esc(r.name)}<br>${esc(r.address)}${held ? '（既有記錄，勿直接前往）' : ''}</p>` : ''}
     <div class="card-actions secondary-actions">${secondaryActions}</div>
     ${minorAddressIssue ? `<p class="note">${esc(r.addressIssue)}</p>` : ''}
     ${menuDetails}<p class="restaurant-note">${esc(r.veganNotes)}</p>
@@ -408,7 +414,7 @@
       (locating
         ? locationWaitingMessage
         : gps
-          ? `我的位置・${locationAge()}・GPS 精度約 ${Math.round(gpsAccuracy)} m・直線距離`
+          ? `我的位置・${locationAge()}・GPS 精度約 ${Math.round(gpsAccuracy)} m・直線距離${nearbyLocationIssue ? '・' + nearbyLocationIssue : ''}`
           : `依「${place(referenceId).name}」排序・非目前位置`);
     const anchor =
       exchangeAnchor === 'route' ? '當天行程' : place(exchangeAnchor)?.name || '當天行程';
@@ -420,6 +426,25 @@
           ? `我的位置・${locationAge()}・GPS 精度約 ${Math.round(gpsAccuracy)} m・直線距離`
           : `依 ${currentDay().shortDate}「${anchor}」排序 · 距離為直線`);
     $('location-status').textContent = nearbyStatus;
+    $('eat-now').disabled = locating;
+    $('eat-now').textContent = locating
+      ? '正在取得位置…'
+      : locationError || nearbyLocationIssue
+        ? '重新定位找全素'
+        : gps && nearbyNowMode
+          ? '更新位置與時間'
+          : '找我附近的全素';
+    $('locate-btn').hidden = nearbyNowMode;
+    $('view-nearby').dataset.nowMode = String(nearbyNowMode);
+    $('view-nearby').dataset.hasGps = String(!!gps);
+    $('now-context').textContent = nearbyNowMode
+      ? `全素・越南 ${$('nearby-date').value} ${$('nearby-time').value}・${$('nearby-radius').value === 'all' ? '不限距離' : $('nearby-radius').value + ' km'}`
+      : '';
+    $('now-search-stale').hidden =
+      !nearbyNowMode ||
+      !nowSearchTimestamp ||
+      (Date.now() - nowSearchTimestamp < 5 * 60000 &&
+        (!gpsTimestamp || Date.now() - gpsTimestamp < 5 * 60000));
     $('exchange-location-status').textContent = exchangeStatus;
     $('locate-btn').disabled = locating;
     $('locate-btn').textContent = locating ? '正在取得位置…' : gps ? '更新定位' : '使用定位';
@@ -585,7 +610,35 @@
   function origin() {
     return gps || place(referenceId);
   }
+  function nowRestaurantResults(items) {
+    if (gps && nearbyLocationIssue)
+      return `<div class="empty-state"><h3>${esc(nearbyLocationIssue)}</h3><p>請重新定位，或按上方「改用飯店／景點」查看地標附近的店家。</p></div>`;
+    const groups = C.groupNearbyRestaurants(items, $('nearby-date').value, $('nearby-time').value);
+    const radius = $('nearby-radius').value;
+    const expand =
+      radius !== 'all' && Number(radius) < 10
+        ? `<button class="secondary-button" type="button" data-expand-nearby="${Number(radius) < 5 ? 5 : 10}">擴大到 ${Number(radius) < 5 ? 5 : 10} km</button>`
+        : '';
+    const section = (label, records, id) =>
+      records.length
+        ? `<details class="nearby-result-group" id="${id}"><summary>${label}（${records.length} 間）</summary><div class="restaurant-list">${records.map(restaurantCard).join('')}</div></details>`
+        : '';
+    $('result-count').textContent = `${groups.ready.length} 間可用餐`;
+    const primary = groups.ready.length
+      ? `<div id="nearby-ready" class="restaurant-list">${groups.ready.slice(0, 3).map(restaurantCard).join('')}</div>${section(`查看全部 ${groups.ready.length} 間候選的其餘店家`, groups.ready.slice(3), 'nearby-more-ready')}`
+      : `<div class="empty-state"><h3>${radius === 'all' ? '本站清單暫無符合目前條件的用餐候選' : `${esc(radius)} km 內暫無符合目前條件的全素用餐候選`}</h3><p>僅搜尋本站整理的店家；可擴大範圍，或展開下方需確認與其他時段的店家。</p>${expand}</div><div id="nearby-ready"></div>`;
+    return `${!gps ? '<p class="nearby-preview-note">地標附近預覽・尚未取得目前位置</p>' : ''}${primary}
+      ${section('即將結束／供餐需確認', groups.confirm, 'nearby-confirm')}
+      ${section('其他時段・午休／休息', groups.other, 'nearby-other')}
+      ${section('距離未確認，不計入附近範圍', groups.unlocated, 'nearby-unlocated')}
+      ${groups.ready.length ? `<div class="nearby-expand">${expand}</div>` : ''}`;
+  }
   function renderNearby() {
+    updateLocationControls();
+    const openGroups = Array.from(
+      $('restaurant-list').querySelectorAll?.('details[id][open]') || [],
+      (node) => node.id,
+    );
     const options = {
       origin: origin(),
       area: $('area-filter').value,
@@ -637,13 +690,26 @@
       `${D.restaurants.length} 筆查核記錄 · ${recent} 家 Google 未標歇業 · ${D.restaurants.length - recent - closed} 家待確認 · ${closed} 家歇業／暫停`;
     const located = displayed.filter((r) => r.distance !== null);
     const unlocated = displayed.filter((r) => r.distance === null);
-    $('restaurant-list').innerHTML = displayed.length
-      ? located.map(restaurantCard).join('') +
-        (unlocated.length
-          ? '<div class="unlocated-heading"><h4>距離未確認的備選</h4><p class="small-note">以下店家或參考位置缺少可靠座標，不計入已確認的附近範圍。</p></div>' +
-            unlocated.map(restaurantCard).join('')
-          : '')
-      : '<div class="empty-state"><h3>這個條件沒有找到餐廳</h3><p>試著改成所有區域，或調整飲食分類與營業查核條件。</p><div class="empty-actions"><button type="button" class="secondary-button" data-recover="clear-nearby">清除關鍵字</button><button type="button" class="secondary-button" data-recover="reset-nearby">重設搜尋與篩選</button><button type="button" class="secondary-button" data-recover="radius">改為不限距離</button><button type="button" class="secondary-button" data-recover="favorites">顯示未收藏的店家</button></div></div>';
+    $('restaurant-list').innerHTML = nearbyNowMode
+      ? nowRestaurantResults(displayed)
+      : displayed.length
+        ? located.map(restaurantCard).join('') +
+          (unlocated.length
+            ? '<div class="unlocated-heading"><h4>距離未確認的備選</h4><p class="small-note">以下店家或參考位置缺少可靠座標，不計入已確認的附近範圍。</p></div>' +
+              unlocated.map(restaurantCard).join('')
+            : '')
+        : '<div class="empty-state"><h3>這個條件沒有找到餐廳</h3><p>試著改成所有區域，或調整飲食分類與營業查核條件。</p><div class="empty-actions"><button type="button" class="secondary-button" data-recover="clear-nearby">清除關鍵字</button><button type="button" class="secondary-button" data-recover="reset-nearby">重設搜尋與篩選</button><button type="button" class="secondary-button" data-recover="radius">改為不限距離</button><button type="button" class="secondary-button" data-recover="favorites">顯示未收藏的店家</button></div></div>';
+    const returned =
+      nearbyNowMode &&
+      !gps &&
+      returnedRestaurantId &&
+      !displayed.some((r) => r.id === returnedRestaurantId) &&
+      D.restaurants.find((r) => r.id === returnedRestaurantId && C.canRecommend(r));
+    if (returned)
+      $('restaurant-list').innerHTML =
+        `<section id="returned-nearby"><h3>上次查看的店家</h3><p class="small-note">請更新位置確認距離；這間未計入地標附近結果。</p>${restaurantCard({ ...returned, distance: null })}</section>` +
+        $('restaurant-list').innerHTML;
+    for (const id of openGroups) if ($(id)) $(id).open = true;
     $('reference-select').value = gps ? 'gps' : referenceId;
     window.TravelUX?.updated({
       view,
@@ -652,6 +718,7 @@
       radius: $('nearby-radius').value,
       plannedDate: $('nearby-date').value,
       plannedTime: $('nearby-time').value,
+      nowMode: nearbyNowMode,
     });
   }
   function popup(p, kind) {
@@ -692,9 +759,8 @@
       b.addEventListener('click', () => {
         const card = $('card-' + view + '-' + p.id);
         if (card) {
-          window.TravelUX?.showTarget(card.id);
-          window.TravelUX?.focusTarget(card);
-          card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (window.TravelUX?.navigateTarget) window.TravelUX.navigateTarget(card.id);
+          else card.scrollIntoView({ behavior: 'smooth', block: 'start' });
           card.classList.add('selected-card');
           setTimeout(() => card.classList.remove('selected-card'), 2500);
         }
@@ -768,6 +834,21 @@
           : 'exchange-map-slot';
     $(slot).append($('map-panel'));
     $('map-food-control').hidden = view !== 'daily';
+    if (window.TravelUX?.shouldLoadMap && !window.TravelUX.shouldLoadMap(view)) return;
+    if (view === 'nearby' && nearbyNowMode && gps && nearbyLocationIssue) {
+      layer?.clearLayers();
+      markers.clear();
+      $('map').hidden = true;
+      $('map-message').hidden = false;
+      $('map-message').textContent = nearbyLocationIssue + '；請更新定位或改用飯店／景點。';
+      $('map-external').hidden = true;
+      $('map-heading').textContent = '定位待更新';
+      return;
+    }
+    $('map').hidden = false;
+    $('map-external').hidden = false;
+    if ($('map-message').textContent.endsWith('請更新定位或改用飯店／景點。'))
+      $('map-message').hidden = true;
     initMap();
     if (!map) return;
     layer.clearLayers();
@@ -1001,6 +1082,7 @@
     cancelLocation();
     daySearchComposing = false;
     dayIndex = index;
+    leaveNearbyNow();
     selectedMapRestaurant = null;
     $('nearby-date').value = currentDay().date;
     mealContext = null;
@@ -1036,6 +1118,12 @@
         gps = { lat: p.coords.latitude, lng: p.coords.longitude };
         gpsAccuracy = p.coords.accuracy;
         gpsTimestamp = Number.isFinite(p.timestamp) ? p.timestamp : Date.now();
+        nearbyLocationIssue =
+          C.distanceKm(gps, { lat: 16.02, lng: 108.2 }) > 150
+            ? '你目前不在峴港／會安附近'
+            : gpsAccuracy > 1000
+              ? '定位精度不足，請重新定位'
+              : '';
         locationError = '';
         if (targetView === 'exchange' || exchangeFollowGpsRequest) {
           exchangeUseGps = true;
@@ -1052,11 +1140,12 @@
         if (request !== locationRequest) return;
         gps = null;
         gpsAccuracy = null;
+        nearbyLocationIssue = '';
         exchangeUseGps = exchangeManualMode ? exchangeUseGps : false;
         exchangeFollowGpsRequest = false;
         locationError =
           ({ 1: '未允許定位', 2: '暫時無法取得位置', 3: '定位逾時' }[e.code] || '定位失敗') +
-          '；已改依行程地標排序，可選上方參考位置或再試一次。';
+          '；未取得目前位置，下方僅為地標附近預覽。可重新定位或改用飯店／景點。';
         finishLocation();
         fillReference();
         render();
@@ -1124,19 +1213,30 @@
   });
   for (const id of ['nearby-date', 'nearby-time', 'nearby-radius']) {
     $(id).addEventListener('change', () => {
+      if (id !== 'nearby-radius') leaveNearbyNow();
       cancelNearbySearch();
       if (!nearbySearchComposing) nearbyQuery = $('search-input').value;
       renderNearby();
       renderMap();
     });
   }
-  $('eat-now').addEventListener('click', () => {
+  function leaveNearbyNow() {
+    nearbyNowMode = false;
+    $('nearby-search').open = true;
+  }
+  function prepareNearbyNow() {
+    returnedRestaurantId = null;
     cancelSearchTimers();
     const now = C.vietnamNow();
+    nearbyNowMode = true;
+    nowSearchTimestamp = Date.now();
     nearbyQuery = '';
+    nearbySearchComposing = false;
     $('search-input').value = '';
     $('nearby-date').value = now.date;
     $('nearby-time').value = now.time;
+    $('nearby-radius').value = '3';
+    $('nearby-sort').value = 'distance';
     $('diet-filter').value = 'vegan';
     $('area-filter').value = 'all';
     $('grab-filter').value = 'all';
@@ -1144,10 +1244,22 @@
     mealContext = null;
     window.TravelUX?.clearFavoritesFilter();
     $('nearby-filters').open = false;
+    $('nearby-search').open = false;
     $('restored-query-note').hidden = true;
+  }
+  function findNearbyNow() {
+    if (locating) return;
+    prepareNearbyNow();
+    window.TravelUX?.showTarget('restaurant-list');
+    if (view !== 'nearby') changeView('nearby');
     render();
-    window.TravelUX?.navigateTarget('restaurant-list');
-    toast('依越南現在時間與牌告時段排序；出發前請確認接單。');
+    locate('nearby');
+  }
+  $('eat-now').addEventListener('click', findNearbyNow);
+  $('refresh-now-search').addEventListener('click', findNearbyNow);
+  $('choose-landmark').addEventListener('click', () => {
+    $('nearby-filters').open = true;
+    window.TravelUX?.navigateTarget('reference-select');
   });
   $('map-all-restaurants').addEventListener('change', () => renderMap());
   $('next-meal-shortcut').addEventListener('click', () => {
@@ -1168,6 +1280,8 @@
     $('nearby-time').dispatchEvent(new Event('change', { bubbles: true }));
   });
   function resetNearbyExtras() {
+    leaveNearbyNow();
+    $('nearby-search').open = true;
     $('nearby-date').value = currentDay().date;
     $('nearby-time').value = '';
     $('nearby-radius').value = 'all';
@@ -1176,6 +1290,7 @@
     $('meal-search-note').hidden = true;
   }
   function searchMeal(index) {
+    leaveNearbyNow();
     const meal = D.mealPlans?.find((p) => p.date === currentDay().date)?.meals[index];
     if (!meal || !place(meal.anchorId)) return;
     cancelSearchTimers();
@@ -1297,6 +1412,7 @@
     if ($('reference-select').value !== 'gps') {
       cancelLocation();
       referenceId = $('reference-select').value;
+      nearbyLocationIssue = '';
       gps = null;
       gpsAccuracy = null;
       exchangeUseGps = false;
@@ -1319,6 +1435,7 @@
   $('search-input').addEventListener('input', scheduleNearbySearch);
   ['area-filter', 'diet-filter', 'operating-filter', 'grab-filter'].forEach((id) =>
     $(id).addEventListener('change', () => {
+      if (id === 'diet-filter' && $('diet-filter').value !== 'vegan') leaveNearbyNow();
       cancelNearbySearch();
       if (!nearbySearchComposing) nearbyQuery = $('search-input').value;
       renderNearby();
@@ -1331,6 +1448,7 @@
     filter.dispatchEvent(new Event('change', { bubbles: true }));
   });
   $('quick-vegan').addEventListener('click', () => {
+    leaveNearbyNow();
     cancelNearbySearch();
     if (!nearbySearchComposing) nearbyQuery = $('search-input').value;
     const diet = $('diet-filter');
@@ -1368,6 +1486,13 @@
     });
   }
   document.addEventListener('click', async (e) => {
+    const expand = e.target.closest('[data-expand-nearby]');
+    if (expand) {
+      $('nearby-radius').value = expand.dataset.expandNearby;
+      $('nearby-radius').dispatchEvent(new Event('change', { bubbles: true }));
+      window.TravelUX?.navigateTarget('restaurant-list');
+      return;
+    }
     const copy = e.target.closest('[data-copy-grab]');
     if (copy) {
       const r = D.restaurants.find((item) => item.id === copy.dataset.copyGrab);
@@ -1421,13 +1546,15 @@
     }
     const b = e.target.closest('[data-map-id]');
     if (b) {
+      window.TravelUX?.requestMap();
+      renderMap(false);
       const mapId = b.dataset.mapId;
       flushActiveSearch({ fitMap: false });
       if (view === 'daily' && !markers.has(mapId) && displayed.some((r) => r.id === mapId)) {
         selectedMapRestaurant = mapId;
         renderMap(false);
       }
-      const m = markers.get(mapId);
+      let m = markers.get(mapId);
       if (!m) {
         const inCurrentResults = displayed.some((item) => item.id === mapId);
         const knownMapEntity = place(mapId) || D.exchangePoints.some((item) => item.id === mapId);
@@ -1440,6 +1567,7 @@
       }
       if (map) {
         window.TravelUX?.mapFromCard(b.closest?.('article')?.id);
+        m = markers.get(mapId) || m;
         map.invalidateSize({ pan: false, animate: false });
         $('map-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
         map.setView(m.getLatLng(), 16, { animate: false });
@@ -1483,7 +1611,17 @@
     toast,
     flush: flushActiveSearch,
     resetNearbyExtras,
+    prepareNearbyNow,
+    refreshMap: renderMap,
+    restoreReadingTarget: (target) => {
+      returnedRestaurantId =
+        typeof target === 'string' && target.startsWith('card-nearby-')
+          ? target.slice('card-nearby-'.length)
+          : null;
+    },
     snapshot: () => ({
+      nearbyNowMode,
+      nowSearchTimestamp,
       dayTime: $('day-time').value,
       nearbyDate: $('nearby-date').value,
       nearbyTime: $('nearby-time').value,
@@ -1505,6 +1643,11 @@
     }),
     restore: (state) => {
       if (Number.isInteger(state.dayIndex) && D.days[state.dayIndex]) setDay(state.dayIndex);
+      nearbyNowMode = state.nearbyNowMode === true;
+      nowSearchTimestamp = Number.isFinite(state.nowSearchTimestamp)
+        ? state.nowSearchTimestamp
+        : null;
+      $('nearby-search').open = !nearbyNowMode;
       if (state.dayAnchor === 'route' || currentDay().stops.some((s) => s.id === state.dayAnchor))
         dayAnchor = state.dayAnchor;
       if ([6, 10, 15].includes(state.dayRadius)) dayRadius = state.dayRadius;

@@ -222,7 +222,7 @@ assert len(grabs)==len(grab_rows)==len(restaurants) and set(grabs)=={r['id'] for
 for r in restaurants:
     g=grabs[r['id']]
     assert g['status'] in ['official-link','reported','historical','unverified','closed'], 'invalid Grab status'
-    assert g['checkedDate']==grab_research['checkedDate'] and date.fromisoformat(g['checkedDate'])
+    assert date.fromisoformat(g['checkedDate'])<=date.fromisoformat(grab_research['checkedDate']), 'Grab check date after report date'
     assert g['branchAddress']==r['address'] and g['searchName'].strip() and g['note'].strip() and g['evidenceType'], 'Grab branch/evidence missing'
     assert all(urlparse(u).scheme=='https' and urlparse(u).hostname for u in g['sourceUrls'])
     if g['status']=='official-link':

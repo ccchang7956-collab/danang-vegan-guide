@@ -864,3 +864,143 @@ body:not([data-current-view='daily']) .trip-strip {
     margin-bottom: 8px;
   }
 }
+
+/* Nearby first: location task, compact candidates and secondary planning. */
+.nearby-task-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  margin: 4px 0 10px;
+}
+#now-context {
+  font-size: 14px;
+  color: var(--muted);
+}
+.nearby-control-bar {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  margin: 10px 0;
+}
+.nearby-control-bar label {
+  flex: 1;
+  font-size: 14px;
+}
+.nearby-control-bar select {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+}
+.nearby-control-bar button {
+  min-height: 46px;
+}
+.nearby-search > summary,
+.nearby-result-group > summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.nearby-search {
+  margin: 6px 0;
+}
+.nearby-result-group {
+  border-top: 1px solid var(--line);
+  margin-top: 12px;
+}
+.nearby-preview-note {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 4px 0 12px;
+}
+.nearby-expand {
+  margin-top: 12px;
+}
+#view-nearby[data-now-mode='true'] .location-tools {
+  grid-template-columns: minmax(0, 1fr);
+}
+#view-nearby[data-now-mode='true'] #eat-now {
+  min-height: 52px;
+  font-size: 16px;
+}
+#view-nearby[data-now-mode='true'][data-has-gps='true'] #eat-now {
+  min-height: 44px;
+  font-size: 14px;
+  justify-self: start;
+  padding: 8px 16px;
+}
+#view-nearby[data-now-mode='true'] #location-status {
+  font-size: 14px;
+}
+#view-nearby[data-now-mode='true'] #nearby-search:not([open]) {
+  border-bottom: 1px solid var(--line);
+}
+#view-nearby[data-now-mode='true'] #nearby-filters:not([open]) {
+  display: none;
+}
+#view-nearby[data-now-mode='true'][data-display-mode='list'] .result-tools {
+  display: none;
+}
+#view-nearby[data-now-mode='true'] .restaurant-card {
+  padding: 14px;
+}
+#view-nearby[data-now-mode='true'] .restaurant-name {
+  font-size: 17px;
+  line-height: 1.45;
+}
+#view-nearby[data-now-mode='true'] .distance-badge {
+  font-size: 14px;
+}
+#view-nearby[data-now-mode='true'] .planned-hours {
+  font-size: 14px;
+}
+#view-nearby[data-now-mode='true'] .restaurant-address {
+  font-size: 14px;
+}
+#view-nearby[data-now-mode='true'] .restaurant-details > summary span {
+  display: none;
+}
+@media (max-width: 767px) {
+  #view-nearby[data-now-mode='true'] .view-intro {
+    margin-bottom: 8px;
+  }
+  #view-nearby[data-now-mode='true'] .view-intro .eyebrow {
+    display: none;
+  }
+  #view-nearby[data-now-mode='true'] .nearby-task-actions {
+    display: block;
+    margin-bottom: 4px;
+  }
+  #view-nearby[data-now-mode='true'] #now-context {
+    display: block;
+  }
+  #view-nearby[data-now-mode='true'] .nearby-control-bar {
+    margin: 8px 0 0;
+  }
+  #view-nearby[data-now-mode='true'] .nearby-control-bar select {
+    min-height: 44px;
+  }
+  #view-nearby[data-now-mode='true'] .day-hours {
+    font-size: 14px;
+  }
+  #view-nearby[data-now-mode='true'] .restaurant-card .primary-action {
+    min-height: 48px;
+    font-size: 16px;
+  }
+  #view-nearby[data-now-mode='true'] .restaurant-card .primary-actions {
+    gap: 8px;
+  }
+}
+#view-nearby:not([data-now-mode='true']) .nearby-task-actions,
+#view-nearby:not([data-now-mode='true']) .nearby-control-bar,
+#view-nearby:not([data-now-mode='true']) #nearby-search > summary {
+  display: none;
+}
+#view-nearby:not([data-now-mode='true']) #nearby-search {
+  margin: 0;
+}
+#view-nearby:not([data-now-mode='true']) #nearby-search > .nearby-primary-controls {
+  margin-bottom: 12px;
+}

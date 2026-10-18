@@ -6,6 +6,9 @@ const C = require('../assets/core.js');
 const ctx = { window: {} };
 vm.runInNewContext(fs.readFileSync('assets/data.js', 'utf8'), ctx);
 const D = ctx.window.TRAVEL_DATA;
+const grabResearch = JSON.parse(
+  fs.readFileSync('research/restaurant-grab-2026-10-17.json', 'utf8'),
+);
 
 test('Grab search intent selects official entries and composes with other words', () => {
   for (const query of ['grab', 'GRAB', '有 Grab', '有grab', 'GrabFood']) {
@@ -28,7 +31,10 @@ test('all restaurant Grab records preserve branch identity and evidence level', 
     assert.ok(r.grabInfo, r.id);
     assert.equal(r.grabInfo.id, r.id);
     assert.equal(r.grabInfo.branchAddress, r.address);
-    assert.equal(r.grabInfo.checkedDate, '2026-10-17');
+    assert.equal(
+      r.grabInfo.checkedDate,
+      grabResearch.restaurants.find((record) => record.id === r.id).checkedDate,
+    );
     assert.ok(r.grabInfo.searchName);
     assert.ok(r.grabInfo.note);
     if (['official-link', 'reported', 'historical'].includes(r.grabInfo.status))

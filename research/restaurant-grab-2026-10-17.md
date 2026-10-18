@@ -1,6 +1,6 @@
-# 素食店家 Grab 查核（2026-10-17）
+# 素食店家 Grab 查核（更新至 2026-10-18）
 
-完整覆蓋專案 46 家：3 家有官網提供的分店入口、7 家有回報或索引線索、2 家僅舊資料、32 家待確認、2 家為既有歇業記錄。這些狀態不是即時接單承諾。
+完整覆蓋專案 46 家：3 家有官網提供的分店入口、10 家有回報或索引線索、2 家僅舊資料、29 家待確認、2 家為既有歇業記錄。逐店查核日另列，這些狀態不是即時接單承諾。
 
 ## 使用方式
 
@@ -8,16 +8,17 @@
 
 ## 查核方法與限制
 
-逐店以品牌、城市、地址、Grab／GrabFood 查找公開證據；優先官網與 Grab，其次明確用餐回報。未登入 Grab、未設定收件地址、未下單。
+初版於 2026-10-17 逐店以品牌、城市、地址、Grab／GrabFood 查找公開證據；2026-10-18 複查店家官網及新增線索，逐筆保留實際查核日。優先官網與 Grab，其次明確用餐回報。未登入 Grab、未設定收件地址、未下單。
 
-- Grab 商家頁本次遭存取限制，官網連結不等於驗證即時接單。
+- 公開資料無法查店家與 Grab 的合作契約；本報告判斷的是可見的 GrabFood 上架或店家提供的 GrabFood 入口。
+- Grab 商家頁本次遭存取限制，官網連結與 GrabFood 搜尋索引不等於驗證即時接單。
 - 搜索索引與頁面可能不同；indexed 證據已在每筆註明。
 - 未找到可用證據不等於沒有 Grab；未建立任何明確沒有 Grab 的判定。
 - 既有 Google 營業與座標日期保留，不由本次 Grab 查核覆蓋。
-- official-link 僅表示官網提供入口，未驗證商家目前接單。
+- official-link 僅表示官網提供入口，未驗證商家目前接單。GrabFood 官方餐點列表的搜尋索引表示店名曾出現在平台頁面；缺地址或商家頁時，仍需在 App 核對分店。
 - reported 包含平台新聞、明確回報與已標註限制的索引線索，不代表已核實現況。historical 不列入「有 Grab 入口或回報線索」篩選。
 - 待確認記錄中的來源可能是分店辨識或排除證據，不是 Grab 上架證明。
-- 證據日期保留來源日期或相對描述，不從搜尋抓取日反推。
+- 搜尋索引的抓取時間只表示資料被抓取的時間，不當作店家上架日；來源沒有發表日期時明確標示。
 
 ## 官方入口
 
@@ -27,54 +28,54 @@
 
 ## 全部店家查核表
 
-| 店家／搜尋名稱 | 分店地址 | Grab 結果 | 證據日期 |
-| --- | --- | --- | --- |
-| Om Vegan - Về đây ăn chay | 338/42 Hoàng Diệu, Hải Châu, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Nhà Hàng Chay Ngọc Chi | 202 Hoàng Diệu, Hải Châu, Đà Nẵng | 有回報或索引線索，需 App 確認 | 2025（Grab 新聞） |
-| Tiệm Chay Xưa | 373 Phan Châu Trinh, Hòa Cường, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| ANs - Vegetarian Cuisine | 169F Trưng Nữ Vương, Hòa Cường, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Quán Chay An Lạc Tâm | 41 Lê Quý Đôn, Hòa Cường, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Quán Chay Khai Tâm | 352 Phan Châu Trinh, Hòa Cường, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Shala Vegan House | 87/16 Nguyễn Du, Hải Châu, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Cơm Chay Âu Lạc | 113/14 Nguyễn Du, Hải Châu, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Quan Chay Dieu Hoa - Vegan restaurant in Danang | 87/4, Nguyen Du Street, Hai Chau, Hải Châu, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Nhà hàng chay Phúc An - PhucAn Vegetarian | 547 Nguyễn Tất Thành, Thanh Khê, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Thực Dưỡng Bảo An | 56 Hoàng Bích Sơn, An Hải, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Quán Chay Tỉnh Quán - Ẩm Thực Chay Đà Nẵng (Vegan restaurant in Da Nang) | 11 Trần Nhật Duật, Sơn Trà, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Son Tra Retreat | 11 Lê Văn Lương, Sơn Trà, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Mom Kitchen by Chickpea Eatery | 73-12 Trương Định, Sơn Trà, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Roots Plant-Based Cafe | 266 Trần Bạch Đằng, Bắc Mỹ Phú, Ngũ Hành Sơn, Đà Nẵng | 有回報或索引線索，需 App 確認 | 未標示／未核實 |
-| Chickpea Eatery | 69 Nguyễn Duy Hiệu, An Hải, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| ALT Plant-Based Cafe | 90 Bà Huyện Thanh Quan, Ngũ Hành Sơn, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| KURUMI | 17/22 Mỹ Đa Đông 12, Ngũ Hành Sơn, Đà Nẵng | 有官方 Grab 入口 | 未標示／未核實 |
-| IVEGAN SUPERSHOP | Lô 31 An Thượng 4, Ngũ Hành Sơn, Đà Nẵng | 僅舊資料，需再確認 | 2022-01-10 |
-| Loving Vegan | 61 Lê Quang Đạo, Ngũ Hành Sơn, Đà Nẵng | 有回報或索引線索，需 App 確認 | 2026-01-08 |
-| KHONG Vegan Kitchen | 81 Phan Tôn, Ngũ Hành Sơn, Đà Nẵng | 有回報或索引線索，需 App 確認 | 未標示／未核實 |
-| Bánh Mì Chay Lê Hội - Vegan Bread | 89 Phạm Tu, An Hải, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| An Mộc Nhiên Vegan | 18 Trần Bạch Đằng, An Hải, Đà Nẵng | 有回報或索引線索，需 App 確認 | 2025（索引顯示，確切日期未核實） |
-| Chay Hạnh Phúc - Vegan Food | 178 Hoài Thanh, Ngũ Hành Sơn, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Everyday Vegan Food & Coffee Da Nang | 45 Hoàng Kế Viêm, Ngũ Hành Sơn, Đà Nẵng | 歇業記錄，停止推薦 | 2026-10-14 |
-| Quán chay xinh | Đối diện 30, An Thượng 8, Ngũ Hành Sơn, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Chay Đại Bình | 126 Châu Thị Vĩnh Tế, Ngũ Hành Sơn, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Duyên Vegan & Coffee | 63 Đặng Vũ Hỷ, An Hải, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Chickpea Eatery | 86 Phan Châu Trinh, Hội An, Đà Nẵng | 有回報或索引線索，需 App 確認 | 2026-04-10（文章更新） |
-| V Vegan | 108 Nguyễn Thái Học, Old Town, Hội An, Đà Nẵng | 有回報或索引線索，需 App 確認 | 來源僅列約 2 個月前，確切日期未核實 |
-| KURUMI | 187 Lý Thường Kiệt, Hội An, Đà Nẵng | 有官方 Grab 入口 | 未標示／未核實 |
-| Ivegan Supershop Hoi An | 672 Đ. Hai Bà Trưng, Hội An, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| The Seeds | 124/2 Đ. Trần Cao Vân, Hội An, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Quán Thuần Chay Emma - Emma's Vegan Garden - Restaurant & Cafe | 36 Lê Quý Đôn, Hội An, Đà Nẵng | 歇業記錄，停止推薦 | 2026-10-14 |
-| An Hy Vegetarian Restaurant | 59 Phan Châu Trinh, Old Town, Hội An, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Minh Hien Vegetarian Restaurant | 26/16 Thái Phiên, Hội An, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Peanuts | 122 Trần Nhân Tông, Hội An Đông, Đà Nẵng | 有官方 Grab 入口 | 未標示／未核實 |
-| Rau Ơi Eatery | 110 Trần Nhân Tông, Hội An Đông, Đà Nẵng | 僅舊資料，需再確認 | 2024-08-25 |
-| An Phuoc Vegetarian | 333 Cửa Đại, Hội An Đông, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| PlantLab Restaurant | Tổ dân cư, số 4, tổ dân phố Thanh Đông, Hội An Đông, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Phin Lounge | An Bang Beach, Hội An Tây, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| The Fisherman Garden Vegan Restaurant & Cafe | An Bang Beach, Hội An Tây, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Lê Hội Bánh MÌ Chay (Le Hoi Vegan Banh Mi) | 3 Nguyễn Huệ, Hội An, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Ngoc Chi Bà Nà Hills | Bà Nà Hills, Ba Na, Da Nang | Grab 待確認 | 未標示／未核實 |
-| nourish eatery. / Café & Restaurant | 220a Nguyễn Duy Hiệu, Hội An Đông, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
-| Loving Hut Da Nang | 380 Đ. Lê Văn Hiến, Ngũ Hành Sơn, Đà Nẵng | Grab 待確認 | 未標示／未核實 |
+| 店家／搜尋名稱 | 分店地址 | Grab 結果 | 查核日 | 證據日期 |
+| --- | --- | --- | --- | --- |
+| Om Vegan - Về đây ăn chay | 338/42 Hoàng Diệu, Hải Châu, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Nhà Hàng Chay Ngọc Chi | 202 Hoàng Diệu, Hải Châu, Đà Nẵng | 有回報或索引線索，需 App 確認 | 2026-10-18 | 2025（Grab 新聞） |
+| Tiệm Chay Xưa | 373 Phan Châu Trinh, Hòa Cường, Đà Nẵng | 有回報或索引線索，需 App 確認 | 2026-10-18 | 搜尋索引顯示約一個月前抓取；上架日未示 |
+| ANs - Vegetarian Cuisine | 169F Trưng Nữ Vương, Hòa Cường, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Quán Chay An Lạc Tâm | 41 Lê Quý Đôn, Hòa Cường, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Quán Chay Khai Tâm | 352 Phan Châu Trinh, Hòa Cường, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Shala Vegan House | 87/16 Nguyễn Du, Hải Châu, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Cơm Chay Âu Lạc | 113/14 Nguyễn Du, Hải Châu, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Quan Chay Dieu Hoa - Vegan restaurant in Danang | 87/4, Nguyen Du Street, Hai Chau, Hải Châu, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Nhà hàng chay Phúc An - PhucAn Vegetarian | 547 Nguyễn Tất Thành, Thanh Khê, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Thực Dưỡng Bảo An | 56 Hoàng Bích Sơn, An Hải, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Quán Chay Tỉnh Quán - Ẩm Thực Chay Đà Nẵng (Vegan restaurant in Da Nang) | 11 Trần Nhật Duật, Sơn Trà, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Son Tra Retreat | 11 Lê Văn Lương, Sơn Trà, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Mom Kitchen by Chickpea Eatery | 73-12 Trương Định, Sơn Trà, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Roots Plant-Based Cafe | 266 Trần Bạch Đằng, Bắc Mỹ Phú, Ngũ Hành Sơn, Đà Nẵng | 有回報或索引線索，需 App 確認 | 2026-10-17 | 未標示／未核實 |
+| Chickpea Eatery | 69 Nguyễn Duy Hiệu, An Hải, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| ALT Plant-Based Cafe | 90 Bà Huyện Thanh Quan, Ngũ Hành Sơn, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| KURUMI | 17/22 Mỹ Đa Đông 12, Ngũ Hành Sơn, Đà Nẵng | 有官方 Grab 入口 | 2026-10-18 | 未標示／未核實 |
+| IVEGAN SUPERSHOP | Lô 31 An Thượng 4, Ngũ Hành Sơn, Đà Nẵng | 僅舊資料，需再確認 | 2026-10-17 | 2022-01-10 |
+| Loving Vegan | 61 Lê Quang Đạo, Ngũ Hành Sơn, Đà Nẵng | 有回報或索引線索，需 App 確認 | 2026-10-17 | 2026-01-08 |
+| KHONG Vegan Kitchen | 81 Phan Tôn, Ngũ Hành Sơn, Đà Nẵng | 有回報或索引線索，需 App 確認 | 2026-10-17 | 未標示／未核實 |
+| Bánh Mì Chay Lê Hội - Vegan Bread | 89 Phạm Tu, An Hải, Đà Nẵng | 有回報或索引線索，需 App 確認 | 2026-10-18 | 搜尋索引顯示約一個月前抓取；上架日未示 |
+| An Mộc Nhiên Vegan | 18 Trần Bạch Đằng, An Hải, Đà Nẵng | 有回報或索引線索，需 App 確認 | 2026-10-17 | 2025（索引顯示，確切日期未核實） |
+| Chay Hạnh Phúc - Vegan Food | 178 Hoài Thanh, Ngũ Hành Sơn, Đà Nẵng | Grab 待確認 | 2026-10-18 | 搜尋索引顯示約一個月前抓取；店家於 2026-10 遷址，先後未明 |
+| Everyday Vegan Food & Coffee Da Nang | 45 Hoàng Kế Viêm, Ngũ Hành Sơn, Đà Nẵng | 歇業記錄，停止推薦 | 2026-10-17 | 2026-10-14 |
+| Quán chay xinh | Đối diện 30, An Thượng 8, Ngũ Hành Sơn, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Chay Đại Bình | 126 Châu Thị Vĩnh Tế, Ngũ Hành Sơn, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Duyên Vegan & Coffee | 63 Đặng Vũ Hỷ, An Hải, Đà Nẵng | 有回報或索引線索，需 App 確認 | 2026-10-18 | Tripadvisor 介紹未標示發表日 |
+| Chickpea Eatery | 86 Phan Châu Trinh, Hội An, Đà Nẵng | 有回報或索引線索，需 App 確認 | 2026-10-17 | 2026-04-10（文章更新） |
+| V Vegan | 108 Nguyễn Thái Học, Old Town, Hội An, Đà Nẵng | 有回報或索引線索，需 App 確認 | 2026-10-17 | 來源僅列約 2 個月前，確切日期未核實 |
+| KURUMI | 187 Lý Thường Kiệt, Hội An, Đà Nẵng | 有官方 Grab 入口 | 2026-10-18 | 未標示／未核實 |
+| Ivegan Supershop Hoi An | 672 Đ. Hai Bà Trưng, Hội An, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| The Seeds | 124/2 Đ. Trần Cao Vân, Hội An, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Quán Thuần Chay Emma - Emma's Vegan Garden - Restaurant & Cafe | 36 Lê Quý Đôn, Hội An, Đà Nẵng | 歇業記錄，停止推薦 | 2026-10-17 | 2026-10-14 |
+| An Hy Vegetarian Restaurant | 59 Phan Châu Trinh, Old Town, Hội An, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Minh Hien Vegetarian Restaurant | 26/16 Thái Phiên, Hội An, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Peanuts | 122 Trần Nhân Tông, Hội An Đông, Đà Nẵng | 有官方 Grab 入口 | 2026-10-18 | 未標示／未核實 |
+| Rau Ơi Eatery | 110 Trần Nhân Tông, Hội An Đông, Đà Nẵng | 僅舊資料，需再確認 | 2026-10-17 | 2024-08-25 |
+| An Phuoc Vegetarian | 333 Cửa Đại, Hội An Đông, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| PlantLab Restaurant | Tổ dân cư, số 4, tổ dân phố Thanh Đông, Hội An Đông, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Phin Lounge | An Bang Beach, Hội An Tây, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| The Fisherman Garden Vegan Restaurant & Cafe | An Bang Beach, Hội An Tây, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Lê Hội Bánh MÌ Chay (Le Hoi Vegan Banh Mi) | 3 Nguyễn Huệ, Hội An, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Ngoc Chi Bà Nà Hills | Bà Nà Hills, Ba Na, Da Nang | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| nourish eatery. / Café & Restaurant | 220a Nguyễn Duy Hiệu, Hội An Đông, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
+| Loving Hut Da Nang | 380 Đ. Lê Văn Hiến, Ngũ Hành Sơn, Đà Nẵng | Grab 待確認 | 2026-10-17 | 未標示／未核實 |
 
 ## 逐店依據與待確認原因
 
@@ -86,17 +87,19 @@ Grab 待確認。本次公開網頁搜尋未取得能對應此分店的明確 Gr
 
 ### Nhà Hàng Chay Ngọc Chi（ngoc-chi-city）
 
-有回報或索引線索，需 App 確認。Grab 官方新聞列 Ngọc Chi 為使用者偏好店家；202 Hoàng Diệu 的本地店家介紹另明列 Grab 優惠。無已核實分店直達連結，請在 App 核對地址；不套用巴拿山店。
+有回報或索引線索，需 App 確認。Grab 官方新聞列 Ngọc Chi 為使用者偏好店家；GrabFood 官方餐點列表搜尋索引也列出同名店，202 Hoàng Diệu 的本地店家介紹另明列 Grab 優惠。官方列表未顯示地址；無已核實分店直達連結，請在 App 核對地址；不套用巴拿山店。
 
-查核日：2026-10-17；證據日期：2025（Grab 新聞）；證據類型：`platform-news-and-local-guide`。
+查核日：2026-10-18；證據日期：2025（Grab 新聞）；證據類型：`platform-news-and-local-guide`。
 
-來源：[來源 1](https://www.grab.com/vn/en/press/others/grab-va-hiep-hoi-van-hoa-am-thuc-tp-da-nang-vinh-danh-hang-loat-quan-ngon-dia-phuong/)、[來源 2](https://khamphadanang.vn/dia-diem/nha-hang-ngoc-chi/)。
+來源：[來源 1](https://www.grab.com/vn/en/press/others/grab-va-hiep-hoi-van-hoa-am-thuc-tp-da-nang-vinh-danh-hang-loat-quan-ngon-dia-phuong/)、[來源 2](https://khamphadanang.vn/dia-diem/nha-hang-ngoc-chi/)、[來源 3](https://food.grab.com/vn/en/da-nang/dishes/scorched-rice-delivery/401867)。
 
 ### Tiệm Chay Xưa（tiem-chay-xua）
 
-Grab 待確認。本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。
+有回報或索引線索，需 App 確認。GrabFood 官方餐點列表的搜尋索引列「Tiệm Chay Xưa - Phan Châu Trinh」，街名與專案 373 Phan Châu Trinh 分店相符；官方商家頁無法讀取，未核實目前接單。
 
-查核日：2026-10-17；證據日期：未標示／未核實；證據類型：`public-search-inconclusive`。
+查核日：2026-10-18；證據日期：搜尋索引顯示約一個月前抓取；上架日未示；證據類型：`grab-official-indexed-listing`。
+
+來源：[來源 1](https://food.grab.com/vn/en/da-nang/dishes/scorched-rice-delivery/401867)。
 
 ### ANs - Vegetarian Cuisine（ans-vegetarian）
 
@@ -194,7 +197,7 @@ Grab 待確認。Chickpea 官網列出本分店，但未提供此分店 Grab 入
 
 有官方 Grab 入口。官網峴港分店地址吻合，提供獨立 Order on Grab 連結；Grab 頁面本次無法讀取，未驗證即時接單。
 
-查核日：2026-10-17；證據日期：未標示／未核實；證據類型：`official-website`。
+查核日：2026-10-18；證據日期：未標示／未核實；證據類型：`official-website`。
 
 來源：[來源 1](https://kurumi.vn/en/contact)。
 
@@ -224,9 +227,11 @@ Grab 待確認。Chickpea 官網列出本分店，但未提供此分店 Grab 入
 
 ### Bánh Mì Chay Lê Hội - Vegan Bread（dn-lehoi）
 
-Grab 待確認。本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。
+有回報或索引線索，需 App 確認。GrabFood 官方餐點列表的搜尋索引列「Bánh Mì Chay Lê Hội - Vegan Bread」；HappyCow 的同名店地址為 89 Phạm Tu。Grab 列表未顯示地址，需在 App 核對是否為此分店及目前狀態。
 
-查核日：2026-10-17；證據日期：未標示／未核實；證據類型：`public-search-inconclusive`。
+查核日：2026-10-18；證據日期：搜尋索引顯示約一個月前抓取；上架日未示；證據類型：`grab-official-indexed-listing`。
+
+來源：[來源 1](https://food.grab.com/vn/vi/da-nang/dishes/th%E1%BB%A9c-%C4%83n-nhanh-delivery/400757)、[來源 2](https://www.happycow.net/reviews/banh-mi-chay-le-hoi-da-nang-454240)。
 
 ### An Mộc Nhiên Vegan（dn-anmocnhien）
 
@@ -238,9 +243,11 @@ Grab 待確認。本次公開網頁搜尋未取得能對應此分店的明確 Gr
 
 ### Chay Hạnh Phúc - Vegan Food（dn-hanhphuc）
 
-Grab 待確認。本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。
+Grab 待確認。GrabFood 官方餐點列表搜尋索引列「Chay Hạnh Phúc - Happy Vegan Food」，但沒有地址；HappyCow 記錄店家於 2026-10 遷至 178 Hoài Thanh。索引無法判斷對應舊址或新址，不能據此確認新址分店已上架。
 
-查核日：2026-10-17；證據日期：未標示／未核實；證據類型：`public-search-inconclusive`。
+查核日：2026-10-18；證據日期：搜尋索引顯示約一個月前抓取；店家於 2026-10 遷址，先後未明；證據類型：`grab-index-branch-unclear-after-relocation`。
+
+來源：[來源 1](https://food.grab.com/vn/en/da-nang/dishes/scorched-rice-delivery/401867)、[來源 2](https://www.happycow.net/reviews/chay-hanh-phuc-happy-vegan-food-da-nang-529548)。
 
 ### Everyday Vegan Food & Coffee Da Nang（dn-everyday）
 
@@ -264,9 +271,11 @@ Grab 待確認。本次公開網頁搜尋未取得能對應此分店的明確 Gr
 
 ### Duyên Vegan & Coffee（dn-duyen）
 
-Grab 待確認。本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。
+有回報或索引線索，需 App 確認。Tripadvisor 店家介紹同時列 63 Đặng Vũ Hỷ 與可在 GrabFood 訂餐；介紹的發表日與店家頁均未核實，仍須在 App 確認目前上架。
 
-查核日：2026-10-17；證據日期：未標示／未核實；證據類型：`public-search-inconclusive`。
+查核日：2026-10-18；證據日期：Tripadvisor 介紹未標示發表日；證據類型：`business-profile-description`。
+
+來源：[來源 1](https://www.tripadvisor.com.vn/Attraction_Review-g298085-d34115944-Reviews-Duyen_Vegan_Coffee-Da_Nang.html)。
 
 ### Chickpea Eatery（hoian-chickpea）
 
@@ -288,7 +297,7 @@ Grab 待確認。本次公開網頁搜尋未取得能對應此分店的明確 Gr
 
 有官方 Grab 入口。官網會安 187 Lý Thường Kiệt 分店提供獨立 Grab 連結；與峴港分店 merchant ID 不同。未驗證即時接單。
 
-查核日：2026-10-17；證據日期：未標示／未核實；證據類型：`official-website`。
+查核日：2026-10-18；證據日期：未標示／未核實；證據類型：`official-website`。
 
 來源：[來源 1](https://kurumi.vn/en/contact)。
 
@@ -330,7 +339,7 @@ Grab 待確認。搜尋有 Minh Hien／Minh Hien 2 的 Grab 回報，但地址�
 
 有官方 Grab 入口。官網 122 Trần Nhân Tông 列 Grab 入口。手機可嘗試開 App；桌機導向下載頁，並非商家停止接單的證據。官網自送費用不等同 Grab 運費。
 
-查核日：2026-10-17；證據日期：未標示／未核實；證據類型：`official-website`。
+查核日：2026-10-18；證據日期：未標示／未核實；證據類型：`official-website`。
 
 來源：[來源 1](https://www.peanuts-restaurant.com/en/)。
 

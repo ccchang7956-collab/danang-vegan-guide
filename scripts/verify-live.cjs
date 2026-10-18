@@ -64,7 +64,14 @@ async function cacheAssets(page, options, hashes) {
 async function smoke(page, favorite) {
   await expect(page.locator('link[href="assets/mobile.css"]')).toHaveCount(1);
   await page.locator('[data-view="nearby"]').click();
+  const filters = page.locator('#nearby-filters');
+  if (!(await filters.evaluate((element) => element.open))) {
+    const opener = page.locator('[data-jump="nearby-filters"]');
+    if (await opener.isVisible()) await opener.click();
+    else await filters.locator(':scope > summary').click();
+  }
   await expect(page.locator('#nearby-filters')).toBeVisible();
+  await page.locator('#reset-nearby').click();
   await page.locator('#search-input').fill('會安 全素 kurumi');
   await expect(page.locator('#restaurant-list .restaurant-card')).toHaveCount(1);
   await expect(page.locator('#card-nearby-hoian-kurumi .menu-preview')).toContainText('115,000');
@@ -74,6 +81,51 @@ async function smoke(page, favorite) {
       'aria-pressed',
       'true',
     );
+  }
+}
+async function offlineHomeSmoke(context, url) {
+  const page = await context.newPage();
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  try {
+    await page.addInitScript(() => {
+      window.__releaseGpsRequests = 0;
+      Object.defineProperty(navigator, 'geolocation', {
+        configurable: true,
+        value: {
+          getCurrentPosition(success) {
+            window.__releaseGpsRequests++;
+            success({
+              coords: { latitude: 16.05, longitude: 108.24, accuracy: 30 },
+              timestamp: Date.now(),
+            });
+          },
+        },
+      });
+    });
+    await page.goto(url, { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('#view-nearby')).toBeVisible();
+    await expect(page.locator('#eat-now')).toHaveText('找我附近的全素');
+    expect(await page.evaluate(() => window.__releaseGpsRequests)).toBe(0);
+    await page.locator('#eat-now').click();
+    await expect(page.locator('#location-status')).toContainText('我的位置');
+    await expect(page.locator('#diet-filter')).toHaveValue('vegan');
+    await expect(page.locator('#nearby-radius')).toHaveValue('3');
+    expect(await page.locator('#nearby-ready .restaurant-card').count()).toBeLessThanOrEqual(3);
+    const now = await page.evaluate(() => window.TravelCore.vietnamNow());
+    await expect(page.locator('#nearby-date')).toHaveValue(now.date);
+    await expect(page.locator('#nearby-time')).toHaveValue(now.time);
+    expect(
+      await page.evaluate(() => JSON.stringify({ ...localStorage, ...sessionStorage })),
+    ).not.toMatch(/"lat"|"lng"|latitude|longitude/);
+    await page.locator('[data-view="phrase"]').click();
+    await expect(page.locator('#phrase-vi')).toBeVisible();
+    await page.locator('#enlarge-phrase').click();
+    await expect(page.locator('#phrase-dialog')).toBeVisible();
+    await page.locator('#close-phrase').click();
+    expect(errors).toEqual([]);
+  } finally {
+    await page.close();
   }
 }
 async function run() {
@@ -182,9 +234,10 @@ async function run() {
     await page.reload({ waitUntil: 'domcontentloaded' });
     await smoke(page, options.mode === 'verify');
     await waitForState(page, context, options, options.to);
+    await offlineHomeSmoke(context, options.url);
     expect(errors).toEqual([]);
     console.log(
-      `${fresh ? 'Fresh WebKit ' + options.to : 'Chrome ' + options.from + ' → ' + options.to}: active scope/cache, network and cached asset SHA256, branch menu/search, ${fresh ? '' : 'favorite preserved, '}offline reload passed at ${options.url}.`,
+      `${fresh ? 'Fresh WebKit ' + options.to : 'Chrome ' + options.from + ' → ' + options.to}: active scope/cache, network and cached asset SHA256, branch menu/search, ${fresh ? '' : 'favorite preserved, '}offline reload, fresh nearby homepage, controlled GPS + Vietnam time + 3 km, offline phrase card passed at ${options.url}.`,
     );
     if (!fresh) {
       // A successful transition consumes the proof: another upgrade requires a new source preparation.

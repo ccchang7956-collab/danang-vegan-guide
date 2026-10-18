@@ -15,26 +15,26 @@ labels = {
 rows = data['restaurants']
 counts = Counter(row['status'] for row in rows)
 parts = [
-    '# 素食店家 Grab 查核（2026-10-17）', '',
-    f"完整覆蓋專案 {len(rows)} 家：{counts['official-link']} 家有官網提供的分店入口、{counts['reported']} 家有回報或索引線索、{counts['historical']} 家僅舊資料、{counts['unverified']} 家待確認、{counts['closed']} 家為既有歇業記錄。這些狀態不是即時接單承諾。", '',
+    f"# 素食店家 Grab 查核（更新至 {data['checkedDate']}）", '',
+    f"完整覆蓋專案 {len(rows)} 家：{counts['official-link']} 家有官網提供的分店入口、{counts['reported']} 家有回報或索引線索、{counts['historical']} 家僅舊資料、{counts['unverified']} 家待確認、{counts['closed']} 家為既有歇業記錄。逐店查核日另列，這些狀態不是即時接單承諾。", '',
     '## 使用方式', '',
     '附近素食 → 展開「用餐時間、區域與更多條件」→「Grab 外送查核」。每張卡片顯示狀態；展開「Grab 外送查核與搜尋」可複製店名、核對地址及閱讀來源。有官方入口者可按「開啟 Grab 分店」。不限制飯店地址。', '',
     '## 查核方法與限制', '', data['method'], '',
     *['- ' + note for note in data['limitations']],
-    '- official-link 僅表示官網提供入口，未驗證商家目前接單。',
+    '- official-link 僅表示官網提供入口，未驗證商家目前接單。GrabFood 官方餐點列表的搜尋索引表示店名曾出現在平台頁面；缺地址或商家頁時，仍需在 App 核對分店。',
     '- reported 包含平台新聞、明確回報與已標註限制的索引線索，不代表已核實現況。historical 不列入「有 Grab 入口或回報線索」篩選。',
     '- 待確認記錄中的來源可能是分店辨識或排除證據，不是 Grab 上架證明。',
-    '- 證據日期保留來源日期或相對描述，不從搜尋抓取日反推。', '',
+    '- 搜尋索引的抓取時間只表示資料被抓取的時間，不當作店家上架日；來源沒有發表日期時明確標示。', '',
     '## 官方入口', '',
 ]
 for row in rows:
     if row['status'] == 'official-link':
         parts += [f"- **{row['searchName']} · {row['branchAddress']}**：[官網]({row['sourceUrls'][0]}) · [店家提供的 Grab 入口]({row['url']})。{row['note']}"]
 parts += ['', '## 全部店家查核表', '',
-          '| 店家／搜尋名稱 | 分店地址 | Grab 結果 | 證據日期 |',
-          '| --- | --- | --- | --- |']
+          '| 店家／搜尋名稱 | 分店地址 | Grab 結果 | 查核日 | 證據日期 |',
+          '| --- | --- | --- | --- | --- |']
 for row in rows:
-    parts += [f"| {row['searchName']} | {row['branchAddress']} | {labels[row['status']]} | {row['evidenceDate'] or '未標示／未核實'} |"]
+    parts += [f"| {row['searchName']} | {row['branchAddress']} | {labels[row['status']]} | {row['checkedDate']} | {row['evidenceDate'] or '未標示／未核實'} |"]
 parts += ['', '## 逐店依據與待確認原因', '']
 for row in rows:
     parts += [f"### {row['searchName']}（{row['id']}）", '',

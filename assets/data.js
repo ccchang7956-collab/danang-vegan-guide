@@ -608,7 +608,7 @@ window.TRAVEL_DATA = {
   ],
   "exchangeCheckedDate": "2026-10-14",
   "menuCheckedDate": "2026-10-16",
-  "grabCheckedDate": "2026-10-17",
+  "grabCheckedDate": "2026-10-18",
   "restaurantFullRecheckDate": "2026-10-14",
   "restaurants": [
     {
@@ -989,15 +989,16 @@ window.TRAVEL_DATA = {
         "status": "reported",
         "searchName": "Nhà Hàng Chay Ngọc Chi",
         "branchAddress": "202 Hoàng Diệu, Hải Châu, Đà Nẵng",
-        "checkedDate": "2026-10-17",
+        "checkedDate": "2026-10-18",
         "evidenceDate": "2025（Grab 新聞）",
         "evidenceType": "platform-news-and-local-guide",
         "url": null,
         "sourceUrls": [
           "https://www.grab.com/vn/en/press/others/grab-va-hiep-hoi-van-hoa-am-thuc-tp-da-nang-vinh-danh-hang-loat-quan-ngon-dia-phuong/",
-          "https://khamphadanang.vn/dia-diem/nha-hang-ngoc-chi/"
+          "https://khamphadanang.vn/dia-diem/nha-hang-ngoc-chi/",
+          "https://food.grab.com/vn/en/da-nang/dishes/scorched-rice-delivery/401867"
         ],
-        "note": "Grab 官方新聞列 Ngọc Chi 為使用者偏好店家；202 Hoàng Diệu 的本地店家介紹另明列 Grab 優惠。無已核實分店直達連結，請在 App 核對地址；不套用巴拿山店。"
+        "note": "Grab 官方新聞列 Ngọc Chi 為使用者偏好店家；GrabFood 官方餐點列表搜尋索引也列出同名店，202 Hoàng Diệu 的本地店家介紹另明列 Grab 優惠。官方列表未顯示地址；無已核實分店直達連結，請在 App 核對地址；不套用巴拿山店。"
       }
     },
     {
@@ -1194,15 +1195,17 @@ window.TRAVEL_DATA = {
       },
       "grabInfo": {
         "id": "tiem-chay-xua",
-        "status": "unverified",
+        "status": "reported",
         "searchName": "Tiệm Chay Xưa",
         "branchAddress": "373 Phan Châu Trinh, Hòa Cường, Đà Nẵng",
-        "checkedDate": "2026-10-17",
-        "evidenceDate": null,
-        "evidenceType": "public-search-inconclusive",
+        "checkedDate": "2026-10-18",
+        "evidenceDate": "搜尋索引顯示約一個月前抓取；上架日未示",
+        "evidenceType": "grab-official-indexed-listing",
         "url": null,
-        "sourceUrls": [],
-        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
+        "sourceUrls": [
+          "https://food.grab.com/vn/en/da-nang/dishes/scorched-rice-delivery/401867"
+        ],
+        "note": "GrabFood 官方餐點列表的搜尋索引列「Tiệm Chay Xưa - Phan Châu Trinh」，街名與專案 373 Phan Châu Trinh 分店相符；官方商家頁無法讀取，未核實目前接單。"
       }
     },
     {
@@ -4024,7 +4027,7 @@ window.TRAVEL_DATA = {
         "status": "official-link",
         "searchName": "KURUMI",
         "branchAddress": "17/22 Mỹ Đa Đông 12, Ngũ Hành Sơn, Đà Nẵng",
-        "checkedDate": "2026-10-17",
+        "checkedDate": "2026-10-18",
         "evidenceDate": null,
         "evidenceType": "official-website",
         "url": "https://food.grab.com/vn/vi/restaurant/kurumi-healthy-vegan-desserts-food-delivery/5-C2BVPADKJA2AR2",
@@ -4745,15 +4748,18 @@ window.TRAVEL_DATA = {
       },
       "grabInfo": {
         "id": "dn-lehoi",
-        "status": "unverified",
+        "status": "reported",
         "searchName": "Bánh Mì Chay Lê Hội - Vegan Bread",
         "branchAddress": "89 Phạm Tu, An Hải, Đà Nẵng",
-        "checkedDate": "2026-10-17",
-        "evidenceDate": null,
-        "evidenceType": "public-search-inconclusive",
+        "checkedDate": "2026-10-18",
+        "evidenceDate": "搜尋索引顯示約一個月前抓取；上架日未示",
+        "evidenceType": "grab-official-indexed-listing",
         "url": null,
-        "sourceUrls": [],
-        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
+        "sourceUrls": [
+          "https://food.grab.com/vn/vi/da-nang/dishes/th%E1%BB%A9c-%C4%83n-nhanh-delivery/400757",
+          "https://www.happycow.net/reviews/banh-mi-chay-le-hoi-da-nang-454240"
+        ],
+        "note": "GrabFood 官方餐點列表的搜尋索引列「Bánh Mì Chay Lê Hội - Vegan Bread」；HappyCow 的同名店地址為 89 Phạm Tu。Grab 列表未顯示地址，需在 App 核對是否為此分店及目前狀態。"
       }
     },
     {
@@ -5100,12 +5106,15 @@ window.TRAVEL_DATA = {
         "status": "unverified",
         "searchName": "Chay Hạnh Phúc - Vegan Food",
         "branchAddress": "178 Hoài Thanh, Ngũ Hành Sơn, Đà Nẵng",
-        "checkedDate": "2026-10-17",
-        "evidenceDate": null,
-        "evidenceType": "public-search-inconclusive",
+        "checkedDate": "2026-10-18",
+        "evidenceDate": "搜尋索引顯示約一個月前抓取；店家於 2026-10 遷址，先後未明",
+        "evidenceType": "grab-index-branch-unclear-after-relocation",
         "url": null,
-        "sourceUrls": [],
-        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
+        "sourceUrls": [
+          "https://food.grab.com/vn/en/da-nang/dishes/scorched-rice-delivery/401867",
+          "https://www.happycow.net/reviews/chay-hanh-phuc-happy-vegan-food-da-nang-529548"
+        ],
+        "note": "GrabFood 官方餐點列表搜尋索引列「Chay Hạnh Phúc - Happy Vegan Food」，但沒有地址；HappyCow 記錄店家於 2026-10 遷至 178 Hoài Thanh。索引無法判斷對應舊址或新址，不能據此確認新址分店已上架。"
       }
     },
     {
@@ -5742,15 +5751,17 @@ window.TRAVEL_DATA = {
       },
       "grabInfo": {
         "id": "dn-duyen",
-        "status": "unverified",
+        "status": "reported",
         "searchName": "Duyên Vegan & Coffee",
         "branchAddress": "63 Đặng Vũ Hỷ, An Hải, Đà Nẵng",
-        "checkedDate": "2026-10-17",
-        "evidenceDate": null,
-        "evidenceType": "public-search-inconclusive",
+        "checkedDate": "2026-10-18",
+        "evidenceDate": "Tripadvisor 介紹未標示發表日",
+        "evidenceType": "business-profile-description",
         "url": null,
-        "sourceUrls": [],
-        "note": "本次公開網頁搜尋未取得能對應此分店的明確 GrabFood 證據；待在 Grab App 搜尋名稱並核對地址。查不到不代表沒有上架。"
+        "sourceUrls": [
+          "https://www.tripadvisor.com.vn/Attraction_Review-g298085-d34115944-Reviews-Duyen_Vegan_Coffee-Da_Nang.html"
+        ],
+        "note": "Tripadvisor 店家介紹同時列 63 Đặng Vũ Hỷ 與可在 GrabFood 訂餐；介紹的發表日與店家頁均未核實，仍須在 App 確認目前上架。"
       }
     },
     {
@@ -6362,7 +6373,7 @@ window.TRAVEL_DATA = {
         "status": "official-link",
         "searchName": "KURUMI",
         "branchAddress": "187 Lý Thường Kiệt, Hội An, Đà Nẵng",
-        "checkedDate": "2026-10-17",
+        "checkedDate": "2026-10-18",
         "evidenceDate": null,
         "evidenceType": "official-website",
         "url": "https://food.grab.com/vn/en/restaurant/kurumi-healthy-vegan-food-desserts-hoi-an-delivery/5-C63GATEKGREVVT",
@@ -7459,7 +7470,7 @@ window.TRAVEL_DATA = {
         "status": "official-link",
         "searchName": "Peanuts",
         "branchAddress": "122 Trần Nhân Tông, Hội An Đông, Đà Nẵng",
-        "checkedDate": "2026-10-17",
+        "checkedDate": "2026-10-18",
         "evidenceDate": null,
         "evidenceType": "official-website",
         "url": "https://grab.onelink.me/2695613898?af_dp=grab%3A%2F%2Fopen%3FscreenType%3DGRABFOOD%26sourceID%3DA4pcqCZkS4%26merchantIDs%3D5-C3EXAXMHN4CGMA&af_force_deeplink=true&af_web_dp=https%3A%2F%2Fwww.grab.com%2Fdownload&c=5-C3EXAXMHN4CGMA&is_retargeting=true&pid=inappsharing",

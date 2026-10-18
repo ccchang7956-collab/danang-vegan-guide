@@ -33,6 +33,8 @@ test.describe('real service worker lifecycle in Chrome', () => {
 
     await expect(page.locator('html')).toHaveAttribute('data-test-shell-version', 'browser-v1');
     await expect(page.locator('#trip-count')).toContainText('餐廳記錄');
+    await expect(page.locator('#view-nearby')).toBeVisible();
+    await page.locator('[data-view="daily"]').click();
     await expect(page.locator('#day-tabs [data-day="0"]')).toBeVisible();
     await expect(page.locator('#network-status')).toContainText('目前離線');
     await page.locator('[data-view="supplies"]').click();

@@ -34,7 +34,7 @@ async function installGeolocationCallbacks(context) {
   });
 }
 
-async function loadApp(page, path = '/') {
+async function loadApp(page, path = '/#daily?day=2026-10-21') {
   await page.goto(path);
   await expect(page.locator('#trip-count')).toContainText('餐廳記錄');
   await expect(page.locator('[data-view="daily"]')).toBeVisible();

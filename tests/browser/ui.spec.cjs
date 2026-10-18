@@ -249,6 +249,8 @@ test.describe('real browser UI regressions', () => {
   }) => {
     await captureLeafletMap(page);
     await loadApp(page);
+    await page.locator('[data-jump="map-panel"]').click();
+    await page.locator('#map-list-return').click();
     await page.locator('[data-view="nearby"]').click();
 
     const mapButton = page.locator('#restaurant-list .restaurant-card button[data-map-id]').first();
