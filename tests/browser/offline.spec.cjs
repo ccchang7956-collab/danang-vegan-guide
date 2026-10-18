@@ -12,6 +12,39 @@ test.describe('real service worker lifecycle in Chrome', () => {
     expect(response.ok()).toBe(true);
   });
 
+  test('upgrading a worker refreshes HTML already fresh in the browser HTTP cache', async ({
+    page,
+    request,
+  }) => {
+    await request.post(`${serverURL}/__test__/worker-version`, {
+      data: { version: 'browser-v1', cacheableAssets: true },
+    });
+    // Do not route requests: routing disables the browser HTTP cache.
+    await loadApp(page, '/trip/index.html');
+    await waitForActiveWorker(page, '/trip/');
+    await page.reload();
+    await expect
+      .poll(() => page.evaluate(() => Boolean(navigator.serviceWorker.controller)))
+      .toBe(true);
+    await request.post(`${serverURL}/__test__/worker-version`, {
+      data: { version: 'browser-v2', cacheableAssets: true },
+    });
+    await page.evaluate(async () => (await navigator.serviceWorker.getRegistration()).update());
+    const cacheName = 'danang-vegan:/trip/:browser-v2';
+    await expect.poll(() => page.evaluate(() => caches.keys())).toContain(cacheName);
+    await expect
+      .poll(() =>
+        page.evaluate(async (name) => {
+          const cache = await caches.open(name);
+          const response = await cache.match(new URL('./index.html', location.href));
+          return response
+            ? (await response.text()).match(/data-test-shell-version="([^"]+)"/)?.[1]
+            : null;
+        }, cacheName),
+      )
+      .toBe('browser-v2');
+  });
+
   test('installs in a project subdirectory and reloads its cached app while offline', async ({
     page,
     context,

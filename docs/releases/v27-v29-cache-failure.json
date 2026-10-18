@@ -1,0 +1,10 @@
+{
+  "transition": "v27 \u2192 v29",
+  "result": "failed-cache-integrity",
+  "asset": "index.html",
+  "expectedSHA256": "0d0ce87835988479c67f4aa6f83d89f7ada71ac9b158fed8e56a1fbf10e2f16c",
+  "cachedSHA256": "9cace1dc0d558d3749dbccb2848a1b8e661f41c16fef0710cf3526bd236fb633",
+  "cachedBytesMatchCommit": "f72075b",
+  "cause": "install precache reused still-fresh browser HTTP cache; reproduced by a cacheable HTML browser regression test",
+  "observedAt": "2026-10-18T13:55:06.344505+00:00"
+}

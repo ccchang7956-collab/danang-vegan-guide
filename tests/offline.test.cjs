@@ -34,6 +34,7 @@ function loadWorker({
   const operations = [];
   const deleted = [];
   const addedFiles = [];
+  const addedRequests = [];
   const entries = new Map(initialEntries.map(([key, response]) => [key, response.clone()]));
 
   const keyOf = (request) =>
@@ -42,8 +43,14 @@ function loadWorker({
   const cache = {
     async addAll(files) {
       operations.push('cache.addAll');
-      addedFiles.push(...files);
-      for (const file of files) {
+      addedRequests.push(...files);
+      const names = files.map((item) =>
+        typeof item === 'string'
+          ? item
+          : './' + new URL(item.url).pathname.slice(new URL(scope).pathname.length),
+      );
+      addedFiles.push(...names);
+      for (const file of names) {
         assert.ok(fs.existsSync(path.resolve(PROJECT_ROOT, file)), file);
       }
       if (addAllError) throw addAllError;
@@ -108,9 +115,10 @@ function loadWorker({
     Set,
     Promise,
     Response,
+    Request,
   });
 
-  return { listeners, operations, deleted, addedFiles, entries };
+  return { listeners, operations, deleted, addedFiles, addedRequests, entries };
 }
 
 function lifecyclePromise(listener) {
@@ -164,6 +172,14 @@ test('install completes the app shell precache before skipWaiting', async () => 
     'cache.addAll',
     'skipWaiting',
   ]);
+});
+
+test('every install bypasses stale HTTP cache while keeping the canonical asset URLs', async () => {
+  const worker = loadWorker();
+  await lifecyclePromise(worker.listeners.install);
+  assert.ok(worker.addedRequests.every((request) => request.cache === 'reload'));
+  assert.ok(worker.addedRequests.every((request) => request.url.startsWith(SCOPE)));
+  assert.ok(worker.addedRequests.some((request) => request.url === INDEX_URL));
 });
 
 test('activate deletes only old caches for this scope and waits before claim', async () => {

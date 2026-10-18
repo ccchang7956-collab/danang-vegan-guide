@@ -6,6 +6,7 @@ const repositoryRoot = path.resolve(__dirname, '../..');
 const port = Number(process.env.PLAYWRIGHT_TEST_PORT || 4173);
 const mounts = new Set(['trip', 'other']);
 let workerVersion = 'browser-v1';
+let cacheableAssets = false;
 
 const mimeTypes = {
   '.css': 'text/css; charset=utf-8',
@@ -75,6 +76,7 @@ async function handleRequest(request, response) {
         return;
       }
       workerVersion = payload.version;
+      cacheableAssets = payload.cacheableAssets === true;
       send(
         response,
         200,
@@ -146,7 +148,8 @@ async function handleRequest(request, response) {
 
   const contentType = mimeTypes[path.extname(filePath)] || 'application/octet-stream';
   response.writeHead(200, {
-    'Cache-Control': 'no-store',
+    'Cache-Control':
+      cacheableAssets && relativePath !== 'sw.js' ? 'public, max-age=3600' : 'no-store',
     'Content-Type': contentType,
     'Service-Worker-Allowed': mount,
     'X-Content-Type-Options': 'nosniff',

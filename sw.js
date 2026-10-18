@@ -1,5 +1,5 @@
 /* Versioned app shell. Bump VERSION whenever any bundled file changes. */
-const VERSION = 'v29';
+const VERSION = 'v30';
 const PREFIX = 'danang-vegan:' + new URL(self.registration.scope).pathname + ':';
 const CACHE = PREFIX + VERSION;
 const LOCAL = [
@@ -34,7 +34,13 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches
       .open(CACHE)
-      .then((cache) => cache.addAll(LOCAL))
+      .then((cache) =>
+        cache.addAll(
+          LOCAL.map(
+            (asset) => new Request(new URL(asset, self.registration.scope), { cache: 'reload' }),
+          ),
+        ),
+      )
       .then(() => self.skipWaiting()),
   );
 });
