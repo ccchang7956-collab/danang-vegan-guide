@@ -1,0 +1,48 @@
+{
+  "verifiedAt": "2026-10-19T13:21:10.373943+00:00",
+  "url": "https://ccchang7956-collab.github.io/danang-vegan-guide/",
+  "appCommit": "22e8803128eec04a8df28fac8b1787cd9e3dd9cb",
+  "version": "v32",
+  "sourceProof": "v31-v32-source-proof.json",
+  "checks": [
+    {
+      "command": "npm run verify:live -- verify --from v31 --to v32",
+      "exitCode": 0,
+      "result": "Chrome v31 → v32: active scope/cache, network and cached asset SHA256, branch menu/search, favorite preserved, offline reload, fresh nearby homepage, controlled GPS + Vietnam time + 3 km, offline phrase card passed at https://ccchang7956-collab.github.io/danang-vegan-guide/."
+    },
+    {
+      "command": "npm run verify:live -- webkit --to v32",
+      "exitCode": 0,
+      "result": "Fresh WebKit v32: active scope/cache, network and cached asset SHA256, branch menu/search, offline reload, fresh nearby homepage, controlled GPS + Vietnam time + 3 km, offline phrase card passed at https://ccchang7956-collab.github.io/danang-vegan-guide/."
+    }
+  ],
+  "assetSHA256": {
+    "sw.js": "2db33ee861285a7b893423b8344d832d439a659855e5ab2aa8b4442e5c019962",
+    "index.html": "fad5f049118a16f6c689a10f851b7753d6f8c51143b7cacfc16fd4c539a761c7",
+    "assets/app.js": "d8a89d810ff01e8e40e77ea48ef81a61ffd473fc4e33a314cf8f1e3fd3117254",
+    "assets/core.js": "5635d63537a161d0c42b733da5d2e33790b47e7958139b2990d796c7906d649b",
+    "assets/ux.js": "dc73474f44e9269892c28582ac88042a90c0d3683053626e074d6c4a2cbc2687",
+    "assets/data.js": "8d4467b24992fd41f8997eafa067cc2643c9c3e77322838be3fe5406ff5fd18a",
+    "assets/styles.css": "26e50255f9d88c231411b9a130eae1e6ce243352f617909051a2e0fe2c8f5fd0",
+    "assets/mobile.css": "fdcab5ef9c699a9cbe6dac54488596dc6c298083734ea881e9bed43691f18fe7"
+  },
+  "githubRuns": [
+    {
+      "id": 39258646564,
+      "name": "Project checks",
+      "head_sha": "22e8803128eec04a8df28fac8b1787cd9e3dd9cb",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/ccchang7956-collab/danang-vegan-guide/actions/runs/39258646564"
+    },
+    {
+      "id": 39258645393,
+      "name": "pages build and deployment",
+      "head_sha": "22e8803128eec04a8df28fac8b1787cd9e3dd9cb",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/ccchang7956-collab/danang-vegan-guide/actions/runs/39258645393"
+    }
+  ],
+  "physicalPhoneVerified": false
+}
