@@ -284,11 +284,18 @@
         : document.querySelector('#nearby-filters .secondary-controls');
       if (radiusLabel.parentElement !== radiusContainer) radiusContainer.prepend(radiusLabel);
       const unknown = state.items.filter((r) => r.distance === null).length;
+      const planned = `${state.plannedDate}${state.plannedTime ? ' ' + state.plannedTime : ''}（越南）`;
+      const range = state.radius && state.radius !== 'all' ? ` · ${state.radius} km 範圍` : '';
+      const sorting = $('nearby-sort').selectedOptions[0]?.textContent || '供餐時段優先';
+      const sortNote =
+        state.plannedTime || $('nearby-sort').value !== 'recommended'
+          ? ` · ${sorting}${state.plannedTime ? '，依牌告推估' : ''}`
+          : '';
       $('nearby-search-summary').textContent = state.locationIssue
         ? `定位待更新 · ${state.locationIssue}；請重新定位或改用飯店／景點。`
         : state.nowMode
           ? `本站收錄・${state.plannedDate}（越南）・${state.radius === 'all' ? '不限距離' : state.radius + ' km 內'} ${count - unknown} 間${unknown ? `・另 ${unknown} 間距離未確認` : ''}・依牌告推估`
-          : `找到 ${count} 間 · ${state.plannedDate}（越南）${state.radius && state.radius !== 'all' ? ` · ${state.radius} km 內 ${count - unknown} 間` : ''}${unknown ? ` · ${unknown} 間距離待確認` : ''}${state.plannedTime ? ` · ${state.plannedDate} ${state.plannedTime} 參考時段` : ''}`;
+          : `找到 ${count} 間${unknown ? ` · ${count - unknown} 間有距離資料＋${unknown} 間位置待確認` : ''} · ${planned}${range}${sortNote}`;
       $('apply-nearby-filters').textContent = state.locationIssue
         ? '返回結果'
         : `查看 ${count} 間結果`;
@@ -304,8 +311,9 @@
         ?.toggleAttribute('hidden', !onlyFavorites);
     }
     if (state.view === 'exchange') {
-      $('exchange-search-summary').textContent =
-        `找到 ${count} 個據點 · ${$('exchange-currency').selectedOptions[0]?.textContent || '全部幣別'} · 分行受理請先確認`;
+      $('exchange-search-summary').textContent = state.locationIssue
+        ? `定位待更新 · ${state.locationIssue}；請重新定位或改用行程／地標。`
+        : `找到 ${count} 個據點 · ${$('exchange-currency').selectedOptions[0]?.textContent || '全部幣別'} · 分行受理請先確認`;
     }
   }
   function routeHash() {

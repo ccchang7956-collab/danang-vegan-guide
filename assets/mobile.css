@@ -647,6 +647,12 @@ body:not([data-current-view='daily']) .trip-strip {
   font-size: 14px;
   margin: 8px 0;
 }
+.exchange-hours-note {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--muted);
+  margin: 8px 0 12px;
+}
 .daily-task-summary {
   display: flex;
   flex-wrap: wrap;
@@ -843,6 +849,22 @@ body:not([data-current-view='daily']) .trip-strip {
     margin-bottom: 12px;
   }
 }
+/* Keep result controls beside their heading instead of adding a separate toolbar row. */
+#view-nearby .nearby-results-bar {
+  gap: 8px;
+}
+.nearby-results-bar #nearby-results-heading {
+  flex: 1;
+  min-width: 0;
+}
+#view-nearby .nearby-results-bar .result-tools {
+  flex: none;
+  margin: 0;
+}
+#view-nearby .nearby-results-bar .display-switch button {
+  padding: 8px 12px;
+}
+
 /* Reserve room for a phone's bottom safe area before the first primary action. */
 @media (max-width: 767px) {
   #view-nearby {
@@ -858,6 +880,13 @@ body:not([data-current-view='daily']) .trip-strip {
   #view-exchange .exchange-controls {
     padding: 10px;
     gap: 6px;
+  }
+  #view-exchange .search-feedback {
+    padding: 0;
+    margin-bottom: 4px;
+  }
+  #view-exchange .display-switch {
+    margin-bottom: 4px;
   }
   #view-exchange .section-heading {
     margin-top: 8px;
@@ -909,6 +938,16 @@ body:not([data-current-view='daily']) .trip-strip {
 .nearby-result-group {
   border-top: 1px solid var(--line);
   margin-top: 12px;
+}
+.nearby-planned-group {
+  min-width: 0;
+}
+.nearby-planned-group > h4 {
+  margin: 0 0 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+  line-height: 1.6;
 }
 .nearby-preview-note {
   font-size: 14px;

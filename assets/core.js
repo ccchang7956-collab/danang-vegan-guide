@@ -32,6 +32,13 @@
       .replace(/Đ/g, 'D')
       .toLowerCase();
   }
+  function gpsLocationIssue(position, accuracy) {
+    if (!hasCoordinates(position)) return '無法確認定位座標，請重新定位';
+    if (distanceKm(position, { lat: 16.02, lng: 108.2 }) > 150) return '你目前不在峴港／會安附近';
+    if (!Number.isFinite(accuracy) || accuracy < 0 || accuracy > 1000)
+      return '定位精度不足，請重新定位';
+    return '';
+  }
   const areaAliases = {
     'danang-city': '峴港 峴港市區 峴港市中心 da nang danang',
     'danang-beach': '峴港 美溪 海灘 安上 五行山 my khe an thuong',
@@ -209,6 +216,24 @@
       else groups.confirm.push(r);
     }
     return groups;
+  }
+  function sortNearbyRestaurants(records, { sort = 'recommended', date, time } = {}) {
+    return [...records].sort((a, b) => {
+      const unlocated = Number(a.distance === null) - Number(b.distance === null);
+      const distance = (a.distance ?? Infinity) - (b.distance ?? Infinity);
+      if (sort === 'distance') return unlocated || distance || 0;
+      if (sort === 'vegan')
+        return (
+          unlocated || Number(b.diet === 'vegan') - Number(a.diet === 'vegan') || distance || 0
+        );
+      return (
+        unlocated ||
+        operationRank(a) - operationRank(b) ||
+        (time ? restaurantHours(a, date, time).rank - restaurantHours(b, date, time).rank : 0) ||
+        distance ||
+        0
+      );
+    });
   }
   function grabStatus(p) {
     if (operationRank(p) === 2) return 'closed';
@@ -391,6 +416,7 @@
   }
   return {
     hasCoordinates,
+    gpsLocationIssue,
     restaurantHours,
     restaurantDayHours,
     vietnamNow,
@@ -403,6 +429,7 @@
     operationRank,
     canRecommend,
     groupNearbyRestaurants,
+    sortNearbyRestaurants,
     selectExchange,
     restaurantsCsv,
   };

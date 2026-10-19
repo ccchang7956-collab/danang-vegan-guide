@@ -57,3 +57,64 @@ test('grouping preserves the distance order within each readiness group', () => 
     ['near', 'far'],
   );
 });
+
+test('GPS quality is shared across nearby and exchange including malformed fixes', () => {
+  const local = { lat: 16.05, lng: 108.24 };
+  assert.equal(C.gpsLocationIssue(local, 30), '');
+  assert.equal(C.gpsLocationIssue(local, 1000), '');
+  assert.match(C.gpsLocationIssue(local, 2500), /精度不足/);
+  assert.match(C.gpsLocationIssue({ lat: 25.03, lng: 121.56 }, 30), /不在峴港／會安附近/);
+  for (const accuracy of [undefined, NaN, Infinity, -1])
+    assert.match(C.gpsLocationIssue(local, accuracy), /精度不足/);
+  assert.match(C.gpsLocationIssue({ lat: NaN, lng: 108.24 }, 30), /座標/);
+});
+
+const sortRecords = () => [
+  restaurant('far-ready', { distance: 25 }),
+  restaurant('near-outside', {
+    distance: 0.2,
+    diet: 'vegetarian',
+    weeklyHours: Array.from({ length: 7 }, () => [[900, 1260]]),
+  }),
+  restaurant('near-uncertain', { distance: 0.1, operatingStatus: 'unverified' }),
+  restaurant('unlocated', { distance: null }),
+];
+
+test('distance priority ignores operating and serving rank while keeping unknown distance last', () => {
+  const records = sortRecords();
+  const sorted = C.sortNearbyRestaurants(records, {
+    sort: 'distance',
+    date: '2026-10-23',
+    time: '12:00',
+  });
+  assert.deepEqual(
+    sorted.map((r) => r.id),
+    ['near-uncertain', 'near-outside', 'far-ready', 'unlocated'],
+  );
+  assert.deepEqual(
+    records.map((r) => r.id),
+    ['far-ready', 'near-outside', 'near-uncertain', 'unlocated'],
+  );
+});
+
+test('vegan priority places located vegan restaurants before closer vegetarian restaurants', () => {
+  assert.deepEqual(
+    C.sortNearbyRestaurants(sortRecords(), {
+      sort: 'vegan',
+      date: '2026-10-23',
+      time: '12:00',
+    }).map((r) => r.id),
+    ['near-uncertain', 'far-ready', 'near-outside', 'unlocated'],
+  );
+});
+
+test('recommended sorting retains serving evidence and hours before distance', () => {
+  assert.deepEqual(
+    C.sortNearbyRestaurants(sortRecords(), {
+      sort: 'recommended',
+      date: '2026-10-23',
+      time: '12:00',
+    }).map((r) => r.id),
+    ['far-ready', 'near-outside', 'near-uncertain', 'unlocated'],
+  );
+});
