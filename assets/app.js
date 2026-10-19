@@ -611,8 +611,6 @@
     return gps || place(referenceId);
   }
   function nowRestaurantResults(items) {
-    if (gps && nearbyLocationIssue)
-      return `<div class="empty-state"><h3>${esc(nearbyLocationIssue)}</h3><p>請重新定位，或按上方「改用飯店／景點」查看地標附近的店家。</p></div>`;
     const groups = C.groupNearbyRestaurants(items, $('nearby-date').value, $('nearby-time').value);
     const radius = $('nearby-radius').value;
     const expand =
@@ -635,6 +633,7 @@
   }
   function renderNearby() {
     updateLocationControls();
+    const locationIssue = gps ? nearbyLocationIssue : '';
     const openGroups = Array.from(
       $('restaurant-list').querySelectorAll?.('details[id][open]') || [],
       (node) => node.id,
@@ -649,9 +648,11 @@
       radius: $('nearby-radius').value,
       date: $('nearby-date').value,
     };
-    displayed = C.selectRestaurants(D.restaurants, options).filter(
-      (r) => window.TravelUX?.includeRestaurant(r.id) ?? true,
-    );
+    displayed = locationIssue
+      ? []
+      : C.selectRestaurants(D.restaurants, options).filter(
+          (r) => window.TravelUX?.includeRestaurant(r.id) ?? true,
+        );
     displayed.sort(
       (a, b) =>
         C.operationRank(a) - C.operationRank(b) ||
@@ -679,10 +680,10 @@
       String($('grab-filter').value === 'official-link'),
     );
     $('quick-vegan').setAttribute('aria-pressed', String($('diet-filter').value === 'vegan'));
-    $('result-count').textContent = displayed.length + ' 間';
+    $('result-count').textContent = locationIssue ? '定位待更新' : displayed.length + ' 間';
     $('nearby-results-heading').setAttribute(
       'aria-label',
-      '餐廳搜尋結果，共 ' + displayed.length + ' 間',
+      locationIssue ? '餐廳搜尋結果，定位待更新' : '餐廳搜尋結果，共 ' + displayed.length + ' 間',
     );
     const recent = D.restaurants.filter((r) => C.operationRank(r) === 0).length,
       closed = D.restaurants.filter((r) => C.operationRank(r) === 2).length;
@@ -690,15 +691,17 @@
       `${D.restaurants.length} 筆查核記錄 · ${recent} 家 Google 未標歇業 · ${D.restaurants.length - recent - closed} 家待確認 · ${closed} 家歇業／暫停`;
     const located = displayed.filter((r) => r.distance !== null);
     const unlocated = displayed.filter((r) => r.distance === null);
-    $('restaurant-list').innerHTML = nearbyNowMode
-      ? nowRestaurantResults(displayed)
-      : displayed.length
-        ? located.map(restaurantCard).join('') +
-          (unlocated.length
-            ? '<div class="unlocated-heading"><h4>距離未確認的備選</h4><p class="small-note">以下店家或參考位置缺少可靠座標，不計入已確認的附近範圍。</p></div>' +
-              unlocated.map(restaurantCard).join('')
-            : '')
-        : '<div class="empty-state"><h3>這個條件沒有找到餐廳</h3><p>試著改成所有區域，或調整飲食分類與營業查核條件。</p><div class="empty-actions"><button type="button" class="secondary-button" data-recover="clear-nearby">清除關鍵字</button><button type="button" class="secondary-button" data-recover="reset-nearby">重設搜尋與篩選</button><button type="button" class="secondary-button" data-recover="radius">改為不限距離</button><button type="button" class="secondary-button" data-recover="favorites">顯示未收藏的店家</button></div></div>';
+    $('restaurant-list').innerHTML = locationIssue
+      ? `<div class="empty-state"><h3>${esc(locationIssue)}</h3><p>請重新定位，或改用飯店／景點查看地標附近的店家。</p><button type="button" class="secondary-button" data-jump="reference-select">改用飯店／景點</button></div>`
+      : nearbyNowMode
+        ? nowRestaurantResults(displayed)
+        : displayed.length
+          ? located.map(restaurantCard).join('') +
+            (unlocated.length
+              ? '<div class="unlocated-heading"><h4>距離未確認的備選</h4><p class="small-note">以下店家或參考位置缺少可靠座標，不計入已確認的附近範圍。</p></div>' +
+                unlocated.map(restaurantCard).join('')
+              : '')
+          : '<div class="empty-state"><h3>這個條件沒有找到餐廳</h3><p>試著改成所有區域，或調整飲食分類與營業查核條件。</p><div class="empty-actions"><button type="button" class="secondary-button" data-recover="clear-nearby">清除關鍵字</button><button type="button" class="secondary-button" data-recover="reset-nearby">重設搜尋與篩選</button><button type="button" class="secondary-button" data-recover="radius">改為不限距離</button><button type="button" class="secondary-button" data-recover="favorites">顯示未收藏的店家</button></div></div>';
     const returned =
       nearbyNowMode &&
       !gps &&
@@ -719,6 +722,7 @@
       plannedDate: $('nearby-date').value,
       plannedTime: $('nearby-time').value,
       nowMode: nearbyNowMode,
+      locationIssue,
     });
   }
   function popup(p, kind) {
@@ -835,7 +839,7 @@
     $(slot).append($('map-panel'));
     $('map-food-control').hidden = view !== 'daily';
     if (window.TravelUX?.shouldLoadMap && !window.TravelUX.shouldLoadMap(view)) return;
-    if (view === 'nearby' && nearbyNowMode && gps && nearbyLocationIssue) {
+    if (view === 'nearby' && gps && nearbyLocationIssue) {
       layer?.clearLayers();
       markers.clear();
       $('map').hidden = true;
@@ -1608,6 +1612,11 @@
     changeView,
     setDay,
     refresh: render,
+    refreshRestaurants: () => {
+      if (view === 'daily') renderDailyFood();
+      if (view === 'nearby') renderNearby();
+      renderMap(false);
+    },
     toast,
     flush: flushActiveSearch,
     resetNearbyExtras,

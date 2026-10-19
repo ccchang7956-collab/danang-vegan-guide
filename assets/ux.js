@@ -151,6 +151,20 @@
       target?.scrollIntoView({ block: 'start', behavior: 'instant' });
     });
   }
+  function updateFavoritesControl() {
+    $('favorites-only').setAttribute('aria-pressed', String(onlyFavorites));
+    $('favorites-only').textContent = `只看收藏 (${favorites.size})`;
+  }
+  function updateFavoriteButtons(id) {
+    const selected = favorites.has(id);
+    const name = D.restaurants.find((r) => r.id === id)?.name || '';
+    document.querySelectorAll('[data-favorite]').forEach((control) => {
+      if (control.dataset.favorite !== id) return;
+      control.textContent = selected ? '♥ 已收藏' : '♡ 收藏';
+      control.setAttribute('aria-pressed', String(selected));
+      control.setAttribute('aria-label', `${selected ? '取消收藏' : '收藏'} ${name}`);
+    });
+  }
   function decorateCards(view) {
     const list = $(view === 'daily' ? 'day-restaurant-list' : 'restaurant-list');
     if (!list) return;
@@ -165,6 +179,7 @@
           'aria-label': `${favorites.has(id) ? '取消收藏' : '收藏'} ${D.restaurants.find((r) => r.id === id)?.name || ''}`,
         },
         () => {
+          api.flush();
           const adding = !favorites.has(id);
           adding ? favorites.add(id) : favorites.delete(id);
           const stored = persist();
@@ -175,7 +190,9 @@
                 : '已取消收藏'
               : '已記錄於本次瀏覽；瀏覽器無法儲存偏好。',
           );
-          api.refresh();
+          updateFavoriteButtons(id);
+          updateFavoritesControl();
+          if (onlyFavorites && currentView === 'nearby') api.refreshRestaurants();
           const replacement = $(card.id)?.querySelector('[data-favorite]');
           if (replacement) replacement.focus({ preventScroll: true });
           else {
@@ -267,13 +284,16 @@
         : document.querySelector('#nearby-filters .secondary-controls');
       if (radiusLabel.parentElement !== radiusContainer) radiusContainer.prepend(radiusLabel);
       const unknown = state.items.filter((r) => r.distance === null).length;
-      $('nearby-search-summary').textContent = state.nowMode
-        ? `本站收錄・${state.plannedDate}（越南）・${state.radius === 'all' ? '不限距離' : state.radius + ' km 內'} ${count - unknown} 間${unknown ? `・另 ${unknown} 間距離未確認` : ''}・依牌告推估`
-        : `找到 ${count} 間 · ${state.plannedDate}（越南）${state.radius && state.radius !== 'all' ? ` · ${state.radius} km 內 ${count - unknown} 間` : ''}${unknown ? ` · ${unknown} 間距離待確認` : ''}${state.plannedTime ? ` · ${state.plannedDate} ${state.plannedTime} 參考時段` : ''}`;
-      $('apply-nearby-filters').textContent = `查看 ${count} 間結果`;
+      $('nearby-search-summary').textContent = state.locationIssue
+        ? `定位待更新 · ${state.locationIssue}；請重新定位或改用飯店／景點。`
+        : state.nowMode
+          ? `本站收錄・${state.plannedDate}（越南）・${state.radius === 'all' ? '不限距離' : state.radius + ' km 內'} ${count - unknown} 間${unknown ? `・另 ${unknown} 間距離未確認` : ''}・依牌告推估`
+          : `找到 ${count} 間 · ${state.plannedDate}（越南）${state.radius && state.radius !== 'all' ? ` · ${state.radius} km 內 ${count - unknown} 間` : ''}${unknown ? ` · ${unknown} 間距離待確認` : ''}${state.plannedTime ? ` · ${state.plannedDate} ${state.plannedTime} 參考時段` : ''}`;
+      $('apply-nearby-filters').textContent = state.locationIssue
+        ? '返回結果'
+        : `查看 ${count} 間結果`;
       if (started && !restoring) persist();
-      $('favorites-only').setAttribute('aria-pressed', String(onlyFavorites));
-      $('favorites-only').textContent = `只看收藏 (${favorites.size})`;
+      updateFavoritesControl();
       document
         .querySelector('[data-recover="radius"]')
         ?.toggleAttribute('hidden', state.radius === 'all');
@@ -516,7 +536,7 @@
       api.flush();
       onlyFavorites = !onlyFavorites;
       persist();
-      api.refresh();
+      api.refreshRestaurants();
     });
     document.addEventListener('click', (event) => {
       const control = event.target.closest('[data-display]');
@@ -738,7 +758,8 @@
     }
     if (previous?.snapshot && (!explicitDate || explicitDate === previous.date)) {
       restoring = true;
-      api.restoreReadingTarget(previous.target);
+      if (!explicitRoute || previous.view === currentView)
+        api.restoreReadingTarget(previous.target);
       api.restore(previous.snapshot);
       if (
         !explicitRoute &&
@@ -752,21 +773,22 @@
         (previous.snapshot.nearbyTime && previous.snapshot.nearbyDate !== vietnamDate())
       )
         $('restored-query-note').hidden = false;
-      requestAnimationFrame(() =>
-        requestAnimationFrame(() => {
-          const target = $(previous.target);
-          if (target && target.closest('.view')?.id === 'view-' + currentView) {
-            for (let ancestor = target.parentElement; ancestor; ancestor = ancestor.parentElement)
-              if (ancestor.tagName === 'DETAILS') ancestor.open = true;
-            focusTarget(target);
-            target.scrollIntoView({ block: 'start', behavior: 'instant' });
-          } else
-            window.scrollTo({
-              top: Math.max(0, Number(previous.scroll) || 0),
-              behavior: 'instant',
-            });
-        }),
-      );
+      if (previous.view === currentView)
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => {
+            const target = $(previous.target);
+            if (target && target.closest('.view')?.id === 'view-' + currentView) {
+              for (let ancestor = target.parentElement; ancestor; ancestor = ancestor.parentElement)
+                if (ancestor.tagName === 'DETAILS') ancestor.open = true;
+              focusTarget(target);
+              target.scrollIntoView({ block: 'start', behavior: 'instant' });
+            } else
+              window.scrollTo({
+                top: Math.max(0, Number(previous.scroll) || 0),
+                behavior: 'instant',
+              });
+          }),
+        );
     }
     $('map-list-return').hidden = !['daily', 'nearby', 'exchange'].includes(currentView);
     $('map-list-return').textContent = currentView === 'daily' ? '回今日行程' : '回列表';
